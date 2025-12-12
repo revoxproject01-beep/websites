@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FoxSEO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='green' d='M496 384H48V80c0-8.8-7.2-16-16-16H16C7.2 64 0 71.2 0 
+80v336c0 26.5 21.5 48 48 48h448c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zM160 
+320l96-96 64 64 160-160V64H368L256 176 192 112 32 272v48h128z'/>
+</svg>">
+
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+<nav class="fixed w-full z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm">
+  <div class="container mx-auto px-4">
+<div class="flex justify-between items-center py-4 flex-wrap">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text- flex items-center">
+        <img src="logo.svg" alt="FoxSEO Logo" class="w-8 h-8 mr-2">
+        <span class="text-dark-">Fox</span> SEO
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex items-center md:space-x-6 lg:space-x-8">
+        <!-- Home Dropdown -->
+        <div class="relative group">
+          <a href="#" 
+             class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center px-2">
+            Home <i class="fas fa-chevron-down ml-2 text-xs"></i>
+          </a>
+          <div class="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700">Home 1</a>
+            <a href="index2.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700">Home 2</a>
+          </div>
+        </div>
+
+        <!-- About -->
+        <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 nav-link">About</a>
+        <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 nav-link">Services</a>
+        <a href="case-studies.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 nav-link">Case Studies</a>
+        <a href="pricing.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 nav-link">Pricing</a>
+
+        <!-- Dashboard Dropdown -->
+        <div class="relative group">
+          <a href="#" 
+             class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center px-2">
+            Dashboard <i class="fas fa-chevron-down ml-2 text-xs"></i>
+          </a>
+          <div class="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700">User Dashboard</a>
+            <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700">Admin Dashboard</a>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 nav-link active">Contact</a>
+      </div>
+
+      <!-- Right Section -->
+  <div class="flex items-center space-x-4 rtl:space-x-reverse flex-shrink-0">
+  <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-light-">
+    🌐
+  </button>
+  <a href="login.html" class="bg- hover:bg-dark- text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+    Login
+  </a>
+  <button class="lg:hidden text-gray-700" id="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-white dark:bg-gray-900 shadow-lg hidden">
+    <div class="px-4 py-2 space-y-2">
+      <a href="index.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">Home 1</a>
+      <a href="index2.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">Home 2</a>
+      <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">About</a>
+      <a href="services.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">Services</a>
+      <a href="case-studies.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">Case Studies</a>
+      <a href="pricing.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">Pricing</a>
+      <a href="user-dashboard.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">User</a>
+      <a href="admin-dashboard.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link">Admin</a>
+      <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 mobile-nav-link active">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Hero Banner -->
+    <section class="pt-24 pb-12 -gradient">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">Get in Touch</h1>
+            <p class="text-xl text-light-yellow max-w-3xl mx-auto animate-fade-in-delay">
+                Ready to boost your SEO? Let's discuss how we can help grow your business with our proven strategies.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center card-jump">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                        <i class="fas fa-phone text-2xl text-"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark- mb-2">Call Us</h3>
+                    <p class="text-dark-">+1 (555) 123-4567</p>
+                    <p class="text-dark-">Mon-Fri 9AM-6PM EST</p>
+                </div>
+                <div class="text-center card-jump">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                        <i class="fas fa-envelope text-2xl text-"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark- mb-2">Email Us</h3>
+                    <p class="text-dark-">info@foxseo.com</p>
+                    <p class="text-dark-">support@foxseo.com</p>
+                </div>
+                <div class="text-center card-jump">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                        <i class="fas fa-map-marker-alt text-2xl text-"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark- mb-2">Visit Us</h3>
+                    <p class="text-dark-">123 Business Street</p>
+                    <p class="text-dark-">New York, NY 10001</p>
+                </div>
+            </div>
+
+            <!-- Contact Form & Map -->
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-dark- mb-6">Send us a Message</h2>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-dark- mb-2">First Name*</label>
+                                <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-dark- mb-2">Last Name*</label>
+                                <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-dark- mb-2">Email Address*</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-dark- mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-dark- mb-2">Company</label>
+                            <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-dark- mb-2">Service Interested In</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                                <option value="">Select a service</option>
+                                <option value="seo-audit">SEO Audit</option>
+                                <option value="keyword-research">Keyword Research</option>
+                                <option value="technical-seo">Technical SEO</option>
+                                <option value="content-optimization">Content Optimization</option>
+                                <option value="link-building">Link Building</option>
+                                <option value="local-seo">Local SEO</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-dark- mb-2">Budget Range</label>
+                            <select id="budget" name="budget" class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent">
+                                <option value="">Select budget range</option>
+                                <option value="under-500">Under $500/month</option>
+                                <option value="500-1000">$500 - $1,000/month</option>
+                                <option value="1000-2500">$1,000 - $2,500/month</option>
+                                <option value="2500-5000">$2,500 - $5,000/month</option>
+                                <option value="over-5000">Over $5,000/month</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-dark- mb-2">Message*</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-light- rounded-lg focus:ring-2 focus:ring- focus:border-transparent" placeholder="Tell us about your project and goals..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg- hover:bg-dark- text-white py-3 rounded-lg font-semibold transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Map & Additional Info -->
+                <div class="space-y-8">
+                    <!-- Google Map Placeholder -->
+                    <div class="bg-light- h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-dark-">
+                            <i class="fas fa-map text-4xl mb-4"></i>
+                            <p>Google Map Integration</p>
+                            <p class="text-sm">123 Business Street, New York, NY 10001</p>
+                        </div>
+                    </div>
+
+                    <!-- Office Hours -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-dark- mb-4">Office Hours</h3>
+                        <div class="space-y-2 text-dark-">
+                            <div class="flex justify-between">
+                                <span>Monday - Friday</span>
+                                <span>9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Saturday</span>
+                                <span>10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Sunday</span>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Contact -->
+                    <div class="-gradient p-6 rounded-lg text-white">
+                        <h3 class="text-xl font-semibold mb-4">Need Immediate Help?</h3>
+                        <p class="mb-4">Call us directly for urgent SEO questions or consultation.</p>
+                        <a href="tel:+1234567890" class="bg-yellow-accent text-dark- px-6 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">
+                            Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-yellow-accent mb-4 flex items-center">
+                        <img src="logo.svg" alt="FoxSEO Logo" class="w-8 h-8 mr-2">
+                        FoxSEO
+                    </div>
+                    <p class="text-off-white mb-4">Professional SEO services that drive results and grow your business online.</p>
+<div dir="rtl" class="hidden md:flex justify-center gap-x-6">
+    <a href="#" class="text-white hover:text-yellow-accent transition-colors">
+        <i class="fab fa-facebook text-2xl"></i>
+    </a>
+    <a href="#" class="text-white hover:text-yellow-accent transition-colors">
+        <i class="fab fa-twitter text-2xl"></i>
+    </a>
+    <a href="#" class="text-white hover:text-yellow-accent transition-colors">
+        <i class="fab fa-linkedin text-2xl"></i>
+    </a>
+    <a href="#" class="text-white hover:text-yellow-accent transition-colors">
+        <i class="fab fa-instagram text-2xl"></i>
+    </a>
+</div>
+
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-white">SEO Audit</a></li>
+                        <li><a href="services.html" class="hover:text-white">Keyword Research</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white">Technical SEO</a></li>
+                        <li><a href="404.html" class="hover:text-white">Link Building</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="case-studies.html" class="hover:text-white">Case Studies</a></li>
+                        <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@seopro.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Business St, City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-dark- mt-8 pt-8 text-center text-off-white">
+                <p>&copy; 2025 FoxSEO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Highlight active nav link
+            // Get current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
+            
+            // Highlight desktop nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Highlight mobile nav links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <!-- Fixed Social Icons for Mobile -->
+    <div class="fixed bottom-4 right-4 md:hidden z-50">
+        <div class="flex flex-col gap-2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg">
+            <a href="#" class="text-dark- hover:text- transition-colors">
+                <i class="fab fa-facebook text-xl"></i>
+            </a>
+            <a href="#" class="text-dark- hover:text- transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a href="#" class="text-dark- hover:text- transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="#" class="text-dark- hover:text- transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+</body>
+</html>

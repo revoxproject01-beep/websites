@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - SEO Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='green' d='M496 384H48V80c0-8.8-7.2-16-16-16H16C7.2 64 0 71.2 0 
+80v336c0 26.5 21.5 48 48 48h448c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zM160 
+320l96-96 64 64 160-160V64H368L256 176 192 112 32 272v48h128z'/>
+</svg>">
+
+</head>
+<body class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 min-h-screen flex items-center justify-center">
+    <!-- Dark Mode Toggle -->
+    <div class="absolute top-6 right-6">
+        <button id="rtl-toggle" class="p-3 rounded-lg hover:bg-white/20 text-white mr-2">
+            🌐
+        </button>
+
+    </div>
+
+    <!-- Coming Soon Content -->
+    <div class="container mx-auto px-4 text-center text-white">
+        <div class="max-w-4xl mx-auto">
+            <!-- Logo -->
+            <div class="mb-8">
+                <div class="text-4xl font-bold text-white">
+                    SEO<span class="text-yellow-400">Pro</span>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">Something Amazing is Coming</h1>
+            <p class="text-xl md:text-2xl text-blue-100 mb-8 animate-fade-in-delay">
+                We're working hard to bring you the most advanced SEO platform. Get ready for revolutionary SEO tools and analytics.
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-4 max-w-lg mx-auto mb-12 animate-fade-in-delay-2">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                    <div id="days" class="text-2xl md:text-3xl font-bold">00</div>
+                    <div class="text-sm text-blue-200">Days</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                    <div id="hours" class="text-2xl md:text-3xl font-bold">00</div>
+                    <div class="text-sm text-blue-200">Hours</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                    <div id="minutes" class="text-2xl md:text-3xl font-bold">00</div>
+                    <div class="text-sm text-blue-200">Minutes</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                    <div id="seconds" class="text-2xl md:text-3xl font-bold">00</div>
+                    <div class="text-sm text-blue-200">Seconds</div>
+                </div>
+            </div>
+
+            <!-- Subscription Form -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-md mx-auto mb-8">
+                <h3 class="text-xl font-semibold mb-4">Be the First to Know</h3>
+                <p class="text-blue-100 mb-6">Subscribe to get notified when we launch</p>
+                <form id="newsletter-form" class="space-y-4">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address" 
+                        required
+                        class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:bg-white/30 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                    >
+                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 py-3 rounded-lg font-semibold transition-colors">
+                        Notify Me
+                    </button>
+                </form>
+                <p class="text-xs text-blue-200 mt-3">We respect your privacy. No spam, ever.</p>
+            </div>
+
+            <!-- Features Preview -->
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+                <div class="text-center">
+                    <div class="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-2xl text-yellow-400"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">AI-Powered SEO</h4>
+                    <p class="text-sm text-blue-100">Advanced artificial intelligence for smarter SEO strategies</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-2xl text-yellow-400"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">Real-time Analytics</h4>
+                    <p class="text-sm text-blue-100">Live data and insights to optimize your performance</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-2xl text-yellow-400"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">Mobile-First</h4>
+                    <p class="text-sm text-blue-100">Optimized for mobile devices and modern workflows</p>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div dir="rtl" class="flex justify-center gap-x-6">
+    <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+        <i class="fab fa-facebook text-2xl"></i>
+    </a>
+    <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+        <i class="fab fa-twitter text-2xl"></i>
+    </a>
+    <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+        <i class="fab fa-linkedin text-2xl"></i>
+    </a>
+    <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+        <i class="fab fa-instagram text-2xl"></i>
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const launchDate = new Date('2024-06-01T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Newsletter form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const input = this.querySelector('input');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Subscribing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.textContent = 'Subscribed!';
+                btn.classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
+                btn.classList.add('bg-green-500');
+                input.value = '';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('bg-green-500');
+                    btn.classList.add('bg-yellow-500', 'hover:bg-yellow-600');
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

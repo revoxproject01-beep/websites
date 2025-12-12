@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - FoxSEO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='green' d='M496 384H48V80c0-8.8-7.2-16-16-16H16C7.2 64 0 71.2 0 
+80v336c0 26.5 21.5 48 48 48h448c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zM160 
+320l96-96 64 64 160-160V64H368L256 176 192 112 32 272v48h128z'/>
+</svg>">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+
+  <!-- Mobile backdrop -->
+  <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-25 hidden md:hidden"></div>
+
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow-sm fixed w-full z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Brand -->
+        <div class="flex items-center">
+          <!-- Mobile menu button -->
+          <button id="menu-toggle" class="md:hidden mr-4 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <a href="index.html" class="text-2xl font-bold text- flex items-center">
+            <img src="new-logo.svg" alt="FoxSEO Logo" class="w-8 h-8 mr-2">
+            <span class="text-dark-">Fox</span> SEO
+          </a>
+          
+        </div>
+
+        <!-- Right Actions -->
+        <div class="flex items-center space-x-4">
+          
+  <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-light-">
+    🌐
+  </button>
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
+              <img src="https://i.pravatar.cc/40" alt="Profile" class="w-8 h-8 rounded-full mr-2 border-2 border-transparent hover:border- transition-all duration-200">
+              <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </button>
+            <div class="absolute end-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <a href="#" class="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">Profile</a>
+              <a href="index.html" class="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Layout -->
+  <div class="flex pt-16 min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-lg min-h-screen fixed md:relative top-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-30">
+      <nav class="mt-6 space-y-2 px-4">
+        <a href="#" class="bg-light- text- flex items-center px-3 py-2 rounded-lg transition-colors">
+          <i class="fas fa-home mr-3"></i> Dashboard
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-light- text-dark- transition-colors">
+          <i class="fas fa-user mr-3"></i> Profile
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-light- text-dark- transition-colors">
+          <i class="fas fa-folder-open mr-3"></i> My Projects
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-light- text-dark- transition-colors">
+          <i class="fas fa-chart-line mr-3"></i> Analytics
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-light- text-dark- transition-colors">
+          <i class="fas fa-cog mr-3"></i> Settings
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-light- text-dark- transition-colors">
+          <i class="fas fa-headset mr-3"></i> Support
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 md:ml-34 min-h-screen overflow-y-auto">
+      <!-- Dashboard Header -->
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold text-dark-">Welcome Back, John 👋</h1>
+        <p class="text-dark-">Here's an overview of your account</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-6 mb-8">
+        <div class="p-6 bg-white rounded-lg shadow card-jump">
+          <div class="flex items-center">
+            <div class="p-3 bg-light- rounded-lg">
+              <i class="fas fa-folder-open text-"></i>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm text-dark-">Projects</p>
+              <h3 class="text-2xl font-bold text-dark-">12</h3>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow card-jump">
+          <div class="flex items-center">
+            <div class="p-3 bg-light- rounded-lg">
+              <i class="fas fa-check-circle text-"></i>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm text-dark-">Completed</p>
+              <h3 class="text-2xl font-bold text-dark-">8</h3>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow card-jump">
+          <div class="flex items-center">
+            <div class="p-3 bg-light- rounded-lg">
+              <i class="fas fa-spinner text-"></i>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm text-dark-">In Progress</p>
+              <h3 class="text-2xl font-bold text-dark-">3</h3>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow card-jump">
+          <div class="flex items-center">
+            <div class="p-3 bg-light- rounded-lg">
+              <i class="fas fa-times-circle text-"></i>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm text-dark-">Pending</p>
+              <h3 class="text-2xl font-bold text-dark-">1</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- Project Progress Chart -->
+        <div class="bg-white rounded-lg shadow p-6 card-jump">
+          <h3 class="text-lg font-semibold text-dark- mb-4">Project Progress</h3>
+          <div class="chart-container" style="position: relative; height:300px; width:100%">
+            <canvas id="projectProgressChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Traffic Sources Chart -->
+        <div class="bg-white rounded-lg shadow p-6 card-jump">
+          <h3 class="text-lg font-semibold text-dark- mb-4">Traffic Sources</h3>
+          <div class="chart-container" style="position: relative; height:300px; width:100%">
+            <canvas id="trafficSourcesChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Projects Table -->
+      <div class="bg-white rounded-lg shadow">
+        <div class="px-6 py-4 border-b border-light-">
+          <h2 class="text-lg font-semibold text-dark-">My Projects</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-light-">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-dark- uppercase tracking-wider">Project</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-dark- uppercase tracking-wider">Status</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-dark- uppercase tracking-wider">Deadline</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-dark- uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-">
+              <tr class="hover:bg-light- transition-colors">
+                <td class="px-6 py-4 text-dark- font-medium">SEO Campaign</td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 rounded-full text-xs bg-light- text-">
+                    Completed
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-dark-">Aug 20, 2025</td>
+                <td class="px-6 py-4">
+                  <button class="text- hover:text-dark- transition-colors">
+                    View
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-light- transition-colors">
+                <td class="px-6 py-4 text-dark- font-medium">Website Redesign</td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 rounded-full text-xs bg-light- text-">
+                    In Progress
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-dark-">Sep 10, 2025</td>
+                <td class="px-6 py-4">
+                  <button class="text- hover:text-dark- transition-colors">
+                    View
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-light- transition-colors">
+                <td class="px-6 py-4 text-dark- font-medium">Content Strategy</td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 rounded-full text-xs bg-light- text-">
+                    Pending
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-dark-">Sep 25, 2025</td>
+                <td class="px-6 py-4">
+                  <button class="text- hover:text-dark- transition-colors">
+                    View
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Notifications -->
+<div class="mt-8 bg-white p-6 rounded-lg shadow">
+  <h3 class="text-lg font-semibold text-dark- mb-4">Notifications</h3>
+  <ul class="space-y-3">
+    <li class="flex items-start space-x-3">
+      <i class="fas fa-bell text- mt-1"></i>
+      <div>
+        <p class="text-sm text-dark-">New user registered</p>
+        <span class="text-xs text-dark-">2 hours ago</span>
+      </div>
+    </li>
+    <li class="flex items-start space-x-3">
+      <i class="fas fa-check-circle text- mt-1"></i>
+      <div>
+        <p class="text-sm text-dark-">Project "SEO Campaign" completed</p>
+        <span class="text-xs text-dark-">Yesterday</span>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- Recent Activity -->
+<div class="mt-8 bg-white p-6 rounded-lg shadow">
+  <h3 class="text-lg font-semibold text-dark- mb-4">Recent Activity</h3>
+  <ul class="divide-y divide-light-">
+    <li class="py-3 flex items-center justify-between">
+      <span class="text-dark-">John uploaded project files</span>
+      <span class="text-xs text-dark-">5 mins ago</span>
+    </li>
+    <li class="py-3 flex items-center justify-between">
+      <span class="text-dark-">Meeting scheduled with client</span>
+      <span class="text-xs text-dark-">1 hr ago</span>
+    </li>
+    <li class="py-3 flex items-center justify-between">
+      <span class="text-dark-">New project "App Redesign" created</span>
+      <span class="text-xs text-dark-">2 days ago</span>
+    </li>
+  </ul>
+</div>
+<!-- Team Members -->
+<div class="mt-8 bg-white p-6 rounded-lg shadow">
+  <h3 class="text-lg font-semibold text-dark- mb-4">Team Members</h3>
+  <ul class="space-y-4">
+    <li class="flex items-center">
+      <img src="https://i.pravatar.cc/40?img=1" class="w-10 h-10 rounded-full mr-3">
+      <div>
+        <p class="text-dark- font-medium">Alice</p>
+        <p class="text-sm text-dark-">Project Manager</p>
+      </div>
+    </li>
+    <li class="flex items-center">
+      <img src="https://i.pravatar.cc/40?img=2" class="w-10 h-10 rounded-full mr-3">
+      <div>
+        <p class="text-dark- font-medium">Bob</p>
+        <p class="text-sm text-dark-">Developer</p>
+      </div>
+    </li>
+    <li class="flex items-center">
+      <img src="https://i.pravatar.cc/40?img=3" class="w-10 h-10 rounded-full mr-3">
+      <div>
+        <p class="text-dark- font-medium">Charlie</p>
+        <p class="text-sm text-dark-">Designer</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize charts when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Project Progress Chart
+      const projectCtx = document.getElementById('projectProgressChart').getContext('2d');
+      const projectProgressChart = new Chart(projectCtx, {
+        type: 'bar',
+        data: {
+          labels: ['SEO', 'Web Design', 'Content', 'Social Media', 'Email'],
+          datasets: [{
+            label: 'Completion %',
+            data: [85, 65, 45, 92, 70],
+            backgroundColor: [
+              'rgba(210, 180, 140, 0.8)', // light-
+              'rgba(210, 180, 140, 0.8)',
+              'rgba(210, 180, 140, 0.8)',
+              'rgba(139, 69, 19, 0.8)',    // primary-
+              'rgba(210, 180, 140, 0.8)'
+            ],
+            borderColor: [
+              'rgba(210, 180, 140, 1)',
+              'rgba(210, 180, 140, 1)',
+              'rgba(210, 180, 140, 1)',
+              'rgba(139, 69, 19, 1)',
+              'rgba(210, 180, 140, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: {
+                color: 'rgba(210, 180, 140, 0.2)'
+              },
+              ticks: {
+                color: '#5D4037' // dark-
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: '#5D4037' // dark-
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: '#5D4037' // dark-
+              }
+            }
+          }
+        }
+      });
+
+      // Traffic Sources Chart
+      const trafficCtx = document.getElementById('trafficSourcesChart').getContext('2d');
+      const trafficSourcesChart = new Chart(trafficCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Organic Search', 'Direct', 'Social Media', 'Referral', 'Paid'],
+          datasets: [{
+            data: [55, 20, 10, 10, 5],
+            backgroundColor: [
+              'rgba(139, 69, 19, 0.8)',    // primary-
+              'rgba(210, 180, 140, 0.8)', // light-
+              'rgba(93, 64, 55, 0.8)',    // dark-
+              'rgba(255, 215, 0, 0.8)',   // accent-yellow
+              'rgba(255, 250, 205, 0.8)'  // light-yellow
+            ],
+            borderColor: [
+              'rgba(139, 69, 19, 1)',
+              'rgba(210, 180, 140, 1)',
+              'rgba(93, 64, 55, 1)',
+              'rgba(255, 215, 0, 1)',
+              'rgba(255, 250, 205, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#5D4037', // dark-
+                padding: 20
+              }
+            }
+          }
+        }
+      });
+    });
+
+    // Dark mode toggle (if you add a dark mode toggle button later)
+    const toggleDarkMode = () => {
+      document.documentElement.classList.toggle('dark');
+    };
+
+    // Mobile sidebar toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('backdrop');
+
+    const toggleSidebar = () => {
+      sidebar.classList.toggle('-translate-x-full');
+      backdrop.classList.toggle('hidden');
+    };
+
+    menuToggle.addEventListener('click', toggleSidebar);
+    backdrop.addEventListener('click', toggleSidebar);
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth < 768) {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && !sidebar.classList.contains('-translate-x-full')) {
+          toggleSidebar();
+        }
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.add('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    });
+  </script>
+  <script>
+  // RTL toggle
+  const rtlToggle = document.getElementById('rtl-toggle');
+  rtlToggle.addEventListener('click', () => {
+    const html = document.documentElement;
+    if (html.getAttribute('dir') === 'rtl') {
+      html.setAttribute('dir', 'ltr');  // switch back to LTR
+    } else {
+      html.setAttribute('dir', 'rtl');  // enable RTL
+    }
+  });
+</script>
+
+  <!-- Fixed Social Icons for Mobile -->
+  <div class="fixed bottom-4 right-4 md:hidden z-50">
+      <div class="flex flex-col gap-2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg">
+          <a href="#" class="text-dark- hover:text- transition-colors">
+              <i class="fab fa-facebook text-xl"></i>
+          </a>
+          <a href="#" class="text-dark- hover:text- transition-colors">
+              <i class="fab fa-twitter text-xl"></i>
+          </a>
+          <a href="#" class="text-dark- hover:text- transition-colors">
+              <i class="fab fa-linkedin text-xl"></i>
+          </a>
+          <a href="#" class="text-dark- hover:text- transition-colors">
+              <i class="fab fa-instagram text-xl"></i>
+          </a>
+      </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+</body>
+</html>
