@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - ShopSwift</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'>
+<path fill='purple' d='M528.12 301.319l47.273-208C578.9 78.94 564.078 64 544 
+64H120.533l-7.2-35.29C110.528 12.078 97.718 0 82.7 0H24C10.745 0 0 
+10.745 0 24v16c0 13.255 10.745 24 24 24h47.533l70.134 343.901C132.266 
+426.461 118.424 448 96 448c-26.51 0-48 21.49-48 48s21.49 48 48 
+48s48-21.49 48-48c0-8.802-2.288-17.05-6.272-24.266h299.543C433.288 
+430.95 431 439.198 431 448c0 26.51 21.49 48 48 
+48s48-21.49 48-48s-21.49-48-48-48c-22.424 0-36.266-21.539-37.667-40.099L528.12 
+301.319z'/>
+</svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fade-in, .slide-up {
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in.animate-in, .slide-up.animate-in {
+            opacity: 1;
+        }
+        
+        .slide-up {
+            transform: translateY(50px);
+        }
+        
+        .slide-up.animate-in {
+            transform: translateY(0);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF0000 0%, #FFD700 100%);
+        }
+        
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            max-height: 300px;
+        }
+        
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        
+        /* FAQ Accordion Styles */
+        .faq-item {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1rem;
+            background-color: white;
+        }
+        
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            width: 100%;
+            text-align: left;
+            background-color: white;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f9fafb;
+        }
+        
+        .faq-question h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: #FF0000;
+            font-size: 1.25rem;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: white;
+        }
+        
+        .faq-answer-content {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.open {
+            max-height: 1000px; /* Large enough to accommodate content */
+        }
+        
+        .faq-answer.open .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer responsive fixes */
+        @media (max-width: 768px) {
+            footer .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            footer .lg\:col-span-2 {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            footer .flex {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            footer .gap-4 {
+                gap: 0.5rem;
+            }
+            
+            footer .w-10 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            footer .text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Additional mobile footer fixes */
+        @media (max-width: 360px) {
+            footer .gap-2 {
+                gap: 0.25rem;
+            }
+            
+            footer .mt-4 {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white fixed w-full top-0 z-50 transition-all duration-300 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-bg bg-clip-text text-transparent flex items-center">
+                        <i class="fas fa-bolt mr-2"></i>ShopSwift
+                    </a>
+                    <div class="hidden lg:flex ml-10 space-x-1">
+                        <div class="relative dropdown">
+                            <button class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                                <i class="fas fa-home mr-2"></i>Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 z-50">
+                                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">Home 2</a>
+                            </div>
+                        </div>
+                        <a href="product.html" class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                            <i class="fas fa-box mr-2"></i>Products
+                        </a>
+                        <a href="faq.html" class="text-red-600 font-medium flex items-center px-3 py-2 rounded-lg bg-red-50">
+                            <i class="fas fa-question-circle mr-2"></i>FAQ
+                        </a>
+                        <div class="relative dropdown">
+                            <button class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                                <i class="fas fa-user mr-2"></i>Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 z-50">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">Admin Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search products..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent w-64">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-red-600 transition p-2">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="cart-count hidden absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                    <button id="rtl-toggle" onclick="toggleRTL()" class="text-gray-700 hover:text-red-600 transition p-2 text-2xl">
+                        🌐
+                    </button>
+                    <a href="login.html" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center">
+                        <i class="fas fa-user mr-2"></i>Login
+                    </a>
+                </div>
+                
+                <button class="lg:hidden mobile-menu-button text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200 opacity-0 -translate-y-4 transition-all duration-300">
+            <div class="px-4 py-4 space-y-3">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent w-full">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <a href="index.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-home mr-2"></i>Home 1</a>
+                <a href="index2.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-home mr-2"></i>Home 2</a>
+                <a href="product.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-box mr-2"></i>Products</a>
+                <a href="faq.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-question-circle mr-2"></i>FAQ</a>
+                <a href="user-dashboard.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-user mr-2"></i>User Dashboard</a>
+                <a href="admin-dashboard.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-user-shield mr-2"></i>Admin Dashboard</a>
+                <a href="cart.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-shopping-cart mr-2"></i>Cart</a>
+                <button onclick="toggleRTL()" class="block w-full text-left text-gray-700 hover:text-red-600 font-medium flex items-center"><span class="mr-2">🌐</span>Toggle RTL/LTR</button>
+                <a href="login.html" class="block bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 text-center flex items-center justify-center"><i class="fas fa-user mr-2"></i>Login</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- FAQ Content -->
+    <section class="pt-24 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-12 slide-up">
+                <h1 class="text-5xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">Find answers to common questions about ShopSwift, our products, services, and policies. If you can't find what you're looking for, our customer support team is ready to help.</p>
+                <div class="flex flex-wrap justify-center gap-3 mt-6">
+                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Orders</span>
+                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Payments</span>
+                    <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">Shipping</span>
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Returns</span>
+                    <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Accounts</span>
+                </div>
+            </div>
+            
+            <!-- Search -->
+            <div class="mb-12 slide-up">
+                <div class="relative max-w-2xl mx-auto">
+                    <input type="text" placeholder="Search for answers... (e.g. 'return policy', 'shipping time')" class="w-full px-6 py-4 pr-12 border-2 border-gray-300 rounded-xl outline-none focus:border-red-600 transition text-lg shadow-lg">
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-600 transition">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                </div>
+                <div class="mt-4 text-center text-gray-500 text-sm">
+                    <span>Popular searches:</span>
+                    <a href="#" class="text-red-600 hover:underline ml-2">shipping</a>,
+                    <a href="#" class="text-red-600 hover:underline ml-2">returns</a>,
+                    <a href="#" class="text-red-600 hover:underline ml-2">payment</a>,
+                    <a href="#" class="text-red-600 hover:underline ml-2">account</a>
+                </div>
+            </div>
+            
+            <!-- FAQ Categories -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-4 mb-12 slide-up">
+                <button class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition text-center hover:bg-red-50 group">
+                    <i class="fas fa-shopping-cart text-3xl text-red-600 mb-3 group-hover:text-red-700 transition"></i>
+                    <h3 class="font-semibold text-gray-800">Orders</h3>
+                </button>
+                <button class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition text-center hover:bg-red-50 group">
+                    <i class="fas fa-credit-card text-3xl text-red-600 mb-3 group-hover:text-red-700 transition"></i>
+                    <h3 class="font-semibold text-gray-800">Payment</h3>
+                </button>
+                <button class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition text-center hover:bg-amber-50 group">
+                    <i class="fas fa-truck text-3xl text-amber-600 mb-3 group-hover:text-amber-700 transition"></i>
+                    <h3 class="font-semibold text-gray-800">Shipping</h3>
+                </button>
+                <button class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition text-center hover:bg-green-50 group">
+                    <i class="fas fa-undo text-3xl text-green-600 mb-3 group-hover:text-green-700 transition"></i>
+                    <h3 class="font-semibold text-gray-800">Returns</h3>
+                </button>
+                <button class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition text-center hover:bg-pink-50 group">
+                    <i class="fas fa-user-circle text-3xl text-pink-600 mb-3 group-hover:text-pink-700 transition"></i>
+                    <h3 class="font-semibold text-gray-800">Accounts</h3>
+                </button>
+                <button class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition text-center hover:bg-red-50 group">
+                    <i class="fas fa-shield-alt text-3xl text-red-600 mb-3 group-hover:text-red-700 transition"></i>
+                    <h3 class="font-semibold text-gray-800">Security</h3>
+                </button>
+            </div>
+            
+            <!-- New FAQ Accordion Section -->
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How do I place an order on ShopSwift?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Placing an order on ShopHub is simple and secure:</p>
+                            <ol class="list-decimal list-inside space-y-2 ml-4">
+                                <li>Browse our product catalog or use the search bar to find what you need</li>
+                                <li>Click on a product to view details, then select quantity and options</li>
+                                <li>Click "Add to Cart" and continue shopping or proceed to checkout</li>
+                                <li>Review your cart and click "Proceed to Checkout"</li>
+                                <li>Enter your shipping information and select a delivery method</li>
+                                <li>Choose your preferred payment method and complete the transaction</li>
+                                <li>You'll receive an order confirmation email with tracking information</li>
+                            </ol>
+                            <div class="mt-4 p-4 bg-red-50 rounded-lg border border-red-100">
+                                <p class="text-red-800 text-sm"><i class="fas fa-lightbulb mr-2"></i><strong>Tip:</strong> Create an account to save your shipping information for faster checkout in the future.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">We offer multiple secure payment options to suit your preferences:</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                                <li><strong>Credit/Debit Cards:</strong> Visa, MasterCard, American Express, Discover</li>
+                                <li><strong>Digital Wallets:</strong> PayPal, Google Pay, Apple Pay, Samsung Pay</li>
+                                <li><strong>Bank Transfers:</strong> Direct bank transfers for select countries</li>
+                                <li><strong>Buy Now, Pay Later:</strong> Klarna, Afterpay (where available)</li>
+                            </ul>
+                            <p class="mb-4">All transactions are protected with 256-bit SSL encryption and processed through secure payment gateways. Your financial information is never stored on our servers.</p>
+                            <div class="flex items-center gap-3 text-sm text-gray-500">
+                                <i class="fab fa-cc-visa text-2xl text-red-600"></i>
+                                <i class="fab fa-cc-mastercard text-2xl text-orange-600"></i>
+                                <i class="fab fa-cc-amex text-2xl text-green-600"></i>
+                                <i class="fab fa-paypal text-2xl text-red-700"></i>
+                                <i class="fab fa-google-pay text-2xl text-red-500"></i>
+                                <i class="fab fa-apple-pay text-2xl text-gray-800"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How long does shipping take for ShopSwift orders?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Shipping times vary based on your location and the shipping method selected:</p>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-tachometer-alt text-red-600"></i>Standard Shipping
+                                    </h4>
+                                    <p class="text-gray-600 text-sm mb-2">3-5 business days within the continental US</p>
+                                    <p class="text-gray-600 text-sm">5-10 business days for international orders</p>
+                                </div>
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-bolt text-amber-600"></i>Express Shipping
+                                    </h4>
+                                    <p class="text-gray-600 text-sm mb-2">1-2 business days within the continental US</p>
+                                    <p class="text-gray-600 text-sm">3-5 business days for international orders</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">Orders are typically processed within 1-2 business days. You'll receive tracking information via email once your order ships. Shipping to PO Boxes or APO/FPO addresses may take additional time.</p>
+                            <div class="p-4 bg-amber-50 rounded-lg border border-amber-100">
+                                <p class="text-amber-800 text-sm"><i class="fas fa-exclamation-circle mr-2"></i><strong>Note:</strong> Delivery times may be extended during holidays or peak shopping seasons.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is ShopSwift's return policy?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">We want you to be completely satisfied with your purchase:</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                                <li><strong>30-Day Window:</strong> Return most items within 30 days of delivery for a full refund</li>
+                                <li><strong>Condition:</strong> Items must be unused, in original packaging with all accessories</li>
+                                <li><strong>Process:</strong> Contact our support team to initiate a return and receive a prepaid shipping label</li>
+                                <li><strong>Refund:</strong> Refunds are processed within 5-7 business days after we receive the item</li>
+                            </ul>
+                            <p class="mb-4"><strong>Exceptions:</strong> Certain items like personalized products, opened software, or hygiene-sensitive items may not be eligible for return. Final sale items are marked clearly at checkout.</p>
+                            <div class="flex items-center gap-4 mt-4">
+                                <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition flex items-center gap-1 text-sm">
+                                    <i class="fas fa-file-contract"></i> View Full Return Policy
+                                </a>
+                                <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition flex items-center gap-1 text-sm">
+                                    <i class="fas fa-print"></i> Print Return Label
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How can I track my ShopSwift order?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Tracking your order is easy with multiple options:</p>
+                            <ol class="list-decimal list-inside space-y-2 ml-4 mb-4">
+                                <li><strong>Email Notifications:</strong> Receive automatic updates at each stage of your order</li>
+                                <li><strong>Account Dashboard:</strong> Log in to view order status and tracking information</li>
+                                <li><strong>Tracking Number:</strong> Click the tracking link in your shipping confirmation email</li>
+                                <li><strong>Customer Support:</strong> Contact us with your order number for immediate assistance</li>
+                            </ol>
+                            <p class="mb-4">Tracking information typically becomes available 1-2 business days after your order ships. If you haven't received tracking information within 3 business days of your order confirmation, please contact our support team.</p>
+                            <div class="p-4 bg-green-50 rounded-lg border border-green-100">
+                                <p class="text-green-800 text-sm"><i class="fas fa-mobile-alt mr-2"></i><strong>Pro Tip:</strong> Enable order notifications in your account settings to receive real-time updates via SMS or email.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Do you ship internationally?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Yes, we ship to over 150 countries worldwide with competitive rates:</p>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Shipping Options</h4>
+                                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                        <li>Standard International (7-14 business days)</li>
+                                        <li>Express International (3-7 business days)</li>
+                                        <li>Priority Express (1-3 business days)</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Important Information</h4>
+                                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                        <li>Customs duties and taxes are not included</li>
+                                        <li>Import restrictions may apply to certain products</li>
+                                        <li>Delivery to remote areas may take longer</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mb-4">Shipping costs are calculated at checkout based on destination and package weight. Free international shipping is available on orders over $200 USD. Some countries may have restricted or delayed shipping due to customs or local regulations.</p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">USA</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">Canada</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">UK</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">Germany</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">Australia</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">+145 more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I cancel or modify my order?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Order changes depend on the processing stage:</p>
+                            <div class="space-y-4 mb-4">
+                                <div class="p-4 border-l-4 border-red-500 bg-red-50">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Before Shipment (Within 2 hours)</h4>
+                                    <p class="text-gray-600 text-sm">You can cancel or modify your order by contacting customer support with your order number. Changes to shipping address, items, or payment method are possible during this window.</p>
+                                </div>
+                                <div class="p-4 border-l-4 border-amber-500 bg-amber-50">
+                                    <h4 class="font-semibold text-gray-800 mb-2">After Shipment (Processing)</h4>
+                                    <p class="text-gray-600 text-sm">Once an order is in the shipping process, modifications are not possible. You may return items following our standard return policy after delivery.</p>
+                                </div>
+                                <div class="p-4 border-l-4 border-green-500 bg-green-50">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Subscription Orders</h4>
+                                    <p class="text-gray-600 text-sm">Modify or cancel subscription orders anytime through your account dashboard. Changes take effect before the next billing cycle.</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">For the fastest assistance, contact our support team immediately after placing your order if you need changes. Include your order number and specific requests in your communication.</p>
+                            <div class="flex items-center gap-4 mt-4">
+                                <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition flex items-center gap-1 text-sm">
+                                    <i class="fas fa-headset"></i> Contact Support
+                                </a>
+                                <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition flex items-center gap-1 text-sm">
+                                    <i class="fas fa-user-circle"></i> View Order History
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How contact customer support?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Our customer support team is available to assist you through multiple channels:</p>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-comments text-red-600"></i>Live Chat
+                                    </h4>
+                                    <p class="text-gray-600 text-sm mb-2">24/7 availability with immediate response</p>
+                                    <p class="text-gray-600 text-sm">Access through the chat widget on any page</p>
+                                </div>
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-envelope text-red-600"></i>Email Support
+                                    </h4>
+                                    <p class="text-gray-600 text-sm mb-2">support@shophub.com</p>
+                                    <p class="text-gray-600 text-sm">Response within 24 business hours</p>
+                                </div>
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-phone-alt text-green-600"></i>Phone Support
+                                    </h4>
+                                    <p class="text-gray-600 text-sm mb-2">1-800-SHOPHUB (1-800-746-7482)</p>
+                                    <p class="text-gray-600 text-sm">Mon-Fri 8AM-8PM EST, Sat-Sun 10AM-6PM EST</p>
+                                </div>
+                                <div class="p-4 border border-gray-200 rounded-lg">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-question-circle text-amber-600"></i>Help Center
+                                    </h4>
+                                    <p class="text-gray-600 text-sm mb-2">Comprehensive self-service resources</p>
+                                    <p class="text-gray-600 text-sm">Articles, video tutorials, and community forums</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">When contacting support, please have your order number, product details, and a brief description of your issue ready to help us assist you more efficiently.</p>
+                            <div class="p-4 bg-red-50 rounded-lg border border-red-100">
+                                <p class="text-red-800 text-sm"><i class="fas fa-star mr-2"></i><strong>Did you know?</strong> Our average response time is under 30 minutes for live chat and 2 hours for email support during business hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 9 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is your warranty policy?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">We stand behind the quality of our products with comprehensive warranty coverage:</p>
+                            <div class="space-y-4 mb-4">
+                                <div class="p-4 border-l-4 border-red-500 bg-red-50">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Standard Warranty</h4>
+                                    <p class="text-gray-600 text-sm mb-2">Most electronics come with a 1-year limited warranty covering manufacturing defects</p>
+                                    <p class="text-gray-600 text-sm">Warranty begins on the date of purchase</p>
+                                </div>
+                                <div class="p-4 border-l-4 border-red-500 bg-red-50">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Extended Warranty</h4>
+                                    <p class="text-gray-600 text-sm mb-2">Optional 2-year or 3-year extended protection plans available at checkout</p>
+                                    <p class="text-gray-600 text-sm">Covers accidental damage, power surges, and mechanical failures</p>
+                                </div>
+                                <div class="p-4 border-l-4 border-green-500 bg-green-50">
+                                    <h4 class="font-semibold text-gray-800 mb-2">What's Not Covered</h4>
+                                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                        <li>Normal wear and tear or cosmetic damage</li>
+                                        <li>Damage caused by misuse, accidents, or unauthorized repairs</li>
+                                        <li>Software issues or data loss</li>
+                                        <li>Consumable items like batteries or cables</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mb-4">To initiate a warranty claim, contact our support team with your proof of purchase and product details. We'll provide a return authorization and prepaid shipping label. Warranty claims are typically processed within 5-10 business days.</p>
+                            <div class="flex items-center gap-4 mt-4">
+                                <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition flex items-center gap-1 text-sm">
+                                    <i class="fas fa-file-contract"></i> View Full Warranty Terms
+                                </a>
+                                <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition flex items-center gap-1 text-sm">
+                                    <i class="fas fa-shield-alt"></i> Purchase Extended Warranty
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 10 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How do I create an account?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p class="mb-4">Creating a ShopHub account offers many benefits and is quick and easy:</p>
+                            <ol class="list-decimal list-inside space-y-2 ml-4 mb-4">
+                                <li>Click the "Login" button in the top right corner of any page</li>
+                                <li>Select "Create Account" or "Sign Up"</li>
+                                <li>Enter your email address and create a secure password</li>
+                                <li>Verify your email address by clicking the confirmation link sent to your inbox</li>
+                                <li>Complete your profile with shipping address and preferences</li>
+                                <li>Start enjoying account benefits like order tracking and saved payment methods</li>
+                            </ol>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div class="p-4 bg-green-50 rounded-lg border border-green-100">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-600"></i>Account Benefits
+                                    </h4>
+                                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                        <li>Order history and tracking</li>
+                                        <li>Saved shipping addresses</li>
+                                        <li>Wishlist and favorites</li>
+                                        <li>Exclusive member discounts</li>
+                                        <li>Faster checkout process</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-amber-50 rounded-lg border border-amber-100">
+                                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-lock text-amber-600"></i>Security Features
+                                    </h4>
+                                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                        <li>Two-factor authentication</li>
+                                        <li>Password strength indicators</li>
+                                        <li>Login notifications</li>
+                                        <li>Encrypted data storage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mb-4">You can also create an account during checkout. Having an account is not required to make purchases, but it enhances your shopping experience and makes returns easier.</p>
+                            <a href="#" class="inline-block bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition text-sm mt-2">
+                                Create Account Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Still Have Questions -->
+            <div class="mt-16 bg-gradient-to-r from-red-600 to-yellow-600 rounded-2xl p-8 text-center text-white">
+                <h2 class="text-3xl font-bold mb-4">Still Have Questions?</h2>
+                <p class="text-red-100 mb-6 text-lg max-w-2xl mx-auto">Our customer support team is available 24/7 to help you with any questions or concerns. We're committed to providing you with the best shopping experience possible.</p>
+                <div class="flex flex-wrap justify-center gap-4 mb-6">
+                    <div class="flex items-center gap-2 text-red-100">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-red-100">
+                        <i class="fas fa-bolt"></i>
+                        <span>Avg. Response: 30 min</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-red-100">
+                        <i class="fas fa-users"></i>
+                        <span>100+ Support Agents</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="inline-flex items-center gap-2 bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105">
+                        <i class="fas fa-comments"></i> Live Chat
+                    </a>
+                    <a href="mailto:support@shophub.com" class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-red-600 transition">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                    <a href="tel:18007467482" class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-red-600 transition">
+                        <i class="fas fa-phone-alt"></i> Call Us
+                    </a>
+                </div>
+                <p class="text-red-100 text-sm mt-6">Or visit our <a href="#" class="underline hover:text-white transition">Help Center</a> for self-service resources and community support.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-bolt mr-2 text-red-400"></i>ShopSwift
+                    </h3>
+                    <p class="text-gray-400 mb-4">Your one-stop destination for premium electronics and gadgets. We strive to provide the best shopping experience with quality products and exceptional customer service.</p>
+                    <div class="flex gap-4 mb-6">
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-400 rounded-full flex items-center justify-center hover:bg-red-500 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-700 rounded-full flex items-center justify-center hover:bg-red-800 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400">
+                        <i class="fas fa-shield-alt text-green-400"></i>
+                        <span>Secure Payment Guaranteed</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Home</a></li>
+                        <li><a href="product.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Products</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>FAQ</a></li>
+                        <li><a href="cart.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Cart</a></li>
+                        <li><a href="user-dashboard.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>My Account</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Wishlist</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers, free giveaways, and new product alerts.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="bg-red-600 hover:bg-red-700 px-4 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 text-gray-400">
+                        <i class="fab fa-cc-visa text-2xl"></i>
+                        <i class="fab fa-cc-mastercard text-2xl"></i>
+                        <i class="fab fa-cc-paypal text-2xl"></i>
+                        <i class="fab fa-cc-apple-pay text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 ShopSwift. All rights reserved. Designed with <i class="fas fa-heart text-red-500"></i> for tech enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="app.js"></script>
+    <script>
+        // FAQ Accordion Function
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const faqAnswer = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    const otherIcon = item.querySelector('.faq-icon');
+                    otherAnswer.classList.remove('open');
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqAnswer.classList.toggle('open');
+            
+            if (faqAnswer.classList.contains('open')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSwift - Fast & Modern Shopping</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link href="./css/styles.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'>
+<path fill='purple' d='M528.12 301.319l47.273-208C578.9 78.94 564.078 64 544 
+64H120.533l-7.2-35.29C110.528 12.078 97.718 0 82.7 0H24C10.745 0 0 
+10.745 0 24v16c0 13.255 10.745 24 24 24h47.533l70.134 343.901C132.266 
+426.461 118.424 448 96 448c-26.51 0-48 21.49-48 48s21.49 48 48 
+48s48-21.49 48-48c0-8.802-2.288-17.05-6.272-24.266h299.543C433.288 
+430.95 431 439.198 431 448c0 26.51 21.49 48 48 
+48s48-21.49 48-48s-21.49-48-48-48c-22.424 0-36.266-21.539-37.667-40.099L528.12 
+301.319z'/>
+</svg>">
+    <!-- Google Fonts -->
+     
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'>
+<path fill='purple' d='M528.12 301.319l47.273-208C578.9 78.94 564.078 64 544 
+64H120.533l-7.2-35.29C110.528 12.078 97.718 0 82.7 0H24C10.745 0 0 
+10.745 0 24v16c0 13.255 10.745 24 24 24h47.533l70.134 343.901C132.266 
+426.461 118.424 448 96 448c-26.51 0-48 21.49-48 48s21.49 48 48 
+48s48-21.49 48-48c0-8.802-2.288-17.05-6.272-24.266h299.543C433.288 
+430.95 431 439.198 431 448c0 26.51 21.49 48 48 
+48s48-21.49 48-48s-21.49-48-48-48c-22.424 0-36.266-21.539-37.667-40.099L528.12 
+301.319z'/>
+</svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF5F5;
+        }
+        /* Color palette */
+        :root {
+            --primary: #FF0000; /* Red */
+            --secondary: #FFD700; /* Gold */
+            --accent: #FFA500; /* Orange */
+            --neutral: #333333; /* Dark Gray */
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #FF0000 0%, #FFD700 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF0000 0%, #FFD700 100%);
+        }
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            max-height: 300px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* New Animations */
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(80px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(80px) rotate(-360deg);
+            }
+        }
+        
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes spiral {
+            0% {
+                transform: rotate(0deg) translate(0px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(720deg) translate(100px) rotate(-720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pendulum {
+            0%, 100% {
+                transform: rotate(-30deg);
+            }
+            50% {
+                transform: rotate(30deg);
+            }
+        }
+        
+        @keyframes morph {
+            0% {
+                border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+            }
+            25% {
+                border-radius: 80% 20% 80% 20% / 20% 80% 20% 80%;
+            }
+            50% {
+                border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+            }
+            75% {
+                border-radius: 80% 20% 80% 20% / 20% 80% 20% 80%;
+            }
+            100% {
+                border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+            }
+        }
+        
+        @keyframes bounceEnhanced {
+            0%, 100% {
+                transform: translateY(0) scaleX(1) scaleY(1);
+            }
+            10% {
+                transform: translateY(-30px) scaleX(1.1) scaleY(0.9);
+            }
+            30% {
+                transform: translateY(-60px) scaleX(1) scaleY(1);
+            }
+            50% {
+                transform: translateY(-30px) scaleX(1.1) scaleY(0.9);
+            }
+            70% {
+                transform: translateY(0) scaleX(1) scaleY(1);
+            }
+            80% {
+                transform: translateY(-15px) scaleX(1.05) scaleY(0.95);
+            }
+            90% {
+                transform: translateY(0) scaleX(1) scaleY(1);
+            }
+        }
+        
+        /* Apply new animations */
+        .animate-orbit {
+            animation: orbit 8s linear infinite;
+        }
+        
+        .animate-wave {
+            animation: wave 3s ease-in-out infinite;
+        }
+        
+        .animate-wave-delay-1 {
+            animation: wave 3s ease-in-out 0.5s infinite;
+        }
+        
+        .animate-wave-delay-2 {
+            animation: wave 3s ease-in-out 1s infinite;
+        }
+        
+        .animate-spiral {
+            animation: spiral 5s linear infinite;
+        }
+        
+        .animate-pendulum {
+            animation: pendulum 2s ease-in-out infinite;
+            transform-origin: top center;
+        }
+        
+        .animate-morph {
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        .animate-bounce-enhanced {
+            animation: bounceEnhanced 1.5s ease infinite;
+        }
+        
+        /* Floating gadget animations */
+        @keyframes floatAndBounce {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes floatAndBounceReverse {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes floatAndBounceSlow {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-80px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-bounce-in {
+            animation: bounceIn 0.8s ease-out forwards;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 2s infinite;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        .opacity-0 {
+            opacity: 0;
+        }
+        
+        /* Particle container */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Floating gadget elements */
+        .floating-gadget {
+            position: absolute;
+            opacity: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer responsive fixes */
+        @media (max-width: 768px) {
+            footer .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            footer .lg\:col-span-2 {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            footer .flex {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            footer .gap-4 {
+                gap: 0.5rem;
+            }
+            
+            footer .w-10 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            footer .text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Additional mobile footer fixes */
+        @media (max-width: 360px) {
+            footer .gap-2 {
+                gap: 0.25rem;
+            }
+            
+            footer .mt-4 {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Copyright Protection Elements -->
+    <div class="copyright-watermark">© 2025 ShopSwift</div>
+    <div class="copyright-popup" id="copyrightPopup">© ShopSwift 2025 - All Rights Reserved</div>
+    <div class="copyright-footer" id="copyrightFooter">This website and its content are protected by copyright law. Unauthorized use is strictly prohibited.</div>
+    
+    <!-- Notification Container -->
+    <div id="notification-container" class="fixed top-4 right-4 z-50"></div>
+    
+    <!-- Navbar -->
+    <nav class="bg-white fixed w-full top-0 z-50 transition-all duration-300 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-bg bg-clip-text text-transparent flex items-center">
+                        <i class="fas fa-bolt mr-2"></i>ShopSwift
+                    </a>
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex ml-10 space-x-1">
+                        <!-- Home Dropdown -->
+                        <div class="relative dropdown">
+                            <button class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                                <i class="fas fa-home mr-2"></i>Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 z-50">
+                                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">Home 2</a>
+                            </div>
+                        </div>
+                        <a href="product.html" class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                            <i class="fas fa-box mr-2"></i>Products
+                        </a>
+                        
+                        <a href="faq.html" class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                            <i class="fas fa-question-circle mr-2"></i>FAQ
+                        </a>
+                        <!-- Dashboard Dropdown -->
+                        <div class="relative dropdown">
+                            <button class="text-gray-700 hover:text-red-600 font-medium flex items-center px-3 py-2 rounded-lg transition">
+                                <i class="fas fa-user mr-2"></i>Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 z-50">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition">Admin Dashboard</a>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+                
+                <!-- User Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search products..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent w-64">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-red-600 transition p-2">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="cart-count hidden absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                    <button id="rtl-toggle" onclick="toggleRTL()" class="text-gray-700 hover:text-red-600 transition p-2 text-2xl">
+                        🌐
+                    </button>
+                    <a href="login.html" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center">
+                        <i class="fas fa-user mr-2"></i>Login
+                    </a>
+                </div>
+                
+                <button class="lg:hidden mobile-menu-button text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200 opacity-0 -translate-y-4 transition-all duration-300">
+            <div class="px-4 py-4 space-y-3">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent w-full">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <a href="index.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-home mr-2"></i>Home 1</a>
+                <a href="index2.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-home mr-2"></i>Home 2</a>
+                <a href="product.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-box mr-2"></i>Products</a>
+                <a href="faq.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-question-circle mr-2"></i>FAQ</a>
+                <a href="user-dashboard.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-user mr-2"></i>User Dashboard</a>
+                <a href="admin-dashboard.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-user-shield mr-2"></i>Admin Dashboard</a>
+                <a href="cart.html" class="block text-gray-700 hover:text-red-600 font-medium flex items-center"><i class="fas fa-shopping-cart mr-2"></i>Cart</a>
+                <button id="mobile-rtl-toggle" onclick="toggleRTL()" class="block w-full text-left text-gray-700 hover:text-red-600 font-medium flex items-center"><span class="mr-2">🌐</span>Toggle RTL/LTR</button>
+                <a href="login.html" class="block bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 text-center flex items-center justify-center"><i class="fas fa-user mr-2"></i>Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 pt-24">
+        <div class="particles-container" id="particles-container"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center hero-content">
+                <div class="fade-in-scroll">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-slide-in-elliptic opacity-0 animate-color-pulse">Discover Amazing Deals on Quality Products</h1>
+                    <p class="text-xl mb-8 text-white animate-roll-in opacity-0 delay-100">Explore our curated collection of premium items at unbeatable prices.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-swirl-in opacity-0 delay-200 animate-flip-horizontal">
+                        <a href="#" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1 inline-flex items-center justify-center animate-pulse-grow">
+                            <i class="fas fa-bolt mr-2"></i> Quick Shop
+                        </a>
+                        <a href="#" class="bg-transparent border-2 border-white hover:bg-white hover:text-red-600 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1 inline-flex items-center justify-center animate-tilt-shaking">
+                            <i class="fas fa-crown mr-2"></i> Premium Collection
+                        </a>
+                    </div>
+                    <!-- Trust badges -->
+                    <div class="flex items-center mt-8 space-x-4 animate-jello opacity-0 delay-300">
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-shipping-fast mr-2 animate-float"></i>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-undo mr-2 animate-float"></i>
+                            <span>30-Day Returns</span>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fas fa-shield-alt mr-2 animate-float"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="bg-white rounded-2xl p-6 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 animate-fade-in-right opacity-0">
+                            <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Featured Product" class="rounded-lg w-full">
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-amber-500 text-white py-3 px-6 rounded-lg shadow-lg animate-bounce-enhanced opacity-0 delay-300">
+                            <p class="font-bold">50% OFF</p>
+                            <p class="text-sm">Limited Time</p>
+                        </div>
+                        <!-- Additional decorative elements -->
+                        <div class="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-yellow-400 opacity-30 animate-pulse-slow"></div>
+                        <div class="absolute top-10 -left-6 w-12 h-12 rounded-full bg-red-400 opacity-30 animate-pulse-slow delay-100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Browse Our Departments</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our diverse range of categories to find exactly what you need.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="feature-card-container relative group">
+                    <div class="feature-card bg-white rounded-2xl p-6 text-center transition-all duration-500 cursor-pointer group-hover:shadow-xl transform group-hover:-translate-y-2 relative overflow-hidden z-10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-red-500 before:to-yellow-500 before:opacity-0 before:transition-opacity before:duration-500 before:z-[-1] group-hover:before:opacity-20">
+                        <div class="relative z-10">
+                            <div class="relative mx-auto mb-4 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-100 to-yellow-100 rounded-2xl flex items-center justify-center transform transition-all duration-500 group-hover:shadow-lg">
+                                    <img src="https://th.bing.com/th/id/OIP.UiozSzeCJkFp7huMcLqD1AAAAA?w=208&h=283&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Clothing" class="w-16 h-16 object-contain rounded-lg">
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-ping opacity-75 group-hover:animate-none"></div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-heart text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-red-600 transition-colors duration-300">Fashion</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Trendy clothing and accessories for all occasions</p>
+                            <a href="#" class="inline-block bg-gradient-to-r from-red-500 to-yellow-500 text-white font-medium py-2 px-4 rounded-full hover:from-red-600 hover:to-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                Explore <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl -z-10"></div>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="feature-card-container relative group">
+                    <div class="feature-card bg-white rounded-2xl p-6 text-center transition-all duration-500 cursor-pointer group-hover:shadow-xl transform group-hover:-translate-y-2 relative overflow-hidden z-10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-red-500 before:to-yellow-500 before:opacity-0 before:transition-opacity before:duration-500 before:z-[-1] group-hover:before:opacity-20">
+                        <div class="relative z-10">
+                            <div class="relative mx-auto mb-4 transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-100 to-yellow-100 rounded-2xl flex items-center justify-center transform transition-all duration-500 group-hover:shadow-lg">
+                                    <img src="data:image/webp;base64,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" alt="Electronics" class="w-16 h-16 object-contain rounded-lg">
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-ping opacity-75 group-hover:animate-none"></div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-bolt text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-red-600 transition-colors duration-300">Tech & Gadgets</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Cutting-edge electronics and smart devices</p>
+                            <a href="#" class="inline-block bg-gradient-to-r from-red-500 to-yellow-500 text-white font-medium py-2 px-4 rounded-full hover:from-red-600 hover:to-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                Discover <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl -z-10"></div>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="feature-card-container relative group">
+                    <div class="feature-card bg-white rounded-2xl p-6 text-center transition-all duration-500 cursor-pointer group-hover:shadow-xl transform group-hover:-translate-y-2 relative overflow-hidden z-10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-red-500 before:to-yellow-500 before:opacity-0 before:transition-opacity before:duration-500 before:z-[-1] group-hover:before:opacity-20">
+                        <div class="relative z-10">
+                            <div class="relative mx-auto mb-4 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-100 to-yellow-100 rounded-2xl flex items-center justify-center transform transition-all duration-500 group-hover:shadow-lg">
+                                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" alt="Home Decor" class="w-16 h-16 object-contain rounded-lg">
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-ping opacity-75 group-hover:animate-none"></div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-home text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-red-600 transition-colors duration-300">Home & Living</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Stylish decor and essentials for your space</p>
+                            <a href="#" class="inline-block bg-gradient-to-r from-red-500 to-yellow-500 text-white font-medium py-2 px-4 rounded-full hover:from-red-600 hover:to-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                View Items <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl -z-10"></div>
+                </div>
+                
+                <!-- Feature Card 4 -->
+                <div class="feature-card-container relative group">
+                    <div class="feature-card bg-white rounded-2xl p-6 text-center transition-all duration-500 cursor-pointer group-hover:shadow-xl transform group-hover:-translate-y-2 relative overflow-hidden z-10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-red-500 before:to-yellow-500 before:opacity-0 before:transition-opacity before:duration-500 before:z-[-1] group-hover:before:opacity-20">
+                        <div class="relative z-10">
+                            <div class="relative mx-auto mb-4 transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
+                                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-100 to-yellow-100 rounded-2xl flex items-center justify-center transform transition-all duration-500 group-hover:shadow-lg">
+                                    <img src="https://th.bing.com/th/id/OIP.DRNn3y24YUTs4cNwSCWTmwHaEJ?w=319&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Beauty" class="w-16 h-16 object-contain rounded-lg">
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-ping opacity-75 group-hover:animate-none"></div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-spa text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-red-600 transition-colors duration-300">Health & Beauty</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Skincare, wellness, and personal care products</p>
+                            <a href="#" class="inline-block bg-gradient-to-r from-red-500 to-yellow-500 text-white font-medium py-2 px-4 rounded-full hover:from-red-600 hover:to-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                Browse <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Trending Now</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our most popular items loved by thousands of customers.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 product-card transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300&q=80" alt="Premium Headphones" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Wireless Elite Headphones</h3>
+                            <span class="text-lg font-bold text-red-600">$129.99</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Premium sound quality with noise cancellation and 30hr battery life.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(128)</span>
+                        </div>
+                        <button class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition duration-300 btn-hover-effect inline-flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 product-card transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300&q=80" alt="Smart Watch" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                            Sale
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Pro Fitness Tracker</h3>
+                            <div>
+                                <span class="text-lg font-bold text-red-600">$199.99</span>
+                                <span class="text-gray-500 text-sm line-through ml-2">$249.99</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Advanced health monitoring with heart rate, sleep tracking, and GPS.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(97)</span>
+                        </div>
+                        <button class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition duration-300 btn-hover-effect inline-flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 product-card transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300&q=80" alt="Designer Bag" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Designer Bag</h3>
+                            <span class="text-lg font-bold text-red-600">$89.99</span>
+                             
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Stylish and functional bag for everyday use,Our most popular items loved by thousands of customers.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(215)</span>
+                        </div>
+                        <button class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition duration-300 btn-hover-effect inline-flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 product-card transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300&q=80" alt="Wireless Speaker" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                            Hot
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Wireless Speaker</h3>
+                            <span class="text-lg font-bold text-red-600">$79.99</span>
+                             
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Portable Bluetooth speaker with 360° sound,Our most popular items loved by thousands of customers.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(86)</span>
+                        </div>
+                        <button class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition duration-300 btn-hover-effect inline-flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-eye mr-2"></i> View All Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="py-16 bg-gradient-to-r from-red-500 to-yellow-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-pendulum">Summer Sale is Live!</h2>
+                    <p class="text-xl mb-6 text-red-100">Get up to 50% off on selected items. Limited time offer.</p>
+                    <div class="flex items-center mb-6">
+                        <div class="mr-6 text-center">
+                            <div class="text-3xl font-bold">05</div>
+                            <div class="text-sm">Days</div>
+                        </div>
+                        <div class="mr-6 text-center">
+                            <div class="text-3xl font-bold">18</div>
+                            <div class="text-sm">Hours</div>
+                        </div>
+                        <div class="mr-6 text-center">
+                            <div class="text-3xl font-bold">45</div>
+                            <div class="text-sm">Minutes</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold">30</div>
+                            <div class="text-sm">Seconds</div>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                        <i class="fas fa-tags mr-2"></i> Shop the Sale
+                    </a>
+                </div>
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 transform rotate-3">
+                            <img src="https://i.pinimg.com/originals/fb/d5/1a/fbd51a8c1d6f018d1b49e9aea7f636eb.jpg" alt="Summer Sale" class="rounded-lg w-full">
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-yellow-400 opacity-20"></div>
+                        <div class="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-pink-400 opacity-20"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our customers have to say about their experience.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The quality of products exceeded my expectations. Fast shipping and excellent customer service!"</p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&h=50&q=80" alt="Alex Johnson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Alex Johnson</h4>
+                            <p class="text-gray-500 text-sm">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"I've been shopping here for months now. The variety and quality of products is unmatched."</p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&h=50&q=80" alt="Sarah Williams" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sarah Williams</h4>
+                            <p class="text-gray-500 text-sm">Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The return policy is hassle-free and customer service is responsive. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&h=50&q=80" alt="Michael Brown" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Michael Brown</h4>
+                            <p class="text-gray-500 text-sm">First-Time Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add a "Read More Reviews" button -->
+            <div class="text-center mt-10">
+                <a href="#" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    <i class="fas fa-comments mr-2"></i> Read More Reviews
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Shop Links -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Quick Shop</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Browse our popular collections and find your next favorite item.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <img src="https://th.bing.com/th/id/OIP.PBoVgbwIU5PDsy_9i9C0twHaHa?w=210&h=210&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="New Arrivals" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-white text-xl font-bold">New Arrivals</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80" alt="Best Sellers" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-white text-xl font-bold">Best Sellers</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <img src="https://th.bing.com/th/id/OIP.i3jp7bS63mwLnKdUefKWKwHaD4?w=331&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="On Sale" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-white text-xl font-bold">On Sale</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <img src="data:image/webp;base64,UklGRg4oAABXRUJQVlA4IAIoAABQwQCdASqnAeoAPp1EnUolo6KmqDKsyNATiU3O5mfV5HUjM3U+D/y/Pl5B8JPhPjj5Ccdbr7+h5qfQX+1/wP5p/Lf/q+uv+4f6X2Fv2H/W3sK+a7+ef5n9tPdV/3X7Ge8v9hf1l/2XyAfyr+ydb5/Xv+h7B37S///15/3I+Jb+zf9H9wPbLwjnlr+r8X/M/8w+iffHxl2qfzf8pf1/8Dx2/NDUO/J98h+B6MfYP9hvVq5OX7x6g39N/2HrDf8fn9lg0mINUAYRQD6P3Z/7/6eT//8QOsLxef/SUToUbngswWt/sC+I1q5WumwkY8Z4O1H9liXN/epr78Q83xdV+c/Ck/uAU/I1YshDX+aUO/tFgNMIXnAIcHkyDuEgJAX08a1b/uv/VtQixv9+kHAPKxK+SVFY57Nzg+c91ZHwAlphEhtNsvMG7QQDf+UtGqYl6hiTYXOPQ0X+BsT1mHFjEhAgPbwq8lBgOLZJUAgaF7WtSFGEHEAZ/CfbyrtBTr///YdP///8X2+9OiPBxDnKF+fNdOHCY6urtDSiRWaXW+5fktySukkZOOaPKDuNB86Xl//9Ecl9LKESkxW8Yfq2V2VXINFVZxDlSM3/n8paLSDdZxXCQJHDFqF35s6VzwP0/yk1D/oQv1wPRuSSdCdw4NoIAtU60Rwsa+twBn/TBEpSzniN6RPRFT4VyRckv53cAx9BlGw0rmvw9/kO4+oxvi8JgOORWLLJjE9gvTACgbWhHd7NbPa94sF2y+nQ9aAUBxrvAKP7Rm6U1dhUEGDUUfeHQ+TeRbIISWxfYRTxIKdBk67y94W9ENRr0uNN7jS3fmc6J4hQgjQwVA3a5lWGT3UPWAY1gdK+9hpDrQ/106tB42nXvtZlEYM7dasyrjx7p1+tKrQEIyCerKGJZx4EbbsTtO4lnegA27PYL13y/MLF70cd3/4R6Nxbaz19udQrYVqPEITGTp0Plfbl0uSVZk49aFl3gHOLPKs1TBP7hFWgX28r53LAOK6qBQmklCC9qkmCoVy/kwlnpPjgigUSN1LeIfh+T8RJ7yftWp/cQ9AdtNlN/glBZqnbRsGRwNMwoie7n6LjI3T/02D1uF53q5C/MirORHHtTX2VwkwIt6fq1RZg1TVBcuOE0ftVUrSE4C2XW5Jjo1frmoEJ5JR+bbY8qw64sq1HBnLXOAfnaU9ZdxkHDBn4SobOFYQvHPqZS2fp8OWlBon9g/prniBfXh5LH/gxDllBCo4F5ujczyO8zfFPhhJF0yKM9eHOeNzvOaTjpAydyExxfHDsudTJNSbCRCxzpM5zsHrm59E6yGcHjgLCuqjeddLJYfqacLCRduM4M83MWuioP0vnXFWZcRovC5EIbgzA0s99QF+cBlG38N4Gtz760QvenBUz8UHBzahb9RqdE/mfNEgzTgWiALbq2AsMmshAcql8tZNq1q/rob8FGGWLG1rWBrlB9QDE3urwdeTuhropCM6tRs6jpP7TXSWoC7fjmqbNL4UW2nn70xXZL+A12NxobcIOFroIJIJluZu0ntC1FCx8WokK/nyAdy/az9ZMEW+OaVMuuWX/Ki++K4nGUWEY1q2fhagaja9tFTSj8cpzGzxrLb5JdMDZNROfyPnnvB6ANk6Da3SXXXgWMo/3IGH9gqxUKz03jhjOMMUfYfMCQCWcHmY+HUbq7cXPVHcCK0xZSW8kQKf5sn7gMNkKw28ZBEa7tOaS7DIIa2lFp1CFiBpePxPQ3yqkMh2F+nQkxrlVjv90AUtCnLfrd6vLdSvb3B5vyaeGvWQw/Mk6ZDP6ZMPFicDJIQLA6z0jx9ynw5cBXlkvUWdj+64cmMZ1E4UIJIKZfJLnNFUNWfcPIH1TJANVCmG9oae4OMZBXAEsEd45WEmQhHT8bl7Ql20D4Rsrh8XegY6XxrKlQGGJIIh9WS82TTkqFJCJ19o+o0ymZSUEXFqON43zBqglTOUmR7K8TminD/bHgw2k5FIVj+Gm0gAKudNX6d8gMwuHNDp2QLBvKN3IoIzR9OPwDk1R+cJKDpasF5uhZ7be7TBkvLswNP+TdgByJbrx1OzgAP7wFhwn/0n197wxp/f3MSYECK98XdhPF5huvWPWlE+Sq5ndeEXCqFyp7GUEiLrqXUtFMgidgCk2AklvFGXJFL60Wa5PHNfNyqfR3xelbwMF4pgecW0PwtINoy+K9MFjfJmK0qhPBIcrhToDnxWH0F8pc4gNhI9SBguaWFExwKRRreP/zU07+l5MDL4Jp/utUL9XXuaw5rncg3vmNp3EIqoDMDlxcsYQhCkYMoDNi65wIKWVSUbV/qVUu2H3ITt2gXitv2BLViff/viYdBBo3y1xox2sG+DdI2TGUFLJZ+UdfeXOsRXDMrr9o6cO5BYWs1QPv/zPdV542b+ikzhPRlu/ynQTe7XUqjrgS/paQgNZCSJ55jINFzLjmIxJ/Z0XYVVZ1JLCvifwKZQ0c/cAh3fO4bnqmtnaVbRwdK7TseCdNxQbdm0lIMfl3ED3JtLL/WdHZpKto3EwoIlBf1pwVFVExdO1VIEO2TwsAw/BHkC3DP237kwbpPhsvNP0a7Gw6u4g9dcRiSXM8oP88HlSKrwrFgs3gxv4MhWzeSON4Je+GFOmr0X2/Zijihr5ZKlk+YyqI3LN3lMEJ9+hY2xvW0E2YWdiN15/RxkRn3Zhg3l3nwAb1HmreO9Wb/e+T5f887XJv/xhd91IKRQOzTHANht/GBXFHj9BZ6YmX9eaCvAOAjiOz+moEp8+Up7Hw3gq0NcjuoKnfMfkWHq9k4ws7qT/Ax9D743d4PacbWwrkvPkgzVHWAuoRg0B05GXrkhQ3iSRZU65Qg44hLJGDlB2vV+6KYUZ/Yi+m5FGJO5jViy94hbeh51YY90wluPH/g2n6ru6dKWouAkefPRXgsFK+DtemnNBUEVX0igLzNjUmsC/1GApvnd/mDjPAW0gwJ34BK/8wrrL0WOCekZtFoyiVQAKf7x3iUK9r92/zRenS+5Xqc0oOaA+Xex5+Iq03FNaJ5YoyN2yqcLtfJDEcbzqh8Yd6izZ8YClFI6dznjFUW9BZf774laS9pJyPjUL47xv6aRjv6zHVXigdqBapSv+JqVFgg4+ZOp96C8Yz/IydMOAEnAo4yjRI/G9RPYQOn59kkzbu+63Rlhmx3KvxDKwi7Rvpzlq219aBhEzxZMIXmcaqNbVYDVcVDXtXbZczfFz0aehVya9ogrxPPVFEaAYg12D7VtaQg1UEDy7KmV5QBjaST6TrD6uZazn8BEjbKXouwimPH0rIGjAQ/Ur5qCd0whzmqeIwNfFnmE5qCZS2t4DIhlAo/61tE6Sn56PE9OhyG1pArTZtpmOhq7i9t8j3tA8U4fx5p7uUTaJhbmTys96Ntn+d64MZH8f9XrwpEvwU8LeeKGyiF/2xbznIsCtH3ym9/8Vncq2qkNbsysfznULExVMwLflk8DP2ETtrpl4CfbAyUKGQrEieWAJ3tmE8EdY+tKJ9rCz6WA1OrA256FCvUN1A3Ga/HE0MX7MsfDFa13atgsdj5i0GOd4YykYmwTHJl+cHuqndRSD3/Sgrxze6HuAuGwz4a4zw6JzB3k6ymEULeXtoBsxb3/YKu1gJrZc45RQj+u0wA1tu0HFL09cXF6J373PyK/JwUd4U/Rw/q6WXbJRFKTyL4kSheglEZ6y4fY2roRjz0o9Qn/lMyO+GuAGk6oyysV/XUWpjSYqMVVQtJvxgfXUD244QbnVt8wFyiHgiRli/EWdVaG8+yiQGiPuWj5hSqx7RHML0Dnkr8zqlARn4i5iLtoyI3xPgT0Esz8uGRQoeWZgJcyeV0ZgSjeQs0IOVZCVZkxj1IkRLCbXQAHXMs5HR1I1zlOBHgxFJ20djDI7EFzJo5g3xxMrjOTUXJYU6zzCpQc7b2+K3nBzRZ6kvLUfiIIa5lEGOoM+gutfBugNZl02txoIw2EKgg/F1HeK9Y79qE04H3Vj9kIewVng17GfVgIYtpKER4bMb3Njj5nLnB4K4qVKaUzETzOKzq9jtA8MLT3T9o7tQhEV7brMs0cWnNCQzMZc+BJ5KCOWOGqwD1oqNviXk8gsSBiPz7bQ4mGCabtweHPsR9XRTmXI3NyM0RIzaTr/d70gmeAJerX7eLe0NfDLVyV4rUuVKG2owqy16SbKSjo/Y7hU4py2H7mPvj/fLvXE/MuXWQde4Vnc/R1h4LxVKzLENvyfLeYg0m0uwaVKXxvdPZWIPay5V4tVaJSPCM0G+rCeu6i1zkMRpr4SGURH0GGiXmHTgZviFPA4d/fHUaMgbBsY16vIc3LyKNcwQbWoKyfWIVcTW2YbT8hViAhMw8D4XfopHVWOnNI3kAyxbKiaB7qRo1/QArs0UkOxNmkN7RchZgaY5chx5jZ/U8IjAfq2dL+aRE5bJnfsjAvBnoIMoKoN/nfFbHCs/BrLFgjQiKs8u6QL//3B0bZMW2gEhr1P/P23bw0cZ64lD/LClB5WvgOLyOXc+NoQ0aXZNNIP8L8qDnAO306rBEE6eZ2KuoyjwZV7Yu2xRLXbGDNFj7Slh4LoHfw7lqm4SXQ0Rdv9CYJwF4m6p3hAXhoPEKVwgveNSyzNrhzYKlPkVlpuG+eBQEP/5d7RyF+KY7dx5ph0PAlSYBJxrfc20OzQFl9KFGGAsSonMZFQAK4EkM6Tqa6f6M9aV4HVsUsIPHFrCkC2oLYQ3IQd4j8m3ujIKrINlmtrkvM5Px3acYTUjGGEobebJLw62QKTBfbKO2YbCQPpkuo4EZqLz2Qx1uuHqo1DPSy64PKWsMKnsl6cRuOpmFLXrnhz+TJYQZKxw8k7VCoEoJy/MWDWJ9waMK5d+/mG0atq4xsVx88WexP5sREAlWyxDnjA5/veHfH3zh34xuXvE3Y6SChTj/Cuu8IT00HfAE6fXZf7eHa52S/6R7zf6AAiHEk2xlk0EvAQz4gkRwWCTughdPuKgVww4GO+a7HYLHEnNNfnrA9p4OVs6EXZ04D9vxf/SJVr2D44GI9E2HJa0JMLtz5Eeada7y81rpl7BdIGkS4rwRpzszNLsec0jTBpbaE+Pz2tCd1UXTuHWQQ9mBaZsgcblLNgJyYmZla/1WApjoQY3MmMguk9S7wmZZxDbjGQ4Vn++pSwutTrmn6izLOj/HUU+Yn6gABbEIW997E+eKMqxGOL7boUEXSFJD3bs8MbGr/PsCO1lLqO3WplvX2S0VgcUYSSEkoz1QzIGRO6yAT1tuSCIrc0jhUbdnMiHi+aQmfBefcM3jGhcg+tbp+fSyeO0naivL33fHGhg8e5dVFoUilyShpze1IRFELZwGwQE4PM0FWoGhCz8XFOOHgSgT9exsRQGtXvmpDVeOV8IxcXcxeFjZBB7Cc+n9bEXLc9eXf7/DKH+agixtFjFzIfZFEtdK9nUgUGzDRZaI4ZjskEfoPfpebR326n/oJZkfIcWSFwNACLdHVJAx8q9lCXo2vyzHPi85/pmMCOJs4RK3vl5tdMBH/uSsvIm4wvVmO0ogVHGCIiYpIRfESfTdVKTD4ioWqnhVPZWBXMbdAKrGXJDVkAhYvJii91KOm7tY1U5cmwo2o6jz4U4mbCeT36RQZVXMUP4MIbJv/0k/1fKFe+J7bjEov2S1wJlPWSp+US4AG4znx+oEmY7K0MRv70hJe+CuLsVhfjdxR2q5lLRrWg+cDk7OsAGc7OdYORQFeRt/Kih+7k94cfksfHSst7EA6B3bHzuglmigkVhIijNJMRDv3/jcb/GEGeLEgSjLs1IuW+yzd4O0GDYG3EZ0r3/cqLuVg+Xt3zK5DLTy1m/UdFNgxjAJsp7tLDpMxoxHJlKcjQ5TtKaF9M++U3AikiBiJKuEgtcP5ji9eXy0mfwzKHfcO93RpxjDHzp7im7MDt/rnk3VTSi4mEH9L5CU46+cIuDZEcG7DMGz18N0VIkekM69az7eocLM+WhiGxIPESIcYU9ubPIP4dmstZF0Uo9Iz2VB9J4crmpH98T1Ac5/m9q89e/fxRWMFVGmoL518520mJTxcDrHNVXa02fDhmpBA3zPpHNaQlyHAI1G5DVW/8i7DxAIfm1ZlChxVo41sPgjDxVr/+ckA5dJ3XtewjikObtw5pMshBE/Yuudzy3GpWkO3nkJ5XJlNcaaJD19OWAJg/X1/zBOWZyZLjUh/Hym2gTsqSh5ZgMcMPvE32/o7LMh3PsxmfETiIwuGhm+QHdWEaY9m7T4UnMGvMs+g7amJcecs5uArvdDI28sjGiZ+xByJqrU6FvhZA2pCs22ec2/V47rL/aEKmmjAU4SqWE6T8nn1MIRqKKvJYD2gC9DFIi+J3t4KMY59USw8d0qVph118Saqnvg0VUowsHoH+hWnNqdIfByubbzPQHHJh8HI7G6hPaP9rxQ8LiqbSx734x9q/hRBXeIWn0cr8ZSuwXc2UwYoDhWjreH1dtCtbxQB64Fu1v4DzdskwdUCx0/QAv8lHNIdaLyB1zZmJSsDMFi785Hy6KIuM2D2WNAFSLI/GGjdlLOcza/nL5NVtMrCQ+fqN/YzHTiJEKcmArxyNErPoOc8vK5SSrRT6TXUAMka9WF40jMZyfBRAaxqkJzDndI/YUtSAV/3cjeuIO4GSlwez3UonC8KN/Mj4BevgtBLUg5FPXUdQQXC5TFnzG9qqlMP2gc/M/pMvyXJntOPq0TV9zKhYFMmZPUy5cu1OgkcIvSjPNK6fZQjjPqlz89dDBCdWuZS/3UbwExHOo3MEMUwZEylDM8dGjA6gSZXDKtT72GfWprqkpotK1nfRqoEH3Wq0LyDs7Lq5n+ZdFM34xXV7iTE6vP8OC5YMHz+7DKBhXMaElF+yEKVzr8Vqo/vtneNJlCFCPkI1SUCuibsR4DqzcFQ+mN4w5/dTIB6X+fwu1l+t2hx5ZnB5y9cFRk5LLvmBPr4h0hS4fifg2x7PwU415aMfdV7M6h22/3WtHGUy083Feus8qBYC84bHV7y9iSuF3NZcWJX73orbWqRkhPuYPLVy2/sN9im2kvFQDqD3jnRTCxumK/9UITAymJa1wzMBmO0rmsPaaih5AOwP+ebdS0dpRJSN8ISpafAriaL4ToBczeFJr0c95GOX1o/AWbgi33xKbY3ragDmWCt/FBxS3+ISb6Oa0S7X5SMPrLsuwaoi5ahFbyabR5fVgNCM8fiB1j6m4KT+unyaUA+w9Ptu/gWwwzP20MvEEIw49tspJI09TWBofZFszhtHNWnD17mC5sKrTYlVr+Xn/SDTtAelQDmYqGn90weCX9g/jKt4hyM8HZdxSw6G7AOKfNOWluqQHV3zoBHpUHteX3OTqFrGU3kNyxLyyi9I4f+sqDsoX5/R425Ifb/pVtKjbdbx4yZajc7Yc/dJq6C//F10KiC1NUbd7/FkQ5fhEKm34f3u7kTOxFmVEtjQj6fzY/PVbsyDQ/NjQIAHXqjF4BhDYKI2NQKZYWQTvcF7C7tgClTeEQgigQ6KfNx7jxgpcObKiDaJRJ84TXXCgT7MUDoy86E7Yrl+fPCFW61v/Vz8e7rJMTOm0oXR1R1akSxhITDmdTMev0fD8MXTETtpHImUzt3UWf4r65EDMXsmB+vg636IBEZCEAeLeyN+zfV28vcLBVxRLPxCQg29JJYz0Q6ZpIv4WteuQoupPqOSQazsT9sbbX7aezqy5+u8cXSNPcmbmd5TW/I6+sCW/l6vhTz+DRxFqabaIxadAfsYoVqHtgLp7N66xeh0taAVE3PBltCKgFgxqkZTT3yhQ4//HdiuqvCybs7rl2q+AnAMi3d8axz+2sjMGGx926chRnW/+s9eLpuf8TXCMX7aJHI08o38BFTe3PNJ4NZXbQjH2Ia3nVjlgG+Ez4Fmbxf3JebRgwBwtfnG1CsKCzhQfyeE+VzxP1OIPqc7af6tQbFyBqI5yLBeGqRYM6GK/Kyy4PmX/GKtuwcweCizx5AtfD/57pD2CFyE5yIlbuf73nqvnpI8wmh3ZDr1YqJqWH/QN/Q2JZOGxMAu2Q2Yx15XcCoxrJlBCGw7WdJ0ipGyN+MsJw75LqlJTMH7jlF83x9uyv0lrmPgqWFlccEAvord18uDjqWI+Qia1URoaFWxJLdrMP40h0Tb6Z+49VG+rak+lBnO+YK5TiJj9u95GgZvwRGH2FPZxtPzxtw84pdr2aL3RRfm192OR753+O6NlvXHBYALC2t5+IZR5zQ6Oz6uS4dAouv5smz6XsejOd3ipABp7knIivjMxt7ND0e7Pi5H7Nf9sdz/Q0EYeNSK5AxofelfcLaingVVqFDDxC/hwtuRznB06VJi3+cjUvrTlzFgkMy4Rdzk1FhfFRoXbmEqw/tm+VP83BQLFBCnoFWldMJ/XQv64jcEaSC3RWbLDiUYBLvNy7sXNjemKgGXArx275kfn5c3lzdbUpeXc/koCWfe4hzoSl1t18TWoCro8G4fLpu4aPxMzDCtnmiwQVFDXg4p2Ow7s1JBk9DfeNLFtMRSvw3FQwRuCr/8IlMJ2WVSNDEXa1bAVV31pmPkauGfj3fKKRB9QCcWcwMV5t+hFAQTqu1FiVMgDjNqjDiVTy0Gzm4tTSTTxd8VPcJGMJWSi9xZz5Wge5SjFbF4W7FdBRa/WtiIaUE491d7SqDptKdbXlpot3O+0PeLp4cxL2/lkhOJWXOCac1jKK/3DqQLbkjFWHPU4DRNIMTu9tIXMkzVvqrTxQ+bm8/jX5V8rdxGUtGaFxYOyPdC7q6Mczg6ZvSdWIgGwXDNBeZGcso/FjFCo4Pry98CnY7VHj6LnKtX6cDXMBhdMywcU/KZywudELIrfbOaOf1hnIaPBn3TSwXii8XekvelWoLfY3WJiZ9e8cHOFhsutXV2AwU0i+YG339MjcHkMtu8Zer5L/OoSEOpeN3EgMr4M+tdiHe+4RtLJx9cmjyGq+CkxLnejLxFQpW7leHp3S307lgKHPXvFVVDYaoPqmVsnoYdW4KfkG7kFayfDqAveOUtsSj6Vzv2P342+QyXjeHwQVbAdjhsX8gKnH55iXFeAp79/ngEYLseYKVgStKbRKSj4aDdqXkNgY2GRmB4BXy3Itdm+liH5h8hDmtb29YjjURh+eASreX6AEdQ0AzHfB+J4QV3BuyZ4U62sv5i1LjG04tqG2DBi39UPO0A1s0VlAiWkPSTklSw4aUNyjYKBB2RNfzlpI/22MlfY1iv859wmKAm84QWGc5mdGzdWYBuk90t93XfhoG0E8vCYEPrXf8hFLJRGhaOu1pNTSLF5nXw87wO8Kh4lRcfct8Fvcje9OPGnwmHlP1z/ymSTiZfR8uwbHCW67SePkgD3PnCibRLrULnHm0OIIMEJTAa3E7ZByTdgYdkOIsxVnEAosX0q3trvIdbXkZYuxmQ4F3W7ItfSo2Q6vOqPQYz3j1HW8BdLrwePqtWa/V9nqz5ltH494Km5NeiS/L1erSIgsv5sHibTpu6tRczQLOvXLknau/llFOCn+tvUgYW1H+IacURCXzb2j3F6E+EVXRPVbUOuwJaq9CiITyV7G1kf2FhRsarwlL2zfTrssRX3NJliEbmKTIxcb9V1nM6Bz3+xq1hkHbt3ZFvBHVonC3KlIZqw+nmDOQPOBnlLjxfnsejTd5GTeLVJglOwOh/WnCn+oJSge4iJElj4IT/3zmOcvQ/zinOAEGQ4pXsbkYPiNGc2JiqEW/Ly0VT3Hv88YP9aUkNqht430VC6v2GPvV4UHvowcpEnwficch13tLKqB2VEwHj5O7YqOLNrzvl/ZuuCNMTlmS/l9znfqxU+iNqz6Ily7qmtiCDb8bcoT/xcwsCTtAyYFm4kMoYWfD//ON7igJaajOw0rB+QwgVwj0/APH+psQq7GNyMIzUN2VPhxKYgX7FDx4fKdPougKnEPSOp2zDEPkppUXtjgVjVpSfdwNKiVSdyK6UDHGzTj4cl8AgTHyHCCgqWLGNUSisGTL7DFtfyBi57LiTJepXgcMMkvs/y+9cG2lq1OYOf9mOUkfvEXayiPMNpskg9uUX3BgJy8VIXEXULey+ska6I6B0pOGMlqIg6wsTsfGhMHec9XLEZ95KbF1IcDnKB2pfa7DjlyCgmWfOWnS8seR9LMl9E1JRUY+z7BydK1L0B6wx9xguS4a43YVsgNHC9BZ13UYr5O93slRCL8TQEhjAvAyeMQC0R4Fx8iJ56E9xVhfSAfRzb0AdTWXGtndYDPDcIxF0yppum6O4SjvCaKFZrVrVKVZr6nVSffyIEMYw7b+QCEASAHeiaxXvqgp4ponvDrhlrWGcEzeT+biqbLP1MJEm0oYmu0PO763/h/oVHKWfmE0nJaI23EkVkwIcKNqd8Q45l9dmnmerHC7A4A99+vwW1agiwTMBccz0WoplHHHd0cbWhpxv7VGxvjAfq3AzRs+09F1HDUuQel8v+Oh6tcy+DA69q5nfHF9054SsP5zrfK6+3oxb0lhEmqAZP0JfGGPQkVExEypOBJqqJDxx8/bYK0gEVZhg+WaywEf7gUnTzfbTmY/cfVtmL3oMYrGiA7I0Ch5wNrRfYeJLIvu+K083fP6DAxR49VbXDvyyszPZAH7w68RmqqKoprwWBFY8Ccx5NbLzqriplNeQfh/yI/GC7UTB4OeQDbPMkJZrkmPMlsCc2bbbUDd5W6/y3Z0ok1a2aVjAc5tQQ+X9RZvzYR1lNFI84B+5aeXVfhFZeC05NaW7v30imBjEk61sehGGrm97QBOwjjz4C18ZrOml+qJZ92kxEgMvySN6g6IaSpYlwX0qzFXdymQlp0/nx/iyYcNhtsdT/hPzxduVaceJyZaqu9KG4ahJC3NK3Yih7JCycYVWb9z2bczCHCnMxlODD3SrT4uo3rbbzge/jg9/tUe08RdUzSq+7c0lEE18flEJQhG/5ieAMyGh0TwRlioV3VpTDxprzhJD9Fn1KijGU8t4ktl4e6DHlycQi3mMZ4Y9n+8OymLOmsVTRSzYZCgYXW6A6pWO3O5jGEeKp6PYh3rg3QtDbMloilnpZ6nWxQ3AZ5xJEqkjjeoL3SA6t5fVs3C22dwfeBTM/j6qD/1SU0Ou+ufwaKZyYfDW0rr++cdY0SnMPaJtveX9xBotvDsq+ttwiyfMYFO6B0A46S2NZxR92v6/zCn1mTw1nVq0RlmNArZg/MIZp0YWwhYO32VVXX1gAmoN6Za1l355nr0i7pcbkZoZ9g5bdU43+WTazxMZtjxuto/KuwRr6yMonlkpCLbbKbtl5BEr346ZElKsFhHOgV2mF8QuXlZSFJkkLwD1GqXJFp2taZqE3hdNfuSunIGBTs3zCQlEXSfcYqdTCBp4RPQX+bzBh8S/3+7olL6aZ0MfPRERyY0SAPddPdr6dmsyYAsUybUFJU4c52e4SWyK+UW+KWFzgBbF5BUVX+w5uSHV4wFFgDoXOwKAAj9HnTRiwF8+/Ask4RJ/ByIx39We3DmnueeuVxkHvvPTIs5M1DzEZ1c2Cc05FNzUPguBHLLYimV1BdyI+z9RYUKfKCMTo+cSavP30aFadljDMDvyUEYK6AlC7MzQsz5YiXQrtrDiMTXXDicJjFcMfiXCrkxy8ustjssT4FAgVZKdZUkcpHiJn+TEIPg2UNEiEJYvJOuBxe1Kdx7qpQlIX5QDaJ1b72ClcPDOpaxN+vyEyAPkwhDfvWOH+a7/alkV5VMgK8jhxoq6ZprsHo7rHZ0dJaPm0SWvpSrB++GSZkfITRbc9hRDpHSf4GrGffWzdW9ndROjnnL38gKzBkK/NggVfcWY4tHicHKy5U0wZB7oyF1Vi93b3BhrTWEwCo51WdGmPyC8gbhoVtXaSjX3wuyrv+JhgAea/jMKTdzlaMfbiBlqiGe9VkwQjfWNhOQWXX7waOGkTeETPNrSRMGyV+bx/AnTH/+MN7hBPrcKKUMx4QJ7hnl3gj0WL1E+XiTor3vmmwuEpbRTBPua9VAjyz2LHyvBThEIK8JsdUn94NWd52DDHKCh5CNF80h4hqLjudeE5K2N/9lG+XyJcNdMAaIk1LSMF/+5TDLYWWUWwaGFm0/elockGINrTjBMDRsiplUj1gVBfJwPoc15hbJuVaEp0gtT/vyArZwLtYVMtdSAgegt1juaxR1hFOGMrXZCwGx7Ik1mF4U7FVJDYu5GvCO8l3DgmJtV3gkYl+zVhpcmjMOtz35QXnDjhoKGMZ5QCiewgov+UCPLg7Oyh5fYrObxr2Ake6VW1GVYwaMgoayQZfj4blj0c3qMRKn3dQiRTdTlPnBLeMhS3ul1pOdq8qfmx65dFnTF7A3ExqjjH3QbZS0puPKPmUcSmJ+0nCDv3U41DM4IUPLcJWeQgimOIMOMvJw4ER0jfLz/TBX+lWI2Z3Nf3WDm9r4vPTiPARGTEfa71S/YG2sQzRwI02MnTSGvRKBDe1tAOtD1Vwo2+QwC5DkPN3IhndbH32ixk4AskXMiGeeJsScDFk7RmE3fI8rGUGdJFdAN5TK2z0p2c9aRHYdasM2zkNES+U0C9UbnbTYwu9z0X6JbqgLUbWgTjQazHTbrhcExQqula/BKrIXlgzS0bcHsMzbxtKKGKKf/YkhPsMPEXRiN0T7tJmCCIgO/pSZ1Jkn5Ul2iFqa0h0hWRG4d+Mbtx+66cpM0Y3Nv5xDaIZa+Ud2Vow7bi/KclPVXhfAlPyay48AX83IJQ66dB/VG4lNpFgspGQqZCig5PrGH7mdZoovnvNdcyA9kA9xYJOImxHDt6Tm6JnO5seZW2cy4Vd0O6aStUNqA3a8EyGbKRpFw/RnvZ4Huae4DuNiBBnyusNFX391vMkk+Yf02ImaaJ2qTwWCjbcgUqrYMlWXvQjYELdgT1MZe87UC7G2DLF68Mluf3cgZVWziPXjvbhnNz5Z+jnepvSN7Cvw5w6pv8gLSUahZUA8V1It/kbXYFX4WxJg/NNVzYnzmFCJTUsNe5PYtwdfe5h2Tfgw3BeWLxpG8SGLWHienSapgdbLqWA5yUcrjvzRIoZRA7hEoUdlxgr2PZQDEKD1FSxGWFfiSQanKYfeQwrjJ2043QnEBQVv6IVYn4HMUXqI5ZnZDlR7TbAAUXcE0oB6rs8XTNxKkgBasTDQjxch24IDi0RGnkvKjKoK+mJxbXBAbEAf81yAzrt6xo9wYVfD/PL5mZkwa9Unr6svkKWbIPgGOVLUsZO2o3YeiLiWV3GeZte/m+e+cARyeYxyYo6g8TeWHKpsm4gyanRWZ8iDB2lqwDPvdayNXbSOjL3IAlBT5K1IdOqqDIcyERpqqxlBSbL/+d5vlLyQV5IpuOKGPW/+E6vEJrLuAL/mUlQCxQ4wKqnbN0eh7g+bH32/fNAISwPyjC2YYGzFgID8QFgOiAAOH5ZBjspeZAvcav/yDpF90lO/WBL8Z7wz7wLPRgc8kcYyj2A+QcnehPd/CBI2y8cYF2xgUpCNiHVYJvfT5u5xpWYTVH8G1g9wPtHOaOrBtRgFBztiD73ZgFhkQ6U2OVoFKRQUlzqL9ZzcwVaIFKoisF78THBXt59wRUhZEIvQ/W5i+naV50sNizI5fLKCuSSx0lXR4rHJC6/LQHDQIKOTAKkeza70meaQEtRpnYsdEP/d1cW2CvbrHpzqefCf/Qyx2PkIGHQAvgAA=" alt="Clearance" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-white text-xl font-bold">Clearance</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="inline-flex items-center bg-white border-2 border-red-600 text-red-600 hover:bg-red-50 font-bold py-3 px-8 rounded-lg transition duration-300">
+                    <i class="fas fa-th-large mr-2"></i> View All Collections
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-bolt mr-2 text-red-400"></i>ShopSwift
+                    </h3>
+                    <p class="text-gray-400 mb-4">Your one-stop destination for premium electronics and gadgets. We strive to provide the best shopping experience with quality products and exceptional customer service.</p>
+                    <div class="flex gap-4 mb-6">
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-400 rounded-full flex items-center justify-center hover:bg-red-500 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-700 rounded-full flex items-center justify-center hover:bg-red-800 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400">
+                        <i class="fas fa-shield-alt text-green-400"></i>
+                        <span>Secure Payment Guaranteed</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Home</a></li>
+                        <li><a href="product.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Products</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>FAQ</a></li>
+                        <li><a href="cart.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Cart</a></li>
+                        <li><a href="user-dashboard.html" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>My Account</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Wishlist</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers, free giveaways, and new product alerts.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="bg-red-600 hover:bg-red-700 px-4 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 text-gray-400">
+                        <i class="fab fa-cc-visa text-2xl"></i>
+                        <i class="fab fa-cc-mastercard text-2xl"></i>
+                        <i class="fab fa-cc-paypal text-2xl"></i>
+                        <i class="fab fa-cc-apple-pay text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 ShopSwift. All rights reserved. Designed with <i class="fas fa-heart text-red-500"></i> for modern shoppers.</p>
+            </div>
+        </div>
+    </footer>
+                    </ul>
+                </div>
+            </div>
+            
+            
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="./js/script.js"></script>
+    <script>
+        // Global RTL/LTR Toggle Functionality
+        function toggleRTL() {
+            const html = document.documentElement;
+            
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+            }
+        }
+
+        // Create floating gadgets
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles-container');
+            
+            // Gadget images
+            const gadgets = [
+                '<i class="fas fa-headphones text-white text-2xl"></i>',
+                '<i class="fas fa-laptop text-white text-2xl"></i>',
+                '<i class="fas fa-mobile-alt text-white text-2xl"></i>',
+                '<i class="fas fa-tablet-alt text-white text-2xl"></i>',
+                '<i class="fas fa-camera text-white text-2xl"></i>',
+                '<i class="fas fa-tv text-white text-2xl"></i>',
+                '<i class="fas fa-gamepad text-white text-2xl"></i>',
+                '<i class="fas fa-watch text-white text-2xl"></i>'
+            ];
+            
+            // Create 15 floating gadgets
+            for (let i = 0; i < 15; i++) {
+                const gadget = document.createElement('div');
+                gadget.className = 'floating-gadget';
+                gadget.innerHTML = gadgets[Math.floor(Math.random() * gadgets.length)];
+                
+                // Random position at the bottom of the header
+                const leftPos = Math.random() * 100;
+                gadget.style.left = `${leftPos}%`;
+                gadget.style.top = `${100 + Math.random() * 20}%`;
+                
+                // Random size
+                const size = 16 + Math.random() * 20;
+                gadget.style.fontSize = `${size}px`;
+                
+                // Random animation
+                const animations = ['floatAndBounce', 'floatAndBounceReverse', 'floatAndBounceSlow'];
+                const animation = animations[Math.floor(Math.random() * animations.length)];
+                
+                // Random duration
+                const duration = 4 + Math.random() * 6;
+                gadget.style.animation = `${animation} ${duration}s linear infinite`;
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                gadget.style.animationDelay = `-${delay}s`;
+                
+                particlesContainer.appendChild(gadget);
+            }
+            
+            // Trigger content animations
+            setTimeout(() => {
+                document.querySelectorAll('.opacity-0').forEach(el => {
+                    el.classList.remove('opacity-0');
+                });
+            }, 100);
+        });
+        
+        // Global RTL/LTR Toggle Functionality
+        function toggleRTL() {
+            const html = document.documentElement;
+            
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.querySelector('.mobile-menu-button i');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', '-translate-y-4');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+                if (menuIcon) menuIcon.className = 'fas fa-times';
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', '-translate-y-4');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                if (menuIcon) menuIcon.className = 'fas fa-bars';
+            }
+        }
+
+        // Desktop Dropdown Toggle for touch devices
+        function toggleDesktopDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const button = event.currentTarget;
+            const dropdown = button.parentElement;
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+            
+            // Check if dropdown is currently open
+            const isOpen = dropdownContent.classList.contains('dropdown-open');
+            
+            // Close all open dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(content => {
+                if (content !== dropdownContent) {
+                    content.classList.remove('dropdown-open');
+                    content.style.removeProperty('max-height');
+                }
+            });
+            
+            // Toggle this dropdown - open if it was closed
+            if (!isOpen) {
+                dropdownContent.classList.add('dropdown-open');
+                dropdownContent.style.maxHeight = '300px';
+            } else {
+                dropdownContent.classList.remove('dropdown-open');
+                dropdownContent.style.removeProperty('max-height');
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        function closeDropdowns(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.classList.remove('dropdown-open');
+                    content.style.removeProperty('max-height');
+                });
+            }
+        }
+        
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const cartCounts = document.querySelectorAll('.cart-count');
+            if (cartCounts.length > 0) {
+                const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCounts.forEach(cartCount => {
+                    cartCount.textContent = total;
+                    if (total > 0) {
+                        cartCount.classList.remove('hidden');
+                    } else {
+                        cartCount.classList.add('hidden');
+                    }
+                });
+            }
+        }
+        
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification('Product added to cart!');
+        }
+        
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-0 transition-all duration-300';
+            notification.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add click handlers to dropdown buttons for touch device support
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.dropdown > button').forEach(button => {
+                button.addEventListener('click', toggleDesktopDropdown);
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', closeDropdowns);
+            
+            // Initialize cart count
+            updateCartCount();
+        });
+        
+        // Make functions globally available
+        window.toggleRTL = toggleRTL;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.toggleDesktopDropdown = toggleDesktopDropdown;
+        window.addToCart = addToCart;
+        
+        // Also update cart count when the page is loaded
+        window.addEventListener('load', () => {
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found - ShopSwift</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'>
+<path fill='purple' d='M528.12 301.319l47.273-208C578.9 78.94 564.078 64 544 
+64H120.533l-7.2-35.29C110.528 12.078 97.718 0 82.7 0H24C10.745 0 0 
+10.745 0 24v16c0 13.255 10.745 24 24 24h47.533l70.134 343.901C132.266 
+426.461 118.424 448 96 448c-26.51 0-48 21.49-48 48s21.49 48 48 
+48s48-21.49 48-48c0-8.802-2.288-17.05-6.272-24.266h299.543C433.288 
+430.95 431 439.198 431 448c0 26.51 21.49 48 48 
+48s48-21.49 48-48s-21.49-48-48-48c-22.424 0-36.266-21.539-37.667-40.099L528.12 
+301.319z'/>
+</svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF0000 0%, #FFD700 100%);
+        }
+        
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- RTL Toggle -->
+    <button id="rtl-toggle" onclick="toggleRTL()" class="fixed top-4 right-4 z-50 bg-white text-gray-700 p-3 rounded-full shadow-lg hover:shadow-xl transition hover:bg-gray-100 text-2xl">
+        🌐
+    </button>
+    
+    <!-- 404 Content -->
+    <section class="min-h-screen flex items-center justify-center py-12 px-4">
+        <div class="max-w-4xl w-full text-center">
+            <!-- 404 Number -->
+            <div class="mb-8 float-animation">
+                <div class="relative inline-block">
+                    <h1 class="text-9xl font-bold gradient-bg bg-clip-text text-transparent mb-4 relative z-10">404</h1>
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-red-100 rounded-full opacity-50"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-yellow-100 rounded-full opacity-30"></div>
+                </div>
+                <div class="flex justify-center gap-6 mb-8">
+                    <i class="fas fa-exclamation-triangle text-6xl text-amber-500 float-animation" style="animation-delay: 0.2s;"></i>
+                    <i class="fas fa-question-circle text-6xl text-red-500 float-animation" style="animation-delay: 0.4s;"></i>
+                    <i class="fas fa-search text-6xl text-yellow-500 float-animation" style="animation-delay: 0.6s;"></i>
+                </div>
+            </div>
+            
+            <!-- Error Message -->
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">The page you're looking for seems to have gone missing in our digital universe. Don't worry, we can help you find your way back to the shopping experience.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12 max-w-2xl mx-auto">
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span>Check the URL for typos</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span>Go back to the previous page</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span>Visit our homepage</span>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="max-w-xl mx-auto mb-12">
+                <div class="relative">
+                    <input type="text" placeholder="Search for products, categories, or brands..." class="w-full px-6 py-4 pr-12 border-2 border-gray-300 rounded-full outline-none focus:border-red-600 transition text-lg shadow-lg">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-red-600 text-white w-12 h-12 rounded-full hover:bg-red-700 transition flex items-center justify-center">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                </div>
+                <div class="mt-4 flex flex-wrap justify-center gap-2">
+                    <span class="text-gray-500 text-sm">Popular searches:</span>
+                    <a href="#" class="text-red-600 hover:underline text-sm">laptop</a>,
+                    <a href="#" class="text-red-600 hover:underline text-sm">headphones</a>,
+                    <a href="#" class="text-red-600 hover:underline text-sm">smartphone</a>,
+                    <a href="#" class="text-red-600 hover:underline text-sm">watch</a>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="index.html" class="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </a>
+                <a href="product.html" class="inline-flex items-center justify-center gap-2 border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-50 transition transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-shopping-cart"></i>
+                    Browse Products
+                </a>
+                <a href="faq.html" class="inline-flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-question-circle"></i>
+                    Help Center
+                </a>
+            </div>
+            
+            <!-- Product Suggestions -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 flex items-center justify-center gap-2">
+                    <i class="fas fa-star text-amber-500"></i> You Might Like These
+                </h3>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105">
+                        <div class="bg-gradient-to-br from-red-200 to-yellow-100 h-48 flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Premium Laptop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-amber-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm">(124)</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Premium Laptop Pro</h4>
+                            <p class="text-gray-600 text-sm mb-3">Intel Core i7, 16GB RAM, 512GB SSD</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-red-600 font-bold text-xl">$899</p>
+                                <p class="text-gray-500 text-sm line-through">$1,099</p>
+                            </div>
+                            <a href="product.html" class="block w-full bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition text-center">
+                                View Product
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105">
+                        <div class="bg-gradient-to-br from-red-200 to-yellow-100 h-48 flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Wireless Headphones" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-amber-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm">(89)</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Wireless Headphones</h4>
+                            <p class="text-gray-600 text-sm mb-3">Noise Cancelling, Bluetooth 5.0</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-red-600 font-bold text-xl">$299</p>
+                                <p class="text-gray-500 text-sm line-through">$349</p>
+                            </div>
+                            <a href="product.html" class="block w-full bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition text-center">
+                                View Product
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105">
+                        <div class="bg-gradient-to-br from-amber-200 to-amber-100 h-48 flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Smart Watch" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-amber-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm">(156)</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Smart Watch</h4>
+                            <p class="text-gray-600 text-sm mb-3">Fitness Tracker, Heart Rate Monitor</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-amber-600 font-bold text-xl">$399</p>
+                                <p class="text-gray-500 text-sm line-through">$499</p>
+                            </div>
+                            <a href="product.html" class="block w-full bg-amber-600 text-white py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-center">
+                                View Product
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105">
+                        <div class="bg-gradient-to-br from-slate-300 to-slate-200 h-48 flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Webcam HD" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-amber-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm">(72)</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">HD Webcam</h4>
+                            <p class="text-gray-600 text-sm mb-3">1080p Full HD, Plug & Play</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-slate-600 font-bold text-xl">$129</p>
+                                <p class="text-gray-500 text-sm line-through">$149</p>
+                            </div>
+                            <a href="product.html" class="block w-full bg-slate-600 text-white py-2 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
+                                View Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Category Links -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center gap-2">
+                    <i class="fas fa-tags text-red-500"></i> Browse by Category
+                </h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-laptop mr-2"></i>Electronics
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-mobile-alt mr-2"></i>Smartphones
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-tshirt mr-2"></i>Fashion
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-home mr-2"></i>Home & Living
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-dumbbell mr-2"></i>Sports
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-book mr-2"></i>Books
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-gamepad mr-2"></i>Gaming
+                    </a>
+                    <a href="#" class="bg-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition font-semibold text-gray-700 hover:text-red-600 flex items-center gap-2">
+                        <i class="fas fa-heartbeat mr-2"></i>Health
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="app.js"></script>
+</body>
+</html>
