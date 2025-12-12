@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Feast - Fine Dining Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='red' d='M104 0C92.3 0 82.4 7.9 80.3 19.4l-56 240C23.8 268.6 31.2 288 
+46 288h12v224c0 17.7 14.3 32 32 32s32-14.3 32-32V288h12c14.8 0 22.2-19.4 
+22-28.6l-56-240C125.6 7.9 115.7 0 104 0zm296 0c-17.7 0-32 14.3-32 32v384c0 
+17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32z'/>
+</svg>">
+
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='red' d='M104 0C92.3 0 82.4 7.9 80.3 19.4l-56 240C23.8 268.6 31.2 288 
+46 288h12v224c0 17.7 14.3 32 32 32s32-14.3 32-32V288h12c14.8 0 22.2-19.4 
+22-28.6l-56-240C125.6 7.9 115.7 0 104 0zm296 0c-17.7 0-32 14.3-32 32v384c0 
+17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32z'/>
+</svg>">
+
+
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8A2BE2', // Blue Violet
+                        secondary: '#FF4500', // Orange Red
+                        accent: '#00CED1', // Dark Turquoise
+                        dark: '#0A0A0A', // Deeper Black
+                        darker: '#000000' // Pure Black
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0A0A0A;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* New gradient backgrounds */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Unique card hover effect */
+        .dish-card, .testimonial-card, .menu-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(106, 13, 173, 0.15);
+        }
+        
+        .dish-card:hover, .testimonial-card:hover, .menu-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(106, 13, 173, 0.3);
+        }
+        
+        /* Navigation highlighting */
+        .text-primary.font-bold {
+            color: #8A2BE2 !important;
+            font-weight: 700 !important;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .dropdown-menu {
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dark .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .dish-card {
+            transition: all 0.3s ease;
+        }
+        
+        .dish-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .dark .dish-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        }
+        
+        /* New slide-in animation */
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-slideInRight {
+            animation: slideInRight 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Pulse animation for buttons */
+        .animate-pulse-subtle {
+            animation: pulseSubtle 2s infinite;
+        }
+        
+        @keyframes pulseSubtle {
+            0% { box-shadow: 0 0 0 0 rgba(106, 13, 173, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(106, 13, 173, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(106, 13, 173, 0); }
+        }
+        
+        /* Roaming food animations */
+        @keyframes roamHorizontal {
+            0% { transform: translateX(-100px) translateY(0); }
+            25% { transform: translateX(25vw) translateY(-20px); }
+            50% { transform: translateX(50vw) translateY(0); }
+            75% { transform: translateX(75vw) translateY(20px); }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(0); }
+        }
+        
+        @keyframes roamVertical {
+            0% { transform: translateY(-100px) translateX(0); }
+            25% { transform: translateY(25vh) translateX(-20px); }
+            50% { transform: translateY(50vh) translateX(0); }
+            75% { transform: translateY(75vh) translateX(20px); }
+            100% { transform: translateY(calc(100vh + 100px)) translateX(0); }
+        }
+        
+        @keyframes roamDiagonal {
+            0% { transform: translate(-100px, -100px); }
+            25% { transform: translate(25vw, 25vh); }
+            50% { transform: translate(50vw, 50vh); }
+            75% { transform: translate(75vw, 75vh); }
+            100% { transform: translate(calc(100vw + 100px), calc(100vh + 100px)); }
+        }
+        
+        @keyframes floatAndRoam {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20vw, 20vh) rotate(10deg); }
+            50% { transform: translate(60vw, 40vh) rotate(0deg); }
+            75% { transform: translate(80vw, 80vh) rotate(-10deg); }
+            100% { transform: translate(100vw, 100vh) rotate(0deg); }
+        }
+        
+        .roaming-food {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.7;
+            pointer-events: none;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        .roaming-food-1 {
+            animation-name: roamHorizontal;
+            top: 15%;
+            animation-delay: 0s;
+        }
+        
+        .roaming-food-2 {
+            animation-name: roamVertical;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .roaming-food-3 {
+            animation-name: roamDiagonal;
+            animation-delay: 10s;
+        }
+        
+        .roaming-food-4 {
+            animation-name: floatAndRoam;
+            bottom: 20%;
+            animation-delay: 15s;
+        }
+        
+        .dark .bg-dark {
+            background-color: #0A0A0A;
+        }
+        
+        .dark .bg-darker {
+            background-color: #000000;
+        }
+        
+        .dark .text-darker {
+            color: #222222;
+        }
+        
+        .dark .text-dark {
+            color: #f5f5f5;
+        }
+        
+        .dark .border-dark {
+            border-color: #333;
+        }
+        
+        /* RTL Support */
+        .rtl .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .rtl .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .rtl .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        .rtl .pl-4 {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        
+        .rtl .text-right {
+            text-align: left;
+        }
+        
+        .rtl .text-left {
+            text-align: right;
+        }
+        
+        .rtl .float-right {
+            float: left;
+        }
+        
+        .rtl .float-left {
+            float: right;
+        }
+        
+        .rtl .justify-end {
+            justify-content: flex-start;
+        }
+        
+        .rtl .justify-between {
+            justify-content: space-between;
+        }
+        
+        .rtl .justify-start {
+            justify-content: flex-end;
+        }
+        
+        .rtl .left-0 {
+            left: auto;
+            right: 0;
+        }
+        
+        .rtl .right-0 {
+            right: auto;
+            left: 0;
+        }
+        
+        .rtl .ml-auto {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .rtl .mr-auto {
+            margin-right: 0;
+            margin-left: auto;
+        }
+        
+        /* Tablet view improvements for 768px */
+        @media (max-width: 768px) {
+            /* Hero section adjustments */
+            .hero-bg h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-bg p {
+                font-size: 1.25rem;
+            }
+            
+            /* About section adjustments */
+            .flex.flex-col.md\:flex-row.items-center.gap-16 {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .md\3a w-1\/2 {
+                width: 100%;
+            }
+            
+            /* Signature dishes adjustments */
+            .grid.grid-cols-1.md\:grid-cols-3.gap-12 {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1.5rem;
+            }
+            
+            /* Chef's special adjustments */
+            .flex.flex-col.md\:flex-row.items-center.gap-16:nth-child(2) {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            /* Testimonials adjustments */
+            .grid.grid-cols-1.md\:grid-cols-3.gap-12:nth-child(2) {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-darker dark:text-gray-300">
+    <script>
+        // Check for saved theme preference or default to light mode
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-secondary dark:text-primary">
+                        <i class="fas fa-crown mr-2"></i>Royal Feast
+                    </h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-dark rounded-md shadow-lg py-2">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors">FAQ</a>
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Dashboards <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-dark rounded-md shadow-lg py-2">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Admin</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtlToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+    🌐
+</button>
+
+                    <a href="login.html" class="hidden md:block">
+                        <button class="bg-primary hover:bg-amber-700 text-white px-4 py-2 rounded-full transition-colors">
+                            Login
+                        </button>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuButton" class="lg:hidden text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-dark shadow-lg">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-3 pb-4">
+                  <a href="index.html" class="font-medium hover:text-primary transition-colors py-2">Home 1</a>
+                  <a href="index2.html" class="font-medium hover:text-primary transition-colors py-2">Home 2</a>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors py-2">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors py-2">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors py-2">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors py-2">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors py-2">FAQ</a>
+                    <a href="user-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">User</a>
+                  <a href="admin-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">Admin</a>
+                    <a href="login.html" class="font-medium hover:text-primary transition-colors py-2">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/40 to-black/70 z-10"></div>
+        <div class="container mx-auto px-4 text-center text-white animate-fadeIn relative z-20">
+            <h1 class="text-5xl md:text-8xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Royal Culinary Experience</h1>
+            <p class="text-xl md:text-3xl mb-8 max-w-3xl mx-auto font-light">Indulge in exquisite flavors crafted by our royal chefs</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mt-12">
+                <button class="bg-gradient-to-r from-primary to-secondary hover:from-purple-800 hover:to-orange-600 text-white px-10 py-4 rounded-full text-xl font-bold transition-all duration-500 transform hover:scale-110 animate-pulse-subtle shadow-2xl">
+                    <i class="fas fa-utensils mr-2"></i>View Menu
+                </button>
+                <button class="bg-transparent border-3 border-white hover:bg-white/20 text-white px-10 py-4 rounded-full text-xl font-bold transition-all duration-500 transform hover:scale-110 shadow-2xl">
+                    <i class="fas fa-calendar-alt mr-2"></i>Book a Table
+                </button>
+            </div>
+        </div>
+        <!-- Floating elements -->
+        <div class="absolute top-1/4 left-10 w-20 h-20 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 backdrop-blur-sm animate-bounce shadow-xl" style="animation-delay: 0s;"></div>
+        <div class="absolute bottom-1/3 right-20 w-16 h-16 rounded-full bg-gradient-to-r from-secondary/30 to-accent/30 backdrop-blur-sm animate-bounce shadow-xl" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-gradient-to-r from-accent/30 to-primary/30 backdrop-blur-sm animate-bounce shadow-xl" style="animation-delay: 2s;"></div>
+        <!-- Additional decorative elements -->
+        <div class="absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-white/20 animate-ping"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-6 h-6 rounded-full bg-white/20 animate-ping" style="animation-delay: 3s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gradient-to-b from-dark to-darker relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0tMSAxIGwyIC0yTTAgMGwxIC0xTTAgMTAybDEgLTIgTTAgMTAybDEgLTJNMTAxIDFMMTAwIDBNMTAwIDBMMTAxIC0xTTEwMCAxMDJsMSAtMk0xMDAgMTAyTDEwMSAxMDQiIHN0cm9rZT0icmdiYSgxMjgsMTI4LDEyOCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')] opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Our Story</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 animate-slideInLeft transform transition-all duration-700 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Restaurant Interior" class="rounded-2xl shadow-2xl w-full border-4 border-gray-800">
+                </div>
+                <div class="md:w-1/2 animate-slideInRight">
+                    <h3 class="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">A Royal Culinary Heritage</h3>
+                    <p class="text-xl mb-8 text-gray-300">Established in 2005, Royal Feast brings you an extraordinary dining experience with our commitment to excellence and innovation. Our passion for gourmet cuisine and unparalleled hospitality has made us a premier destination for discerning food lovers.</p>
+                    <p class="text-xl mb-10 text-gray-300">We meticulously select premium ingredients from local farms and international sources to craft dishes that honor both traditional recipes and contemporary culinary artistry.</p>
+                    <button class="bg-gradient-to-r from-primary to-secondary hover:from-purple-800 hover:to-orange-600 text-white px-8 py-4 rounded-full font-bold transition-all duration-500 transform hover:scale-110 animate-pulse-subtle text-xl shadow-2xl">
+                        <i class="fas fa-book-open mr-2"></i>Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Dishes -->
+    <section class="py-20 bg-gradient-to-b from-dark to-darker relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0tMSAxIGwyIC0yTTAgMGwxIC0xTTAgMTAybDEgLTIgTTAgMTAybDEgLTJNMTAxIDFMMTAwIDBNMTAwIDBMMTAxIC0xTTEwMCAxMDJsMSAtMk0xMDAgMTAyTDEwMSAxMDQiIHN0cm9rZT0icmdiYSgxMjgsMTI4LDEyOCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')] opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Signature Dishes</h2>
+                <p class="text-2xl max-w-3xl mx-auto mb-6 font-light">Our most beloved creations that define our culinary identity</p>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Dish 1 -->
+                <div class="dish-card bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80" 
+                             alt="Royal Truffle Pasta" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full font-bold">
+                            <i class="fas fa-crown mr-1"></i>Premium
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Royal Truffle Pasta</h3>
+                            <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">$24</span>
+                        </div>
+                        <p class="text-gray-400 mb-6 text-lg">Handmade pasta with black truffle and parmesan</p>
+                        <button class="w-full bg-gradient-to-r from-primary to-secondary hover:from-purple-800 hover:to-orange-600 text-white py-3 rounded-full transition-all duration-300 transform hover:scale-105 font-bold text-lg shadow-lg">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dish 2 -->
+                <div class="dish-card bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 border border-gray-800 relative top-6">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Imperial Grilled Salmon" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-secondary to-accent text-white px-4 py-1 rounded-full font-bold">
+                            <i class="fas fa-star mr-1"></i>Special
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent">Imperial Grilled Salmon</h3>
+                            <span class="text-2xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">$28</span>
+                        </div>
+                        <p class="text-gray-400 mb-6 text-lg">Wild-caught salmon with lemon herb butter</p>
+                        <button class="w-full bg-gradient-to-r from-secondary to-accent hover:from-orange-600 hover:to-teal-600 text-white py-3 rounded-full transition-all duration-300 transform hover:scale-105 font-bold text-lg shadow-lg">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dish 3 -->
+                <div class="dish-card bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1921&q=80" 
+                             alt="Royal Chocolate Soufflé" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-accent to-primary text-white px-4 py-1 rounded-full font-bold">
+                            <i class="fas fa-heart mr-1"></i>Favorite
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">Royal Chocolate Soufflé</h3>
+                            <span class="text-2xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">$16</span>
+                        </div>
+                        <p class="text-gray-400 mb-6 text-lg">Decadent dark chocolate soufflé with vanilla ice cream</p>
+                        <button class="w-full bg-gradient-to-r from-accent to-primary hover:from-teal-600 hover:to-purple-800 text-white py-3 rounded-full transition-all duration-300 transform hover:scale-105 font-bold text-lg shadow-lg">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef's Special -->
+    <section class="py-20 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0tMSAxIGwyIC0yTTAgMGwxIC0xTTAgMTAybDEgLTIgTTAgMTAybDEgLTJNMTAxIDFMMTAwIDBNMTAwIDBMMTAxIC0xTTEwMCAxMDJsMSAtMk0xMDAgMTAyTDEwMSAxMDQiIHN0cm9rZT0icmdiYSgxMjgsMTI4LDEyOCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')] opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Chef's Special</h2>
+                <p class="text-2xl max-w-3xl mx-auto mb-6 font-light">Handcrafted by our Executive Chef</p>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 animate-slideInLeft">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Chef's Special Dish" class="rounded-2xl shadow-2xl w-full transform transition duration-700 hover:scale-105 border-4 border-gray-800">
+                        <div class="absolute bottom-6 left-6 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full animate-pulse-subtle font-bold text-lg shadow-xl">
+                            <i class="fas fa-crown mr-2"></i> Royal Choice
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-slideInRight">
+                    <h3 class="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Imperial Lobster Thermidor</h3>
+                    <p class="text-xl mb-8 text-gray-300">Our signature dish featuring succulent lobster in a creamy cognac sauce, topped with Gruyère cheese and broiled to perfection.</p>
+                    <ul class="mb-10 space-y-4">
+                        <li class="flex items-center transform transition duration-500 hover:translate-x-3 text-xl">
+                            <i class="fas fa-check-circle text-primary mr-4 text-2xl"></i>
+                            <span class="text-gray-200">Fresh Atlantic lobster</span>
+                        </li>
+                        <li class="flex items-center transform transition duration-500 hover:translate-x-3 text-xl">
+                            <i class="fas fa-check-circle text-primary mr-4 text-2xl"></i>
+                            <span class="text-gray-200">Creamy cognac sauce</span>
+                        </li>
+                        <li class="flex items-center transform transition duration-500 hover:translate-x-3 text-xl">
+                            <i class="fas fa-check-circle text-primary mr-4 text-2xl"></i>
+                            <span class="text-gray-200">Gruyère cheese topping</span>
+                        </li>
+                        <li class="flex items-center transform transition duration-500 hover:translate-x-3 text-xl">
+                            <i class="fas fa-check-circle text-primary mr-4 text-2xl"></i>
+                            <span class="text-gray-200">Served with seasonal vegetables</span>
+                        </li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent">$38</span>
+                        <button class="bg-gradient-to-r from-secondary to-accent hover:from-orange-600 hover:to-teal-600 text-white px-8 py-4 rounded-full font-bold transition-all duration-500 transform hover:scale-110 text-xl shadow-xl">
+                            <i class="fas fa-shopping-cart mr-2"></i>Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0tMSAxIGwyIC0yTTAgMGwxIC0xTTAgMTAybDEgLTIgTTAgMTAybDEgLTJNMTAxIDFMMTAwIDBNMTAwIDBMMTAxIC0xTTEwMCAxMDJsMSAtMk0xMDAgMTAyTDEwMSAxMDQiIHN0cm9rZT0icmdiYSgxMjgsMTI4LDEyOCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')] opacity-5"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">What Our Guests Say</h2>
+                <p class="text-2xl max-w-3xl mx-auto mb-6 font-light">Hear from our satisfied customers</p>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl p-8 transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 text-2xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-xl italic mb-8 text-gray-300">"The truffle pasta was absolutely divine. The ambiance and service were impeccable. Will definitely be returning!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" 
+                             alt="Customer" class="w-16 h-16 rounded-full mr-6 border-2 border-primary">
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Sarah Johnson</h4>
+                            <p class="text-gray-400 text-lg">Food Critic</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl p-8 transform transition-all duration-500 hover:-translate-y-3 border border-gray-800 relative top-6">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 text-2xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-xl italic mb-8 text-gray-300">"Celebrated our anniversary here. The lobster thermidor was extraordinary and the staff made our evening perfect."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" 
+                             alt="Customer" class="w-16 h-16 rounded-full mr-6 border-2 border-secondary">
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Michael Chen</h4>
+                            <p class="text-gray-400 text-lg">Business Executive</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl p-8 transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 text-2xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-xl italic mb-8 text-gray-300">"The chocolate soufflé is the best I've ever had. The entire menu is crafted with passion and precision."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                             alt="Customer" class="w-16 h-16 rounded-full mr-6 border-2 border-accent">
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Emma Rodriguez</h4>
+                            <p class="text-gray-400 text-lg">Travel Blogger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/News -->
+    <section class="py-20 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0tMSAxIGwyIC0yTTAgMGwxIC0xTTAgMTAybDEgLTIgTTAgMTAybDEgLTJNMTAxIDFMMTAwIDBNMTAwIDBMMTAxIC0xTTEwMCAxMDJsMSAtMk0xMDAgMTAyTDEwMSAxMDQiIHN0cm9rZT0icmdiYSgxMjgsMTI4LDEyOCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')] opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Latest News</h2>
+                <p class="text-2xl max-w-3xl mx-auto mb-6 font-light">Stay updated with our latest events and offerings</p>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Post 1 -->
+                <div class="bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                         alt="Wine Pairing Event" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <span class="text-primary text-lg font-bold">EVENT</span>
+                        <h3 class="text-3xl font-bold my-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Wine Pairing Dinners</h3>
+                        <p class="text-gray-300 mb-6 text-lg">Join us for exclusive wine pairing dinners featuring selections from our sommelier.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 text-lg">June 15, 2025</span>
+                            <a href="blog.html" class="text-primary hover:underline font-bold text-lg transform transition duration-300 hover:translate-x-1">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 border border-gray-800 relative top-6">
+                    <img src="https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?cs=srgb&dl=light-city-restaurant-260922.jpg&fm=jpg" 
+                         alt="Seasonal Menu" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <span class="text-primary text-lg font-bold">MENU</span>
+                        <h3 class="text-3xl font-bold my-4 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Summer Seasonal Menu</h3>
+                        <p class="text-gray-300 mb-6 text-lg">Our new summer menu features fresh ingredients and refreshing flavors.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 text-lg">July 1, 2025</span>
+                            <a href="blog.html" class="text-secondary hover:underline font-bold text-lg transform transition duration-300 hover:translate-x-1">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 3 -->
+                <div class="bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Cooking Class" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <span class="text-primary text-lg font-bold">CLASS</span>
+                        <h3 class="text-3xl font-bold my-4 text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Masterclass Series</h3>
+                        <p class="text-gray-300 mb-6 text-lg">Learn culinary techniques from our head chef in our monthly masterclass series.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 text-lg">August 5, 2025</span>
+                            <a href="blog.html" class="text-accent hover:underline font-bold text-lg transform transition duration-300 hover:translate-x-1">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-20 bg-gradient-to-b from-dark to-darker relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0tMSAxIGwyIC0yTTAgMGwxIC0xTTAgMTAybDEgLTIgTTAgMTAybDEgLTJNMTAxIDFMMTAwIDBNMTAwIDBMMTAxIC0xTTEwMCAxMDJsMSAtMk0xMDAgMTAyTDEwMSAxMDQiIHN0cm9rZT0icmdiYSgxMjgsMTI4LDEyOCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')] opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Visit Us</h2>
+                <p class="text-2xl max-w-3xl mx-auto mb-6 font-light">We'd love to welcome you to our restaurant</p>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center p-8 bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Location</h3>
+                    <p class="text-gray-300 text-xl">123 Gourmet Street<br>Food District, FD 10001</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl transform transition-all duration-500 hover:-translate-y-3 border border-gray-800 relative top-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-secondary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-clock text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Opening Hours</h3>
+                    <p class="text-gray-300 text-xl">Mon-Thu: 11am - 10pm<br>Fri-Sun: 11am - 11pm</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-dark to-darker rounded-2xl shadow-2xl transform transition-all duration-500 hover:-translate-y-3 border border-gray-800">
+                    <div class="w-20 h-20 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-phone-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Contact</h3>
+                    <p class="text-gray-300 text-xl">+1 (555) 123-4567<br>info@royalfeast.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker text-white py-16 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-crown mr-3 text-primary"></i>Royal Feast
+                    </h3>
+                    <p class="text-gray-400 mb-6 text-lg">Experience culinary excellence with our carefully crafted dishes made from the finest ingredients.</p>
+      <div class="flex space-x-6 rtl:space-x-reverse">
+    <a href="#" class="text-gray-400 hover:text-primary transform transition duration-300 hover:scale-125 text-2xl">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-primary transform transition duration-300 hover:scale-125 text-2xl">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-primary transform transition duration-300 hover:scale-125 text-2xl">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-primary transform transition duration-300 hover:scale-125 text-2xl">
+        <i class="fab fa-youtube"></i>
+    </a>
+</div>
+
+
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-primary">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">Menu</a></li>
+                        <li><a href="order.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">Order Online</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">Contact</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">FAQ</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">Blog</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-primary transition-colors text-lg transform transition duration-300 hover:translate-x-2">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-primary">Opening Hours</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex justify-between text-lg">
+                            <span>Monday - Thursday</span>
+                            <span class="text-white">11am - 10pm</span>
+                        </li>
+                         <li class="flex justify-between text-lg">
+                            <span>Friday - Saturday</span>
+                            <span class="text-white">11am - 11pm</span>
+                        </li>
+                        <li class="flex justify-between text-lg">
+                            <span>Sunday</span>
+                            <span class="text-white">12pm - 9pm</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-primary">Newsletter</h4>
+                    <p class="text-gray-400 mb-6 text-lg">Subscribe to get special offers and updates</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-6 py-3 w-full rounded-l-xl focus:outline-none text-gray-800 bg-gray-200 focus:ring-2 focus:ring-primary">
+                        <button class="bg-gradient-to-r from-primary to-secondary hover:from-purple-800 hover:to-orange-600 px-6 rounded-r-xl transform transition duration-300 hover:scale-105">
+                            <i class="fas fa-paper-plane text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500">
+                <p class="text-lg">&copy; 2025 Royal Feast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Add animation when opening
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('animate-fadeIn');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // RTL Toggle
+        const rtlToggle = document.getElementById('rtlToggle');
+        const rtlIcon = rtlToggle.querySelector('i') || rtlToggle;
+        
+        rtlToggle.addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            
+            if (htmlElement.getAttribute('dir') === 'rtl') {
+                htmlElement.setAttribute('dir', 'ltr');
+                document.body.classList.remove('rtl');
+                if (rtlIcon.tagName === 'I') {
+                    rtlIcon.classList.remove('fa-exchange-alt');
+                    rtlIcon.classList.add('fa-exchange-alt');
+                }
+            } else {
+                htmlElement.setAttribute('dir', 'rtl');
+                document.body.classList.add('rtl');
+                if (rtlIcon.tagName === 'I') {
+                    rtlIcon.classList.remove('fa-exchange-alt');
+                    rtlIcon.classList.add('fa-exchange-alt');
+                }
+            }
+            
+            // Save preference to localStorage
+            localStorage.setItem('rtl', htmlElement.getAttribute('dir'));
+        });
+        
+        // Check for saved RTL preference
+        if (localStorage.getItem('rtl') === 'rtl') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.classList.add('rtl');
+        }
+        
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-bg');
+            if (heroSection) {
+                heroSection.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+            }
+        });
+        
+        // Add hover effect to all buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.classList.add('animate-pulse-subtle');
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.classList.remove('animate-pulse-subtle');
+            });
+        });
+    </script>
+    <!-- Roaming Food Animations -->
+    <div class="roaming-food roaming-food-1">
+        <i class="fas fa-pizza-slice text-4xl text-primary"></i>
+    </div>
+    <div class="roaming-food roaming-food-2">
+        <i class="fas fa-hamburger text-4xl text-secondary"></i>
+    </div>
+    <div class="roaming-food roaming-food-3">
+        <i class="fas fa-ice-cream text-4xl text-accent"></i>
+    </div>
+    <div class="roaming-food roaming-food-4">
+        <i class="fas fa-wine-bottle text-4xl text-primary"></i>
+    </div>
+</body>
+</html>

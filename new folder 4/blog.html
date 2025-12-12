@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Feast - Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='red' d='M104 0C92.3 0 82.4 7.9 80.3 19.4l-56 240C23.8 268.6 31.2 288 
+46 288h12v224c0 17.7 14.3 32 32 32s32-14.3 32-32V288h12c14.8 0 22.2-19.4 
+22-28.6l-56-240C125.6 7.9 115.7 0 104 0zm296 0c-17.7 0-32 14.3-32 32v384c0 
+17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32z'/>
+</svg>">
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8A2BE2', // Blue Violet
+                        secondary: '#FF4500', // Orange Red
+                        accent: '#00CED1', // Dark Turquoise
+                        dark: '#0A0A0A', // Deeper Black
+                        darker: '#000000' // Pure Black
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Navigation highlighting */
+        .text-primary.font-bold {
+            color: #8A2BE2 !important;
+            font-weight: 700 !important;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .dropdown-menu {
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dark .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Roaming food animations */
+        @keyframes roamHorizontal {
+            0% { transform: translateX(-100px) translateY(0); }
+            25% { transform: translateX(25vw) translateY(-20px); }
+            50% { transform: translateX(50vw) translateY(0); }
+            75% { transform: translateX(75vw) translateY(20px); }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(0); }
+        }
+        
+        @keyframes roamVertical {
+            0% { transform: translateY(-100px) translateX(0); }
+            25% { transform: translateY(25vh) translateX(-20px); }
+            50% { transform: translateY(50vh) translateX(0); }
+            75% { transform: translateY(75vh) translateX(20px); }
+            100% { transform: translateY(calc(100vh + 100px)) translateX(0); }
+        }
+        
+        @keyframes roamDiagonal {
+            0% { transform: translate(-100px, -100px); }
+            25% { transform: translate(25vw, 25vh); }
+            50% { transform: translate(50vw, 50vh); }
+            75% { transform: translate(75vw, 75vh); }
+            100% { transform: translate(calc(100vw + 100px), calc(100vh + 100px)); }
+        }
+        
+        @keyframes floatAndRoam {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20vw, 20vh) rotate(10deg); }
+            50% { transform: translate(60vw, 40vh) rotate(0deg); }
+            75% { transform: translate(80vw, 80vh) rotate(-10deg); }
+            100% { transform: translate(100vw, 100vh) rotate(0deg); }
+        }
+        
+        .roaming-food {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.7;
+            pointer-events: none;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        .roaming-food-1 {
+            animation-name: roamHorizontal;
+            top: 15%;
+            animation-delay: 0s;
+        }
+        
+        .roaming-food-2 {
+            animation-name: roamVertical;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .roaming-food-3 {
+            animation-name: roamDiagonal;
+            animation-delay: 10s;
+        }
+        
+        .roaming-food-4 {
+            animation-name: floatAndRoam;
+            bottom: 20%;
+            animation-delay: 15s;
+        }
+        
+        .dark .bg-dark {
+            background-color: #0A0A0A;
+        }
+        
+        .dark .bg-darker {
+            background-color: #000000;
+        }
+        
+        .dark .text-darker {
+            color: #222222;
+        }
+        
+        .dark .text-dark {
+            color: #f5f5f5;
+        }
+        
+        .dark .border-dark {
+            border-color: #333;
+        }
+        
+        .category-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .category-badge:hover {
+            transform: translateY(-3px);
+        }
+        
+        .author-card {
+            transition: all 0.3s ease;
+        }
+        
+        .author-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* RTL Support */
+        .rtl .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .rtl .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .rtl .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        .rtl .pl-4 {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        
+        .rtl .text-right {
+            text-align: left;
+        }
+        
+        .rtl .text-left {
+            text-align: right;
+        }
+        
+        .rtl .float-right {
+            float: left;
+        }
+        
+        .rtl .float-left {
+            float: right;
+        }
+        
+        .rtl .justify-end {
+            justify-content: flex-start;
+        }
+        
+        .rtl .justify-between {
+            justify-content: space-between;
+        }
+        
+        .rtl .justify-start {
+            justify-content: flex-end;
+        }
+        
+        .rtl .left-0 {
+            left: auto;
+            right: 0;
+        }
+        
+        .rtl .right-0 {
+            right: auto;
+            left: 0;
+        }
+        
+        .rtl .ml-auto {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .rtl .mr-auto {
+            margin-right: 0;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-darker dark:text-gray-300">
+    <script>
+        // Force dark mode
+        document.documentElement.classList.add('dark');
+    </script>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-darker/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-secondary dark:text-primary">
+                        <i class="fas fa-crown mr-2"></i>Royal Feast
+                    </h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-darker rounded-md shadow-lg py-2">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors">FAQ</a>
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Dashboards <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-darker rounded-md shadow-lg py-2">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Admin</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtlToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+    🌐
+</button>
+
+                    <a href="login.html" class="hidden md:block">
+                        <button class="bg-primary hover:bg-amber-700 text-white px-4 py-2 rounded-full transition-colors">
+                            Login
+                        </button>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuButton" class="lg:hidden text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-darker shadow-lg">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-3 pb-4">
+                  <a href="index.html" class="font-medium hover:text-primary transition-colors py-2">Home 1</a>
+                  <a href="index2.html" class="font-medium hover:text-primary transition-colors py-2">Home 2</a>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors py-2">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors py-2">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors py-2">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors py-2">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors py-2">FAQ</a>
+                    <a href="user-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">User</a>
+                  <a href="admin-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">Admin</a>
+                    <a href="login.html" class="font-medium hover:text-primary transition-colors py-2">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-secondary to-brown-800 h-60 flex items-center">
+        <div class="container mx-auto px-4 text-center text-white">
+            <h1 class="text-4xl font-bold mb-2">Our Blog</h1>
+            <p class="text-xl max-w-2xl mx-auto">Discover stories, recipes, and culinary insights from our chefs</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Main Content -->
+                <div class="lg:w-2/3">
+                    <!-- Featured Post -->
+                    <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg overflow-hidden mb-8">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Featured Post" class="w-full h-80 object-cover">
+                        <div class="p-8">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="category-badge bg-primary text-white px-3 py-1 rounded-full text-sm">Chef's Special</span>
+                                <span class="category-badge bg-secondary text-white px-3 py-1 rounded-full text-sm">Recipes</span>
+                            </div>
+                            <h2 class="text-3xl font-bold mb-4">The Art of Perfectly Grilled Salmon</h2>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">Discover the secrets behind our award-winning grilled salmon dish, from selecting the freshest fish to mastering the perfect seasoning blend.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                         alt="Author" class="w-10 h-10 rounded-full mr-3">
+                                    <div>
+                                        <h4 class="font-bold">Chef Michael Roberts</h4>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">June 12, 2025 · 5 min read</p>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-primary hover:underline">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Posts Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Post 1 -->
+                        <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg overflow-hidden">
+                            <img src="https://th.bing.com/th/id/OIP.Ni984WvRgLWrJKTcru__tgHaE8?w=276&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                                 alt="Blog Post" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="category-badge bg-accent text-white px-2 py-1 rounded-full text-xs">Behind the Scenes</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">A Day in Our Kitchen</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Go behind the scenes to see how our team prepares for service each day.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs">June 10, 2025</span>
+                                    <a href="#" class="text-primary hover:underline text-sm">Read</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Post 2 -->
+                        <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                                 alt="Blog Post" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="category-badge bg-primary text-white px-2 py-1 rounded-full text-xs">Events</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Wine Pairing Dinners</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Join us for exclusive wine pairing dinners featuring selections from our sommelier.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs">June 8, 2025</span>
+                                    <a href="#" class="text-primary hover:underline text-sm">Read</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Post 3 -->
+                        <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                                 alt="Blog Post" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="category-badge bg-secondary text-white px-2 py-1 rounded-full text-xs">Seasonal</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Summer Menu Launch</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Our new summer menu features fresh ingredients and refreshing flavors.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs">June 5, 2025</span>
+                                    <a href="#" class="text-primary hover:underline text-sm">Read</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Post 4 -->
+                        <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg overflow-hidden">
+                            <img src="https://th.bing.com/th/id/OIP.7TvG7flgpAtHDsnXZUS14QHaE8?w=272&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                                 alt="Blog Post" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="category-badge bg-accent text-white px-2 py-1 rounded-full text-xs">Cooking Tips</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Mastering the Perfect Pasta</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn essential techniques for cooking pasta like an Italian nonna.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs">June 2, 2025</span>
+                                    <a href="#" class="text-primary hover:underline text-sm">Read</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="lg:w-1/3">
+                    <!-- Search -->
+                    <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4">Search</h3>
+                        <div class="relative">
+                            <input type="text" class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary" 
+                                   placeholder="Search posts...">
+                            <button class="absolute right-3 top-3 text-gray-400">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4">Categories</h3>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex justify-between items-center py-2 hover:text-primary transition-colors">
+                                    <span>Chef's Special</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 rounded-full px-2 py-1 text-xs">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex justify-between items-center py-2 hover:text-primary transition-colors">
+                                    <span>Recipes</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 rounded-full px-2 py-1 text-xs">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex justify-between items-center py-2 hover:text-primary transition-colors">
+                                    <span>Events</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 rounded-full px-2 py-1 text-xs">5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex justify-between items-center py-2 hover:text-primary transition-colors">
+                                    <span>Behind the Scenes</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 rounded-full px-2 py-1 text-xs">7</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex justify-between items-center py-2 hover:text-primary transition-colors">
+                                    <span>Seasonal</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 rounded-full px-2 py-1 text-xs">9</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Popular Posts -->
+                    <div class="blog-card bg-white dark:bg-darker rounded-xl shadow-lg p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4">Popular Posts</h3>
+                        <div class="space-y-4">
+                            <!-- Popular Post 1 -->
+                            <div class="flex items-center">
+                                <img src="https://th.bing.com/th/id/OIP.lxy3YPFTkKWuhMeSkhMR-AHaFh?w=270&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                                     alt="Popular Post" class="w-16 h-16 rounded-lg object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-bold text-sm">The Secret to Our Truffle Pasta</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-xs">June 15, 2025</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Popular Post 2 -->
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                                     alt="Popular Post" class="w-16 h-16 rounded-lg object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-bold text-sm">Wine Pairing Guide for Summer</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-xs">June 10, 2025</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Popular Post 3 -->
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                                     alt="Popular Post" class="w-16 h-16 rounded-lg object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-bold text-sm">Meet Our New Executive Chef</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-xs">June 5, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="blog-card bg-gradient-to-r from-primary to-amber-700 rounded-xl shadow-lg p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Subscribe to Newsletter</h3>
+                        <p class="mb-4 text-sm">Get the latest recipes and culinary tips delivered to your inbox.</p>
+                        <div class="space-y-3">
+                            <input type="email" class="w-full p-3 rounded-lg focus:outline-none text-gray-800" 
+                                   placeholder="Your email address">
+                            <button class="w-full bg-dark hover:bg-black text-white py-3 rounded-lg font-bold transition-colors">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-crown mr-3 text-primary"></i>Royal Feast
+                    </h3>
+                    <p class="text-gray-400 mb-4">Experience culinary excellence with our carefully crafted dishes made from the finest ingredients.</p>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-youtube"></i>
+    </a>
+</div>
+
+
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-white transition-colors">Menu</a></li>
+                        <li><a href="order.html" class="text-gray-400 hover:text-white transition-colors">Order Online</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Opening Hours</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex justify-between">
+                            <span>Monday - Thursday</span>
+                            <span>11am - 10pm</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Friday - Saturday</span>
+                            <span>11am - 11pm</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>12pm - 9pm</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers and updates</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="bg-primary hover:bg-amber-700 px-4 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Royal Feast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // RTL Toggle
+        const rtlToggle = document.getElementById('rtlToggle');
+        const rtlIcon = rtlToggle.querySelector('i');
+        
+        rtlToggle.addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            
+            if (htmlElement.getAttribute('dir') === 'rtl') {
+                htmlElement.setAttribute('dir', 'ltr');
+                document.body.classList.remove('rtl');
+                rtlIcon.classList.remove('fa-exchange-alt');
+                rtlIcon.classList.add('fa-exchange-alt');
+            } else {
+                htmlElement.setAttribute('dir', 'rtl');
+                document.body.classList.add('rtl');
+                rtlIcon.classList.remove('fa-exchange-alt');
+                rtlIcon.classList.add('fa-exchange-alt');
+            }
+            
+            // Save preference to localStorage
+            localStorage.setItem('rtl', htmlElement.getAttribute('dir'));
+        });
+        
+        // Check for saved RTL preference
+        if (localStorage.getItem('rtl') === 'rtl') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.classList.add('rtl');
+        }
+        
+        // Initialize animations on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section > div').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- Roaming Food Animations -->
+    <div class="roaming-food roaming-food-1">
+        <i class="fas fa-pizza-slice text-4xl text-primary"></i>
+    </div>
+    <div class="roaming-food roaming-food-2">
+        <i class="fas fa-hamburger text-4xl text-secondary"></i>
+    </div>
+    <div class="roaming-food roaming-food-3">
+        <i class="fas fa-ice-cream text-4xl text-accent"></i>
+    </div>
+    <div class="roaming-food roaming-food-4">
+        <i class="fas fa-wine-bottle text-4xl text-primary"></i>
+    </div>
+</body>
+</html>

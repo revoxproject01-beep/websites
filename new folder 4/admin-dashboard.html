@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Royal Feast - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='red' d='M104 0C92.3 0 82.4 7.9 80.3 19.4l-56 240C23.8 268.6 31.2 288 
+46 288h12v224c0 17.7 14.3 32 32 32s32-14.3 32-32V288h12c14.8 0 22.2-19.4 
+22-28.6l-56-240C125.6 7.9 115.7 0 104 0zm296 0c-17.7 0-32 14.3-32 32v384c0 
+17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32z'/>
+</svg>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #8A2BE2; /* Blue Violet */
+            --secondary: #FF4500; /* Orange Red */
+            --accent: #00CED1; /* Dark Turquoise */
+            --success: #4cc9f0;
+            --info: #4895ef;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --light: #f8f9fa;
+            --dark: #0A0A0A; /* Deeper Black */
+            --darker: #000000; /* Pure Black */
+            --sidebar-width: 250px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+        
+        
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, #0A0A0A, #000000);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+        
+        .sidebar.collapsed {
+            width: 70px;
+        }
+        
+        .sidebar.collapsed .sidebar-text {
+            display: none;
+        }
+        
+        .sidebar.collapsed .sidebar-icon {
+            margin-right: 0;
+        }
+        
+        .sidebar.collapsed .logo-text {
+            display: none;
+        }
+        
+        .sidebar.collapsed .logo-icon {
+            margin-right: 0;
+        }
+        
+        .logo-icon, .logo-text {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        a:hover .logo-icon, a:hover .logo-text {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .logo-link {
+            text-decoration: none;
+        }
+        
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .me-2 {
+            margin-right: 0.5rem;
+        }
+        
+        .main-content {
+            margin-left: var(--sidebar-width);
+            transition: all 0.3s;
+            min-height: 100vh;
+            padding-bottom: 60px;
+            overflow-y: auto;
+        }
+        
+        .sidebar.collapsed ~ .main-content {
+            margin-left: 70px;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            border-radius: 0 30px 30px 0;
+            margin: 5px 10px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: none;
+            margin-bottom: 24px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card {
+            border-left: 4px solid var(--primary);
+        }
+        
+        .stat-card.warning {
+            border-left-color: var(--warning);
+        }
+        
+        .stat-card.success {
+            border-left-color: var(--success);
+        }
+        
+        .stat-card.info {
+            border-left-color: var(--info);
+        }
+        
+        .stat-card.danger {
+            border-left-color: var(--danger);
+        }
+        
+        .stat-card.accent {
+            border-left-color: var(--accent);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        
+        .table-responsive {
+            border-radius: 10px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .card-scrollable {
+            overflow: hidden;
+        }
+        
+        .card-scrollable .card-body {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            max-height: 500px;
+        }
+        
+        .table th {
+            font-weight: 600;
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        .badge-status {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px 20px;
+        }
+        
+        .dark .card {
+            background-color: #000000;
+            color: #f5f5f5;
+            border: 1px solid #333;
+        }
+        
+        .dark .card-header {
+            background-color: #0A0A0A;
+            color: #f5f5f5;
+        }
+        
+        .dark .bg-white {
+            background-color: #000000 !important;
+        }
+        
+        .dark .header {
+            background-color: #0A0A0A !important;
+            color: #f5f5f5;
+        }
+        
+        .dark .table {
+            color: #f5f5f5;
+        }
+        
+        .dark .table th {
+            color: #f5f5f5;
+            background-color: #0A0A0A;
+        }
+        
+        .dark .table td {
+            color: #f5f5f5;
+            background-color: #000000;
+        }
+        
+        .dark .dropdown-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark .text-secondary {
+            color: #8A2BE2 !important;
+        }
+        
+        .dark .text-primary {
+            color: #8A2BE2 !important;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-item:focus, .dropdown-item:active {
+            background-color: rgba(138, 43, 226, 0.3);
+            color: #fff;
+        }
+        
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: var(--primary);
+        }
+        
+        /* Added CSS for better dropdown item visibility and alignment */
+        .dropdown-item:hover, .dropdown-item:focus, .dropdown-item:active {
+            background-color: rgba(138, 43, 226, 0.3) !important;
+            color: #fff !important;
+        }
+        
+        .dropdown-item:hover i, .dropdown-item:focus i, .dropdown-item:active i {
+            color: #fff !important;
+        }
+        
+        .dropdown-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .dark .bg-white {
+            background-color: #000000 !important;
+        }
+        
+        .dark .text-muted {
+            color: #aaa !important;
+        }
+        
+        .toggle-btn {
+            background: #f0f2f5;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* RTL Support */
+        [dir="rtl"] .sidebar {
+            right: 0;
+            left: auto;
+        }
+        
+        [dir="rtl"] .main-content {
+            margin-left: 0;
+            margin-right: var(--sidebar-width);
+        }
+        
+        [dir="rtl"] .sidebar.collapsed ~ .main-content {
+            margin-right: 70px;
+            margin-left: 0;
+        }
+        
+        [dir="rtl"] .nav-link {
+            border-radius: 30px 0 0 30px;
+        }
+        
+        [dir="rtl"] .sidebar.collapsed .sidebar-icon {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        [dir="rtl"] .sidebar.collapsed .logo-icon {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        [dir="rtl"] .logo-icon, [dir="rtl"] .logo-text {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        [dir="rtl"] .text-end {
+            text-align: left !important;
+        }
+        
+        [dir="rtl"] .text-start {
+            text-align: right !important;
+        }
+        
+        [dir="rtl"] .float-end {
+            float: left !important;
+        }
+        
+        [dir="rtl"] .float-start {
+            float: right !important;
+        }
+        
+        [dir="rtl"] .me-1 {
+            margin-right: 0 !important;
+            margin-left: 0.25rem !important;
+        }
+        
+        [dir="rtl"] .me-2 {
+            margin-right: 0 !important;
+            margin-left: 0.5rem !important;
+        }
+        
+        [dir="rtl"] .me-3 {
+            margin-right: 0 !important;
+            margin-left: 1rem !important;
+        }
+        
+        [dir="rtl"] .me-4 {
+            margin-right: 0 !important;
+            margin-left: 1.5rem !important;
+        }
+        
+        [dir="rtl"] .me-5 {
+            margin-right: 0 !important;
+            margin-left: 3rem !important;
+        }
+        
+        [dir="rtl"] .ms-1 {
+            margin-left: 0 !important;
+            margin-right: 0.25rem !important;
+        }
+        
+        [dir="rtl"] .ms-2 {
+            margin-left: 0 !important;
+            margin-right: 0.5rem !important;
+        }
+        
+        [dir="rtl"] .ms-3 {
+            margin-left: 0 !important;
+            margin-right: 1rem !important;
+        }
+        
+        [dir="rtl"] .ms-4 {
+            margin-left: 0 !important;
+            margin-right: 1.5rem !important;
+        }
+        
+        [dir="rtl"] .ms-5 {
+            margin-left: 0 !important;
+            margin-right: 3rem !important;
+        }
+        
+        [dir="rtl"] .ms-auto {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+        }
+        
+        [dir="rtl"] .me-auto {
+            margin-right: 0 !important;
+            margin-left: auto !important;
+        }
+        
+        [dir="rtl"] .pe-1 {
+            padding-right: 0 !important;
+            padding-left: 0.25rem !important;
+        }
+        
+        [dir="rtl"] .pe-2 {
+            padding-right: 0 !important;
+            padding-left: 0.5rem !important;
+        }
+        
+        [dir="rtl"] .pe-3 {
+            padding-right: 0 !important;
+            padding-left: 1rem !important;
+        }
+        
+        [dir="rtl"] .pe-4 {
+            padding-right: 0 !important;
+            padding-left: 1.5rem !important;
+        }
+        
+        [dir="rtl"] .pe-5 {
+            padding-right: 0 !important;
+            padding-left: 3rem !important;
+        }
+        
+        [dir="rtl"] .ps-1 {
+            padding-left: 0 !important;
+            padding-right: 0.25rem !important;
+        }
+        
+        [dir="rtl"] .ps-2 {
+            padding-left: 0 !important;
+            padding-right: 0.5rem !important;
+        }
+        
+        [dir="rtl"] .ps-3 {
+            padding-left: 0 !important;
+            padding-right: 1rem !important;
+        }
+        
+        [dir="rtl"] .ps-4 {
+            padding-left: 0 !important;
+            padding-right: 1.5rem !important;
+        }
+        
+        [dir="rtl"] .ps-5 {
+            padding-left: 0 !important;
+            padding-right: 3rem !important;
+        }
+        
+        [dir="rtl"] .border-left {
+            border-left: none !important;
+            border-right: 4px solid var(--primary) !important;
+        }
+        
+        [dir="rtl"] .border-left.warning {
+            border-right-color: var(--warning) !important;
+        }
+        
+        [dir="rtl"] .border-left.success {
+            border-right-color: var(--success) !important;
+        }
+        
+        [dir="rtl"] .border-left.info {
+            border-right-color: var(--info) !important;
+        }
+        
+        [dir="rtl"] .border-left.danger {
+            border-right-color: var(--danger) !important;
+        }
+        
+        [dir="rtl"] .dropdown-menu-end {
+            --bs-position: start;
+        }
+        
+        [dir="rtl"] .dropdown-menu-start {
+            --bs-position: end;
+        }
+        
+        [dir="rtl"] .dropdown-menu {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .table th {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .table td {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .chart-container canvas {
+            transform: none;
+        }
+        
+        @media (max-width: 992px) and (min-width: 769px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .sidebar-text {
+                display: none;
+            }
+            
+            .sidebar .sidebar-icon {
+                margin-right: 0;
+            }
+            
+            .sidebar .logo-text {
+                display: none;
+            }
+            
+            .sidebar .logo-icon {
+                margin-right: 0;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+            }
+            
+            [dir="rtl"] .main-content {
+                margin-right: 70px;
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 250px;
+                height: 100vh;
+            }
+            
+            [dir="rtl"] .sidebar {
+                transform: translateX(100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            [dir="rtl"] .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                min-height: 100vh;
+                padding-top: 20px;
+                overflow-y: auto;
+                height: calc(100vh - 70px);
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            [dir="rtl"] .main-content {
+                margin-right: 0;
+            }
+            
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            
+            .sidebar.active ~ .mobile-overlay {
+                display: block;
+            }
+            
+            .sidebar .sidebar-text {
+                display: inline;
+            }
+            
+            .sidebar .logo-text {
+                display: inline;
+            }
+            
+            .sidebar .sidebar-icon {
+                margin-right: 0.75rem;
+            }
+            
+            .sidebar .logo-icon {
+                margin-right: 0.75rem;
+            }
+            
+            .container-fluid {
+                overflow-x: hidden;
+            }
+            
+            .card-body {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-darker dark:text-gray-300">
+    <script>
+        // Force dark mode
+        document.documentElement.classList.add('dark');
+    </script>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="p-4">
+            <div class="d-flex align-items-center mb-5">
+                <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                    <h1 class="text-2xl font-bold text-secondary dark:text-primary">
+                        <i class="fas fa-crown me-2"></i>Royal Feast
+                    </h1>
+                </a>
+            </div>
+            
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-home sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-utensils sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Menu</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Orders</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-users sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-chart-line sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-calendar sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Reservations</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-cog sidebar-icon me-3"></i>
+                        <span class="sidebar-text">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-5">
+                    <a class="nav-link" href="user-dashboard.html">
+                        <i class="fas fa-user sidebar-icon me-3"></i>
+                        <span class="sidebar-text">User Panel</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+               <button class="toggle-btn me-3 d-md-none" id="sidebarToggle">
+    <i class="fas fa-bars"></i>
+</button>
+<button class="toggle-btn me-3 d-none d-md-block" id="sidebarCollapse">
+    <i class="fas fa-bars"></i>
+</button>
+<button class="toggle-btn me-3" id="rtlToggle">
+    🌐
+</button>
+
+                <h4 class="mb-0 d-none d-sm-block text-white">Admin Dashboard</h4>
+                <h5 class="mb-0 d-sm-none text-white">Admin</h5>
+            </div>
+            
+            <div class="d-flex align-items-center">
+                <div class="position-relative me-3 me-md-4">
+                    <button class="btn btn-dark rounded-circle position-relative">
+                        <i class="fas fa-bell text-white"></i>
+                    </button>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" class="avatar me-2">
+                        <span class="d-none d-md-inline text-white">Admin User</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end bg-dark mt-2" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item text-white" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item text-white" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-white" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="container-fluid p-4">
+            <!-- Stats Row -->
+            <div class="row g-4 mb-4">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card h-100 border-left">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted">Total Revenue</h6>
+                                    <h3 class="fw-bold">$24,560</h3>
+                                    <span class="text-success"><i class="fas fa-arrow-up me-1"></i>12.5%</span>
+                                </div>
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-dollar-sign text-primary fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card warning h-100 border-left">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted">Orders</h6>
+                                    <h3 class="fw-bold">142</h3>
+                                    <span class="text-success"><i class="fas fa-arrow-up me-1"></i>8.2%</span>
+                                </div>
+                                <div class="bg-warning bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-shopping-cart text-warning fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card success h-100 border-left">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted">Customers</h6>
+                                    <h3 class="fw-bold">1,250</h3>
+                                    <span class="text-danger"><i class="fas fa-arrow-down me-1"></i>2.3%</span>
+                                </div>
+                                <div class="bg-success bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-users text-success fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card info h-100 border-left">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted">Reservations</h6>
+                                    <h3 class="fw-bold">56</h3>
+                                    <span class="text-success"><i class="fas fa-arrow-up me-1"></i>15.7%</span>
+                                </div>
+                                <div class="bg-info bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-calendar-check text-info fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Revenue Overview</h5>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary me-2">Month</button>
+                                <button class="btn btn-sm btn-primary">Year</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Order Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="orderStatusChart"></canvas>
+                            </div>
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Completed</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%"></div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Pending</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%"></div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Cancelled</span>
+                                    <span>15%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Orders -->
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="card card-scrollable">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Recent Orders</h5>
+                            <button class="btn btn-primary btn-sm">View All</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-start">Order ID</th>
+                                            <th class="text-start">Customer</th>
+                                            <th class="text-start">Date</th>
+                                            <th class="text-start">Amount</th>
+                                            <th class="text-start">Status</th>
+                                            <th class="text-start">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-start">#ORD-001</td>
+                                            <td class="text-start">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Customer" class="avatar me-2">
+                                                    <span>John Smith</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-start">Jun 12, 2025</td>
+                                            <td class="text-start">$87.50</td>
+                                            <td class="text-start"><span class="badge bg-success badge-status">Delivered</span></td>
+                                            <td class="text-start">
+                                                <button class="btn btn-sm btn-outline-primary">View</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">#ORD-002</td>
+                                            <td class="text-start">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="avatar me-2">
+                                                    <span>Sarah Johnson</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-start">Jun 11, 2025</td>
+                                            <td class="text-start">$124.00</td>
+                                            <td class="text-start"><span class="badge bg-warning badge-status">Processing</span></td>
+                                            <td class="text-start">
+                                                <button class="btn btn-sm btn-outline-primary">View</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">#ORD-003</td>
+                                            <td class="text-start">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Customer" class="avatar me-2">
+                                                    <span>Mike Williams</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-start">Jun 10, 2025</td>
+                                            <td class="text-start">$67.25</td>
+                                            <td class="text-start"><span class="badge bg-info badge-status">Shipped</span></td>
+                                            <td class="text-start">
+                                                <button class="btn btn-sm btn-outline-primary">View</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">#ORD-004</td>
+                                            <td class="text-start">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Customer" class="avatar me-2">
+                                                    <span>Emily Davis</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-start">Jun 9, 2025</td>
+                                            <td class="text-start">$45.50</td>
+                                            <td class="text-start"><span class="badge bg-success badge-status">Delivered</span></td>
+                                            <td class="text-start">
+                                                <button class="btn btn-sm btn-outline-primary">View</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">#ORD-005</td>
+                                            <td class="text-start">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Customer" class="avatar me-2">
+                                                    <span>Robert Brown</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-start">Jun 8, 2025</td>
+                                            <td class="text-start">$92.75</td>
+                                            <td class="text-start"><span class="badge bg-danger badge-status">Cancelled</span></td>
+                                            <td class="text-start">
+                                                <button class="btn btn-sm btn-outline-primary">View</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Preparation Forecasting -->
+            <div class="row g-4 mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Preparation Forecasting</h5>
+                            <div>
+                                <select class="form-select form-select-sm" id="forecastPeriod">
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-4">
+                                <div class="col-lg-4">
+                                    <div class="card stat-card accent h-100 border-left">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="text-muted">Weekdays Forecast</h6>
+                                                    <h3 class="fw-bold">120 Items</h3>
+                                                    <span class="text-success"><i class="fas fa-arrow-down me-1"></i>15% Less</span>
+                                                </div>
+                                                <div class="bg-accent bg-opacity-10 p-3 rounded-circle">
+                                                    <i class="fas fa-calendar-week text-accent fs-4"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">
+                                    <div class="card stat-card info h-100 border-left">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="text-muted">Weekend Forecast</h6>
+                                                    <h3 class="fw-bold">210 Items</h3>
+                                                    <span class="text-success"><i class="fas fa-arrow-up me-1"></i>25% More</span>
+                                                </div>
+                                                <div class="bg-info bg-opacity-10 p-3 rounded-circle">
+                                                    <i class="fas fa-calendar-alt text-info fs-4"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">
+                                    <div class="card stat-card danger h-100 border-left">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="text-muted">Wastage Reduction</h6>
+                                                    <h3 class="fw-bold">18%</h3>
+                                                    <span class="text-success"><i class="fas fa-recycle me-1"></i>Saved</span>
+                                                </div>
+                                                <div class="bg-danger bg-opacity-10 p-3 rounded-circle">
+                                                    <i class="fas fa-recycle text-danger fs-4"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h6>Top Predicted Items for Today</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Category</th>
+                                                <th>Forecast Quantity</th>
+                                                <th>Preparation Advice</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Truffle Pasta</td>
+                                                <td>Main Course</td>
+                                                <td>25</td>
+                                                <td><span class="badge bg-warning">Prepare 20%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Grilled Salmon</td>
+                                                <td>Seafood</td>
+                                                <td>18</td>
+                                                <td><span class="badge bg-warning">Prepare 15%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Caesar Salad</td>
+                                                <td>Appetizer</td>
+                                                <td>32</td>
+                                                <td><span class="badge bg-success">Prepare Normal</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chocolate Cake</td>
+                                                <td>Dessert</td>
+                                                <td>15</td>
+                                                <td><span class="badge bg-danger">Prepare 10% Less</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle sidebar
+        document.getElementById('sidebarCollapse').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+        });
+        
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+        
+        // Close sidebar when clicking on overlay
+        document.querySelector('.mobile-overlay').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('active');
+        });
+        
+        // Toggle RTL
+        document.getElementById('rtlToggle').addEventListener('click', function() {
+            const htmlElement = document.documentElement;
+            
+            if (htmlElement.getAttribute('dir') === 'rtl') {
+                htmlElement.setAttribute('dir', 'ltr');
+                document.body.classList.remove('rtl');
+                localStorage.setItem('rtl', 'ltr');
+            } else {
+                htmlElement.setAttribute('dir', 'rtl');
+                document.body.classList.add('rtl');
+                localStorage.setItem('rtl', 'rtl');
+            }
+        });
+        
+        // Check for saved RTL preference
+        if (localStorage.getItem('rtl') === 'rtl') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.classList.add('rtl');
+        }
+        
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [12000, 19000, 15000, 18000, 22000, 24560, 21000, 23000, 25000, 27000, 29000, 31000],
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        reverse: document.documentElement.getAttribute('dir') === 'rtl'
+                    }
+                }
+            }
+        });
+        
+        // Order Status Chart
+        const orderStatusCtx = document.getElementById('orderStatusChart').getContext('2d');
+        const orderStatusChart = new Chart(orderStatusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Pending', 'Cancelled'],
+                datasets: [{
+                    data: [65, 20, 15],
+                    backgroundColor: [
+                        '#4cc9f0',
+                        '#D4AF37',
+                        '#e63946'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+        
+        // Update charts when RTL is toggled
+        document.getElementById('rtlToggle').addEventListener('click', function() {
+            // Update revenue chart x-axis reverse
+            revenueChart.options.scales.x.reverse = document.documentElement.getAttribute('dir') === 'rtl';
+            revenueChart.update();
+        });
+        
+        // Forecast period change
+        document.getElementById('forecastPeriod').addEventListener('change', function() {
+            const period = this.value;
+            // In a real implementation, this would fetch new data based on the selected period
+            console.log('Forecast period changed to:', period);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Feast - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='red' d='M104 0C92.3 0 82.4 7.9 80.3 19.4l-56 240C23.8 268.6 31.2 288 
+46 288h12v224c0 17.7 14.3 32 32 32s32-14.3 32-32V288h12c14.8 0 22.2-19.4 
+22-28.6l-56-240C125.6 7.9 115.7 0 104 0zm296 0c-17.7 0-32 14.3-32 32v384c0 
+17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32z'/>
+</svg>">
+
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8A2BE2', // Blue Violet
+                        secondary: '#FF4500', // Orange Red
+                        accent: '#00CED1', // Dark Turquoise
+                        dark: '#0A0A0A', // Deeper Black
+                        darker: '#000000' // Pure Black
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .dropdown-menu {
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dark .login-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .login-card {
+            transition: all 0.3s ease;
+        }
+        
+        .login-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Roaming food animations */
+        @keyframes roamHorizontal {
+            0% { transform: translateX(-100px) translateY(0); }
+            25% { transform: translateX(25vw) translateY(-20px); }
+            50% { transform: translateX(50vw) translateY(0); }
+            75% { transform: translateX(75vw) translateY(20px); }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(0); }
+        }
+        
+        @keyframes roamVertical {
+            0% { transform: translateY(-100px) translateX(0); }
+            25% { transform: translateY(25vh) translateX(-20px); }
+            50% { transform: translateY(50vh) translateX(0); }
+            75% { transform: translateY(75vh) translateX(20px); }
+            100% { transform: translateY(calc(100vh + 100px)) translateX(0); }
+        }
+        
+        @keyframes roamDiagonal {
+            0% { transform: translate(-100px, -100px); }
+            25% { transform: translate(25vw, 25vh); }
+            50% { transform: translate(50vw, 50vh); }
+            75% { transform: translate(75vw, 75vh); }
+            100% { transform: translate(calc(100vw + 100px), calc(100vh + 100px)); }
+        }
+        
+        @keyframes floatAndRoam {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20vw, 20vh) rotate(10deg); }
+            50% { transform: translate(60vw, 40vh) rotate(0deg); }
+            75% { transform: translate(80vw, 80vh) rotate(-10deg); }
+            100% { transform: translate(100vw, 100vh) rotate(0deg); }
+        }
+        
+        .roaming-food {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.7;
+            pointer-events: none;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        .roaming-food-1 {
+            animation-name: roamHorizontal;
+            top: 15%;
+            animation-delay: 0s;
+        }
+        
+        .roaming-food-2 {
+            animation-name: roamVertical;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .roaming-food-3 {
+            animation-name: roamDiagonal;
+            animation-delay: 10s;
+        }
+        
+        .roaming-food-4 {
+            animation-name: floatAndRoam;
+            bottom: 20%;
+            animation-delay: 15s;
+        }
+        
+        .dark .bg-dark {
+            background-color: #0A0A0A;
+        }
+        
+        .dark .bg-darker {
+            background-color: #000000;
+        }
+        
+        .dark .text-darker {
+            color: #222222;
+        }
+        
+        .dark .text-dark {
+            color: #f5f5f5;
+        }
+        
+        .dark .border-dark {
+            border-color: #333;
+        }
+        
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .dark .form-input {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+        }
+        
+        .login-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-login-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .social-login-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* RTL Support */
+        .rtl .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .rtl .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .rtl .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        .rtl .pl-4 {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        
+        .rtl .text-right {
+            text-align: left;
+        }
+        
+        .rtl .text-left {
+            text-align: right;
+        }
+        
+        .rtl .float-right {
+            float: left;
+        }
+        
+        .rtl .float-left {
+            float: right;
+        }
+        
+        .rtl .justify-end {
+            justify-content: flex-start;
+        }
+        
+        .rtl .justify-between {
+            justify-content: space-between;
+        }
+        
+        .rtl .justify-start {
+            justify-content: flex-end;
+        }
+        
+        .rtl .left-0 {
+            left: auto;
+            right: 0;
+        }
+        
+        .rtl .right-0 {
+            right: auto;
+            left: 0;
+        }
+        
+        .rtl .ml-auto {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .rtl .mr-auto {
+            margin-right: 0;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-darker dark:text-gray-300">
+    <script>
+        // Check for saved theme preference or default to light mode
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-secondary dark:text-primary">
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-crown mr-2"></i>Royal Feast
+                        </a>
+                    </h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-dark rounded-md shadow-lg py-2">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors">FAQ</a>
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Dashboards <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-dark rounded-md shadow-lg py-2">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Admin</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtlToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+    🌐
+</button>
+
+                    <a href="login.html" class="hidden md:block">
+                        <button class="bg-primary hover:bg-amber-700 text-white px-4 py-2 rounded-full transition-colors">
+                            Login
+                        </button>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuButton" class="lg:hidden text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-dark shadow-lg">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-3 pb-4">
+                  <a href="index.html" class="font-medium hover:text-primary transition-colors py-2">Home 1</a>
+                  <a href="index2.html" class="font-medium hover:text-primary transition-colors py-2">Home 2</a>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors py-2">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors py-2">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors py-2">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors py-2">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors py-2">FAQ</a>
+                    <a href="user-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">User</a>
+                  <a href="admin-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">Admin</a>
+                    <a href="login.html" class="font-medium hover:text-primary transition-colors py-2">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+ <section class="min-h-screen flex items-center justify-center pt-28 px-4 sm:px-6 lg:px-8">
+
+        <div class="max-w-md w-full space-y-8">
+            <div class="login-card bg-white dark:bg-dark rounded-2xl shadow-2xl p-8 animate-fadeIn">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-secondary dark:text-primary mb-2">Welcome Back</h1>
+                    <p class="text-gray-600 dark:text-gray-300">Sign in to your account</p>
+                </div>
+                
+                <!-- Login Tabs -->
+                <div class="flex mb-6 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+                    <button class="w-1/2 py-2 rounded-md bg-white dark:bg-dark text-primary font-medium shadow-sm" data-role="customer">
+                        Customer
+                    </button>
+                    <button class="w-1/2 py-2 rounded-md text-gray-600 dark:text-gray-300 font-medium" data-role="staff">
+                        Staff
+                    </button>
+                </div>
+                <input type="hidden" id="loginRole" name="loginRole" value="customer">
+                
+                <!-- Login Form -->
+                <form class="space-y-6" id="loginForm">
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" 
+       class="form-input w-full ps-10 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
+       placeholder="your@email.com">
+
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" 
+       class="form-input w-full ps-10 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
+       placeholder="••••••••">
+
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                                Remember me
+                            </label>
+                        </div>
+                        
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-primary hover:text-amber-700">
+                                Forgot your password?
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="login-btn w-full bg-primary hover:bg-amber-700 text-white py-3 rounded-lg font-bold transition-colors">
+                            Sign In
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Social Login -->
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300 dark:border-gray-700"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white dark:bg-dark text-gray-500 dark:text-gray-400">
+                                Or continue with
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <div>
+                            <a href="#" class="social-login-btn w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-dark hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <i class="fab fa-google text-red-500 mr-2"></i>
+                                Google
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="social-login-btn w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-dark hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <i class="fab fa-facebook-f text-blue-600 mr-2"></i>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sign Up Link -->
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Don't have an account? 
+                        <a href="#" id="showSignup" class="font-medium text-primary hover:text-amber-700">
+                            Sign up
+                        </a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Signup Card (Hidden by default) -->
+            <div id="signupCard" class="login-card bg-white dark:bg-dark rounded-2xl shadow-2xl p-8 animate-fadeIn hidden">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-secondary dark:text-primary mb-2">Create Account</h1>
+                    <p class="text-gray-600 dark:text-gray-300">Join us today for exclusive benefits</p>
+                </div>
+                
+                <!-- Signup Form -->
+                <form class="space-y-6" id="signupForm">
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-gray-400"></i>
+                            </div>
+                            <input type="text" 
+       class="form-input w-full ps-10 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
+       placeholder="John Doe">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" 
+       class="form-input w-full ps-10 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
+       placeholder="your@email.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" 
+       class="form-input w-full ps-10 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
+       placeholder="••••••••">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" 
+       class="form-input w-full ps-10 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
+       placeholder="••••••••">
+                        </div>
+                    </div>
+                    
+                    <!-- Role Selection -->
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Register as</label>
+                        <div class="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+                            <button type="button" class="role-btn w-1/2 py-2 rounded-md bg-white dark:bg-dark text-primary font-medium shadow-sm" data-role="customer">
+                                Customer
+                            </button>
+                            <button type="button" class="role-btn w-1/2 py-2 rounded-md text-gray-600 dark:text-gray-300 font-medium" data-role="staff">
+                                Staff
+                            </button>
+                        </div>
+                        <input type="hidden" id="selectedRole" name="role" value="customer">
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input id="terms" name="terms" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="terms" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                            I agree to the <a href="#" class="text-primary hover:text-amber-700">Terms and Conditions</a>
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="login-btn w-full bg-primary hover:bg-amber-700 text-white py-3 rounded-lg font-bold transition-colors">
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Sign In Link -->
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Already have an account? 
+                        <a href="#" id="showLogin" class="font-medium text-primary hover:text-amber-700">
+                            Sign in
+                        </a>
+                    </p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark/80 text-white py-8 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2025 Royal Feast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // RTL Toggle
+        const rtlToggle = document.getElementById('rtlToggle');
+        const rtlIcon = rtlToggle.querySelector('i');
+        
+        rtlToggle.addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            
+            if (htmlElement.getAttribute('dir') === 'rtl') {
+                htmlElement.setAttribute('dir', 'ltr');
+                document.body.classList.remove('rtl');
+                rtlIcon.classList.remove('fa-exchange-alt');
+                rtlIcon.classList.add('fa-exchange-alt');
+            } else {
+                htmlElement.setAttribute('dir', 'rtl');
+                document.body.classList.add('rtl');
+                rtlIcon.classList.remove('fa-exchange-alt');
+                rtlIcon.classList.add('fa-exchange-alt');
+            }
+            
+            // Save preference to localStorage
+            localStorage.setItem('rtl', htmlElement.getAttribute('dir'));
+        });
+        
+        // Check for saved RTL preference
+        if (localStorage.getItem('rtl') === 'rtl') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.classList.add('rtl');
+        }
+        
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.flex button');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active styles from all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('bg-white', 'dark:bg-dark', 'text-primary', 'shadow-sm');
+                    t.classList.add('text-gray-600', 'dark:text-gray-300');
+                });
+                
+                // Add active styles to clicked tab
+                tab.classList.remove('text-gray-600', 'dark:text-gray-300');
+                tab.classList.add('bg-white', 'dark:bg-dark', 'text-primary', 'shadow-sm');
+                
+                // Update hidden input value for login role
+                if (tab.dataset.role) {
+                    document.getElementById('loginRole').value = tab.dataset.role;
+                }
+            });
+        });
+        
+        // Role selection functionality
+        const roleButtons = document.querySelectorAll('.role-btn');
+        const selectedRoleInput = document.getElementById('selectedRole');
+        
+        roleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active styles from all buttons
+                roleButtons.forEach(btn => {
+                    btn.classList.remove('bg-white', 'dark:bg-dark', 'text-primary', 'shadow-sm');
+                    btn.classList.add('text-gray-600', 'dark:text-gray-300');
+                });
+                
+                // Add active styles to clicked button
+                button.classList.remove('text-gray-600', 'dark:text-gray-300');
+                button.classList.add('bg-white', 'dark:bg-dark', 'text-primary', 'shadow-sm');
+                
+                // Update hidden input value
+                selectedRoleInput.value = button.dataset.role;
+            });
+        });
+        
+        // Toggle between login and signup forms
+        const showSignup = document.getElementById('showSignup');
+        const showLogin = document.getElementById('showLogin');
+        const loginCard = document.querySelector('.login-card');
+        const signupCard = document.getElementById('signupCard');
+        
+        showSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginCard.classList.add('hidden');
+            signupCard.classList.remove('hidden');
+        });
+        
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupCard.classList.add('hidden');
+            loginCard.classList.remove('hidden');
+        });
+        
+        // Signup form submission
+        const signupForm = document.getElementById('signupForm');
+        if (signupForm) {
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const role = selectedRoleInput.value;
+                
+                // Here you would typically send the data to your server
+                console.log('Signup submitted with role:', role);
+                console.log('Form data:', Object.fromEntries(formData));
+                
+                // Show success message
+                alert(`Account created successfully as ${role}!`);
+                
+                // Reset form
+                this.reset();
+                
+                // Switch back to login
+                signupCard.classList.add('hidden');
+                loginCard.classList.remove('hidden');
+            });
+        }
+        
+        // Login form submission
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const role = document.getElementById('loginRole').value;
+                
+                // Here you would typically send the data to your server
+                console.log('Login submitted with role:', role);
+                console.log('Form data:', Object.fromEntries(formData));
+                
+                // Show success message
+                alert(`Logged in successfully as ${role}!`);
+                
+                // Redirect based on role
+                if (role === 'customer') {
+                    window.location.href = 'user-dashboard.html';
+                } else {
+                    window.location.href = 'admin-dashboard.html';
+                }
+            });
+        }
+    </script>
+    <!-- Roaming Food Animations -->
+    <div class="roaming-food roaming-food-1">
+        <i class="fas fa-pizza-slice text-4xl text-primary"></i>
+    </div>
+    <div class="roaming-food roaming-food-2">
+        <i class="fas fa-hamburger text-4xl text-secondary"></i>
+    </div>
+    <div class="roaming-food roaming-food-3">
+        <i class="fas fa-ice-cream text-4xl text-accent"></i>
+    </div>
+    <div class="roaming-food roaming-food-4">
+        <i class="fas fa-wine-bottle text-4xl text-primary"></i>
+    </div>
+</body>
+</html>

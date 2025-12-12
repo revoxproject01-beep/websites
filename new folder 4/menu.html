@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Feast - Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='red' d='M104 0C92.3 0 82.4 7.9 80.3 19.4l-56 240C23.8 268.6 31.2 288 
+46 288h12v224c0 17.7 14.3 32 32 32s32-14.3 32-32V288h12c14.8 0 22.2-19.4 
+22-28.6l-56-240C125.6 7.9 115.7 0 104 0zm296 0c-17.7 0-32 14.3-32 32v384c0 
+17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32z'/>
+</svg>">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8A2BE2', // Blue Violet
+                        secondary: '#FF4500', // Orange Red
+                        accent: '#00CED1', // Dark Turquoise
+                        dark: '#0A0A0A', // Deeper Black
+                        darker: '#000000' // Pure Black
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* New gradient backgrounds */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(106, 13, 173, 0.85), rgba(255, 107, 107, 0.85)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Unique card hover effect */
+        .dish-card, .testimonial-card, .menu-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(106, 13, 173, 0.15);
+        }
+        
+        .dish-card:hover, .testimonial-card:hover, .menu-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(106, 13, 173, 0.3);
+        }
+        
+        /* Navigation highlighting */
+        .text-primary.font-bold {
+            color: #8A2BE2 !important;
+            font-weight: 700 !important;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .dropdown-menu {
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dark .menu-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .menu-card {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .filter-btn.active {
+            background-color: #FF4500; /* secondary color */
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        }
+        
+        /* New slide-in animation */
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-slideInRight {
+            animation: slideInRight 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Pulse animation for buttons */
+        .animate-pulse-subtle {
+            animation: pulseSubtle 2s infinite;
+        }
+        
+        @keyframes pulseSubtle {
+            0% { box-shadow: 0 0 0 0 rgba(106, 13, 173, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(106, 13, 173, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(106, 13, 173, 0); }
+        }
+        
+        /* Roaming food animations */
+        @keyframes roamHorizontal {
+            0% { transform: translateX(-100px) translateY(0); }
+            25% { transform: translateX(25vw) translateY(-20px); }
+            50% { transform: translateX(50vw) translateY(0); }
+            75% { transform: translateX(75vw) translateY(20px); }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(0); }
+        }
+        
+        @keyframes roamVertical {
+            0% { transform: translateY(-100px) translateX(0); }
+            25% { transform: translateY(25vh) translateX(-20px); }
+            50% { transform: translateY(50vh) translateX(0); }
+            75% { transform: translateY(75vh) translateX(20px); }
+            100% { transform: translateY(calc(100vh + 100px)) translateX(0); }
+        }
+        
+        @keyframes roamDiagonal {
+            0% { transform: translate(-100px, -100px); }
+            25% { transform: translate(25vw, 25vh); }
+            50% { transform: translate(50vw, 50vh); }
+            75% { transform: translate(75vw, 75vh); }
+            100% { transform: translate(calc(100vw + 100px), calc(100vh + 100px)); }
+        }
+        
+        @keyframes floatAndRoam {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20vw, 20vh) rotate(10deg); }
+            50% { transform: translate(60vw, 40vh) rotate(0deg); }
+            75% { transform: translate(80vw, 80vh) rotate(-10deg); }
+            100% { transform: translate(100vw, 100vh) rotate(0deg); }
+        }
+        
+        .roaming-food {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.7;
+            pointer-events: none;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        .roaming-food-1 {
+            animation-name: roamHorizontal;
+            top: 15%;
+            animation-delay: 0s;
+        }
+        
+        .roaming-food-2 {
+            animation-name: roamVertical;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .roaming-food-3 {
+            animation-name: roamDiagonal;
+            animation-delay: 10s;
+        }
+        
+        .roaming-food-4 {
+            animation-name: floatAndRoam;
+            bottom: 20%;
+            animation-delay: 15s;
+        }
+        
+        .dark .bg-dark {
+            background-color: #0A0A0A;
+        }
+        
+        .dark .bg-darker {
+            background-color: #000000;
+        }
+        
+        .dark .text-darker {
+            color: #222222;
+        }
+        
+        .dark .text-dark {
+            color: #f5f5f5;
+        }
+        
+        .dark .border-dark {
+            border-color: #333;
+        }
+        
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #6A0DAD;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .veg-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .veg {
+            background-color: #4CAF50;
+        }
+        
+        .non-veg {
+            background-color: #F44336;
+        }
+        
+        /* RTL Support */
+        .rtl .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        .rtl .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .rtl .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .rtl .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        .rtl .pl-4 {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        
+        .rtl .text-right {
+            text-align: left;
+        }
+        
+        .rtl .text-left {
+            text-align: right;
+        }
+        
+        .rtl .float-right {
+            float: left;
+        }
+        
+        .rtl .float-left {
+            float: right;
+        }
+        
+        .rtl .justify-end {
+            justify-content: flex-start;
+        }
+        
+        .rtl .justify-between {
+            justify-content: space-between;
+        }
+        
+        .rtl .justify-start {
+            justify-content: flex-end;
+        }
+        
+        .rtl .left-0 {
+            left: auto;
+            right: 0;
+        }
+        
+        .rtl .right-0 {
+            right: auto;
+            left: 0;
+        }
+        
+        .rtl .ml-auto {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .rtl .mr-auto {
+            margin-right: 0;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-darker dark:text-gray-300">
+    <script>
+        // Force dark mode
+        document.documentElement.classList.add('dark');
+    </script>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-secondary dark:text-primary">
+                        <i class="fas fa-crown mr-2"></i>Royal Feast
+                    </h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-dark rounded-md shadow-lg py-2">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors">FAQ</a>
+                    <div class="dropdown relative">
+                        <a href="#" class="flex items-center font-medium hover:text-primary transition-colors">
+                            Dashboards <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute mt-2 w-40 bg-white dark:bg-dark rounded-md shadow-lg py-2">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Admin</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtlToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+    🌐
+</button>
+
+                    <a href="login.html" class="hidden md:block">
+                        <button class="bg-primary hover:bg-amber-700 text-white px-4 py-2 rounded-full transition-colors">
+                            Login
+                        </button>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuButton" class="lg:hidden text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-dark shadow-lg">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-3 pb-4">
+                  <a href="index.html" class="font-medium hover:text-primary transition-colors py-2">Home 1</a>
+                  <a href="index2.html" class="font-medium hover:text-primary transition-colors py-2">Home 2</a>
+                    <a href="menu.html" class="font-medium hover:text-primary transition-colors py-2">Menu</a>
+                    <a href="order.html" class="font-medium hover:text-primary transition-colors py-2">Order</a>
+                    <a href="contact.html" class="font-medium hover:text-primary transition-colors py-2">Contact</a>
+                    <a href="blog.html" class="font-medium hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="gallery.html" class="font-medium hover:text-primary transition-colors py-2">Gallery</a>
+                    <a href="faq.html" class="font-medium hover:text-primary transition-colors py-2">FAQ</a>
+                    <a href="user-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">User</a>
+                  <a href="admin-dashboard.html" class="font-medium hover:text-primary transition-colors py-2">Admin</a>
+                    <a href="login.html" class="font-medium hover:text-primary transition-colors py-2">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-secondary to-brown-800 h-80 flex items-center">
+        <div class="container mx-auto px-4 text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">Our Menu</h1>
+            <p class="text-xl max-w-2xl mx-auto">Discover our carefully crafted dishes made with the finest ingredients</p>
+        </div>
+    </section>
+
+    <!-- Menu Filters -->
+    <section class="py-12 bg-gray-50 dark:bg-gray-900 sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="all">
+                    All Items
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="appetizer">
+                    Appetizers
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="main">
+                    Main Course
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="dessert">
+                    Desserts
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="drink">
+                    Drinks
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="veg">
+                    Vegetarian
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white dark:bg-dark shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" data-filter="non-veg">
+                    Non-Vegetarian
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Items -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="appetizer veg">
+                    <div class="price-tag">$12</div>
+                    <img src="https://th.bing.com/th/id/OIP.M1duoBqywXMwp5bjwmWpHAHaFw?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" 
+                         alt="Bruschetta" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator veg"></span>
+                            <h3 class="text-2xl font-bold">Bruschetta</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Toasted bread topped with tomatoes, garlic, and fresh basil</p>
+                        <a href="order.html?add=Bruschetta&price=12&img=https://th.bing.com/th/id/OIP.M1duoBqywXMwp5bjwmWpHAHaFw?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="appetizer non-veg">
+                    <div class="price-tag">$16</div>
+                    <img src="https://th.bing.com/th/id/OIP.ns1yGc71xFEcE-e8jFY4igHaE7?w=302&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" 
+                         alt="Chicken Wings" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator non-veg"></span>
+                            <h3 class="text-2xl font-bold">Buffalo Wings</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Crispy chicken wings tossed in spicy buffalo sauce</p>
+                        <a href="order.html?add=Buffalo+Wings&price=16&img=https://th.bing.com/th/id/OIP.ns1yGc71xFEcE-e8jFY4igHaE7?w=302&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="main veg">
+                    <div class="price-tag">$24</div>
+                    <img src="https://th.bing.com/th/id/OIP.F48Ta-u-I74gaRY18l_8sAHaE8?w=257&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Vegetable Stir Fry" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator veg"></span>
+                            <h3 class="text-2xl font-bold">Vegetable Stir Fry</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Fresh seasonal vegetables stir-fried with ginger and soy sauce</p>
+                        <a href="order.html?add=Vegetable+Stir+Fry&price=24&img=https://th.bing.com/th/id/OIP.F48Ta-u-I74gaRY18l_8sAHaE8?w=257&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="main non-veg">
+                    <div class="price-tag">$28</div>
+                    <img src="https://th.bing.com/th/id/OIP.OcncYkFio_xqbkJ9FAvBgQHaFj?w=200&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Grilled Salmon" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator non-veg"></span>
+                            <h3 class="text-2xl font-bold">Grilled Salmon</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Wild-caught salmon with lemon herb butter and seasonal vegetables</p>
+                        <a href="order.html?add=Grilled+Salmon&price=28&img=https://th.bing.com/th/id/OIP.OcncYkFio_xqbkJ9FAvBgQHaFj?w=200&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="main non-veg">
+                    <div class="price-tag">$32</div>
+                    <img src="https://th.bing.com/th/id/OIP.qFyhsWYoQqaMMG7DJJusdwHaEK?w=323&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Ribeye Steak" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator non-veg"></span>
+                            <h3 class="text-2xl font-bold">Ribeye Steak</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">12oz ribeye steak cooked to perfection with garlic mashed potatoes</p>
+                        <a href="order.html?add=Ribeye+Steak&price=32&img=https://th.bing.com/th/id/OIP.qFyhsWYoQqaMMG7DJJusdwHaEK?w=323&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 6 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="dessert veg">
+                    <div class="price-tag">$14</div>
+                    <img src="https://th.bing.com/th/id/OIP.lxy3YPFTkKWuhMeSkhMR-AHaFh?w=270&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Chocolate Cake" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator veg"></span>
+                            <h3 class="text-2xl font-bold">Chocolate Lava Cake</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Warm chocolate cake with a molten center, served with vanilla ice cream</p>
+                        <a href="order.html?add=Chocolate+Lava+Cake&price=14&img=https://th.bing.com/th/id/OIP.lxy3YPFTkKWuhMeSkhMR-AHaFh?w=270&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 7 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="drink">
+                    <div class="price-tag">$8</div>
+                    <img src="https://th.bing.com/th/id/OIP.qFyhsWYoQqaMMG7DJJusdwHaEK?w=323&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Craft Beer" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <h3 class="text-2xl font-bold">Craft Beer</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Selection of local craft beers on tap</p>
+                        <a href="order.html?add=Craft+Beer&price=8&img=https://th.bing.com/th/id/OIP.qFyhsWYoQqaMMG7DJJusdwHaEK?w=323&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 8 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="drink">
+                    <div class="price-tag">$10</div>
+                    <img src="https://th.bing.com/th/id/OIP.R6Y1yAxnp-z9WLbjv0ph-AHaE8?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Wine" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <h3 class="text-2xl font-bold">House Wine</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Glass of our premium house red or white wine</p>
+                        <a href="order.html?add=House+Wine&price=10&img=https://th.bing.com/th/id/OIP.R6Y1yAxnp-z9WLbjv0ph-AHaE8?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 9 -->
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative" data-category="dessert non-veg">
+                    <div class="price-tag">$16</div>
+                    <img src="https://th.bing.com/th/id/OIP.ufFiflsoZUxVk5zR6ONViQHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
+                         alt="Cheesecake" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator non-veg"></span>
+                            <h3 class="text-2xl font-bold">New York Cheesecake</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Classic creamy cheesecake with berry compote</p>
+                        <a href="order.html?add=New+York+Cheesecake&price=16&img=https://th.bing.com/th/id/OIP.ufFiflsoZUxVk5zR6ONViQHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="w-full bg-primary hover:bg-amber-700 text-white py-2 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Menu Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Chef's Special Menu</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-6">Our signature dishes crafted by our executive chef</p>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative">
+                    <div class="price-tag">$38</div>
+                    <img src="https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg" 
+                         alt="Lobster Thermidor" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator non-veg"></span>
+                            <h3 class="text-2xl font-bold">Lobster Thermidor</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Succulent lobster in a creamy cognac sauce, topped with Gruyère cheese and broiled to perfection.</p>
+                        <ul class="mb-6 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-2"></i>
+                                Fresh Atlantic lobster
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-2"></i>
+                                Creamy cognac sauce
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-2"></i>
+                                Gruyère cheese topping
+                            </li>
+                        </ul>
+                        <a href="order.html?add=Lobster+Thermidor&price=38&img=https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg" class="w-full bg-primary hover:bg-amber-700 text-white py-3 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="menu-card bg-white dark:bg-dark rounded-xl shadow-lg overflow-hidden relative">
+                    <div class="price-tag">$32</div>
+                    <img src="https://png.pngtree.com/thumb_back/fh260/background/20240417/pngtree-portion-of-chicken-curry-image_15660861.jpg" 
+                         alt="Truffle Risotto" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="veg-indicator veg"></span>
+                            <h3 class="text-2xl font-bold">Truffle Risotto</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Creamy arborio rice with black truffle, parmesan, and fresh herbs.</p>
+                        <ul class="mb-6 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-2"></i>
+                                Arborio rice
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-2"></i>
+                                Black truffle shavings
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-2"></i>
+                                Parmesan cheese
+                            </li>
+                        </ul>
+                        <a href="order.html?add=Truffle+Risotto&price=32&img=https://png.pngtree.com/thumb_back/fh260/background/20240417/pngtree-portion-of-chicken-curry-image_15660861.jpg" class="w-full bg-primary hover:bg-amber-700 text-white py-3 rounded-full transition-colors text-center block">
+                            Add to Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-crown mr-3 text-primary"></i>Royal Feast
+                    </h3>
+                    <p class="text-gray-400 mb-4">Experience culinary excellence with our carefully crafted dishes made from the finest ingredients.</p>
+                   <div class="flex space-x-4 rtl:space-x-reverse">
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white">
+        <i class="fab fa-youtube"></i>
+    </a>
+</div>
+
+
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-white transition-colors">Menu</a></li>
+                        <li><a href="order.html" class="text-gray-400 hover:text-white transition-colors">Order Online</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Opening Hours</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex justify-between">
+                            <span>Monday - Thursday</span>
+                            <span>11am - 10pm</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Friday - Saturday</span>
+                            <span>11am - 11pm</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>12pm - 9pm</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers and updates</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="bg-primary hover:bg-amber-700 px-4 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Royal Feast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/globals.js"></script>
+    <script>
+        // Existing filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const menuCards = document.querySelectorAll('.menu-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get filter category
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Show/hide menu items based on filter
+                    menuCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtlToggle');
+            const rtlIcon = rtlToggle.querySelector('i') || rtlToggle;
+            
+            rtlToggle.addEventListener('click', () => {
+                const htmlElement = document.documentElement;
+                
+                if (htmlElement.getAttribute('dir') === 'rtl') {
+                    htmlElement.setAttribute('dir', 'ltr');
+                    document.body.classList.remove('rtl');
+                    if (rtlIcon.tagName === 'I') {
+                        rtlIcon.classList.remove('fa-exchange-alt');
+                        rtlIcon.classList.add('fa-exchange-alt');
+                    }
+                } else {
+                    htmlElement.setAttribute('dir', 'rtl');
+                    document.body.classList.add('rtl');
+                    if (rtlIcon.tagName === 'I') {
+                        rtlIcon.classList.remove('fa-exchange-alt');
+                        rtlIcon.classList.add('fa-exchange-alt');
+                    }
+                }
+                
+                // Save preference to localStorage
+                localStorage.setItem('rtl', htmlElement.getAttribute('dir'));
+            });
+            
+            // Check for saved RTL preference
+            if (localStorage.getItem('rtl') === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.body.classList.add('rtl');
+            }
+        });
+    </script>
+    <!-- Roaming Food Animations -->
+    <div class="roaming-food roaming-food-1">
+        <i class="fas fa-pizza-slice text-4xl text-primary"></i>
+    </div>
+    <div class="roaming-food roaming-food-2">
+        <i class="fas fa-hamburger text-4xl text-secondary"></i>
+    </div>
+    <div class="roaming-food roaming-food-3">
+        <i class="fas fa-ice-cream text-4xl text-accent"></i>
+    </div>
+    <div class="roaming-food roaming-food-4">
+        <i class="fas fa-wine-bottle text-4xl text-primary"></i>
+    </div>
+</body>
+</html>
