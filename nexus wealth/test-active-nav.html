@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Active Navigation - FinancePro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full bg-white shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-blue-900">Finance<span class="text-yellow-500">Pro</span></a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center font-medium hover:text-yellow-500 transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-gray-100">Home Version 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100">Home Version 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="font-medium hover:text-yellow-500 transition-colors">About</a>
+                    <a href="services.html" class="font-medium hover:text-yellow-500 transition-colors">Services</a>
+                    <a href="pricing.html" class="font-medium hover:text-yellow-500 transition-colors">Pricing</a>
+                    <a href="faq.html" class="font-medium hover:text-yellow-500 transition-colors">FAQ</a>
+                    <div class="relative group">
+                        <button class="flex items-center font-medium hover:text-yellow-500 transition-colors">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100">Admin Dashboard</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="font-medium hover:text-yellow-500 transition-colors">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-globe text-lg"></i>
+                    </button>
+                    <a href="login.html" class="hidden lg:inline-block bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors">Login</a>
+                    <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="lg:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-50 hidden">
+            <div class="container mx-auto px-4 py-4">
+                <div class="space-y-4">
+                    <div>
+                        <button class="flex items-center font-medium w-full text-left py-2">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="pl-4 mt-2 space-y-2">
+                            <a href="index.html" class="block py-2 hover:text-yellow-500">Home Version 1</a>
+                            <a href="index2.html" class="block py-2 hover:text-yellow-500">Home Version 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="block font-medium py-2">About</a>
+                    <a href="services.html" class="block font-medium py-2">Services</a>
+                    <a href="pricing.html" class="block font-medium py-2">Pricing</a>
+                    <a href="faq.html" class="block font-medium py-2">FAQ</a>
+                    
+                    <div>
+                        <button class="flex items-center font-medium w-full text-left py-2">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="pl-4 mt-2 space-y-2">
+                            <a href="user-dashboard.html" class="block py-2 hover:text-yellow-500">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block py-2 hover:text-yellow-500">Admin Dashboard</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="block font-medium py-2">Contact</a>
+                    <a href="login.html" class="block bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors text-center">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Active Navigation Test</h1>
+            <p class="text-xl max-w-3xl mx-auto text-blue-100">This page tests the active navigation functionality.</p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6">Navigation Test</h2>
+                <p class="text-gray-600 mb-6">The "Home" navigation item should be highlighted in yellow since this page is named test-active-nav.html and our mapping treats it as a home page.</p>
+                <p class="text-gray-600">Refresh the page to see the active state applied to the navigation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Finance<span class="text-yellow-500">Pro</span></h3>
+                    <p class="text-gray-400 mb-4">Professional financial services tailored to your business needs. Expertise you can trust.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-yellow-500 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Pricing</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Tax Planning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Accounting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Auditing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Financial Consulting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Business Advisory</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span>123 Financial District, Suite 100<br>New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-yellow-500"></i>
+                            <span>+1 (123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span>info@financepro.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 FinancePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section Balance Test - FinancePro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full bg-white shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-blue-900">Finance<span class="text-yellow-500">Pro</span></a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center font-medium hover:text-yellow-500 transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-gray-100">Home Version 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100">Home Version 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="font-medium hover:text-yellow-500 transition-colors">About</a>
+                    <a href="services.html" class="font-medium hover:text-yellow-500 transition-colors">Services</a>
+                    <a href="pricing.html" class="font-medium hover:text-yellow-500 transition-colors">Pricing</a>
+                    <a href="faq.html" class="font-medium hover:text-yellow-500 transition-colors">FAQ</a>
+                    <div class="relative group">
+                        <button class="flex items-center font-medium hover:text-yellow-500 transition-colors">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100">Admin Dashboard</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="font-medium hover:text-yellow-500 transition-colors">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-globe text-lg"></i>
+                    </button>
+                    <a href="login.html" class="hidden lg:inline-block bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors">Login</a>
+                    <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="lg:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-50 hidden">
+            <div class="container mx-auto px-4 py-4">
+                <div class="space-y-4">
+                    <div>
+                        <button class="flex items-center font-medium w-full text-left py-2">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="pl-4 mt-2 space-y-2">
+                            <a href="index.html" class="block py-2 hover:text-yellow-500">Home Version 1</a>
+                            <a href="index2.html" class="block py-2 hover:text-yellow-500">Home Version 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="block font-medium py-2">About</a>
+                    <a href="services.html" class="block font-medium py-2">Services</a>
+                    <a href="pricing.html" class="block font-medium py-2">Pricing</a>
+                    <a href="faq.html" class="block font-medium py-2">FAQ</a>
+                    
+                    <div>
+                        <button class="flex items-center font-medium w-full text-left py-2">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="pl-4 mt-2 space-y-2">
+                            <a href="user-dashboard.html" class="block py-2 hover:text-yellow-500">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block py-2 hover:text-yellow-500">Admin Dashboard</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="block font-medium py-2">Contact</a>
+                    <a href="login.html" class="block bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors text-center">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Before -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold mb-2">Before: Original Hero Section</h2>
+            </div>
+            <div class="flex flex-col md:flex-row items-start">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Expert Financial Solutions for Your Business</h1>
+                    <p class="text-xl mb-8 text-blue-100">Professional accounting, tax planning, and financial consulting services tailored to your needs.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#services" class="bg-yellow-500 text-blue-900 px-6 py-3 rounded-md font-semibold hover:bg-yellow-400 transition-colors">Our Services</a>
+                        <a href="contact.html" class="border-2 border-white px-6 py-3 rounded-md font-semibold hover:bg-white hover:text-blue-900 transition-colors">Contact Us</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Financial Consulting" class="rounded-lg shadow-xl max-w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="py-8 bg-gray-100 text-center">
+        <h3 class="text-xl font-bold text-gray-700">Improved Visual Balance</h3>
+    </div>
+
+    <!-- Hero Section - After -->
+    <section class="pt-32 pb-16 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold mb-2">After: Improved Hero Section</h2>
+            </div>
+            <div class="flex flex-col md:flex-row items-start">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Expert Financial Solutions for Your Business</h1>
+                    <p class="text-lg md:text-xl mb-6 text-blue-100">Professional accounting, tax planning, and financial consulting services tailored to your needs.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#services" class="bg-yellow-500 text-blue-900 px-5 py-2.5 rounded-md font-semibold hover:bg-yellow-400 transition-colors text-sm md:text-base">Our Services</a>
+                        <a href="contact.html" class="border-2 border-white px-5 py-2.5 rounded-md font-semibold hover:bg-white hover:text-blue-900 transition-colors text-sm md:text-base">Contact Us</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Financial Consulting" class="rounded-lg shadow-xl max-w-full h-auto w-3/4 md:w-4/5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Notes -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 text-center">Visual Balance Improvements</h2>
+                
+                <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">Key Changes Made:</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Reduced image size from full width to 80% on desktop, 75% on mobile</li>
+                        <li>Decreased vertical padding in hero section (pb-20 → pb-16)</li>
+                        <li>Reduced heading size for better proportion (text-5xl → text-4xl)</li>
+                        <li>Adjusted paragraph size and margin for better balance</li>
+                        <li>Smaller buttons with reduced padding for more compact appearance</li>
+                        <li>Added right padding to content column for better separation</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3">Benefits:</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Better visual balance between content and image</li>
+                        <li>More focus on the message rather than the image</li>
+                        <li>Improved readability with better spacing</li>
+                        <li>More professional appearance with refined proportions</li>
+                        <li>Enhanced mobile experience with appropriate sizing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Finance<span class="text-yellow-500">Pro</span></h3>
+                    <p class="text-gray-400 mb-4">Professional financial services tailored to your business needs. Expertise you can trust.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-yellow-500 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Pricing</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Tax Planning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Accounting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Auditing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Financial Consulting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">Business Advisory</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span>123 Financial District, Suite 100<br>New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-yellow-500"></i>
+                            <span>+1 (123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span>info@financepro.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 FinancePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

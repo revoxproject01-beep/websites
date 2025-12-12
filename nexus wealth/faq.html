@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - NexusWealth</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+     <nav id="navbar" class="fixed w-full bg-white shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-indigo-900 flex items-center">
+                        <i class="fas fa-chart-network text-2xl mr-2 text-purple-600"></i>
+                        Nexus<span class="text-purple-600">Wealth</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center font-medium hover:text-purple-600 transition-colors">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-indigo-50">Home Version 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-indigo-50">Home Version 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="font-medium hover:text-purple-600 transition-colors">About</a>
+                    <a href="services.html" class="font-medium hover:text-purple-600 transition-colors">Services</a>
+                    <a href="pricing.html" class="font-medium hover:text-purple-600 transition-colors">Pricing</a>
+                    <a href="faq.html" class="font-medium hover:text-purple-600 transition-colors nav-active">FAQ</a>
+                    <div class="relative group">
+                        <button class="flex items-center font-medium hover:text-purple-600 transition-colors">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-indigo-50">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-indigo-50">Admin Dashboard</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="font-medium hover:text-purple-600 transition-colors">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-indigo-100">
+                        <i class="fas fa-globe text-lg"></i>
+                    </button>
+                    <a href="login.html" class="form-btn hidden lg:inline-block bg-gradient-to-r from-indigo-700 to-purple-700 text-white px-4 py-2 rounded-md hover:from-purple-700 hover:to-indigo-700 transition-all transform hover:-translate-y-0.5 shadow-md">Login</a>
+                    <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="lg:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-50 hidden">
+            <div class="container mx-auto px-4 py-4">
+                <div class="space-y-4">
+                    <div>
+                        <button class="flex items-center font-medium w-full text-left py-2">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="pl-4 mt-2 space-y-2">
+                            <a href="index.html" class="block py-2 hover:text-purple-600">Home Version 1</a>
+                            <a href="index2.html" class="block py-2 hover:text-purple-600">Home Version 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="block font-medium py-2">About</a>
+                    <a href="services.html" class="block font-medium py-2">Services</a>
+                    <a href="pricing.html" class="block font-medium py-2">Pricing</a>
+                    <a href="faq.html" class="block font-medium py-2 nav-active">FAQ</a>
+                    
+                    <div>
+                        <button class="flex items-center font-medium w-full text-left py-2">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="pl-4 mt-2 space-y-2">
+                            <a href="user-dashboard.html" class="block py-2 hover:text-purple-600">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block py-2 hover:text-purple-600">Admin Dashboard</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="block font-medium py-2">Contact</a>
+                    <a href="login.html" class="form-btn block bg-gradient-to-r from-indigo-700 to-purple-700 text-white px-4 py-2 rounded-md hover:from-purple-700 hover:to-indigo-700 transition-all text-center shadow-md">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-indigo-900 to-purple-800 text-white relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 left-0 w-72 h-72 bg-indigo-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fadeInUp">Frequently Asked Questions</h1>
+            <p class="text-xl max-w-3xl mx-auto subtext-light animate-fadeInUp animation-delay-200">Find answers to common questions about our wealth management services</p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-20 bg-gradient-to-b from-white to-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Search Box -->
+                <div class="mb-12">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="relative">
+                            <input type="text" id="faq-search" placeholder="Search FAQs..." class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- General Questions -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-bold mb-6 text-indigo-800">General Questions</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- FAQ Item 1 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">What services does NexusWealth offer?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>We offer a comprehensive range of wealth management services including AI-powered tax planning and preparation, digital accounting and bookkeeping, blockchain auditing and compliance, investment advisory, business advisory services, and financial education. Our services are tailored to meet the specific needs of individuals, startups, small businesses, and large corporations.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">How do I get started with your services?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>Getting started is simple. You can contact us through our website, call us directly, or visit our office. We'll schedule a complimentary consultation to understand your financial needs and goals. Based on this discussion, we'll propose a customized wealth management plan tailored to your requirements.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 3 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">What makes NexusWealth different from other financial firms?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>Our differentiation lies in our AI-powered approach, personalized service, and deep industry expertise. We combine cutting-edge technology with human expertise to deliver exceptional results. Our team of certified professionals takes time to understand your unique situation and provides customized solutions that align with your wealth growth goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account & Support -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-bold mb-6 text-indigo-800">Account & Support</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- FAQ Item 4 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">How do I access my account dashboard?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>After signing up for our services, you'll receive login credentials for your personalized dashboard. You can access it by clicking the "Login" button in the top right corner of our website. If you've forgotten your password, you can reset it using the "Forgot Password" link on the login page.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 5 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">What support options are available?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>We offer multiple support channels including email, phone, and live chat during business hours. Our clients also have access to our knowledge base and community forums. Premium support is available for Enterprise plan subscribers, including priority response times and dedicated wealth advisors.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 6 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">How often will I receive financial reports?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>The frequency of financial reports depends on your service package. Starter plan subscribers receive monthly reports, Professional plan subscribers get quarterly detailed analyses, and Enterprise plan subscribers receive monthly comprehensive reports with additional insights. Custom reporting schedules can be arranged based on your wealth management needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Policies & Data Security -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-bold mb-6 text-indigo-800">Policies & Data Security</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- FAQ Item 7 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">How is my financial data protected?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>We implement bank-level security measures to protect your financial data. This includes 256-bit encryption, multi-factor authentication, regular security audits, and compliance with financial industry regulations. All data is stored in secure, SOC 2 compliant data centers with 24/7 monitoring.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 8 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">What is your refund policy?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>We offer a 30-day money-back guarantee on all our service plans. If you're not satisfied with our services within the first 30 days, you can request a full refund with no questions asked. After 30 days, refunds are prorated based on the remaining time in your billing cycle.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 9 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1">
+                            <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                                <h3 class="text-lg font-semibold">Can I cancel my subscription at any time?</h3>
+                                <i class="fas fa-chevron-down text-indigo-700 transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-6 subtext-primary hidden">
+                                <p>Yes, you can cancel your subscription at any time with no cancellation fees. We believe in earning your business every month. Simply contact our support team to process your cancellation, and you'll continue to have access to our services until the end of your current billing period.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Still Need Help -->
+                <div class="text-center py-12">
+                    <h2 class="text-2xl font-bold mb-4">Still Have Questions?</h2>
+                    <p class="subtext-primary mb-6 max-w-2xl mx-auto">Our support team is ready to help you with any additional questions you may have.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="contact.html" class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all transform hover:-translate-y-0.5 shadow-md">Contact Support</a>
+                        <a href="tel:+14155557890" class="border-2 border-indigo-700 text-indigo-700 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-all">Call Us: +1 (415) 555-7890</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-chart-network text-2xl mr-2 text-purple-400"></i>
+                        Nexus<span class="text-purple-400">Wealth</span>
+                    </h3>
+                    <p class="text-indigo-200 mb-4">Modern financial services powered by AI and expert insights to maximize your wealth potential.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-indigo-200 hover:text-purple-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-indigo-200 hover:text-purple-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-indigo-200 hover:text-purple-400"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-indigo-200 hover:text-purple-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-indigo-200 hover:text-purple-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-indigo-200 hover:text-purple-400 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-indigo-200 hover:text-purple-400 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="text-indigo-200 hover:text-purple-400 transition-colors">Pricing</a></li>
+                        <li><a href="faq.html" class="text-indigo-200 hover:text-purple-400 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-indigo-200 hover:text-purple-400 transition-colors">AI-Powered Wealth Management</a></li>
+                        <li><a href="#" class="text-indigo-200 hover:text-purple-400 transition-colors">Digital Accounting</a></li>
+                        <li><a href="#" class="text-indigo-200 hover:text-purple-400 transition-colors">Blockchain Auditing</a></li>
+                        <li><a href="#" class="text-indigo-200 hover:text-purple-400 transition-colors">Investment Advisory</a></li>
+                        <li><a href="#" class="text-indigo-200 hover:text-purple-400 transition-colors">Business Advisory</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-indigo-200">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-purple-400"></i>
+                            <span>123 Financial District, Suite 200<br>San Francisco, CA 94105</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-purple-400"></i>
+                            <span>+1 (415) 555-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-purple-400"></i>
+                            <span>info@nexuswealth.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-indigo-800 pt-8 text-center text-indigo-300">
+                <p>&copy; 2025 NexusWealth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.bg-white button').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // FAQ search functionality
+        const searchInput = document.getElementById('faq-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const faqItems = document.querySelectorAll('.bg-white');
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('h3').textContent.toLowerCase();
+                    const answer = item.querySelector('div').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
