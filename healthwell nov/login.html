@@ -1,0 +1,152 @@
+    <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to HarmonyWell - Your Wellness Journey</title>
+    <meta name="description" content="Login to HarmonyWell - your comprehensive health platform for holistic wellness, fitness, and mindfulness">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'><path fill='%234F46E5' d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' stroke='none'/></svg>">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        accent: '#FBBF24',
+                        text: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-text dark:text-gray-100 bg-white dark:bg-gray-900">
+    <!-- Navigation -->
+    <!-- Navigation -->
+
+<!-- Login Section -->
+    
+
+    <!-- Login/Register Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-accent dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-24 pb-20">
+    <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-16">
+            <!-- Logo -->
+            <div class="flex justify-center mb-6">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-xl text-primary">HarmonyWell</span>
+                </a>
+            </div>
+            <h2 class="text-2xl font-bold text-center mb-6">Welcome to HarmonyWell</h2>
+
+            <!-- Tabs -->
+            <div class="flex mb-6 border-b border-gray-200 dark:border-gray-700">
+                <button id="signinTab" class="w-1/2 py-2 text-center font-medium border-b-2 border-primary text-primary">Sign In</button>
+                <button id="registerTab" class="w-1/2 py-2 text-center font-medium hover:text-primary">Register</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="signinForm">
+                <div class="mb-4">
+                    <label for="email" class="block mb-2 text-sm font-medium">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block mb-2 text-sm font-medium">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                </div>
+                <div class="flex items-center justify-between mb-4">
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" class="mr-2"> Remember me
+                    </label>
+                    <a href="#" class="text-sm text-primary hover:underline">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-2 rounded-md hover:bg-indigo-700 transition-colors">Sign In</button>
+                <p class="mt-6 text-center text-sm text-gray-500">Don’t have an account? <a href="#" id="goRegister" class="text-primary hover:underline">Register here</a></p>
+            </form>
+
+            <!-- Register Form (Hidden Initially) -->
+            <form id="registerForm" class="hidden">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">First Name</label>
+                        <input type="text" placeholder="John" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">Last Name</label>
+                        <input type="text" placeholder="Doe" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium">Email Address</label>
+                    <input type="email" placeholder="john@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium">Password</label>
+                    <input type="password" placeholder="Create a password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium">Confirm Password</label>
+                    <input type="password" placeholder="Confirm your password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" required>
+                </div>
+                <div class="flex items-center mb-4 text-sm">
+                   <div class="flex items-center">
+                        <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="terms" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                            I agree to the <a href="#" class="text-primary hover:text-primary/80">Terms of Service</a> and <a href="#" class="text-primary hover:text-primary/80">Privacy Policy</a>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-2 rounded-md hover:bg-indigo-700 transition-colors">Create Account</button>
+                <p class="mt-6 text-center text-sm text-gray-500">Already have an account? <a href="#" id="goSignin" class="text-primary hover:underline">Sign in here</a></p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        const signinTab = document.getElementById('signinTab');
+        const registerTab = document.getElementById('registerTab');
+        const signinForm = document.getElementById('signinForm');
+        const registerForm = document.getElementById('registerForm');
+        const goRegister = document.getElementById('goRegister');
+        const goSignin = document.getElementById('goSignin');
+
+        function showSignin() {
+            signinForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+            signinTab.classList.add('border-primary','text-primary');
+            signinTab.classList.remove('hover:text-primary');
+            registerTab.classList.remove('border-primary','text-primary');
+            registerTab.classList.add('hover:text-primary');
+        }
+
+        function showRegister() {
+            registerForm.classList.remove('hidden');
+            signinForm.classList.add('hidden');
+            registerTab.classList.add('border-primary','text-primary');
+            registerTab.classList.remove('hover:text-primary');
+            signinTab.classList.remove('border-primary','text-primary');
+            signinTab.classList.add('hover:text-primary');
+        }
+
+        signinTab.addEventListener('click', showSignin);
+        registerTab.addEventListener('click', showRegister);
+        goRegister.addEventListener('click', (e)=>{ e.preventDefault(); showRegister(); });
+        goSignin.addEventListener('click', (e)=>{ e.preventDefault(); showSignin(); });
+    </script>
+    <div class="flex space-x-2"></div>
+     <!-- Footer -->
+        
+
+        <script src="js/main.js"></script>
+    </body>
+
+    </html>
