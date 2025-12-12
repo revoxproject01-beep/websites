@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PurpleTech | Innovative Technology Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+
+    <script src="rtl-toggle.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6a0dad',
+                        secondary: '#9b59b6',
+                        accent: '#e673ff',
+                        light: '#f5f0ff',
+                        dark: '#4a235a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f5f0ff;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(106, 13, 173, 0.85), rgba(155, 89, 182, 0.9)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 25px 30px -10px rgba(106, 13, 173, 0.3);
+        }
+        
+        .testimonial-card {
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 20px 25px -5px rgba(155, 89, 182, 0.3);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu {
+            transition: all 0.4s ease 0.3s;
+            transform: translateY(15px);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .rtl-toggle {
+            transition: all 0.4s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(360deg);
+        }
+        
+        /* Active page highlighting */
+        .nav-links a.active {
+            color: #6a0dad;
+            font-weight: 600;
+            border-bottom: 2px solid #6a0dad;
+        }
+        
+        .mobile-menu a.active {
+            color: #6a0dad;
+            font-weight: 600;
+            background-color: #f5f0ff;
+        }
+        
+        /* New floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* New pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* New bounce animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .bounce-animation {
+            animation: bounce 1.5s infinite;
+        }
+        
+        /* New shimmer effect */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .shimmer {
+            background: linear-gradient(to right, #6a0dad, #9b59b6, #e673ff, #9b59b6, #6a0dad);
+            background-size: 1000px 100%;
+            animation: shimmer 20s infinite linear;
+            color: white;
+        }
+        
+        /* New gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        /* RTL specific styles for navbar */
+        html[dir="rtl"] .navbar-brand {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .navbar-nav {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-actions {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        html[dir="rtl"] .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        html[dir="rtl"] .mr-4 {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        html[dir="rtl"] .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        html[dir="rtl"] .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .dropdown-menu.absolute {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .space-x-7 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        /* Mobile menu RTL */
+        html[dir="rtl"] .mobile-menu .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .mobile-menu .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Brand/Logo -->
+                <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        <span>PurpleTech</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <div class="nav-links flex items-center space-x-1">
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-primary font-bold flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white active">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 2</a>
+                            </div>
+                        </div>
+                        
+                        <a href="projects.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Projects</a>
+                        
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Admin Dashboard</a>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">About</a>
+                        <a href="contact.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Contact</a>
+                        <a href="faq.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">FAQ</a>
+                    </div>
+                </div>
+                
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center nav-actions space-x-4">
+                    <a href="login.html" class="text-primary font-bold py-2 px-4 rounded-lg hover:bg-light">Login</a>
+                    <a href="signup.html" class="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-secondary">Sign Up</a>
+                    <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Actions -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    
+                    <button id="rtlToggleMobile" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-primary text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-2 pb-3 space-y-1">
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 1</a></li>
+                        <li><a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="projects.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Projects</a></li>
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a></li>
+                <li><a href="contact.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Contact</a></li>
+                <li><a href="faq.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">FAQ</a></li>
+                <li><a href="login.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Login</a></li>
+                <li><a href="signup.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 float-animation gradient-text">Innovating the Future with PurpleTech</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto pulse-animation">We specialize in cutting-edge technology solutions with unmatched quality and attention to detail.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="bg-accent hover:bg-secondary text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 hover:shadow-lg">Our Services</a>
+                <a href="projects.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full transition duration-300">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 fade-in-up">Featured Projects</h2>
+                <div class="w-20 h-1 bg-accent mx-auto shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="overflow-hidden rounded-xl shadow-lg service-card transition duration-300 hover-lift">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="AI Platform" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">NeuralAI Platform</h3>
+                        <p class="text-gray-600 mb-4">An advanced artificial intelligence platform with machine learning capabilities and predictive analytics.</p>
+                        <a href="#" class="text-secondary font-medium flex items-center">View Details <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-xl shadow-lg service-card transition duration-300 hover-lift">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Cloud Solution" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">CloudFlow Solutions</h3>
+                        <p class="text-gray-600 mb-4">Scalable cloud infrastructure with automated deployment and monitoring capabilities.</p>
+                        <a href="#" class="text-secondary font-medium flex items-center">View Details <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-xl shadow-lg service-card transition duration-300 hover-lift">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="IoT System" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">IoT SmartConnect</h3>
+                        <p class="text-gray-600 mb-4">Internet of Things ecosystem with real-time data processing and smart device integration.</p>
+                        <a href="#" class="text-secondary font-medium flex items-center">View Details <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer comprehensive technology services tailored to meet your specific needs and exceed expectations.</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-4 shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center service-card transition duration-300 hover-tilt">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">AI Development</h3>
+                    <p class="text-gray-600">Custom artificial intelligence solutions with machine learning and deep learning capabilities.</p>
+                    <ul class="text-gray-600 text-sm mt-4 text-left">
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Machine learning models</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Natural language processing</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Computer vision systems</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md text-center service-card transition duration-300 hover-tilt">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cloud text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Cloud Solutions</h3>
+                    <p class="text-gray-600">Scalable cloud infrastructure and services for businesses of all sizes.</p>
+                    <ul class="text-gray-600 text-sm mt-4 text-left">
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Cloud migration</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Serverless architecture</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> DevOps automation</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md text-center service-card transition duration-300 hover-tilt">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">App Development</h3>
+                    <p class="text-gray-600">Custom mobile and web applications with modern frameworks and technologies.</p>
+                    <ul class="text-gray-600 text-sm mt-4 text-left">
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> iOS and Android apps</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Progressive web apps</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Cross-platform solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md text-center service-card transition duration-300 hover-tilt">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Cyber Security</h3>
+                    <p class="text-gray-600">Comprehensive security solutions to protect your digital assets and data.</p>
+                    <ul class="text-gray-600 text-sm mt-4 text-left">
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Penetration testing</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Threat monitoring</li>
+                        <li class="mb-2"><i class="fas fa-check text-accent mr-2"></i> Data encryption</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-full transition duration-300 hover:shadow-lg">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Why Choose PurpleTech</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We stand out from the competition with our commitment to excellence and customer satisfaction.</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-4 shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center hover-glow">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Expert Team</h3>
+                    <p class="text-gray-600">Our experienced professionals bring deep industry knowledge and technical expertise to every project.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center hover-glow">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Security First</h3>
+                    <p class="text-gray-600">We maintain rigorous security protocols to ensure your data and systems are always protected.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center hover-glow">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bolt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Rapid Delivery</h3>
+                    <p class="text-gray-600">We respect your time and consistently deliver projects on schedule without compromising quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Counter -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white color-shift-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 fade-in-up">
+                    <div class="text-4xl font-bold mb-2" data-countup="420">0</div>
+                    <p class="text-gray-200">Projects Completed</p>
+                </div>
+                <div class="p-6 fade-in-up">
+                    <div class="text-4xl font-bold mb-2" data-countup="8">0</div>
+                    <p class="text-gray-200">Years Experience</p>
+                </div>
+                <div class="p-6 fade-in-up">
+                    <div class="text-4xl font-bold mb-2" data-countup="250">0</div>
+                    <p class="text-gray-200">Happy Clients</p>
+                </div>
+                <div class="p-6 fade-in-up">
+                    <div class="text-4xl font-bold mb-2" data-countup="99">0</div>
+                    <p class="text-gray-200">% Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Client Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear what our satisfied clients have to say about working with us.</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-4 shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl testimonial-card hover-glow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">JD</div>
+                        <div>
+                            <h4 class="font-bold text-primary">John Davis</h4>
+                            <p class="text-gray-600 text-sm">CTO, TechInnovate Inc.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"PurpleTech delivered our AI platform on time and within budget. Their technical expertise and professionalism exceeded our expectations."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl testimonial-card hover-glow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">SR</div>
+                        <div>
+                            <h4 class="font-bold text-primary">Sarah Roberts</h4>
+                            <p class="text-gray-600 text-sm">Director, Digital Solutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Working with PurpleTech on our cloud migration was seamless. They understood our vision and brought it to life with exceptional technical skills."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl testimonial-card hover-glow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">MP</div>
+                        <div>
+                            <h4 class="font-bold text-primary">Michael Peterson</h4>
+                            <p class="text-gray-600 text-sm">Operations Manager, Global Tech</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The mobile application PurpleTech built for us has been instrumental to our operations. Their expertise in app development is unparalleled."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent News/Blog Previews -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Latest News & Insights</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Stay updated with industry trends, company news, and technology insights.</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-4 shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden hover-lift">
+                    <img src="data:image/webp;base64,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" alt="AI Trends" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">July 15, 2025</span>
+                        <h3 class="text-xl font-bold text-primary my-3">AI Trends Shaping 2025</h3>
+                        <p class="text-gray-600 mb-4">Discover how emerging AI technologies are transforming industries and business operations.</p>
+                        <a href="#" class="text-secondary font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Cybersecurity" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">June 28, 2025</span>
+                        <h3 class="text-xl font-bold text-primary my-3">Enhanced Cybersecurity Measures</h3>
+                        <p class="text-gray-600 mb-4">Learn about our commitment to data security and the new measures we've implemented.</p>
+                        <a href="#" class="text-secondary font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Cloud Computing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 12, 2025</span>
+                        <h3 class="text-xl font-bold text-primary my-3">Future of Cloud Computing</h3>
+                        <p class="text-gray-600 mb-4">Exploring how edge computing and serverless architectures are changing the landscape.</p>
+                        <a href="#" class="text-secondary font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-accent to-secondary text-white color-shift-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Start Your Project Today</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto">Get a free consultation and quote for your technology project from our expert team.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contact.html" class="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 hover:shadow-lg">Get Free Quote</a>
+                <a href="projects.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full transition duration-300">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
+                <p class="text-gray-200 max-w-2xl mx-auto">Contact us today for a free consultation and quote for your technology needs.</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-4 shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 hover-glow">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Our Location</h3>
+                    <p class="text-gray-200">123 Innovation Drive,<br>Tech City, TC 67890</p>
+                </div>
+                
+                <div class="p-6 hover-glow">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Call Us</h3>
+                    <p class="text-gray-200">(555) 123-4567<br>Mon-Fri, 9:00 AM - 6:00 PM</p>
+                </div>
+                
+                <div class="p-6 hover-glow">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Email Us</h3>
+                    <p class="text-gray-200">info@purpletech.com<br>support@purpletech.com</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="contact.html" class="bg-accent hover:bg-secondary text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block hover:shadow-lg">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        PurpleTech
+                    </h3>
+                    <p class="text-gray-400 mb-4">Innovating technology solutions since 2017 with a commitment to quality, security, and innovation in every project.</p>
+                    <div class="flex space-x-4">
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cloud Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">App Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cyber Security</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-2 w-full rounded-l text-gray-800">
+                        <button type="submit" class="bg-accent hover:bg-secondary text-white px-4 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400">© 2025 PurpleTech. All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Fix for malformed body tag -->
+    <script>
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dropdown functionality enhancement
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                let timeoutId;
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(timeoutId);
+                    const dropdownMenu = this.querySelector('.dropdown-menu');
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.remove('hidden');
+                        dropdownMenu.style.opacity = '1';
+                        dropdownMenu.style.visibility = 'visible';
+                        dropdownMenu.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    timeoutId = setTimeout(() => {
+                        const dropdownMenu = this.querySelector('.dropdown-menu');
+                        if (dropdownMenu) {
+                            dropdownMenu.style.opacity = '0';
+                            dropdownMenu.style.visibility = 'hidden';
+                            dropdownMenu.style.transform = 'translateY(10px)';
+                            // Keep the hidden class for CSS fallback
+                            setTimeout(() => {
+                                dropdownMenu.classList.add('hidden');
+                            }, 300);
+                        }
+                    }, 300); // 300ms delay before hiding
+                });
+            });
+            
+            const counters = document.querySelectorAll('[data-countup]');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-countup');
+                    const count = +counter.innerText;
+                    
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                // Trigger animation when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCount();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter.closest('section'));
+            });
+            
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton && !mobileMenuButton.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

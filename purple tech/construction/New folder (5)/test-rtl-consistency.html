@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTL Consistency Test | ConstructPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <script src="rtl-toggle.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2c5282',
+                        accent: '#e53e3e',
+                        light: '#f7fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu {
+            transition: all 0.3s ease;
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .rtl-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        /* RTL specific styles for navbar */
+        html[dir="rtl"] .navbar-brand {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .navbar-nav {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-actions {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        html[dir="rtl"] .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        html[dir="rtl"] .mr-4 {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        html[dir="rtl"] .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        html[dir="rtl"] .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .dropdown-menu.absolute {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .space-x-7 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        /* Mobile menu RTL */
+        html[dir="rtl"] .mobile-menu .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .mobile-menu .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Brand/Logo -->
+                <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-hammer mr-2"></i>
+                        <span>ConstructPro</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <div class="nav-links flex items-center space-x-1">
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 2</a>
+                            </div>
+                        </div>
+                        
+                        <a href="projects.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Projects</a>
+                        
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Admin Dashboard</a>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">About</a>
+                        <a href="contact.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Contact</a>
+                        <a href="faq.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">FAQ</a>
+                    </div>
+                </div>
+                
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center nav-actions space-x-4">
+                    <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Actions -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button id="rtlToggleMobile" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-primary text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-2 pb-3 space-y-1">
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 1</a></li>
+                        <li><a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="projects.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Projects</a></li>
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a></li>
+                <li><a href="contact.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Contact</a></li>
+                <li><a href="faq.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl font-bold text-primary mb-6">RTL Consistency Test</h1>
+                <p class="text-xl text-gray-600 mb-8">This page tests that RTL/LTR conversion works consistently across all pages.</p>
+                
+                <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-4">Test Instructions</h2>
+                    <ol class="text-left text-gray-700 space-y-3">
+                        <li>Click the globe icon in the top right corner to toggle between LTR and RTL modes</li>
+                        <li>Verify that the layout changes correctly (logo moves to the right in RTL mode)</li>
+                        <li>Check that the toggle icon changes from globe to globe-asia when in RTL mode</li>
+                        <li>Test both desktop and mobile views</li>
+                        <li>Refresh the page to ensure the preference is saved</li>
+                    </ol>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-primary text-white rounded-lg p-6">
+                        <i class="fas fa-check-circle text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Working Correctly</h3>
+                        <p>If the RTL toggle works properly, this page should behave the same as all other pages.</p>
+                    </div>
+                    
+                    <div class="bg-accent text-white rounded-lg p-6">
+                        <i class="fas fa-sync-alt text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Consistent Behavior</h3>
+                        <p>All pages should now have consistent RTL/LTR toggle functionality.</p>
+                    </div>
+                    
+                    <div class="bg-secondary text-white rounded-lg p-6">
+                        <i class="fas fa-save text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Saved Preferences</h3>
+                        <p>Your layout preference should be saved and restored on page refresh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-hammer mr-2"></i>
+                        ConstructPro
+                    </h3>
+                    <p class="text-gray-400 mb-4">Building excellence since 1995 with a commitment to quality, safety, and innovation in every project.</p>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Commercial Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Residential Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Industrial Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Renovation & Remodeling</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-2 w-full rounded-l text-gray-800">
+                        <button type="submit" class="bg-accent hover:bg-red-700 text-white px-4 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                      <p class="text-gray-400">© 2025 ConstructPro. All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

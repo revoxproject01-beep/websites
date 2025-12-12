@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTL Mobile Test | ConstructPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <script src="rtl-toggle.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2c5282',
+                        accent: '#e53e3e',
+                        light: '#f7fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .rtl-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div class="flex items-center py-4">
+                        <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                            <i class="fas fa-hammer mr-2"></i>
+                            ConstructPro
+                        </a>
+                    </div>
+                    <div class="hidden lg:flex items-center space-x-1">
+                        <a href="index.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Home</a>
+                        <a href="projects.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Projects</a>
+                        <a href="about.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">About</a>
+                        <a href="contact.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Contact</a>
+                        <a href="faq.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">FAQ</a>
+                    </div>
+                </div>
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center nav-actions space-x-4">
+                    <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="rtlToggleMobile" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-primary text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-primary mb-6">RTL Toggle Mobile Test</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">This page tests the RTL toggle functionality with the new globe icon and mobile button.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-4">How to Test</h2>
+                    <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                        <li>View this page on a mobile device or resize your browser to mobile width</li>
+                        <li>Click the hamburger menu icon to open the mobile menu</li>
+                        <li>Click the globe icon in the top navigation bar (desktop) or next to the hamburger menu (mobile)</li>
+                        <li>Notice how the layout changes between LTR and RTL</li>
+                        <li>The globe icon should change to a globe-asia icon when in RTL mode</li>
+                    </ol>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-primary text-white rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-3">LTR Layout (Default)</h3>
+                        <p>This is the default left-to-right layout. Text flows from left to right, which is standard for English and many other languages.</p>
+                    </div>
+                    
+                    <div class="bg-accent text-white rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-3">RTL Layout</h3>
+                        <p>This is the right-to-left layout. Text flows from right to left, which is used for languages like Arabic and Hebrew.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Try It Now</h2>
+                    <p class="text-gray-600 mb-8">Click the globe icon (<i class="fas fa-globe"></i>) in the top right corner to toggle between layouts.</p>
+                    <a href="index.html" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded transition duration-300 inline-block">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-hammer mr-2"></i>
+                        ConstructPro
+                    </h3>
+                    <p class="text-gray-400 mb-4">Building excellence since 1995 with a commitment to quality, safety, and innovation in every project.</p>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Commercial Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Residential Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Industrial Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Renovation & Remodeling</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-2 w-full rounded-l text-gray-800">
+                        <button type="submit" class="bg-accent hover:bg-red-700 text-white px-4 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400">© 2025 ConstructPro. All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

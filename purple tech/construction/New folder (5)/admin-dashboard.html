@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PurpleTech Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f0ff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: #e2e8f0;
+        }
+        .nav-link.active {
+            background-color: #6a0dad;
+            color: white;
+        }
+        .stat-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 25px 30px -10px rgba(106, 13, 173, 0.3);
+        }
+        .project-card {
+            transition: all 0.4s ease;
+        }
+        .project-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(155, 89, 182, 0.3);
+            transform: scale(1.02);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            .mobile-hidden {
+                display: none;
+            }
+            .mobile-full-width {
+                width: 100%;
+            }
+        }
+        /* RTL Styles */
+        .rtl-layout {
+            direction: rtl;
+        }
+        .rtl-layout .ml-2 {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+        .rtl-layout .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        .rtl-layout .ml-3 {
+            margin-left: 0;
+            margin-right: 0.75rem;
+        }
+        .rtl-layout .mr-3 {
+            margin-right: 0;
+            margin-left: 0.75rem;
+        }
+        .rtl-layout .float-right {
+            float: left;
+        }
+        .rtl-layout .float-left {
+            float: right;
+        }
+        .rtl-layout .text-right {
+            text-align: left;
+        }
+        .rtl-layout .text-left {
+            text-align: right;
+        }
+        .rtl-layout .border-l-4 {
+            border-left-width: 0;
+            border-right-width: 4px;
+        }
+        .rtl-layout .pl-3 {
+            padding-left: 0;
+            padding-right: 0.75rem;
+        }
+        .rtl-layout .pr-4 {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+        .rtl-layout .mr-1 {
+            margin-right: 0;
+            margin-left: 0.25rem;
+        }
+        .rtl-layout .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        .rtl-layout .rotate-180 {
+            transform: rotate(180deg);
+        }
+        .rotate-180 {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+        main {
+            min-height: calc(100vh - 120px);
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .full-width-container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .no-padding {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0.375rem;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-left: 4px solid transparent;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f5f9;
+            border-left: 4px solid #6a0dad;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #e2e8f0;
+        }
+        .dropbtn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+        }
+        /* Color classes to match other pages */
+        .bg-primary {
+            background-color: #6a0dad;
+        }
+        .bg-secondary {
+            background-color: #9b59b6;
+        }
+        .text-primary {
+            color: #6a0dad;
+        }
+        .text-secondary {
+            color: #9b59b6;
+        }
+        .bg-accent {
+            background-color: #e673ff;
+        }
+        .text-accent {
+            color: #e673ff;
+        }
+        .bg-light {
+            background-color: #f5f0ff;
+        }
+        .text-light {
+            color: #f5f0ff;
+        }
+        .bg-dark {
+            background-color: #4a235a;
+        }
+        .text-dark {
+            color: #4a235a;
+        }
+        
+        /* New floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* New pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* New bounce animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .bounce-animation {
+            animation: bounce 1.5s infinite;
+        }
+        
+        /* New shimmer effect */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .shimmer {
+            background: linear-gradient(to right, #6a0dad, #9b59b6, #e673ff, #9b59b6, #6a0dad);
+            background-size: 1000px 100%;
+            animation: shimmer 20s infinite linear;
+            color: white;
+        }
+        
+        /* New gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hover-tilt {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-tilt:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hover-glow {
+            transition: all 0.4s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(155, 89, 182, 0.6);
+        }
+        
+        /* Color shift background */
+        .color-shift-bg {
+            background: linear-gradient(270deg, #8e44ad, #6a0dad);
+            background-size: 400% 400%;
+            animation: colorShift 8s ease infinite;
+        }
+        
+        @keyframes colorShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        <span>PurpleTech</span>
+                    </a>
+                </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#" class="nav-link active inline-flex items-center px-1 pt-1 border-b-2 border-blue-500 text-sm font-medium">
+                            Dashboard
+                        </a>
+                        <a href="#" class="nav-link inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-gray-300">
+                            Projects
+                        </a>
+                        <a href="#" class="nav-link inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-gray-300">
+                            Team
+                        </a>
+                        <a href="#" class="nav-link inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-gray-300">
+                            Content
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                            <i class="fas fa-globe" id="rtlIcon"></i>
+                        </button>
+                    </div>
+                    <div class="hidden md:ml-4 md:flex md:items-center">
+                        <button class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+                            <span class="sr-only">View notifications</span>
+                            <i class="fas fa-bell text-xl"></i>
+                        </button>
+                        
+                        <div class="ml-3 relative">
+                            <div class="flex items-center">
+                                <div>
+                                    <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Admin+User&background=random" alt="">
+                                </div>
+                                <div class="ml-3 hidden md:block">
+                                    <div class="text-sm font-medium text-gray-700">Admin User</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ml-3 relative">
+                            <a href="index.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobileMenuButton" class="p-2 rounded-md text-gray-600 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700">
+                        <!-- Hamburger Icon -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden md:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="nav-link bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="#" class="nav-link border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
+                <a href="#" class="nav-link border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Team</a>
+                <a href="#" class="nav-link border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Content</a>
+                <a href="#" class="nav-link border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="w-full px-4 sm:px-6 lg:px-8 py-8">
+        <div class="full-width-container no-padding">
+            <!-- Dashboard Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 float-animation">Admin Dashboard</h1>
+                <p class="mt-2 text-gray-600 pulse-animation">Welcome back! Here's what's happening with your projects today.</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card bg-white rounded-xl shadow p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Projects</p>
+                            <h3 class="text-3xl font-bold mt-1">24</h3>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-project-diagram text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-green-500 text-sm flex items-center">
+                            <i class="fas fa-arrow-up mr-1"></i> 12% from last month
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="stat-card bg-white rounded-xl shadow p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Active Projects</p>
+                            <h3 class="text-3xl font-bold mt-1">18</h3>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-tasks text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-green-500 text-sm flex items-center">
+                            <i class="fas fa-arrow-up mr-1"></i> 8% from last month
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="stat-card bg-white rounded-xl shadow p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Team Members</p>
+                            <h3 class="text-3xl font-bold mt-1">32</h3>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <i class="fas fa-users text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-red-500 text-sm flex items-center">
+                            <i class="fas fa-arrow-down mr-1"></i> 2% from last month
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="stat-card bg-white rounded-xl shadow p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Pending Tasks</p>
+                            <h3 class="text-3xl font-bold mt-1">12</h3>
+                        </div>
+                        <div class="bg-yellow-100 p-3 rounded-full">
+                            <i class="fas fa-clock text-yellow-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-green-500 text-sm flex items-center">
+                            <i class="fas fa-arrow-down mr-1"></i> 5% from last month
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Project Status Distribution</h3>
+                    <canvas id="projectStatusChart" height="150"></canvas>
+                </div>
+                <div class="bg-white rounded-xl shadow p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Monthly Progress</h3>
+                    <canvas id="monthlyProgressChart" height="200"></canvas>
+                </div>
+            </div>
+            
+            <!-- Projects Section -->
+            <div class="bg-white rounded-xl shadow mb-8">
+                <div class="px-6 py-5 border-b border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Recent Projects</h3>
+                        <p class="mt-1 text-sm text-gray-500">List of your most recent construction projects</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                            <i class="fas fa-plus mr-2"></i> Add Project
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="font-medium text-gray-900">Sky Tower</div>
+                                    <div class="text-sm text-gray-500">Commercial Building</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Active
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="w-full bg-gray-200 rounded-full h-2 mr-2">
+                                            <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500">75%</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    8 Members
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
+                                    <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="font-medium text-gray-900">Metro Station</div>
+                                    <div class="text-sm text-gray-500">Infrastructure</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="w-full bg-gray-200 rounded-full h-2 mr-2">
+                                            <div class="bg-green-600 h-2 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500">100%</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    12 Members
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
+                                    <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="font-medium text-gray-900">Residential Complex</div>
+                                    <div class="text-sm text-gray-500">Housing</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="w-full bg-gray-200 rounded-full h-2 mr-2">
+                                            <div class="bg-yellow-600 h-2 rounded-full" style="width: 20%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500">20%</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    6 Members
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
+                                    <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Team Members Section -->
+            <div class="mb-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Team Members</h3>
+                        <p class="mt-1 text-sm text-gray-500">Your construction team members</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                            <i class="fas fa-user-plus mr-2"></i> Add Member
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="project-card bg-white rounded-xl shadow p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="John Doe" class="w-12 h-12 rounded-full">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">John Doe</h4>
+                                <p class="text-gray-500 text-sm">Project Manager</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div>
+                                <p class="text-gray-500">Projects</p>
+                                <p class="font-semibold">5</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Tasks</p>
+                                <p class="font-semibold">12</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Status</p>
+                                <p class="font-semibold text-green-500">Active</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded hover:bg-blue-200 text-sm">
+                                <i class="fas fa-envelope mr-1"></i> Message
+                            </button>
+                            <button class="flex-1 bg-gray-100 text-gray-600 py-2 rounded hover:bg-gray-200 text-sm">
+                                <i class="fas fa-edit mr-1"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card bg-white rounded-xl shadow p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=random" alt="Jane Smith" class="w-12 h-12 rounded-full">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Jane Smith</h4>
+                                <p class="text-gray-500 text-sm">Architect</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div>
+                                <p class="text-gray-500">Projects</p>
+                                <p class="font-semibold">8</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Tasks</p>
+                                <p class="font-semibold">7</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Status</p>
+                                <p class="font-semibold text-green-500">Active</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded hover:bg-blue-200 text-sm">
+                                <i class="fas fa-envelope mr-1"></i> Message
+                            </button>
+                            <button class="flex-1 bg-gray-100 text-gray-600 py-2 rounded hover:bg-gray-200 text-sm">
+                                <i class="fas fa-edit mr-1"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card bg-white rounded-xl shadow p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://ui-avatars.com/api/?name=Robert+Johnson&background=random" alt="Robert Johnson" class="w-12 h-12 rounded-full">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Robert Johnson</h4>
+                                <p class="text-gray-500 text-sm">Engineer</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div>
+                                <p class="text-gray-500">Projects</p>
+                                <p class="font-semibold">3</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Tasks</p>
+                                <p class="font-semibold">15</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Status</p>
+                                <p class="font-semibold text-yellow-500">On Leave</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded hover:bg-blue-200 text-sm">
+                                <i class="fas fa-envelope mr-1"></i> Message
+                            </button>
+                            <button class="flex-1 bg-gray-100 text-gray-600 py-2 rounded hover:bg-gray-200 text-sm">
+                                <i class="fas fa-edit mr-1"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+     <footer class="bg-white border-t border-gray-200 mt-8 w-full">
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-6">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:justify-start">
+                    <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        <span>PurpleTech</span>
+                    </a>
+                </div>
+                </div>
+                <div class="mt-4 md:mt-0 md:order-1">
+                    <p class="text-center text-sm text-gray-500">&copy; 2025 PurpleTech. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project Status Chart
+            const projectStatusCtx = document.getElementById('projectStatusChart').getContext('2d');
+            const projectStatusChart = new Chart(projectStatusCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Active', 'Completed', 'Pending', 'On Hold'],
+                    datasets: [{
+                        data: [18, 6, 4, 2],
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+            
+            // Monthly Progress Chart
+            const monthlyProgressCtx = document.getElementById('monthlyProgressChart').getContext('2d');
+            const monthlyProgressChart = new Chart(monthlyProgressCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Projects Completed',
+                        data: [3, 5, 4, 6, 7, 5],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 4
+                    }, {
+                        label: 'Projects Started',
+                        data: [4, 6, 5, 7, 8, 6],
+                        backgroundColor: '#8b5cf6',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Toggle RTL function
+        function toggleRTL() {
+            const htmlRoot = document.getElementById('htmlRoot');
+            const rtlIcon = document.getElementById('rtlIcon');
+            
+            if (htmlRoot.getAttribute('dir') === 'ltr') {
+                htmlRoot.setAttribute('dir', 'rtl');
+                htmlRoot.classList.add('rtl-layout');
+                rtlIcon.classList.remove('fa-globe');
+                rtlIcon.classList.add('fa-globe-asia');
+                
+                // Add animation
+                rtlIcon.classList.add('rotate-180');
+                setTimeout(() => {
+                    rtlIcon.classList.remove('rotate-180');
+                }, 300);
+            } else {
+                htmlRoot.setAttribute('dir', 'ltr');
+                htmlRoot.classList.remove('rtl-layout');
+                rtlIcon.classList.remove('fa-globe-asia');
+                rtlIcon.classList.add('fa-globe');
+                
+                // Add animation
+                rtlIcon.classList.add('rotate-180');
+                setTimeout(() => {
+                    rtlIcon.classList.remove('rotate-180');
+                }, 300);
+            }
+        }
+        
+        // Add event listener to RTL toggle button
+        document.addEventListener('DOMContentLoaded', function() {
+            const rtlToggle = document.getElementById('rtlToggle');
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', toggleRTL);
+            }
+        });
+    </script>
+    <script>
+  // Toggle mobile menu
+  const mobileMenuButton = document.getElementById("mobileMenuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  mobileMenuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+</body>
+</html>

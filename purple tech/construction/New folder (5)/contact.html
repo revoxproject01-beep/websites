@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | PurpleTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <script src="rtl-toggle.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6a0dad',
+                        secondary: '#9b59b6',
+                        accent: '#e673ff',
+                        light: '#f5f0ff',
+                        dark: '#4a235a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f5f0ff;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(106, 13, 173, 0.85), rgba(155, 89, 182, 0.9)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .contact-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 25px 30px -10px rgba(106, 13, 173, 0.3);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu {
+            transition: all 0.4s ease;
+            transform: translateY(15px);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .rtl-toggle {
+            transition: all 0.4s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(360deg);
+        }
+        
+        /* Active page highlighting */
+        .nav-links a.active {
+            color: #6a0dad;
+            font-weight: 600;
+            border-bottom: 2px solid #6a0dad;
+        }
+        
+        .mobile-menu a.active {
+            color: #6a0dad;
+            font-weight: 600;
+            background-color: #f5f0ff;
+        }
+        
+        .form-input {
+            transition: all 0.4s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #6a0dad;
+            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.2);
+        }
+        
+        .business-hours li {
+            transition: all 0.4s ease;
+        }
+        
+        .business-hours li:hover {
+            background-color: #f5f0ff;
+            padding-left: 15px;
+        }
+        
+        html[dir="rtl"] .business-hours li:hover {
+            background-color: #f5f0ff;
+            padding-left: 0;
+            padding-right: 15px;
+        }
+        
+        /* New floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* New pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* New bounce animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .bounce-animation {
+            animation: bounce 1.5s infinite;
+        }
+        
+        /* New shimmer effect */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .shimmer {
+            background: linear-gradient(to right, #6a0dad, #9b59b6, #e673ff, #9b59b6, #6a0dad);
+            background-size: 1000px 100%;
+            animation: shimmer 20s infinite linear;
+            color: white;
+        }
+        
+        /* New gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        /* RTL specific styles for navbar */
+        html[dir="rtl"] .navbar-brand {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .navbar-nav {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-actions {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        html[dir="rtl"] .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        html[dir="rtl"] .mr-4 {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        html[dir="rtl"] .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        html[dir="rtl"] .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .dropdown-menu.absolute {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .space-x-7 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        /* Mobile menu RTL */
+        html[dir="rtl"] .mobile-menu .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .mobile-menu .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Brand/Logo -->
+                <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        <span>PurpleTech</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <div class="nav-links flex items-center space-x-1">
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 2</a>
+                            </div>
+                        </div>
+                        
+                        <a href="projects.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Projects</a>
+                        
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Admin Dashboard</a>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">About</a>
+                        <a href="contact.html" class="py-4 px-3 text-primary font-bold active">Contact</a>
+                        <a href="faq.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">FAQ</a>
+                    </div>
+                </div>
+                
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center nav-actions space-x-4">
+                    <a href="login.html" class="text-primary font-bold py-2 px-4 rounded-lg hover:bg-light">Login</a>
+                    <a href="signup.html" class="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-secondary">Sign Up</a>
+                    <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Actions -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    
+                    <button id="rtlToggleMobile" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-primary text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-2 pb-3 space-y-1">
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 1</a></li>
+                        <li><a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="projects.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Projects</a></li>
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a></li>
+                <li><a href="contact.html" class="block px-4 py-2 text-base font-medium text-primary font-bold bg-light active">Contact</a></li>
+                <li><a href="faq.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">FAQ</a></li>
+                <li><a href="login.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Login</a></li>
+                <li><a href="signup.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 float-animation">Get In Touch</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto pulse-animation">We'd love to hear from you. Reach out to us for any inquiries or project discussions.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 fade-in-up">Contact Information</h2>
+                <div class="w-20 h-1 bg-accent mx-auto shimmer"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="contact-card bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Our Location</h3>
+                    <p class="text-gray-600">
+                        123 Innovation Drive<br>
+                        Tech City, TC 67890<br>
+                        United States
+                    </p>
+                </div>
+                
+                <div class="contact-card bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Call Us</h3>
+                    <p class="text-gray-600">
+                        Phone: (555) 123-4567<br>
+                        Fax: (555) 123-4568<br>
+                        Mobile: (555) 987-6543
+                    </p>
+                </div>
+                
+                <div class="contact-card bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Email Us</h3>
+                    <p class="text-gray-600">
+                        General: info@purpletech.com<br>
+                        Support: support@purpletech.com<br>
+                        Sales: sales@purpletech.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form and Map -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-full transition duration-300 hover:shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Business Hours and Map -->
+                <div>
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h3 class="text-2xl font-bold text-primary mb-6">Business Hours</h3>
+                        <ul class="business-hours space-y-3">
+                            <li class="flex justify-between py-2 border-b border-gray-200">
+                                <span class="font-medium">Monday - Friday</span>
+                                <span>9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li class="flex justify-between py-2 border-b border-gray-200">
+                                <span class="font-medium">Saturday</span>
+                                <span>10:00 AM - 4:00 PM</span>
+                            </li>
+                            <li class="flex justify-between py-2 border-b border-gray-200">
+                                <span class="font-medium">Sunday</span>
+                                <span>Closed</span>
+                            </li>
+                            <li class="flex justify-between py-2">
+                                <span class="font-medium">Holidays</span>
+                                <span>Closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-primary mb-6">Our Location</h3>
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.184133404672!2d-73.987574724525!3d40.758028871388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        PurpleTech
+                    </h3>
+                    <p class="text-gray-400 mb-4">Innovating technology solutions since 2017 with a commitment to quality, security, and innovation in every project.</p>
+                    <div class="flex space-x-4">
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cloud Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">App Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cyber Security</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-2 w-full rounded-l text-gray-800">
+                        <button type="submit" class="bg-accent hover:bg-secondary text-white px-4 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400">© 2025 PurpleTech. All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton && !mobileMenuButton.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | PurpleTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <script src="rtl-toggle.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6a0dad',
+                        secondary: '#9b59b6',
+                        accent: '#e673ff',
+                        light: '#f5f0ff',
+                        dark: '#4a235a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f5f0ff;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(106, 13, 173, 0.85), rgba(155, 89, 182, 0.9)), url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .faq-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(106, 13, 173, 0.1);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu {
+            transition: all 0.4s ease;
+            transform: translateY(15px);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .rtl-toggle {
+            transition: all 0.4s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(360deg);
+        }
+        
+        /* Active page highlighting */
+        .nav-links a.active {
+            color: #6a0dad;
+            font-weight: 600;
+            border-bottom: 2px solid #6a0dad;
+        }
+        
+        .mobile-menu a.active {
+            color: #6a0dad;
+            font-weight: 600;
+            background-color: #f5f0ff;
+        }
+        
+        /* New floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* New pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* New shimmer effect */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .shimmer {
+            background: linear-gradient(to right, #6a0dad, #9b59b6, #e673ff, #9b59b6, #6a0dad);
+            background-size: 1000px 100%;
+            animation: shimmer 20s infinite linear;
+            color: white;
+        }
+        
+        /* New gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        /* RTL specific styles for navbar */
+        html[dir="rtl"] .navbar-brand {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .navbar-nav {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-actions {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        html[dir="rtl"] .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        html[dir="rtl"] .mr-4 {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        html[dir="rtl"] .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        html[dir="rtl"] .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .dropdown-menu.absolute {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .space-x-7 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        /* Mobile menu RTL */
+        html[dir="rtl"] .mobile-menu .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .mobile-menu .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Brand/Logo -->
+                <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        <span>PurpleTech</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <div class="nav-links flex items-center space-x-1">
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 2</a>
+                            </div>
+                        </div>
+                        
+                        <a href="projects.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Projects</a>
+                        
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Admin Dashboard</a>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">About</a>
+                        <a href="contact.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Contact</a>
+                        <a href="faq.html" class="py-4 px-3 text-primary font-bold active">FAQ</a>
+                    </div>
+                </div>
+                
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center nav-actions space-x-4">
+                    <a href="login.html" class="text-primary font-bold py-2 px-4 rounded-lg hover:bg-light">Login</a>
+                    <a href="signup.html" class="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-secondary">Sign Up</a>
+                    <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Actions -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    
+                    <button id="rtlToggleMobile" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-primary text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-2 pb-3 space-y-1">
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 1</a></li>
+                        <li><a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="projects.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Projects</a></li>
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a></li>
+                <li><a href="contact.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Contact</a></li>
+                <li><a href="faq.html" class="block px-4 py-2 text-base font-medium text-primary font-bold bg-light active">FAQ</a></li>
+                <li><a href="login.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Login</a></li>
+                <li><a href="signup.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 float-animation">Frequently Asked Questions</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto pulse-animation">Find answers to common questions about our services, processes, and solutions.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 fade-in-up">Common Questions</h2>
+                <div class="w-20 h-1 bg-accent mx-auto shimmer"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-gray-50 rounded-xl p-6 mb-6 shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-primary">What services does PurpleTech offer?</h3>
+                        <i class="fas fa-chevron-down text-primary text-lg transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 hidden">
+                        <p class="text-gray-600">
+                            PurpleTech offers a comprehensive range of technology services including AI Development, 
+                            Cloud Solutions, Mobile and Web Application Development, Cybersecurity, and IT Consulting. 
+                            We tailor our solutions to meet the specific needs of each client, ensuring optimal results 
+                            and return on investment.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-gray-50 rounded-xl p-6 mb-6 shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-primary">How long does a typical project take to complete?</h3>
+                        <i class="fas fa-chevron-down text-primary text-lg transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 hidden">
+                        <p class="text-gray-600">
+                            Project timelines vary depending on complexity and scope. Simple web applications may take 
+                            4-8 weeks, while complex enterprise solutions can take 3-6 months. We provide detailed 
+                            project timelines during the initial consultation and keep you updated throughout the 
+                            development process.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-gray-50 rounded-xl p-6 mb-6 shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-primary">Do you provide ongoing support after project completion?</h3>
+                        <i class="fas fa-chevron-down text-primary text-lg transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 hidden">
+                        <p class="text-gray-600">
+                            Yes, we offer comprehensive maintenance and support packages for all our projects. 
+                            Our support includes bug fixes, updates, security patches, and performance optimization. 
+                            We also provide training and documentation to ensure your team can effectively use 
+                            and maintain the solution.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-gray-50 rounded-xl p-6 mb-6 shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-primary">How do you ensure the security of our data?</h3>
+                        <i class="fas fa-chevron-down text-primary text-lg transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 hidden">
+                        <p class="text-gray-600">
+                            Security is our top priority. We implement industry-standard security practices including 
+                            encrypted data transmission, secure authentication, regular security audits, and compliance 
+                            with regulations like GDPR and HIPAA. Our team follows strict security protocols throughout 
+                            the development lifecycle to protect your sensitive information.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-gray-50 rounded-xl p-6 mb-6 shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-primary">What technologies do you specialize in?</h3>
+                        <i class="fas fa-chevron-down text-primary text-lg transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 hidden">
+                        <p class="text-gray-600">
+                            We specialize in a wide range of modern technologies including Python, JavaScript, 
+                            React, Angular, Node.js, AWS, Docker, Kubernetes, TensorFlow, and Flutter. Our team 
+                            stays updated with the latest industry trends and best practices to deliver cutting-edge 
+                            solutions that meet your business requirements.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item bg-gray-50 rounded-xl p-6 mb-6 shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-primary">How do we get started with a project?</h3>
+                        <i class="fas fa-chevron-down text-primary text-lg transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 hidden">
+                        <p class="text-gray-600">
+                            Getting started is simple. Contact us through our website or call us directly to schedule 
+                            a free consultation. During this meeting, we'll discuss your requirements, goals, and 
+                            timeline. We'll then provide a detailed proposal outlining the scope, timeline, and cost 
+                            of your project. Once you approve the proposal, we'll begin work immediately.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white color-shift-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Still Have Questions?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto">Our team is ready to provide you with personalized answers and solutions.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contact.html" class="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 hover:shadow-lg">Contact Us</a>
+                <a href="tel:5551234567" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full transition duration-300">Call Now: (555) 123-4567</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        PurpleTech
+                    </h3>
+                    <p class="text-gray-400 mb-4">Innovating technology solutions since 2017 with a commitment to quality, security, and innovation in every project.</p>
+                    <div class="flex space-x-4">
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cloud Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">App Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cyber Security</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-2 w-full rounded-l text-gray-800">
+                        <button type="submit" class="bg-accent hover:bg-secondary text-white px-4 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400">© 2025 PurpleTech. All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const button = item.querySelector('button');
+                const icon = button.querySelector('i');
+                const content = item.querySelector('div');
+                
+                button.addEventListener('click', function() {
+                    // Toggle the visibility of the content
+                    content.classList.toggle('hidden');
+                    
+                    // Rotate the icon
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+            
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton && !mobileMenuButton.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

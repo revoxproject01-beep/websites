@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTL Debug | ConstructPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <script src="rtl-toggle.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2c5282',
+                        accent: '#e53e3e',
+                        light: '#f7fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .rtl-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        /* RTL specific styles for navbar */
+        html[dir="rtl"] .navbar-brand {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .navbar-nav {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .nav-actions {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        html[dir="rtl"] .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+        
+        html[dir="rtl"] .mr-4 {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        html[dir="rtl"] .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        html[dir="rtl"] .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .dropdown-menu.absolute {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .space-x-7 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        html[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        
+        /* Mobile menu RTL */
+        html[dir="rtl"] .mobile-menu .float-right {
+            float: left;
+        }
+        
+        html[dir="rtl"] .mobile-menu .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Brand/Logo -->
+                <div class="navbar-brand flex items-center py-4">
+                    <a href="index.html" class="text-primary font-bold text-2xl flex items-center">
+                        <i class="fas fa-hammer mr-2"></i>
+                        <span>ConstructPro</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <div class="nav-links flex items-center space-x-1">
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Home 2</a>
+                            </div>
+                        </div>
+                        
+                        <a href="projects.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Projects</a>
+                        
+                        <div class="dropdown relative group">
+                            <button class="py-4 px-3 text-gray-700 hover:text-primary font-medium flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">User Dashboard</a>
+                                <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-secondary hover:text-white">Admin Dashboard</a>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">About</a>
+                        <a href="contact.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">Contact</a>
+                        <a href="faq.html" class="py-4 px-3 text-gray-700 hover:text-primary font-medium">FAQ</a>
+                    </div>
+                </div>
+                
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center nav-actions space-x-4">
+                    <button id="rtlToggle" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Actions -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button id="rtlToggleMobile" class="rtl-toggle bg-primary text-white p-2 rounded-full">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-primary text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-2 pb-3 space-y-1">
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 1</a></li>
+                        <li><a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="projects.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Projects</a></li>
+                <li class="dropdown">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard <i class="fas fa-chevron-down float-right mt-1"></i></a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a></li>
+                <li><a href="contact.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Contact</a></li>
+                <li><a href="faq.html" class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Debug Content -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-primary mb-6">RTL Debug Page</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">This page helps debug RTL functionality issues on specific pages.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-4">Debug Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded">
+                            <h3 class="font-bold text-primary">Current Direction</h3>
+                            <p id="currentDir">ltr</p>
+                        </div>
+                        <div class="bg-white p-4 rounded">
+                            <h3 class="font-bold text-primary">RTL Toggle Status</h3>
+                            <p id="toggleStatus">Not clicked yet</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <button id="checkStatus" class="bg-primary text-white px-4 py-2 rounded">Check RTL Status</button>
+                        <button id="forceRTL" class="bg-accent text-white px-4 py-2 rounded ml-4">Force RTL</button>
+                        <button id="forceLTR" class="bg-secondary text-white px-4 py-2 rounded ml-4">Force LTR</button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-primary text-white rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-3">LTR Layout (Default)</h3>
+                        <p>Text flows from left to right. This is the standard layout for English and many other languages.</p>
+                    </div>
+                    
+                    <div class="bg-accent text-white rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-3">RTL Layout</h3>
+                        <p>Text flows from right to left. This layout is used for languages like Arabic and Hebrew.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Try It Now</h2>
+                    <p class="text-gray-600 mb-8">Click the globe icon (<i class="fas fa-globe"></i>) in the top navigation bar to toggle between layouts.</p>
+                    <a href="index.html" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded transition duration-300 inline-block">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkStatusBtn = document.getElementById('checkStatus');
+            const forceRTLBtn = document.getElementById('forceRTL');
+            const forceLTRBtn = document.getElementById('forceLTR');
+            const currentDir = document.getElementById('currentDir');
+            const toggleStatus = document.getElementById('toggleStatus');
+            
+            checkStatusBtn.addEventListener('click', function() {
+                currentDir.textContent = document.documentElement.getAttribute('dir') || 'ltr';
+                toggleStatus.textContent = 'Checked';
+            });
+            
+            forceRTLBtn.addEventListener('click', function() {
+                document.documentElement.setAttribute('dir', 'rtl');
+                currentDir.textContent = 'rtl';
+                toggleStatus.textContent = 'Forced RTL';
+                
+                // Update icons
+                const icon = document.getElementById('rtlToggle') ? document.getElementById('rtlToggle').querySelector('i') : null;
+                const iconMobile = document.getElementById('rtlToggleMobile') ? document.getElementById('rtlToggleMobile').querySelector('i') : null;
+                
+                if (icon) {
+                    icon.classList.remove('fa-globe');
+                    icon.classList.add('fa-globe-asia');
+                }
+                if (iconMobile) {
+                    iconMobile.classList.remove('fa-globe');
+                    iconMobile.classList.add('fa-globe-asia');
+                }
+            });
+            
+            forceLTRBtn.addEventListener('click', function() {
+                document.documentElement.setAttribute('dir', 'ltr');
+                currentDir.textContent = 'ltr';
+                toggleStatus.textContent = 'Forced LTR';
+                
+                // Update icons
+                const icon = document.getElementById('rtlToggle') ? document.getElementById('rtlToggle').querySelector('i') : null;
+                const iconMobile = document.getElementById('rtlToggleMobile') ? document.getElementById('rtlToggleMobile').querySelector('i') : null;
+                
+                if (icon) {
+                    icon.classList.remove('fa-globe-asia');
+                    icon.classList.add('fa-globe');
+                }
+                if (iconMobile) {
+                    iconMobile.classList.remove('fa-globe-asia');
+                    iconMobile.classList.add('fa-globe');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTL Test Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<path fill='orange' d='M432 320h-16V208c0-88.4-71.6-160-160-160S96 
+119.6 96 208v112H80c-44.2 0-80 35.8-80 80v32c0 17.7 14.3 32 
+32 32h448c17.7 0 32-14.3 32-32v-32c0-44.2-35.8-80-80-80zM160 
+208c0-61.9 39.7-114.3 96-133.1V320h-96V208zm192 112h-96V74.9c56.3 
+18.8 96 71.2 96 133.1V320z'/>
+</svg>">
+    <script src="rtl-toggle.js" defer></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-primary">RTL Test Page</h1>
+            <button id="rtlToggle" class="bg-primary text-white p-2 rounded-full">
+                <i class="fas fa-globe"></i>
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <h2 class="text-xl font-bold text-primary mb-4">Text Alignment Test</h2>
+                <p class="text-right mb-2">This text should be right-aligned in RTL mode</p>
+                <p class="text-left mb-2">This text should be left-aligned in RTL mode</p>
+                <p class="text-center">This text should remain centered in both modes</p>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <h2 class="text-xl font-bold text-primary mb-4">Margin Test</h2>
+                <div class="flex items-center mb-2">
+                    <div class="bg-primary text-white p-2 mr-4">MR</div>
+                    <span>This div has margin-right that should become margin-left in RTL</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="bg-primary text-white p-2 ml-4">ML</div>
+                    <span>This div has margin-left that should become margin-right in RTL</span>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <h2 class="text-xl font-bold text-primary mb-4">Padding Test</h2>
+                <div class="bg-white p-4 pr-6 mb-2 border-r-4 border-primary">
+                    This div has right padding and border that should flip in RTL
+                </div>
+                <div class="bg-white p-4 pl-6 border-l-4 border-primary">
+                    This div has left padding and border that should flip in RTL
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <h2 class="text-xl font-bold text-primary mb-4">Float Test</h2>
+                <div class="clearfix">
+                    <div class="float-right bg-primary text-white p-2 mr-2 mb-2">Float Right</div>
+                    <div class="float-left bg-primary text-white p-2 ml-2 mb-2">Float Left</div>
+                    <p class="mt-4">These floated elements should swap positions in RTL mode</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+            <h2 class="text-xl font-bold text-primary mb-4">Dashboard Layout Test</h2>
+            <div class="flex">
+                <div class="sidebar bg-primary text-white w-64 p-4 mr-4">
+                    <h3 class="font-bold mb-2">Sidebar</h3>
+                    <ul>
+                        <li class="mb-1">Menu Item 1</li>
+                        <li class="mb-1">Menu Item 2</li>
+                        <li class="mb-1">Menu Item 3</li>
+                    </ul>
+                </div>
+                <div class="flex-1 ml-64 bg-white p-4 border">
+                    <h3 class="font-bold mb-2">Main Content</h3>
+                    <p>This content area should shift to the left and sidebar to the right in RTL mode.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
