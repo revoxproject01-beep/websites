@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found - EstateElite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                         primary: '#3B82F6',      // Bright royal blue  
+secondary: '#FACC15',    // Warm gold  
+accent: '#E0F2FE',       // Soft sky tint  
+dark: '#111827',         // Deep gray-blue  
+'dark-blue': '#1E40AF',  // Strong navy  
+'light-gray': '#F9FAFB'  // Subtle white-gray  
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="font-sans transition-colors duration-300 dark:bg-gray-900 min-h-screen flex items-center">
+    <div class="w-full">
+        <!-- Hero Section -->
+      
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Logo -->
+            <div class="mb-8">
+                <a href="index.html" class="inline-flex items-center text-3xl font-bold text-primary">
+                    <i class="fas fa-crown mr-2"></i>EstateElite
+                </a>
+            </div>
+
+            <!-- 404 Content -->
+            <div class="mb-8">
+                <div class="text-8xl md:text-9xl font-bold text-primary mb-4">404</div>
+                <h1 class="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-4">Oops! Page Not Found</h1>
+                <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                    The page you're looking for seems to have moved, been deleted, or doesn't exist. 
+                    Let's help you find your way back to exploring exclusive properties!
+                </p>
+            </div>
+
+            <!-- Navigation Options -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <a href="index.html" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                    <i class="fas fa-home text-3xl text-primary mb-4 group-hover:scale-110 transition-transform duration-200"></i>
+                    <h3 class="text-lg font-semibold text-dark dark:text-white mb-2">Go Home</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Return to our homepage and explore exclusive properties</p>
+                </a>
+                <a href="contact.html" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                    <i class="fas fa-search text-3xl text-primary mb-4 group-hover:scale-110 transition-transform duration-200"></i>
+                    <h3 class="text-lg font-semibold text-dark dark:text-white mb-2">Search Properties</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Use our premium search to find your ideal property</p>
+                </a>
+                <a href="contact.html" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                    <i class="fas fa-phone text-3xl text-primary mb-4 group-hover:scale-110 transition-transform duration-200"></i>
+                    <h3 class="text-lg font-semibold text-dark dark:text-white mb-2">Contact Us</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Connect with our luxury specialists for exclusive access</p>
+                </a>
+            </div>
+
+            <!-- Popular Links -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-dark dark:text-white mb-6">Popular Pages</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="index.html" class="bg-primary text-white px-6 py-2 rounded-md hover:bg-dark-blue transition-colors duration-200 btn-premium">Home</a>
+                    <a href="about.html" class="bg-secondary text-dark px-6 py-2 rounded-md hover:bg-accent transition-colors duration-200 btn-premium">About Us</a>
+                    <a href="faq.html" class="border-2 border-primary text-primary px-6 py-2 rounded-md hover:bg-primary hover:text-white transition-colors duration-200 btn-premium">FAQ</a>
+                    <a href="user-dashboard.html" class="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 btn-premium">Dashboard</a>
+                </div>
+            </div>
+
+            <!-- Theme Toggles -->
+            <div class="flex justify-center space-x-4">
+                <button id="rtlToggle" class="p-3 bg-white dark:bg-gray-800 rounded-full text-gray-500 dark:text-gray-400 hover:text-primary transition-colors duration-200 shadow-lg">
+                    <i class="fas fa-globe"></i>
+                </button>
+                <div class="flex space-x-4"></div>
+                <button id="darkModeToggle" class="p-3 bg-white dark:bg-gray-800 rounded-full text-gray-500 dark:text-gray-400 hover:text-primary transition-colors duration-200 shadow-lg">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
