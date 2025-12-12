@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexusAI - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta name="keywords" content="AI tools, artificial intelligence, business automation, machine learning, data analytics, AI solutions, AI platform">
+    <meta name="author" content="NexusAI">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="© 2025 NexusAI. All rights reserved.">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="generator" content="NexusAI Website v2.0">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aitools.com/">
+    <meta property="og:title" content="AI Tools - Transform Your Business with Artificial Intelligence">
+    <meta property="og:description" content="AI Tools - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta property="og:image" content="./images/ai-tools-preview-improved.svg">
+    <meta property="og:image:alt" content="AI Tools Platform">
+    <meta property="og:site_name" content="NexusAI">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aitools.com/">
+    <meta property="twitter:title" content="AI Tools - Transform Your Business with Artificial Intelligence">
+    <meta property="twitter:description" content="AI Tools - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta property="twitter:image" content="./images/ai-tools-preview-improved.svg">
+    <meta property="twitter:image:alt" content="AI Tools Platform">
+    <meta property="twitter:site" content="@aitools">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://www.aitools.com/">
+    <link rel="alternate" hreflang="en" href="https://www.aitools.com/">
+    <link rel="author" href="https://www.aitools.com/humans.txt">
+    
+    <title>NexusAI - Transform Your Business with Artificial Intelligence</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M32 224h32v192H32c-17.7 0-32-14.3-32-32v-128c0-17.7 
+14.3-32 32-32zm544 0h32c17.7 0 32 14.3 32 32v128c0 17.7-14.3 
+32-32 32h-32V224zM400 80v48H240V80c0-26.5 21.5-48 48-48h16V0h32v32h16c26.5 
+0 48 21.5 48 48zM112 176h416c26.5 0 48 21.5 48 48v208c0 26.5-21.5 
+48-48 48H112c-26.5 0-48-21.5-48-48V224c0-26.5 21.5-48 48-48zm80 
+152a40 40 0 1 0 0-80 40 40 0 1 0 0 80zm304-40a40 40 0 1 0-80 0 40 40 
+0 1 0 80 0zm-352 96h384v48H144v-48z'/>
+</svg>">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="manifest" href="./images/site.webmanifest">
+    <meta name="theme-color" content="#ec4899">
+    
+    <!-- Stylesheets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ec4899', // pink instead of purple
+                        secondary: '#1e293b',
+                        accent: '#f472b6', // light pink
+                        light: '#ffffff', // white
+                        dark: '#0f172a',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                        // Additional colors for more variety
+                        tertiary: '#f9a8d4', // lighter pink
+                        quaternary: '#fce7f3' // very light pink
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-in-left': 'slideInLeft 0.5s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        // Additional animations
+                        'spin-slow': 'spin 8s linear infinite',
+                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'wobble': 'wobble 5s ease-in-out infinite',
+                        'flip': 'flip 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'zoom-in': 'zoomIn 0.6s ease-out',
+                        'zoom-out': 'zoomOut 0.6s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        // Additional keyframes
+                        wobble: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '25%': { transform: 'translateX(-10px)' },
+                            '75%': { transform: 'translateX(10px)' }
+                        },
+                        flip: {
+                            '0%': { transform: 'rotateY(0)' },
+                            '50%': { transform: 'rotateY(180deg)' },
+                            '100%': { transform: 'rotateY(360deg)' }
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        zoomOut: {
+                            '0%': { transform: 'scale(1)', opacity: '1' },
+                            '100%': { transform: 'scale(0.9)', opacity: '0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            to {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-top: 4px solid #ec4899;
+        }
+        
+        .testimonial-card {
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-top: 4px solid #ec4899;
+        }
+        
+        [dir="rtl"] .rtl-flip {
+            transform: scaleX(-1);
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .slide-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(236, 72, 153, 0.5);
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+        
+        .nav-active {
+            color: #ec4899;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ec4899;
+        }
+        
+        /* New Animations */
+        .animate-pop-in {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.25);
+        }
+        
+        /* Additional responsive utilities */
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+            
+            .mobile-center {
+                text-align: center;
+            }
+        }
+        
+        /* Animation delay utilities */
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-3000 {
+            animation-delay: 3s;
+        }
+    </style>
+</head>
+<body class="bg-light text-secondary">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8">
+                    <span class="font-bold text-xl text-secondary">Nexus<span class="text-primary">AI</span></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                            Home <i class="ml-1 fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2">
+                            <a href="index.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Home 1</a>
+                            <a href="index-v2.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Home 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="text-secondary hover:text-primary transition-colors">About</a>
+                    <a href="pricing.html" class="text-secondary hover:text-primary transition-colors">Pricing</a>
+                    <a href="blog.html" class="text-secondary hover:text-primary transition-colors">Blog</a>
+                    <a href="portfolio.html" class="text-secondary hover:text-primary transition-colors">Portfolio</a>
+                    <a href="faq.html" class="text-secondary hover:text-primary transition-colors">FAQ</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary transition-colors">Contact</a>
+                    
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                            Dashboard <i class="ml-1 fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2">
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-globe text-secondary"></i>
+                    </button>
+                    <a href="login.html" class="hidden md:block text-secondary hover:text-primary transition-colors">Login</a>
+                    <a href="register.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Sign Up</a>
+                    <button class="lg:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden lg:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <!-- Home links without dropdown -->
+                <a href="index.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Home 1</a>
+                <a href="index-v2.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Home 2</a>
+                
+                <a href="about.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">About</a>
+                <a href="pricing.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Pricing</a>
+                <a href="blog.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Blog</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Portfolio</a>
+                <a href="faq.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">FAQ</a>
+                <a href="contact.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Contact</a>
+                
+                <!-- Dashboard links without dropdown -->
+                <a href="user-dashboard.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">User Dashboard</a>
+                <a href="admin-dashboard.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Admin Dashboard</a>
+                
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="login.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Login</a>
+                    <a href="register.html" class="block px-3 py-2 bg-primary text-white rounded-md hover:bg-green-700 transition-colors text-center mt-2">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 slide-in">Transform Your Business with AI Tools</h1>
+                    <p class="text-xl mb-8 slide-in">Harness the power of artificial intelligence to automate tasks, gain insights, and accelerate growth.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse slide-in relative z-10">
+    <a href="#" class="bg-white text-primary font-semibold px-6 py-3 rounded-md hover:bg-gray-100 transition-colors text-center">Get Started</a>
+    <a href="#" class="border-2 border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-primary transition-colors text-center">View Demo</a>
+</div>
+
+                </div>
+                <div class="md:w-1/2 flex justify-center mt-10 sm:mt-0">
+                    <div class="relative w-80 h-80 flex items-center justify-center">
+                        <!-- Animated circles -->
+                        <div class="absolute w-64 h-64 rounded-full border-4 border-white opacity-20 animate-ping-slow"></div>
+                        <div class="absolute w-48 h-48 rounded-full border-4 border-primary opacity-30 animate-pulse"></div>
+                        <div class="absolute w-32 h-32 rounded-full border-4 border-accent opacity-40 animate-ping"></div>
+                        
+                        <!-- Floating icons -->
+                        <div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute top-0 right-0 w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-1000">
+                            <i class="fas fa-robot text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-2000">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-3000">
+                            <i class="fas fa-comments text-white text-2xl"></i>
+                        </div>
+                        
+                        <!-- Center icon -->
+                        <div class="absolute z-10 w-24 h-24 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-xl animate-pop-in">
+                            <i class="fas fa-infinity text-white text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Floating elements for extra animation -->
+                        <div class="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-accent opacity-20 animate-ping-slow"></div>
+                        <div class="absolute bottom-1/3 right-1/3 w-6 h-6 rounded-full bg-primary opacity-30 animate-wobble"></div>
+                        <div class="absolute top-1/3 right-1/4 w-4 h-4 rounded-full bg-quaternary opacity-40 animate-float"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-20 bg-gray-50 border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 slide-in">Featured AI Products</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto slide-in">Discover our cutting-edge AI solutions designed to transform your workflow and boost productivity.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white rounded-xl shadow-md p-6 transition-all duration-300 slide-in">
+                    <div class="mb-4">
+                        <img src="data:image/webp;base64,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" alt="Data Insights" class="w-full h-40 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Data Insights</h3>
+                    <p class="text-gray-600 mb-4">Advanced analytics to uncover hidden patterns and trends in your data.</p>
+                    <a href="#" class="text-primary font-semibold flex items-center">Learn More <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl shadow-md p-6 transition-all duration-300 slide-in">
+                    <div class="mb-4">
+                        <img src="https://th.bing.com/th/id/OIP.gjt0_5NmOAxot1vG3vjhzQHaE7?w=258&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Chat Assistant" class="w-full h-40 object-cover rounded-lg">
+
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Chat Assistant</h3>
+                    <p class="text-gray-600 mb-4">Intelligent conversational AI that understands and responds to customer queries.</p>
+                    <a href="#" class="text-primary font-semibold flex items-center">Learn More <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl shadow-md p-6 transition-all duration-300 slide-in">
+                    <div class="mb-4">
+                        <img src="https://th.bing.com/th/id/OIP.NZ37AD_rx_oqaAabqmHofgHaHa?w=201&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Content Generator" class="w-full h-40 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Content Generator</h3>
+                    <p class="text-gray-600 mb-4">Create high-quality content in seconds with our AI-powered writing assistant.</p>
+                    <a href="#" class="text-primary font-semibold flex items-center">Learn More <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Highlights -->
+   <section class="py-20 bg-gradient-to-r from-pink-50 to-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center">
+      
+      <div class="md:w-1/2 mb-10 md:mb-0">
+        <div class="relative w-full h-96 rounded-xl shadow-lg slide-in animate-zoom-in bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+          <!-- Animated background elements -->
+          <div class="absolute w-64 h-64 rounded-full bg-white bg-opacity-10 animate-ping-slow"></div>
+          <div class="absolute w-48 h-48 rounded-full bg-white bg-opacity-20 animate-pulse"></div>
+          <div class="absolute w-32 h-32 rounded-full bg-white bg-opacity-30 animate-float"></div>
+          
+          <!-- Central AI visualization icons -->
+          <div class="relative z-10 grid grid-cols-2 gap-6">
+            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float">
+              <i class="fas fa-brain text-white text-2xl"></i>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-1000">
+              <i class="fas fa-chart-line text-white text-2xl"></i>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-2000">
+              <i class="fas fa-robot text-white text-2xl"></i>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-3000">
+              <i class="fas fa-comments text-white text-2xl"></i>
+            </div>
+          </div>
+          
+          <!-- Central icon -->
+          <div class="absolute z-20 w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-xl animate-pop-in">
+            <i class="fas fa-infinity text-primary text-3xl"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="md:w-1/2 md:ps-12"> <!-- 👈 RTL-friendly padding -->
+        <h2 class="text-3xl font-bold mb-4 slide-in gradient-text">Special Offer for New Users</h2>
+        <p class="text-gray-600 mb-6 slide-in">
+          Join thousands of satisfied customers who have transformed their business with our AI tools. 
+          Get 30% off your first month!
+        </p>
+        
+        <ul class="mb-8 space-y-3 slide-in">
+          <li class="flex items-center animate-slide-in-left">
+            <i class="fas fa-check-circle text-primary me-3"></i> <!-- 👈 also changed to me-3 -->
+            <span>Access to all premium features</span>
+          </li>
+          <li class="flex items-center animate-slide-in-left animation-delay-2000">
+            <i class="fas fa-check-circle text-accent me-3"></i>
+            <span>24/7 expert support</span>
+          </li>
+          <li class="flex items-center animate-slide-in-left animation-delay-3000">
+            <i class="fas fa-check-circle text-quaternary me-3"></i>
+            <span>No credit card required</span>
+          </li>
+        </ul>
+        
+        <a href="#" class="bg-gradient-to-r from-primary to-accent text-white font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-all inline-block slide-in animate-pulse-slow">
+          Claim Your Discount
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+    <!-- Customer Success Stories -->
+    <section class="py-20 bg-white border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 slide-in">Customer Success Stories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto slide-in">See how businesses like yours are achieving remarkable results with our AI solutions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-8 slide-in animate-float">
+                    <div class="flex items-center mb-6">
+                        <img src="https://www.bing.com/th/id/OIP.tTsAe0QaR5t2w2iaAoTQNgHaFE?w=252&h=211&c=8&rs=1&qlt=90&o=6&cb=12&dpr=1.3&pid=3.1&rm=2" alt="Customer" class="w-16 h-16 rounded-full mr-4 animate-zoom-in">
+                        <div>
+                            <h4 class="font-bold text-lg">Sarah Johnson</h4>
+                            <p class="text-gray-600">Marketing Director, TechCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"Implementing AI Tools transformed our marketing strategy. We've seen a 40% increase in lead generation and saved over 20 hours per week on repetitive tasks."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-8 slide-in animate-float animation-delay-2000">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="w-16 h-16 rounded-full mr-4 animate-zoom-in">
+                        <div>
+                            <h4 class="font-bold text-lg">Michael Chen</h4>
+                            <p class="text-gray-600">CEO, InnovateX</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"The data insights tool helped us identify market opportunities we would have otherwise missed. Our revenue increased by 25% in just three months."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Tools -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 slide-in">Quick Access to Key Tools</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto slide-in">Get started instantly with our most popular AI-powered solutions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group slide-in h-full animate-pop-in">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 animate-wobble">
+                        <i class="fas fa-robot text-primary text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">AI Assistant</h3>
+                    <p class="text-gray-600 text-sm mb-4">Conversational AI for customer support</p>
+                </a>
+                
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group slide-in h-full animate-pop-in animation-delay-2000">
+                    <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors duration-300 animate-wobble">
+                        <i class="fas fa-chart-pie text-accent text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Analytics</h3>
+                    <p class="text-gray-600 text-sm mb-4">Deep insights from your data</p>
+                </a>
+                
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group slide-in h-full animate-pop-in animation-delay-3000">
+                    <div class="w-16 h-16 rounded-full bg-cyan-100 flex items-center justify-center mb-4 group-hover:bg-quaternary group-hover:text-white transition-colors duration-300 animate-wobble">
+                        <i class="fas fa-file-contract text-quaternary text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Document AI</h3>
+                    <p class="text-gray-600 text-sm mb-4">Process and analyze documents</p>
+                </a>
+                
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group slide-in h-full animate-pop-in animation-delay-2000">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4 group-hover:bg-tertiary group-hover:text-white transition-colors duration-300 animate-wobble">
+                        <i class="fas fa-bullhorn text-tertiary text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Marketing AI</h3>
+                    <p class="text-gray-600 text-sm mb-4">Optimize campaigns and content</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-accent text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 slide-in">Ready to Transform Your Business?</h2>
+            <p class="text-pink-100 text-xl mb-10 slide-in">Join thousands of companies already using our AI tools to drive innovation and growth.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 rtl:space-x-reverse slide-in">
+                <a href="#" class="bg-white text-primary font-bold px-8 py-4 rounded-md hover:bg-gray-100 transition-colors animate-pulse-slow">Get Started Free</a>
+                <a href="#" class="border-2 border-white text-white font-bold px-8 py-4 rounded-md hover:bg-white hover:text-primary transition-colors animate-float">Schedule a Demo</a>
+            </div>
+            <p class="text-pink-100 mt-6 slide-in">No credit card required • 14-day free trial</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white border-t border-b border-gray-200" id="faq-section">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 slide-in">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto slide-in">Everything you need to know about our AI solutions.</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden slide-in animate-slide-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left" aria-expanded="false">
+                        <span class="font-bold text-lg">How quickly can I get started with your AI tools?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-600 hidden">
+                        <p>Most of our tools can be implemented within 24 hours. Our team provides comprehensive onboarding and training to ensure a smooth transition.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden slide-in animate-slide-up animation-delay-2000">
+                    <button class="w-full flex justify-between items-center p-6 text-left" aria-expanded="false">
+                        <span class="font-bold text-lg">Do you offer custom AI solutions for specific business needs?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-600 hidden">
+                        <p>Yes, our enterprise plan includes custom AI development services. Our team works closely with you to create solutions tailored to your unique requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden slide-in animate-slide-up animation-delay-3000">
+                    <button class="w-full flex justify-between items-center p-6 text-left" aria-expanded="false">
+                        <span class="font-bold text-lg">What kind of support do you provide?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-600 hidden">
+                        <p>We offer 24/7 support through multiple channels including live chat, email, and phone. Our premium plans include dedicated account managers and priority response times.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden slide-in animate-slide-up animation-delay-2000">
+                    <button class="w-full flex justify-between items-center p-6 text-left" aria-expanded="false">
+                        <span class="font-bold text-lg">How secure is my data with your AI tools?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-600 hidden">
+                        <p>Security is our top priority. We use industry-standard encryption, regular security audits, and comply with GDPR and other data protection regulations. Your data is never shared with third parties without your explicit consent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-secondary to-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4 rtl:space-x-reverse">
+                        <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8 animate-pulse-slow">
+                        <span class="font-bold text-xl">Nexus<span class="text-accent">AI</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering businesses with cutting-edge AI solutions to drive innovation and growth.</p>
+                    <div class="flex gap-4">
+    <a href="#" class="text-gray-400 hover:text-primary text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-accent text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-quaternary text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="text-gray-400 hover:text-tertiary text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-instagram"></i></a>
+  </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">AI Assistant</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Data Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-quaternary transition-colors">Content Generator</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-tertiary transition-colors">Marketing AI</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-success transition-colors">Automation Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-quaternary transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-tertiary transition-colors">Support Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-success transition-colors">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Careers</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-quaternary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-tertiary transition-colors">Partners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-success transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 NexusAI. All rights reserved. | Proprietary and Confidential</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // RTL Toggle Functionality
+        const rtlToggle = document.getElementById('rtl-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved preference or default to LTR
+        const isRTL = localStorage.getItem('rtl') === 'true';
+        if (isRTL) {
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+        
+        rtlToggle.addEventListener('click', () => {
+            const currentDir = htmlElement.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            htmlElement.setAttribute('dir', newDir);
+            localStorage.setItem('rtl', newDir === 'rtl');
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+        
+        // Set active navigation link
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create particles for hero section
+            createParticles();
+            
+            // Set active nav item
+            setActiveNavItem();
+            
+            const slideElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            slideElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // FAQ accordion functionality
+            const faqButtons = document.querySelectorAll('#faq-section .slide-in button');
+            faqButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    
+                    content.classList.toggle('hidden');
+                    
+                    if (content.classList.contains('hidden')) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+        });
+        
+        function setActiveNavItem() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                // Remove any existing active classes
+                link.classList.remove('nav-active');
+                
+                // Check if this link matches the current page
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                    link.classList.add('nav-active');
+                    
+                    // If this link is in a dropdown, also highlight the dropdown button
+                    const parentDropdown = link.closest('.dropdown');
+                    if (parentDropdown) {
+                        const dropdownButton = parentDropdown.querySelector('button');
+                        if (dropdownButton) {
+                            dropdownButton.classList.add('nav-active');
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Create floating particles
+        function createParticles() {
+            const heroSection = document.querySelector('.hero-bg');
+            if (!heroSection) return;
+            
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles-container';
+            heroSection.appendChild(particlesContainer);
+            
+            // Create 30 particles
+            for (let i = 0; i < 30; i++) {
+                createParticle(particlesContainer);
+            }
+        }
+        
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random size between 2px and 8px
+            const size = Math.random() * 6 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            // Random animation duration between 5s and 15s
+            const duration = Math.random() * 10 + 5;
+            particle.style.animationDuration = `${duration}s`;
+            
+            // Random animation delay
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            // Random background color with opacity
+            const colors = [
+                'rgba(255, 255, 255, 0.5)',
+                'rgba(236, 72, 153, 0.3)', // pink
+                'rgba(244, 114, 182, 0.3)', // light pink
+                'rgba(249, 168, 212, 0.3)', // lighter pink
+                'rgba(252, 231, 243, 0.3)'  // very light pink
+            ];
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            container.appendChild(particle);
+            
+            // Remove particle and create new one when animation ends
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+                createParticle(container);
+            });
+        }
+    </script>
+</body>
+</html>

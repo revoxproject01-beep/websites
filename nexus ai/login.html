@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NexusAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M32 224h32v192H32c-17.7 0-32-14.3-32-32v-128c0-17.7 
+14.3-32 32-32zm544 0h32c17.7 0 32 14.3 32 32v128c0 17.7-14.3 
+32-32 32h-32V224zM400 80v48H240V80c0-26.5 21.5-48 48-48h16V0h32v32h16c26.5 
+0 48 21.5 48 48zM112 176h416c26.5 0 48 21.5 48 48v208c0 26.5-21.5 
+48-48 48H112c-26.5 0-48-21.5-48-48V224c0-26.5 21.5-48 48-48zm80 
+152a40 40 0 1 0 0-80 40 40 0 1 0 0 80zm304-40a40 40 0 1 0-80 0 40 40 
+0 1 0 80 0zm-352 96h384v48H144v-48z'/>
+</svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ec4899',
+                        secondary: '#0f172a',
+                        accent: '#f472b6',
+                        light: '#ffffff',
+                        dark: '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .auth-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .auth-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-active {
+            color: #ec4899;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ec4899;
+        }
+        
+        .social-login-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .social-login-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+        }
+        
+        [dir="rtl"] .rtl-flip {
+            transform: scaleX(-1);
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(236, 72, 153, 0.5);
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+        
+        .slide-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-light text-secondary">
+    <div class="container mx-auto px-4">
+        <div class="max-w-md mx-auto">
+                <div class="text-center mb-10 mt-8"> <!-- Changed from text-left to text-center for center alignment -->
+                    <a href="index.html" class="flex items-center justify-center space-x-2"> <!-- Added justify-center for center alignment -->
+                        <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8">
+                        <span class="font-bold text-2xl text-white">Nexus<span class="text-pink-300">AI</span></span>
+                    </a>
+                    <div class="absolute top-4 right-4">
+                        <button id="rtl-toggle" class="p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30">
+                            <i class="fas fa-globe text-white"></i>
+                        </button>
+                    </div>
+                    <p class="text-white text-opacity-80 slide-in mt-4">Sign in to your account</p> <!-- Added mt-4 for spacing below logo -->
+                </div>
+            
+            <div class="auth-card bg-white rounded-2xl shadow-xl overflow-hidden slide-in">
+                <div class="p-8">
+                    <form>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="you@example.com">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="password" class="block text-gray-700 font-medium">Password</label>
+                                <a href="#" class="text-primary text-sm hover:underline">Forgot Password?</a>
+                            </div>
+                            <input type="password" id="password" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="••••••••">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary rounded">
+                                <span class="ml-2 text-gray-700">Remember me</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition-colors mb-6">Sign In</button>
+                        
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <a href="#" class="social-login-btn flex items-center justify-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-login-btn flex items-center justify-center bg-gray-800 text-white py-2 rounded-lg hover:bg-black transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-login-btn flex items-center justify-center bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p class="text-gray-600">Don't have an account? <a href="register.html" class="text-primary font-semibold hover:underline">Sign up</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="index.html" class="text-white text-opacity-80 hover:text-white flex items-center justify-center slide-in">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // RTL Toggle Functionality
+        const rtlToggle = document.getElementById('rtl-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved preference or default to LTR
+        const isRTL = localStorage.getItem('rtl') === 'true';
+        if (isRTL) {
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+        
+        rtlToggle.addEventListener('click', () => {
+            const currentDir = htmlElement.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            htmlElement.setAttribute('dir', newDir);
+            localStorage.setItem('rtl', newDir === 'rtl');
+        });
+        
+        // Form toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set active nav item
+            setActiveNavItem();
+            
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const showRegister = document.getElementById('show-register');
+            const showLogin = document.getElementById('show-login');
+            
+            if (showRegister) {
+                showRegister.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginForm.classList.add('hidden');
+                    registerForm.classList.remove('hidden');
+                });
+            }
+            
+            if (showLogin) {
+                showLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    registerForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                });
+            }
+            
+            // Slide-in animation on scroll
+            const slideElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            slideElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        
+        function setActiveNavItem() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                // Remove any existing active classes
+                link.classList.remove('nav-active');
+                
+                // Check if this link matches the current page
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || (currentPage === '' && linkHref === 'login.html')) {
+                    link.classList.add('nav-active');
+                    
+                    // If this link is in a dropdown, also highlight the dropdown button
+                    const parentDropdown = link.closest('.dropdown');
+                    if (parentDropdown) {
+                        const dropdownButton = parentDropdown.querySelector('button');
+                        if (dropdownButton) {
+                            dropdownButton.classList.add('nav-active');
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

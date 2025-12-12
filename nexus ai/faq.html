@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexusAI - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform."
+    <meta name="keywords" content="AI tools, artificial intelligence, business automation, machine learning, data analytics, AI solutions, AI platform">
+    <meta name="author" content="NexusAI">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="© 2025 NexusAI. All rights reserved."
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="generator" content="NexusAI Website v2.0">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aitools.com/">
+    <meta property="og:title" content="AI Tools - Transform Your Business with Artificial Intelligence">
+    <meta property="og:description" content="AI Tools - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta property="og:image" content="./images/ai-tools-preview-improved.svg">
+    <meta property="og:image:alt" content="AI Tools Platform">
+    <meta property="og:site_name" content="NexusAI">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aitools.com/">
+    <meta property="twitter:title" content="AI Tools - Transform Your Business with Artificial Intelligence">
+    <meta property="twitter:description" content="AI Tools - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta property="twitter:image" content="./images/ai-tools-preview-improved.svg">
+    <meta property="twitter:image:alt" content="AI Tools Platform">
+    <meta property="twitter:site" content="@aitools">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://www.aitools.com/">
+    <link rel="alternate" hreflang="en" href="https://www.aitools.com/">
+    <link rel="author" href="https://www.aitools.com/humans.txt">
+    
+    <title>NexusAI - Transform Your Business with Artificial Intelligence</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M32 224h32v192H32c-17.7 0-32-14.3-32-32v-128c0-17.7 
+14.3-32 32-32zm544 0h32c17.7 0 32 14.3 32 32v128c0 17.7-14.3 
+32-32 32h-32V224zM400 80v48H240V80c0-26.5 21.5-48 48-48h16V0h32v32h16c26.5 
+0 48 21.5 48 48zM112 176h416c26.5 0 48 21.5 48 48v208c0 26.5-21.5 
+48-48 48H112c-26.5 0-48-21.5-48-48V224c0-26.5 21.5-48 48-48zm80 
+152a40 40 0 1 0 0-80 40 40 0 1 0 0 80zm304-40a40 40 0 1 0-80 0 40 40 
+0 1 0 80 0zm-352 96h384v48H144v-48z'/>
+</svg>">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="manifest" href="./images/site.webmanifest">
+    <meta name="theme-color" content="#ec4899">
+    
+    <!-- Stylesheets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ec4899', // pink instead of purple
+                        secondary: '#1e293b',
+                        accent: '#f472b6', // light pink
+                        light: '#ffffff', // white
+                        dark: '#0f172a',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                        // Additional colors for more variety
+                        tertiary: '#f9a8d4', // lighter pink
+                        quaternary: '#fce7f3' // very light pink
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-in-left': 'slideInLeft 0.5s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 4s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .faq-gradient {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+        }
+        
+        .faq-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .faq-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-top: 4px solid #ec4899;
+        }
+        
+        .accordion-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-btn:hover {
+            background-color: #f1f5f9;
+            border-left: 4px solid #ec4899;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.open {
+            max-height: 1000px;
+        }
+        
+        [dir="rtl"] .rtl-flip {
+            transform: scaleX(-1);
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .slide-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .help-card {
+            transition: all 0.3s ease;
+        }
+        
+        .help-card:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid #ec4899;
+        }
+        
+        .nav-active {
+            color: #ec4899;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ec4899;
+        }
+        
+        /* New Animations */
+        .animate-pop-in {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.25);
+        }
+        
+        /* Additional responsive utilities */
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+            
+            .mobile-center {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-secondary">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8">
+                    <span class="font-bold text-xl text-secondary">Nexus<span class="text-primary">AI</span></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+        <!-- Navbar Links -->
+<div class="hidden lg:flex items-center gap-8">
+    <!-- Home Dropdown -->
+    <div class="dropdown relative">
+        <button class="flex items-center text-secondary hover:text-primary transition-colors">
+            Home <i class="ms-1 fas fa-chevron-down text-xs"></i>
+        </button>
+        <div class="dropdown-menu absolute start-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2">
+            <a href="index.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Home 1</a>
+            <a href="index-v2.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Home 2</a>
+        </div>
+    </div>
+
+    <a href="about.html" class="text-secondary hover:text-primary transition-colors">About</a>
+    <a href="pricing.html" class="text-secondary hover:text-primary transition-colors">Pricing</a>
+    <a href="blog.html" class="text-secondary hover:text-primary transition-colors">Blog</a>
+    <a href="portfolio.html" class="text-secondary hover:text-primary transition-colors">Portfolio</a>
+    <a href="faq.html" class="text-secondary hover:text-primary transition-colors">FAQ</a>
+    <a href="contact.html" class="text-secondary hover:text-primary transition-colors">Contact</a>
+
+    <!-- Dashboard Dropdown -->
+    <div class="dropdown relative">
+        <button class="flex items-center text-secondary hover:text-primary transition-colors">
+            Dashboard <i class="ms-1 fas fa-chevron-down text-xs"></i>
+        </button>
+        <div class="dropdown-menu absolute start-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2">
+            <a href="user-dashboard.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">User</a>
+            <a href="admin-dashboard.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Admin</a>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar Right -->
+<div class="flex items-center gap-4">
+    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+        <i class="fas fa-globe text-secondary"></i>
+    </button>
+    <a href="login.html" class="hidden md:block text-secondary hover:text-primary transition-colors">Login</a>
+    <a href="register.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-md hover:bg-pink-700 transition-colors">Sign Up</a>
+    <button class="lg:hidden text-secondary" id="mobile-menu-button">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+</div>
+
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden lg:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <!-- Home links without dropdown -->
+                <a href="index.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Home 1</a>
+                <a href="index-v2.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Home 2</a>
+                
+                <a href="about.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">About</a>
+                <a href="pricing.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Pricing</a>
+                <a href="blog.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Blog</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Portfolio</a>
+                <a href="faq.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">FAQ</a>
+                <a href="contact.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Contact</a>
+                
+                <!-- Dashboard links without dropdown -->
+                <a href="user-dashboard.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">User Dashboard</a>
+                <a href="admin-dashboard.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Admin Dashboard</a>
+                
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="login.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Login</a>
+                    <a href="register.html" class="block px-3 py-2 bg-primary text-white rounded-md hover:bg-pink-700 transition-colors text-center mt-2">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="faq-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 slide-in">Frequently Asked Questions</h1>
+            <p class="text-xl max-w-3xl mx-auto slide-in">Find answers to common questions about our AI tools and services.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="faq-card bg-white rounded-xl shadow-md p-6 text-center slide-in">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-question-circle text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">General Questions</h3>
+                    <p class="text-gray-600">Common questions about our platform</p>
+                </div>
+                
+                <div class="faq-card bg-white rounded-xl shadow-md p-6 text-center slide-in">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-toolbox text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Using AI Tools</h3>
+                    <p class="text-gray-600">Questions about using our AI solutions</p>
+                </div>
+                
+                <div class="faq-card bg-white rounded-xl shadow-md p-6 text-center slide-in">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Pricing & Billing</h3>
+                    <p class="text-gray-600">Questions about plans and payments</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-gray-200">
+                    <button class="accordion-btn w-full flex justify-between items-center p-6 text-left">
+                        <span class="font-bold text-lg">What is AI Tools and how does it work?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>AI Tools is a comprehensive platform that provides businesses with access to cutting-edge artificial intelligence solutions. Our platform offers a variety of AI-powered tools including content generation, data analysis, customer support automation, and more. Simply sign up, choose the tools you need, and start integrating AI into your workflows immediately.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-gray-200">
+                    <button class="accordion-btn w-full flex justify-between items-center p-6 text-left">
+                        <span class="font-bold text-lg">Do I need technical expertise to use your AI tools?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>No technical expertise is required! Our AI tools are designed with user-friendly interfaces that make them accessible to everyone. Whether you're a business owner, marketer, content creator, or analyst, you can start using our tools immediately. For more advanced users, we also provide API access and detailed documentation for custom integrations.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-gray-200">
+                    <button class="accordion-btn w-full flex justify-between items-center p-6 text-left">
+                        <span class="font-bold text-lg">How secure is my data when using your AI tools?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Security is our top priority. We implement industry-standard encryption for data transmission and storage. All data is processed in secure environments with regular security audits. We never share your data with third parties without your explicit consent. Additionally, you retain full ownership of your data and can request its deletion at any time.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="border-b border-gray-200">
+                    <button class="accordion-btn w-full flex justify-between items-center p-6 text-left">
+                        <span class="font-bold text-lg">What are the differences between your pricing plans?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>We offer three main plans: Free, Pro, and Enterprise. The Free plan includes basic access to our tools with limited usage. The Pro plan unlocks all features with higher usage limits and priority support. The Enterprise plan provides unlimited access, custom features, dedicated support, and advanced security options. All plans include a 14-day free trial with no credit card required.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="border-b border-gray-200">
+                    <button class="accordion-btn w-full flex justify-between items-center p-6 text-left">
+                        <span class="font-bold text-lg">Can I integrate your AI tools with my existing software?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Yes, absolutely! We provide robust API access for all our tools, allowing seamless integration with your existing software stack. Our developer documentation includes detailed guides, code samples, and SDKs for popular programming languages. We also offer pre-built integrations with common business tools like CRM systems, marketing platforms, and productivity suites.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div>
+                    <button class="accordion-btn w-full flex justify-between items-center p-6 text-left">
+                        <span class="font-bold text-lg">How often do you update your AI models?</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>We continuously improve our AI models through regular updates and retraining. Minor updates happen weekly to improve performance and fix issues. Major model updates are released quarterly with significant improvements in accuracy, capabilities, and efficiency. All updates are backward compatible to ensure your workflows continue to function smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Need Help -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4 slide-in">Still Need Help?</h2>
+            <p class="text-gray-600 text-xl mb-12 slide-in">Our support team is ready to assist you with any questions.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-8 help-card slide-in">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-comments text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Live Chat</h3>
+                    <p class="text-gray-600 mb-6">Get instant answers from our support team during business hours.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">Chat Now <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-8 help-card slide-in">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Email Support</h3>
+                    <p class="text-gray-600 mb-6">Send us a detailed message and we'll respond within 24 hours.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">Send Email <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-8 help-card slide-in">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-book text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Documentation</h3>
+                    <p class="text-gray-600 mb-6">Browse our comprehensive guides and tutorials.</p>
+                    <a href="#" class="text-primary font-semibold inline-flex items-center">View Docs <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4 rtl:space-x-reverse">
+                        <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8 animate-pulse-slow">
+                        <span class="font-bold text-xl">Nexus<span class="text-accent">AI</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering businesses with cutting-edge AI solutions to drive innovation and growth.</p>
+                   <div class="flex gap-4">
+    <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a>
+  </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI Assistant</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Data Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Content Generator</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Marketing AI</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Automation Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Partners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 NexusAI. All rights reserved. | Proprietary and Confidential</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // RTL Toggle Functionality
+        const rtlToggle = document.getElementById('rtl-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved preference or default to LTR
+        const isRTL = localStorage.getItem('rtl') === 'true';
+        if (isRTL) {
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+        
+        rtlToggle.addEventListener('click', () => {
+            const currentDir = htmlElement.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            htmlElement.setAttribute('dir', newDir);
+            localStorage.setItem('rtl', newDir === 'rtl');
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+        
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set active nav item
+            setActiveNavItem();
+            
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+            
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('i');
+                    
+                    // Toggle the content
+                    content.classList.toggle('open');
+                    
+                    // Toggle the icon
+                    if (content.classList.contains('open')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Slide-in animation on scroll
+            const slideElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            slideElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        
+        function setActiveNavItem() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                // Remove any existing active classes
+                link.classList.remove('nav-active');
+                
+                // Check if this link matches the current page
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || (currentPage === '' && linkHref === 'faq.html')) {
+                    link.classList.add('nav-active');
+                    
+                    // If this link is in a dropdown, also highlight the dropdown button
+                    const parentDropdown = link.closest('.dropdown');
+                    if (parentDropdown) {
+                        const dropdownButton = parentDropdown.querySelector('button');
+                        if (dropdownButton) {
+                            dropdownButton.classList.add('nav-active');
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

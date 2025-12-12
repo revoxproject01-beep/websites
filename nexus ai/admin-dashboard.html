@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - NexusAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M32 224h32v192H32c-17.7 0-32-14.3-32-32v-128c0-17.7 
+14.3-32 32-32zm544 0h32c17.7 0 32 14.3 32 32v128c0 17.7-14.3 
+32-32 32h-32V224zM400 80v48H240V80c0-26.5 21.5-48 48-48h16V0h32v32h16c26.5 
+0 48 21.5 48 48zM112 176h416c26.5 0 48 21.5 48 48v208c0 26.5-21.5 
+48-48 48H112c-26.5 0-48-21.5-48-48V224c0-26.5 21.5-48 48-48zm80 
+152a40 40 0 1 0 0-80 40 40 0 1 0 0 80zm304-40a40 40 0 1 0-80 0 40 40 
+0 1 0 80 0zm-352 96h384v48H144v-48z'/>
+</svg>">
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ec4899',
+                        secondary: '#0f172a',
+                        accent: '#f472b6',
+                        light: '#ffffff',
+                        dark: '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        
+        html[dir="rtl"] .sidebar {
+            right: 0;
+            left: auto;
+        }
+        
+        html[dir="rtl"] .sidebar.collapsed {
+            transform: translateX(100%);
+        }
+        
+        @media (min-width: 768px) {
+            .sidebar.collapsed {
+                transform: none;
+                width: 80px;
+            }
+            
+            html[dir="rtl"] .sidebar.collapsed {
+                transform: none;
+            }
+            
+            .sidebar.collapsed .sidebar-text {
+                display: none;
+            }
+            
+            .sidebar.collapsed .logo-text {
+                display: none;
+            }
+            
+            .sidebar.collapsed .logo-icon {
+                display: block;
+            }
+        }
+        
+        /* Mobile-specific fixes for RTL */
+        @media (max-width: 767px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar:not(.collapsed) {
+                transform: translateX(0);
+            }
+            
+            html[dir="rtl"] .sidebar {
+                transform: translateX(100%);
+                right: 0;
+                left: auto;
+            }
+            
+            html[dir="rtl"] .sidebar:not(.collapsed) {
+                transform: translateX(0);
+            }
+            
+            html[dir="rtl"] .sidebar.collapsed {
+                transform: translateX(100%);
+            }
+        }
+        
+        /* Ensure sidebar is hidden by default on mobile */
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        /* Mobile-specific dropdown positioning */
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                right: 0 !important;
+                left: auto !important;
+                max-width: calc(100vw - 2rem);
+            }
+            
+            /* RTL specific positioning for mobile */
+            html[dir="rtl"] .dropdown-menu {
+                right: 0 !important;
+                left: auto !important;
+            }
+        }
+        
+        .rtl-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .notification-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* RTL-specific spacing for margin classes */
+        html[dir="rtl"] .mr-1 { margin-right: 0; margin-left: 0.25rem; }
+        html[dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
+        html[dir="rtl"] .mr-3 { margin-right: 0; margin-left: 0.75rem; }
+        html[dir="rtl"] .mr-4 { margin-right: 0; margin-left: 1rem; }
+        html[dir="rtl"] .mr-5 { margin-right: 0; margin-left: 1.25rem; }
+        html[dir="rtl"] .mr-6 { margin-right: 0; margin-left: 1.5rem; }
+        
+        /* RTL-specific spacing for all flex space-x classes */
+        html[dir="rtl"] .flex[class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(var(--space-x) * var(--tw-space-x-reverse));
+            margin-left: calc(var(--space-x) * calc(1 - var(--tw-space-x-reverse)));
+        }
+        
+        /* Define space-x values */
+        html[dir="rtl"] .flex.space-x-1 { --space-x: 0.25rem; }
+        html[dir="rtl"] .flex.space-x-2 { --space-x: 0.5rem; }
+        html[dir="rtl"] .flex.space-x-3 { --space-x: 0.75rem; }
+        html[dir="rtl"] .flex.space-x-4 { --space-x: 1rem; }
+        html[dir="rtl"] .flex.space-x-5 { --space-x: 1.25rem; }
+        html[dir="rtl"] .flex.space-x-6 { --space-x: 1.5rem; }
+        html[dir="rtl"] .flex.space-x-7 { --space-x: 1.75rem; }
+        html[dir="rtl"] .flex.space-x-8 { --space-x: 2rem; }
+        html[dir="rtl"] .flex.space-x-9 { --space-x: 2.25rem; }
+        html[dir="rtl"] .flex.space-x-10 { --space-x: 2.5rem; }
+        html[dir="rtl"] .flex.space-x-11 { --space-x: 2.75rem; }
+        html[dir="rtl"] .flex.space-x-12 { --space-x: 3rem; }
+        html[dir="rtl"] .flex.space-x-14 { --space-x: 3.5rem; }
+        html[dir="rtl"] .flex.space-x-16 { --space-x: 4rem; }
+        html[dir="rtl"] .flex.space-x-20 { --space-x: 5rem; }
+        html[dir="rtl"] .flex.space-x-24 { --space-x: 6rem; }
+        html[dir="rtl"] .flex.space-x-28 { --space-x: 7rem; }
+        html[dir="rtl"] .flex.space-x-32 { --space-x: 8rem; }
+        html[dir="rtl"] .flex.space-x-36 { --space-x: 9rem; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar bg-dark text-white w-64 fixed h-full md:relative md:h-screen z-10 collapsed">
+            <div class="p-5 flex items-center justify-between border-b border-gray-800">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8">
+                    <span class="text-2xl font-bold logo-text">Nexus<span class="text-primary">AI</span></span>
+                </a>
+                <button id="sidebar-toggle" class="md:hidden text-gray-400">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="p-4">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Admin User" class="w-full h-full object-cover">
+                    </div>
+                    <div class="sidebar-text">
+                        <p class="font-bold">Admin User</p>
+                        <p class="text-gray-400 text-sm">admin@aitools.com</p>
+                    </div>
+                </div>
+                
+                <nav>
+                    <a href="#" class="flex items-center p-3 bg-primary rounded-lg mb-2">
+                        <i class="fas fa-tachometer-alt mr-3"></i>
+                        <span class="sidebar-text">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-users mr-3"></i>
+                        <span class="sidebar-text">Manage Users</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-robot mr-3"></i>
+                        <span class="sidebar-text">AI Tools</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-chart-line mr-3"></i>
+                        <span class="sidebar-text">Usage Analytics</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-file-alt mr-3"></i>
+                        <span class="sidebar-text">Content Management</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-bell mr-3"></i>
+                        <span class="sidebar-text">Notifications</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-chart-bar mr-3"></i>
+                        <span class="sidebar-text">Reports</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg mb-2">
+                        <i class="fas fa-cog mr-3"></i>
+                        <span class="sidebar-text">Settings</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center">
+                        <button id="mobile-sidebar-toggle" class="md:hidden text-gray-700 mr-4">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1 class="text-2xl font-bold text-dark">AI Tools</h1>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button id="rtl-toggle" class="rtl-toggle text-gray-700 mr-4">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        
+                        <div class="relative mr-4">
+                            <button class="text-gray-700 relative">
+                                <i class="fas fa-bell text-xl"></i>
+                                <span class="notification-badge absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full text-white text-xs flex items-center justify-center">3</span>
+                            </button>
+                        </div>
+                        
+                        <div class="relative dropdown">
+                            <button class="flex items-center">
+                                <div class="w-10 h-10 rounded-full overflow-hidden mr-2">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Admin User" class="w-full h-full object-cover">
+                                </div>
+                                <span class="hidden md:inline">Admin User</span>
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden" style="min-width: 12rem;">
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a>
+                                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="stat-card bg-white p-6 rounded-xl shadow">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Total Users</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">1,248</h3>
+                                <p class="text-green-500 mt-1"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-sm text-gray-500">Active: 1,120 | Inactive: 128</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card bg-white p-6 rounded-xl shadow">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Active AI Tools</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">24</h3>
+                                <p class="text-green-500 mt-1"><i class="fas fa-arrow-up"></i> 5% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-robot text-green-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-sm text-gray-500">New: 6 | Popular: 18</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card bg-white p-6 rounded-xl shadow">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">API Requests</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">1.2M</h3>
+                                <p class="text-green-500 mt-1"><i class="fas fa-arrow-up"></i> 15% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-exchange-alt text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-sm text-gray-500">Avg Response: 42ms</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card bg-white p-6 rounded-xl shadow">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Revenue</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">$24,560</h3>
+                                <p class="text-green-500 mt-1"><i class="fas fa-arrow-up"></i> 18% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-dollar-sign text-purple-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-sm text-gray-500">Target: $30,000 | Progress: 82%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity and Notifications -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <!-- Recent Activity -->
+                    <div class="bg-white rounded-xl shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-bold text-dark">Recent Activity</h2>
+                            <a href="#" class="text-primary text-sm font-medium">View All</a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-user-plus text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New user registered</p>
+                                    <p class="text-gray-600 text-sm">John Doe registered as a new client</p>
+                                    <p class="text-gray-400 text-xs mt-1">2 minutes ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-robot text-green-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New AI tool deployed</p>
+                                    <p class="text-gray-600 text-sm">Content Generator v2.0 is now available</p>
+                                    <p class="text-gray-400 text-xs mt-1">1 hour ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-exclamation-circle text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">High API usage detected</p>
+                                    <p class="text-gray-600 text-sm">Chat Assistant API nearing rate limit</p>
+                                    <p class="text-gray-400 text-xs mt-1">3 hours ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-file-alt text-purple-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Documentation updated</p>
+                                    <p class="text-gray-600 text-sm">API documentation for Data Insights</p>
+                                    <p class="text-gray-400 text-xs mt-1">Yesterday</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-ticket-alt text-red-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Support ticket closed</p>
+                                    <p class="text-gray-600 text-sm">Issue with Content Generator resolved</p>
+                                    <p class="text-gray-400 text-xs mt-1">2 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="bg-white rounded-xl shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-bold text-dark">Notifications</h2>
+                            <a href="#" class="text-primary text-sm font-medium">View All</a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start p-4 bg-blue-50 rounded-lg">
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-info-circle text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">System Update</p>
+                                    <p class="text-gray-600 text-sm">Scheduled maintenance this weekend</p>
+                                    <p class="text-gray-400 text-xs mt-1">1 day ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-yellow-50 rounded-lg">
+                                <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-exclamation-triangle text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Security Alert</p>
+                                    <p class="text-gray-600 text-sm">Unusual login activity detected</p>
+                                    <p class="text-gray-400 text-xs mt-1">2 days ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-green-50 rounded-lg">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-robot text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New AI Tool Available</p>
+                                    <p class="text-gray-600 text-sm">Marketing AI v3.0 now accessible to all users</p>
+                                    <p class="text-gray-400 text-xs mt-1">3 days ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-purple-50 rounded-lg">
+                                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-chart-line text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Usage Spike</p>
+                                    <p class="text-gray-600 text-sm">Data Insights tool usage up 40% this week</p>
+                                    <p class="text-gray-400 text-xs mt-1">1 week ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-red-50 rounded-lg">
+                                <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-bell-slash text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Service Alert</p>
+                                    <p class="text-gray-600 text-sm">Chat Assistant API rate limiting active</p>
+                                    <p class="text-gray-400 text-xs mt-1">1 week ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Manage Sections -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Manage Users -->
+                    <div class="bg-white rounded-xl shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-bold text-dark">Manage Users</h2>
+                            <a href="#" class="text-primary text-sm font-medium">View All</a>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+                                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="John Doe" class="w-full h-full object-cover">
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">John Doe</div>
+                                                    <div class="text-sm text-gray-500">john@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Client</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="#" class="text-primary hover:text-secondary mr-3">Edit</a>
+                                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+                                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sarah Johnson" class="w-full h-full object-cover">
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                    <div class="text-sm text-gray-500">sarah@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Client</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="#" class="text-primary hover:text-secondary mr-3">Edit</a>
+                                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+                                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Mike Wilson" class="w-full h-full object-cover">
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Mike Wilson</div>
+                                                    <div class="text-sm text-gray-500">mike@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="#" class="text-primary hover:text-secondary mr-3">Edit</a>
+                                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+                                                    <img src="data:image/webp;base64,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" alt="Emily Davis" class="w-full h-full object-cover">
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Emily Davis</div>
+                                                    <div class="text-sm text-gray-500">emily@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Client</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="#" class="text-primary hover:text-secondary mr-3">Edit</a>
+                                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <button class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                                <i class="fas fa-plus mr-2"></i> Add New User
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-xl shadow p-6">
+                        <h2 class="text-xl font-bold text-dark mb-6">Quick Actions</h2>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-project-diagram text-white"></i>
+                                </div>
+                                <span class="font-medium">New Project</span>
+                            </a>
+                            
+                            <a href="#" class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-file-invoice text-white"></i>
+                                </div>
+                                <span class="font-medium">Generate Report</span>
+                            </a>
+                            
+                            <a href="#" class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-bullhorn text-white"></i>
+                                </div>
+                                <span class="font-medium">Send Notification</span>
+                            </a>
+                            
+                            <a href="#" class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-cog text-white"></i>
+                                </div>
+                                <span class="font-medium">System Settings</span>
+                            </a>
+                        </div>
+                        
+                        <!-- System Status -->
+                        <div class="mt-8">
+                            <h3 class="text-lg font-bold text-dark mb-4">System Status</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                        <span>Database</span>
+                                    </div>
+                                    <span class="text-green-600 font-medium">Operational</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                        <span>Web Server</span>
+                                    </div>
+                                    <span class="text-green-600 font-medium">Operational</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                                        <span>Backup Service</span>
+                                    </div>
+                                    <span class="text-yellow-600 font-medium">Degraded</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                        <span>Email Service</span>
+                                    </div>
+                                    <span class="text-green-600 font-medium">Operational</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Projects -->
+                <div class="mt-8 bg-white rounded-xl shadow p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-dark">Recent Projects</h2>
+                        <a href="#" class="text-primary text-sm font-medium">View All</a>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">E-commerce Platform</div>
+                                        <div class="text-sm text-gray-500">TechCorp Inc.</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Doe</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Oct 15, 2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">Mobile Banking App</div>
+                                        <div class="text-sm text-gray-500">FinSecure Ltd.</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sarah Johnson</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">In Progress</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Nov 30, 2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">Cloud Migration</div>
+                                        <div class="text-sm text-gray-500">Global Solutions</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mike Wilson</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Nov 10, 2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">CRM System</div>
+                                        <div class="text-sm text-gray-500">Innovate Inc.</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Emily Davis</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Delayed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-red-500 h-2 rounded-full" style="width: 40%"></div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dec 5, 2025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sidebar toggle functionality
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+            
+            // Function to initialize sidebar state based on screen size
+            function initializeSidebar() {
+                if (sidebar) {
+                    // On mobile, sidebar should be collapsed by default
+                    // On desktop, sidebar should be expanded by default
+                    if (window.innerWidth < 768) {
+                        // Mobile - keep collapsed
+                        sidebar.classList.add('collapsed');
+                    } else {
+                        // Desktop - expand by default
+                        sidebar.classList.remove('collapsed');
+                    }
+                    
+                    // Handle RTL-specific behavior
+                    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                    if (isRTL && window.innerWidth < 768) {
+                        // Reinitialize sidebar positioning for RTL on mobile
+                        if (sidebar.classList.contains('collapsed')) {
+                            sidebar.style.transform = 'translateX(100%)';
+                        } else {
+                            sidebar.style.transform = 'translateX(0)';
+                        }
+                    } else if (window.innerWidth < 768) {
+                        // LTR mobile
+                        if (sidebar.classList.contains('collapsed')) {
+                            sidebar.style.transform = 'translateX(-100%)';
+                        } else {
+                            sidebar.style.transform = 'translateX(0)';
+                        }
+                    } else {
+                        // Desktop - reset transform
+                        sidebar.style.transform = '';
+                    }
+                }
+            }
+            
+            // Initialize sidebar on page load
+            initializeSidebar();
+            
+            // Function to toggle sidebar
+            function toggleSidebar() {
+                if (sidebar) {
+                    sidebar.classList.toggle('collapsed');
+                    
+                    // Handle RTL-specific behavior
+                    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                    if (isRTL && window.innerWidth < 768) {
+                        // Reinitialize sidebar positioning for RTL on mobile
+                        if (sidebar.classList.contains('collapsed')) {
+                            sidebar.style.transform = 'translateX(100%)';
+                        } else {
+                            sidebar.style.transform = 'translateX(0)';
+                        }
+                    } else if (window.innerWidth < 768) {
+                        // LTR mobile
+                        if (sidebar.classList.contains('collapsed')) {
+                            sidebar.style.transform = 'translateX(-100%)';
+                        } else {
+                            sidebar.style.transform = 'translateX(0)';
+                        }
+                    } else {
+                        // Desktop - reset transform
+                        sidebar.style.transform = '';
+                    }
+                }
+            }
+            
+            // Add event listeners for sidebar toggles
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            
+            if (mobileSidebarToggle) {
+                mobileSidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            
+            // RTL toggle functionality
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const htmlElement = document.documentElement;
+            
+            // Check for saved direction preference on page load
+            const savedDirection = localStorage.getItem('aitools_direction');
+            if (savedDirection === 'rtl') {
+                htmlElement.setAttribute('dir', 'rtl');
+                
+                // Reinitialize sidebar after setting RTL
+                setTimeout(() => {
+                    if (sidebar && window.innerWidth < 768) {
+                        if (sidebar.classList.contains('collapsed')) {
+                            sidebar.style.transform = 'translateX(100%)';
+                        }
+                    }
+                }, 50);
+            }
+            
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', function() {
+                    // Toggle direction
+                    const currentDir = htmlElement.getAttribute('dir');
+                    const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+                    htmlElement.setAttribute('dir', newDir);
+                    localStorage.setItem('aitools_direction', newDir);
+                    
+                    // Reinitialize sidebar positioning after RTL toggle
+                    setTimeout(() => {
+                        if (sidebar && window.innerWidth < 768) {
+                            const isRTL = htmlElement.getAttribute('dir') === 'rtl';
+                            if (sidebar.classList.contains('collapsed')) {
+                                sidebar.style.transform = isRTL ? 'translateX(100%)' : 'translateX(-100%)';
+                            } else {
+                                sidebar.style.transform = 'translateX(0)';
+                            }
+                        } else if (sidebar) {
+                            // Desktop - reset transform
+                            sidebar.style.transform = '';
+                        }
+                    }, 50);
+                });
+            }
+            
+            // Handle window resize to ensure proper sidebar positioning
+            window.addEventListener('resize', () => {
+                initializeSidebar();
+            });
+            
+            // User growth chart period buttons
+            // More direct approach - select all chart containers and target the second one
+            const chartContainers = document.querySelectorAll('.grid.grid-cols-1.lg\\:grid-cols-2.gap-6.mb-8 .bg-white.rounded-xl.shadow.p-6');
+            if (chartContainers.length >= 2) {
+                // Target the second chart (user growth chart)
+                const userGrowthChart = chartContainers[1];
+                const userGrowthPeriodButtons = userGrowthChart.querySelectorAll('.flex.space-x-2 button');
+                
+                userGrowthPeriodButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons in this chart
+                        userGrowthPeriodButtons.forEach(btn => {
+                            btn.classList.remove('bg-primary', 'text-white');
+                            btn.classList.add('bg-gray-100');
+                        });
+                        
+                        // Add active class to clicked button
+                        this.classList.remove('bg-gray-100');
+                        this.classList.add('bg-primary', 'text-white');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

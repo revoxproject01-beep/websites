@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexusAI - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform."
+    <meta name="keywords" content="AI tools, artificial intelligence, business automation, machine learning, data analytics, AI solutions, AI platform">
+    <meta name="author" content="NexusAI">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="© 2025 NexusAI. All rights reserved."
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="generator" content="NexusAI Website v2.0">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aitools.com/">
+    <meta property="og:title" content="AI Tools - Transform Your Business with Artificial Intelligence">
+    <meta property="og:description" content="AI Tools - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta property="og:image" content="./images/ai-tools-preview-improved.svg">
+    <meta property="og:image:alt" content="AI Tools Platform">
+    <meta property="og:site_name" content="NexusAI">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aitools.com/">
+    <meta property="twitter:title" content="AI Tools - Transform Your Business with Artificial Intelligence">
+    <meta property="twitter:description" content="AI Tools - Transform your business with cutting-edge artificial intelligence solutions. Automate tasks, gain insights, and accelerate growth with our AI-powered platform.">
+    <meta property="twitter:image" content="./images/ai-tools-preview-improved.svg">
+    <meta property="twitter:image:alt" content="AI Tools Platform">
+    <meta property="twitter:site" content="@aitools">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://www.aitools.com/">
+    <link rel="alternate" hreflang="en" href="https://www.aitools.com/">
+    <link rel="author" href="https://www.aitools.com/humans.txt">
+    
+    <title>NexusAI - Transform Your Business with Artificial Intelligence</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M32 224h32v192H32c-17.7 0-32-14.3-32-32v-128c0-17.7 
+14.3-32 32-32zm544 0h32c17.7 0 32 14.3 32 32v128c0 17.7-14.3 
+32-32 32h-32V224zM400 80v48H240V80c0-26.5 21.5-48 48-48h16V0h32v32h16c26.5 
+0 48 21.5 48 48zM112 176h416c26.5 0 48 21.5 48 48v208c0 26.5-21.5 
+48-48 48H112c-26.5 0-48-21.5-48-48V224c0-26.5 21.5-48 48-48zm80 
+152a40 40 0 1 0 0-80 40 40 0 1 0 0 80zm304-40a40 40 0 1 0-80 0 40 40 
+0 1 0 80 0zm-352 96h384v48H144v-48z'/>
+</svg>">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="manifest" href="./images/site.webmanifest">
+    <meta name="theme-color" content="#ec4899">
+    
+    <!-- Stylesheets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ec4899', // pink instead of purple
+                        secondary: '#1e293b',
+                        accent: '#f472b6', // light pink
+                        light: '#ffffff', // white
+                        dark: '#0f172a',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                        // Additional colors for more variety
+                        tertiary: '#f9a8d4', // lighter pink
+                        quaternary: '#fce7f3' // very light pink
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-in-left': 'slideInLeft 0.5s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        // Additional animations
+                        'spin-slow': 'spin 8s linear infinite',
+                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'wobble': 'wobble 5s ease-in-out infinite',
+                        'flip': 'flip 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'zoom-in': 'zoomIn 0.6s ease-out',
+                        'zoom-out': 'zoomOut 0.6s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        // Additional keyframes
+                        wobble: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '25%': { transform: 'translateX(-10px)' },
+                            '75%': { transform: 'translateX(10px)' }
+                        },
+                        flip: {
+                            '0%': { transform: 'rotateY(0)' },
+                            '50%': { transform: 'rotateY(180deg)' },
+                            '100%': { transform: 'rotateY(360deg)' }
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        zoomOut: {
+                            '0%': { transform: 'scale(1)', opacity: '1' },
+                            '100%': { transform: 'scale(0.9)', opacity: '0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            to {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-top: 4px solid #ec4899;
+        }
+        
+        .testimonial-card {
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-top: 4px solid #ec4899;
+        }
+        
+        [dir="rtl"] .rtl-flip {
+            transform: scaleX(-1);
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .slide-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(236, 72, 153, 0.5);
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+        
+        .nav-active {
+            color: #ec4899;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ec4899;
+        }
+        
+        /* New Animations */
+        .animate-pop-in {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.25);
+        }
+        
+        /* Additional responsive utilities */
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+            
+            .mobile-center {
+                text-align: center;
+            }
+        }
+        
+        /* Animation delay utilities */
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-3000 {
+            animation-delay: 3s;
+        }
+    </style>
+</head>
+<body class="bg-light text-secondary">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8">
+                    <span class="font-bold text-xl text-secondary">Nexus<span class="text-primary">AI</span></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                            Home <i class="ml-1 fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2">
+                            <a href="index.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Home 1</a>
+                            <a href="index-v2.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white nav-active">Home 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="text-secondary hover:text-primary transition-colors">About</a>
+                    <a href="pricing.html" class="text-secondary hover:text-primary transition-colors">Pricing</a>
+                    <a href="blog.html" class="text-secondary hover:text-primary transition-colors">Blog</a>
+                    <a href="portfolio.html" class="text-secondary hover:text-primary transition-colors">Portfolio</a>
+                    <a href="faq.html" class="text-secondary hover:text-primary transition-colors">FAQ</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary transition-colors">Contact</a>
+                    
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                            Dashboard <i class="ml-1 fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2">
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-secondary hover:bg-primary hover:text-white">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-globe text-secondary"></i>
+                    </button>
+                    <a href="login.html" class="hidden md:block text-secondary hover:text-primary transition-colors">Login</a>
+                    <a href="register.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Sign Up</a>
+                    <button class="lg:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden lg:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <!-- Home links without dropdown -->
+                <a href="index.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Home 1</a>
+                <a href="index-v2.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors nav-active">Home 2</a>
+                
+                <a href="about.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">About</a>
+                <a href="pricing.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Pricing</a>
+                <a href="blog.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Blog</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Portfolio</a>
+                <a href="faq.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">FAQ</a>
+                <a href="contact.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Contact</a>
+                
+                <!-- Dashboard links without dropdown -->
+                <a href="user-dashboard.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">User Dashboard</a>
+                <a href="admin-dashboard.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Admin Dashboard</a>
+                
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="login.html" class="block px-3 py-2 text-secondary hover:text-primary transition-colors">Login</a>
+                    <a href="register.html" class="block px-3 py-2 bg-primary text-white rounded-md hover:bg-green-700 transition-colors text-center mt-2">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 slide-in">Advanced AI Solutions for Modern Businesses</h1>
+                    <p class="text-xl mb-8 slide-in">Leverage cutting-edge artificial intelligence to streamline operations, enhance decision-making, and unlock new growth opportunities.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse slide-in relative z-10">
+                        <a href="#" class="bg-white text-primary font-semibold px-6 py-3 rounded-md hover:bg-gray-100 transition-colors text-center">Start Free Trial</a>
+                        <a href="#" class="border-2 border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-primary transition-colors text-center">View Case Studies</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center mt-10 sm:mt-0">
+                    <div class="relative w-80 h-80 flex items-center justify-center">
+                        <!-- Animated background elements -->
+                        <div class="absolute w-72 h-72 rounded-full bg-white bg-opacity-10 animate-ping-slow"></div>
+                        <div class="absolute w-56 h-56 rounded-full bg-white bg-opacity-15 animate-pulse"></div>
+                        <div class="absolute w-40 h-40 rounded-full bg-white bg-opacity-20 animate-float"></div>
+                        
+                        <!-- Floating icons in a circular pattern -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white bg-opacity-25 flex items-center justify-center animate-float">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-16 h-16 rounded-full bg-white bg-opacity-25 flex items-center justify-center animate-float animation-delay-500">
+                            <i class="fas fa-robot text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white bg-opacity-25 flex items-center justify-center animate-float animation-delay-1000">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-16 h-16 rounded-full bg-white bg-opacity-25 flex items-center justify-center animate-float animation-delay-1500">
+                            <i class="fas fa-comments text-white text-2xl"></i>
+                        </div>
+                        
+                        <!-- Center icon with enhanced animation -->
+                        <div class="absolute z-10 w-28 h-28 rounded-full bg-gradient-to-r from-white to-pink-100 flex items-center justify-center shadow-2xl animate-pop-in">
+                            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center animate-pulse">
+                                <i class="fas fa-infinity text-white text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Enhanced floating elements for extra animation -->
+        <div class="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-accent opacity-20 animate-ping-slow"></div>
+        <div class="absolute bottom-1/3 right-1/3 w-6 h-6 rounded-full bg-primary opacity-30 animate-wobble"></div>
+        <div class="absolute top-1/3 right-1/4 w-4 h-4 rounded-full bg-quaternary opacity-40 animate-float"></div>
+        <div class="absolute top-1/2 left-1/3 w-5 h-5 rounded-full bg-white opacity-25 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-7 h-7 rounded-full bg-accent opacity-35 animate-float animation-delay-2000"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50 border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 slide-in">Powerful AI Capabilities</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto slide-in">Our platform offers a comprehensive suite of AI tools designed to transform your business operations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white rounded-xl shadow-md p-6 transition-all duration-300 slide-in">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Intelligent Automation</h3>
+                    <p class="text-gray-600 mb-4">Automate repetitive tasks and workflows with our advanced AI-powered automation tools.</p>
+                    <a href="#" class="text-primary font-semibold flex items-center">Learn More <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl shadow-md p-6 transition-all duration-300 slide-in">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Predictive Analytics</h3>
+                    <p class="text-gray-600 mb-4">Forecast trends and make data-driven decisions with our predictive analytics engine.</p>
+                    <a href="#" class="text-primary font-semibold flex items-center">Learn More <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl shadow-md p-6 transition-all duration-300 slide-in">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 rounded-full bg-tertiary flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Natural Language Processing</h3>
+                    <p class="text-gray-600 mb-4">Understand and generate human language with our state-of-the-art NLP technology.</p>
+                    <a href="#" class="text-primary font-semibold flex items-center">Learn More <i class="ml-2 fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Highlights -->
+    <section class="py-20 bg-gradient-to-r from-pink-50 to-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="relative w-full h-96 rounded-xl shadow-lg slide-in animate-zoom-in bg-gradient-to-br from-primary to-accent flex items-center justify-center overflow-hidden">
+                        <!-- Animated background elements -->
+                        <div class="absolute w-64 h-64 rounded-full bg-white bg-opacity-10 animate-ping-slow"></div>
+                        <div class="absolute w-48 h-48 rounded-full bg-white bg-opacity-20 animate-pulse"></div>
+                        <div class="absolute w-32 h-32 rounded-full bg-white bg-opacity-30 animate-float"></div>
+                        
+                        <!-- Central AI visualization icons in a grid pattern -->
+                        <div class="relative z-10 grid grid-cols-2 gap-6">
+                            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float">
+                                <i class="fas fa-brain text-white text-2xl"></i>
+                            </div>
+                            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-1000">
+                                <i class="fas fa-chart-line text-white text-2xl"></i>
+                            </div>
+                            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-2000">
+                                <i class="fas fa-robot text-white text-2xl"></i>
+                            </div>
+                            <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center animate-float animation-delay-3000">
+                                <i class="fas fa-comments text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Central icon -->
+                        <div class="absolute z-20 w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-xl animate-pop-in">
+                            <i class="fas fa-infinity text-primary text-3xl"></i>
+                        </div>
+                        
+                        <!-- Floating elements for extra animation -->
+                        <div class="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-accent opacity-20 animate-ping-slow"></div>
+                        <div class="absolute bottom-1/3 right-1/3 w-6 h-6 rounded-full bg-white opacity-30 animate-wobble"></div>
+                        <div class="absolute top-1/3 right-1/4 w-4 h-4 rounded-full bg-quaternary opacity-40 animate-float"></div>
+                        <div class="absolute top-1/2 left-1/3 w-5 h-5 rounded-full bg-white opacity-25 animate-pulse"></div>
+                        <div class="absolute bottom-1/4 right-1/4 w-7 h-7 rounded-full bg-accent opacity-35 animate-float animation-delay-2000"></div>
+                        
+                        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-white rounded-lg flex items-center justify-center text-primary shadow-lg animate-float">
+                            <i class="fas fa-rocket text-4xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:ps-12">
+                    <h2 class="text-3xl font-bold mb-4 slide-in gradient-text">Transform Your Business Today</h2>
+                    <p class="text-gray-600 mb-6 slide-in">
+                        Join thousands of forward-thinking companies that have already revolutionized their operations with our AI solutions.
+                    </p>
+                    
+                    <ul class="mb-8 space-y-3 slide-in">
+                        <li class="flex items-center animate-slide-in-left">
+                            <i class="fas fa-check-circle text-primary me-3"></i>
+                            <span>Reduce operational costs by up to 40%</span>
+                        </li>
+                        <li class="flex items-center animate-slide-in-left animation-delay-2000">
+                            <i class="fas fa-check-circle text-accent me-3"></i>
+                            <span>Increase productivity by 60% or more</span>
+                        </li>
+                        <li class="flex items-center animate-slide-in-left animation-delay-3000">
+                            <i class="fas fa-check-circle text-quaternary me-3"></i>
+                            <span>Make better decisions with real-time insights</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="bg-gradient-to-r from-primary to-accent text-white font-semibold px-6 py-3 rounded-md hover:opacity-90 transition-all inline-block slide-in animate-pulse-slow">
+                        Schedule a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 slide-in">Trusted by Industry Leaders</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto slide-in">See what our customers have to say about their experience with our AI solutions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-8 slide-in animate-float">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mr-4 animate-zoom-in">
+                            <span class="font-bold text-gray-700">MJ</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Michael Johnson</h4>
+                            <p class="text-gray-600">CTO, GlobalTech Solutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"The implementation of NexusAI's solutions has transformed our data processing capabilities. We've reduced analysis time from weeks to minutes while improving accuracy significantly."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-8 slide-in animate-float animation-delay-2000">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mr-4 animate-zoom-in">
+                            <span class="font-bold text-gray-700">SR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Sarah Roberts</h4>
+                            <p class="text-gray-600">Marketing Director, InnovateCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"Our customer engagement has increased by 75% since we started using NexusAI's natural language processing tools. The personalized content generation has been a game-changer for our marketing campaigns."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-accent text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 slide-in">Ready to Transform Your Business?</h2>
+            <p class="text-pink-100 text-xl mb-10 slide-in">Join thousands of companies already using our AI tools to drive innovation and growth.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 rtl:space-x-reverse slide-in">
+                <a href="#" class="bg-white text-primary font-bold px-8 py-4 rounded-md hover:bg-gray-100 transition-colors animate-pulse-slow">Get Started Free</a>
+                <a href="#" class="border-2 border-white text-white font-bold px-8 py-4 rounded-md hover:bg-white hover:text-primary transition-colors animate-float">Schedule a Demo</a>
+            </div>
+            <p class="text-pink-100 mt-6 slide-in">No credit card required • 14-day free trial</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-secondary to-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4 rtl:space-x-reverse">
+                        <img src="./images/nexusai-logo.svg" alt="NexusAI Logo" class="h-8 w-8 animate-pulse-slow">
+                        <span class="font-bold text-xl">Nexus<span class="text-accent">AI</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering businesses with cutting-edge AI solutions to drive innovation and growth.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-primary text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-quaternary text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-tertiary text-2xl transition-all duration-300 hover:scale-110"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">AI Assistant</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Data Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-quaternary transition-colors">Content Generator</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-tertiary transition-colors">Marketing AI</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-success transition-colors">Automation Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-quaternary transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-tertiary transition-colors">Support Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-success transition-colors">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Careers</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-quaternary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-tertiary transition-colors">Partners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-success transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 NexusAI. All rights reserved. | Proprietary and Confidential</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // RTL Toggle Functionality
+        const rtlToggle = document.getElementById('rtl-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved preference or default to LTR
+        const isRTL = localStorage.getItem('rtl') === 'true';
+        if (isRTL) {
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+        
+        rtlToggle.addEventListener('click', () => {
+            const currentDir = htmlElement.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            htmlElement.setAttribute('dir', newDir);
+            localStorage.setItem('rtl', newDir === 'rtl');
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+        
+        // Set active navigation link
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create particles for hero section
+            createParticles();
+            
+            // Set active nav item
+            setActiveNavItem();
+            
+            const slideElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            slideElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        
+        function setActiveNavItem() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                // Remove any existing active classes
+                link.classList.remove('nav-active');
+                
+                // Check if this link matches the current page
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                    link.classList.add('nav-active');
+                    
+                    // If this link is in a dropdown, also highlight the dropdown button
+                    const parentDropdown = link.closest('.dropdown');
+                    if (parentDropdown) {
+                        const dropdownButton = parentDropdown.querySelector('button');
+                        if (dropdownButton) {
+                            dropdownButton.classList.add('nav-active');
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Create floating particles
+        function createParticles() {
+            const heroSection = document.querySelector('.hero-bg');
+            if (!heroSection) return;
+            
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles-container';
+            heroSection.appendChild(particlesContainer);
+            
+            // Create 30 particles
+            for (let i = 0; i < 30; i++) {
+                createParticle(particlesContainer);
+            }
+        }
+        
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random size between 2px and 8px
+            const size = Math.random() * 6 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            // Random animation duration between 5s and 15s
+            const duration = Math.random() * 10 + 5;
+            particle.style.animationDuration = `${duration}s`;
+            
+            // Random animation delay
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            // Random background color with opacity
+            const colors = [
+                'rgba(255, 255, 255, 0.5)',
+                'rgba(236, 72, 153, 0.3)', // pink
+                'rgba(244, 114, 182, 0.3)', // light pink
+                'rgba(249, 168, 212, 0.3)', // lighter pink
+                'rgba(252, 231, 243, 0.3)'  // very light pink
+            ];
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            container.appendChild(particle);
+            
+            // Remove particle and create new one when animation ends
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+                createParticle(container);
+            });
+        }
+    </script>
+</body>
+</html>
