@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NexusTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M128 64h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm144 
+136l-40-40-24 24 64 64-64 64 24 24 40-40 40-40-40-40zm96 
+128h96v-32h-96v32zM0 416h640v32c0 17.7-14.3 32-32 32H32c-17.7 
+0-32-14.3-32-32v-32z'/>
+</svg>">
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626', // Dark red
+                        secondary: '#991B1B', // Deep red
+                        accent: '#F87171', // Light red
+                        dark: '#1e293b', // Dark slate
+                        light: '#f8fafc' // Light slate
+                    }
+                }
+            }
+        }
+
+        // Function to highlight active navigation link
+        function setActiveNavLink() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Loop through links and add active class to matching link
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || (currentPage === 'index.html' && href === 'index.html'))) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #DC2626;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.32, 0.53, 0.76, 1.2);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        html[dir="rtl"] .mobile-menu {
+            transform: translateX(-100%);
+        }
+        
+        html[dir="rtl"] .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .team-member:hover .member-overlay {
+            opacity: 1;
+        }
+        
+        .rtl-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        .nav-active {
+            color: #DC2626 !important;
+            font-weight: 600 !important;
+        }
+        
+        .mobile-nav-active {
+            background-color: #DC2626 !important;
+            color: white !important;
+        }
+        
+        /* RTL-specific spacing for all flex space-x classes */
+        html[dir="rtl"] .flex[class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(var(--space-x) * var(--tw-space-x-reverse));
+            margin-left: calc(var(--space-x) * calc(1 - var(--tw-space-x-reverse)));
+        }
+        
+        /* Define space-x values */
+        html[dir="rtl"] .flex.space-x-1 { --space-x: 0.25rem; }
+        html[dir="rtl"] .flex.space-x-2 { --space-x: 0.5rem; }
+        html[dir="rtl"] .flex.space-x-3 { --space-x: 0.75rem; }
+        html[dir="rtl"] .flex.space-x-4 { --space-x: 1rem; }
+        html[dir="rtl"] .flex.space-x-5 { --space-x: 1.25rem; }
+        html[dir="rtl"] .flex.space-x-6 { --space-x: 1.5rem; }
+        html[dir="rtl"] .flex.space-x-7 { --space-x: 1.75rem; }
+        html[dir="rtl"] .flex.space-x-8 { --space-x: 2rem; }
+        html[dir="rtl"] .flex.space-x-9 { --space-x: 2.25rem; }
+        html[dir="rtl"] .flex.space-x-10 { --space-x: 2.5rem; }
+        html[dir="rtl"] .flex.space-x-11 { --space-x: 2.75rem; }
+        html[dir="rtl"] .flex.space-x-12 { --space-x: 3rem; }
+        html[dir="rtl"] .flex.space-x-14 { --space-x: 3.5rem; }
+        html[dir="rtl"] .flex.space-x-16 { --space-x: 4rem; }
+        html[dir="rtl"] .flex.space-x-20 { --space-x: 5rem; }
+        html[dir="rtl"] .flex.space-x-24 { --space-x: 6rem; }
+        html[dir="rtl"] .flex.space-x-28 { --space-x: 7rem; }
+        html[dir="rtl"] .flex.space-x-32 { --space-x: 8rem; }
+        html[dir="rtl"] .flex.space-x-36 { --space-x: 9rem; }
+        html[dir="rtl"] .flex.space-x-40 { --space-x: 10rem; }
+        html[dir="rtl"] .flex.space-x-44 { --space-x: 11rem; }
+        html[dir="rtl"] .flex.space-x-48 { --space-x: 12rem; }
+        html[dir="rtl"] .flex.space-x-52 { --space-x: 13rem; }
+        html[dir="rtl"] .flex.space-x-56 { --space-x: 14rem; }
+        html[dir="rtl"] .flex.space-x-60 { --space-x: 15rem; }
+        html[dir="rtl"] .flex.space-x-64 { --space-x: 16rem; }
+        html[dir="rtl"] .flex.space-x-72 { --space-x: 18rem; }
+        html[dir="rtl"] .flex.space-x-80 { --space-x: 20rem; }
+        html[dir="rtl"] .flex.space-x-96 { --space-x: 24rem; }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .milestone-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .milestone-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #DC2626;
+        }
+        
+        .milestone-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .milestone-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #DC2626;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 2px #DC2626;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-10 backdrop-blur-sm bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-microchip text-accent text-2xl mr-2 animate-pulse"></i>
+                            <span class="text-2xl font-bold text-dark">Nexus<span class="text-primary">Tech</span></span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center">
+                    <div class="relative dropdown group mr-8">
+                        <button class="text-gray-700 hover:text-primary font-medium flex items-center nav-link">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute z-20 bg-white shadow-xl rounded-lg py-2 mt-2 w-48 border border-gray-100">
+                            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white transition duration-300 rounded-md mx-2">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white transition duration-300 rounded-md mx-2">Home 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="services.html" class="text-gray-700 hover:text-primary font-medium mr-8 nav-link">Services</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary font-medium mr-8 nav-link">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary font-medium mr-8 nav-link">Contact</a>
+                    
+                    <div class="relative dropdown group mr-8">
+                        <button class="text-gray-700 hover:text-primary font-medium flex items-center nav-link">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute z-20 bg-white shadow-xl rounded-lg py-2 mt-2 w-48 border border-gray-100">
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white transition duration-300 rounded-md mx-2">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white transition duration-300 rounded-md mx-2">Admin</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html#faq-section" class="text-gray-700 hover:text-primary font-medium mr-8 nav-link">FAQ</a>
+                    
+                    <button id="rtl-toggle" class="rtl-toggle text-gray-700 hover:text-primary mx-4 transition duration-300 transform hover:scale-110">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    
+                    <a href="login.html" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Login
+                    </a>
+                </div>
+                
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-rtl-toggle" class="rtl-toggle text-gray-700 mr-4">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden fixed inset-0 z-20 bg-white bg-opacity-95 backdrop-blur-lg">
+            <div class="flex justify-end p-4 border-b border-gray-200">
+                <button id="mobile-menu-close" class="text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="px-6 py-8 space-y-6">
+                <div class="relative">
+                    <button class="text-gray-700 hover:text-primary font-medium flex items-center w-full justify-between">
+                        Home <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="pl-4 mt-3 space-y-3 hidden">
+                        <a href="index.html" class="block px-4 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Home 1</a>
+                        <a href="index2.html" class="block px-4 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Home 2</a>
+                    </div>
+                </div>
+                <a href="services.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Services</a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">About</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Contact</a>
+                <div class="relative">
+                    <button class="text-gray-700 hover:text-primary font-medium flex items-center w-full justify-between">
+                        Dashboard <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="pl-4 mt-3 space-y-3 hidden">
+                        <a href="user-dashboard.html" class="block px-4 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">User</a>
+                        <a href="admin-dashboard.html" class="block px-4 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Admin</a>
+                    </div>
+                </div>
+                <a href="contact.html#faq-section" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">FAQ</a>
+                <a href="login.html" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-primary to-secondary text-white text-center hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-primary to-accent text-white animate-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-float">About NexusTech</h1>
+            <p class="text-xl max-w-3xl mx-auto">Innovative IT solutions driving digital transformation for businesses worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">Our Story</h2>
+                    <p class="text-gray-600 mb-6 text-lg">Founded in 2010, TechSolutions has grown from a small startup to a leading provider of IT services, helping businesses navigate the complexities of digital transformation.</p>
+                    <p class="text-gray-600 mb-6 text-lg">Our mission is to empower organizations with innovative technology solutions that drive growth, efficiency, and competitive advantage in an ever-evolving digital landscape.</p>
+                    <p class="text-gray-600 mb-8 text-lg">With over a decade of experience, we've successfully delivered projects for clients across various industries, from startups to Fortune 500 companies.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-50 p-6 rounded-xl">
+                            <h3 class="text-2xl font-bold text-primary mb-2">200+</h3>
+                            <p class="text-gray-600">Clients Worldwide</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl">
+                            <h3 class="text-2xl font-bold text-primary mb-2">50+</h3>
+                            <p class="text-gray-600">Expert Team Members</p>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition duration-300">Work With Us</a>
+                </div>
+                <div class="bg-gray-100 rounded-2xl p-8">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Company" class="rounded-lg w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white p-10 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-dark mb-6">Our Mission</h3>
+                    <p class="text-gray-600 text-lg mb-6">To deliver innovative and reliable IT solutions that empower businesses to achieve their goals and thrive in the digital economy.</p>
+                    <p class="text-gray-600 text-lg mb-6">We are committed to excellence, integrity, and customer satisfaction in everything we do.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Providing cutting-edge technology solutions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Building long-term client relationships</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Fostering innovation and creativity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Maintaining the highest ethical standards</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-10 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-eye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-dark mb-6">Our Vision</h3>
+                    <p class="text-gray-600 text-lg mb-6">To be the most trusted partner in digital transformation, recognized for our innovation, expertise, and commitment to client success.</p>
+                    <p class="text-gray-600 text-lg mb-6">We envision a future where technology empowers every business to reach its full potential.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Leading industry innovation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Expanding global presence</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Developing next-generation solutions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Creating sustainable technology</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-2xl shadow-lg p-10">
+                <h3 class="text-3xl font-bold text-dark mb-6 text-center">Our Core Values</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-lightbulb text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-3">Innovation</h4>
+                        <p class="text-gray-600">We embrace creativity and continuously seek new ways to solve complex challenges.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-handshake text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-3">Integrity</h4>
+                        <p class="text-gray-600">We conduct business with honesty, transparency, and ethical practices.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-3">Collaboration</h4>
+                        <p class="text-gray-600">We believe in the power of teamwork and partnership for success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Our Journey</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Key milestones in our company's growth and development</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="milestone-timeline">
+                    <div class="milestone-item">
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold text-dark mb-2">2010</h3>
+                            <h4 class="text-xl font-semibold text-primary mb-3">Company Founded</h4>
+                            <p class="text-gray-600">TechSolutions was established with a vision to provide innovative IT solutions to small and medium businesses.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-item">
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold text-dark mb-2">2013</h3>
+                            <h4 class="text-xl font-semibold text-primary mb-3">First 100 Clients</h4>
+                            <p class="text-gray-600">Reached our first milestone of serving 100 satisfied clients across various industries.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-item">
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold text-dark mb-2">2016</h3>
+                            <h4 class="text-xl font-semibold text-primary mb-3">International Expansion</h4>
+                            <p class="text-gray-600">Expanded our services to international markets, establishing partnerships in Europe and Asia.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-item">
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold text-dark mb-2">2019</h3>
+                            <h4 class="text-xl font-semibold text-primary mb-3">Innovation Lab Launch</h4>
+                            <p class="text-gray-600">Launched our dedicated innovation lab to explore emerging technologies and develop cutting-edge solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-item">
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold text-dark mb-2">2022</h3>
+                            <h4 class="text-xl font-semibold text-primary mb-3">500+ Team Members</h4>
+                            <p class="text-gray-600">Grew our team to over 500 professionals, including developers, designers, and IT specialists.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-item">
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold text-dark mb-2">2025</h3>
+                            <h4 class="text-xl font-semibold text-primary mb-3">Industry Recognition</h4>
+                            <p class="text-gray-600">Awarded "Best IT Solutions Provider" by the Global Technology Awards for our innovative approach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Our Leadership Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Meet the experts who lead our company and drive innovation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+ <div class="team-member bg-gray-100 rounded-xl overflow-hidden relative transition-all duration-500 hover:shadow-xl">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Michael Anderson" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark">Michael Anderson</h3>
+                        <p class="text-primary">CEO & Founder</p>
+                    </div>
+                    <div class="member-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col items-center justify-center opacity-0 transition-all duration-500 p-6">
+                        <p class="text-white text-center mb-4">15+ years of experience in IT leadership and strategic planning.</p>
+                        <div class="flex gap-4">
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-twitter"></i></a>
+</div>
+
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member bg-gray-100 rounded-xl overflow-hidden relative transition-all duration-500 hover:shadow-xl">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sarah Johnson" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark">Sarah Johnson</h3>
+                        <p class="text-primary">CTO</p>
+                    </div>
+                    <div class="member-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col items-center justify-center opacity-0 transition-all duration-500 p-6">
+                        <p class="text-white text-center mb-4">Expert in cloud architecture and scalable system design.</p>
+                        <div class="flex gap-4">
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-twitter"></i></a>
+</div>
+
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member bg-gray-100 rounded-xl overflow-hidden relative transition-all duration-500 hover:shadow-xl">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="David Wilson" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark">David Wilson</h3>
+                        <p class="text-primary">Security Director</p>
+                    </div>
+                    <div class="member-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col items-center justify-center opacity-0 transition-all duration-500 p-6">
+                        <p class="text-white text-center mb-4">Cybersecurity expert with certifications in ethical hacking.</p>
+                        <div class="flex gap-4">
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-twitter"></i></a>
+</div>
+
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-member bg-gray-100 rounded-xl overflow-hidden relative transition-all duration-500 hover:shadow-xl">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://img.freepik.com/premium-photo/portrait-indian-male-businessman-wearing-suite-isolated-white-background_95618-867.jpg" alt="Emily Chen" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark">Emily Chen</h3>
+                        <p class="text-primary">Lead Developer</p>
+                    </div>
+                    <div class="member-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col items-center justify-center opacity-0 transition-all duration-500 p-6">
+                        <p class="text-white text-center mb-4">Full-stack developer specializing in modern web technologies.</p>
+                        <div class="flex gap-4">
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="text-white hover:text-accent transform hover:scale-125 transition duration-300"><i class="fab fa-twitter"></i></a>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Our Certifications</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Recognized industry certifications and partnerships</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg h-32">
+                    <span class="text-xl font-bold text-gray-700">ISO 27001</span>
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg h-32">
+                    <span class="text-xl font-bold text-gray-700">AWS Partner</span>
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg h-32">
+                    <span class="text-xl font-bold text-gray-700">Microsoft Gold</span>
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg h-32">
+                    <span class="text-xl font-bold text-gray-700">Cisco Partner</span>
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg h-32">
+                    <span class="text-xl font-bold text-gray-700">CompTIA</span>
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg h-32">
+                    <span class="text-xl font-bold text-gray-700">Google Cloud</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-microchip text-accent text-2xl mr-2 animate-pulse"></i>
+                        <span class="text-2xl font-bold">Nexus<span class="text-primary">Tech</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Providing innovative IT solutions to help businesses thrive in the digital age.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Our Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Cloud Services</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Cyber Security</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Data Analytics</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">IT Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">123 Business Avenue, Tech City, TC 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+1 (234) 567-890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">info@techsolutions.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">© 2025 NexusTech. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                });
+            }
+            
+            if (mobileMenuClose && mobileMenu) {
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            }
+            
+            // Close mobile menu when clicking outside
+            mobileMenu?.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+            
+            // Handle dropdowns in mobile menu
+            const mobileDropdowns = document.querySelectorAll('#mobile-menu .relative');
+            mobileDropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('button');
+                const menu = dropdown.querySelector('div');
+                
+                button?.addEventListener('click', () => {
+                    menu?.classList.toggle('hidden');
+                    const icon = button.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('rotate-180');
+                    }
+                });
+            });
+            
+            // RTL toggle using global functions
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+            
+            // Add event listeners to both toggle buttons
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', toggleDirection);
+            }
+            if (mobileRtlToggle) {
+                mobileRtlToggle.addEventListener('click', toggleDirection);
+            }
+            
+            // Highlight current page in navigation
+            highlightCurrentPage();
+        });
+        
+        // Function to highlight the current page in navigation
+        function highlightCurrentPage() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Desktop navigation links
+            const desktopLinks = document.querySelectorAll('.hidden.md\\:flex a, .hidden.md\\:flex .dropdown-menu a');
+            desktopLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'about.html' && href === 'about.html'))) {
+                    // Add active class to the link
+                    link.classList.add('nav-active');
+                }
+            });
+            
+            // Mobile navigation links
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            mobileLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'about.html' && href === 'about.html'))) {
+                    // Add active class to the link
+                    link.classList.add('bg-primary', 'text-white');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

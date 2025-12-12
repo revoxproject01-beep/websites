@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - NexusTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M128 64h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm144 
+136l-40-40-24 24 64 64-64 64 24 24 40-40 40-40-40-40zm96 
+128h96v-32h-96v32zM0 416h640v32c0 17.7-14.3 32-32 32H32c-17.7 
+0-32-14.3-32-32v-32z'/>
+</svg>">
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626', // Dark red
+                        secondary: '#991B1B', // Deep red
+                        accent: '#F87171', // Light red
+                        dark: '#1e293b', // Dark slate
+                        light: '#f8fafc' // Light slate
+                    }
+                }
+            }
+        }
+
+        // Function to highlight active navigation link
+        function setActiveNavLink() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Loop through links and add active class to matching link
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || (currentPage === 'index.html' && href === 'index.html'))) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #DC2626;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.32, 0.53, 0.76, 1.2);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        html[dir="rtl"] .mobile-menu {
+            transform: translateX(-100%);
+        }
+        
+        html[dir="rtl"] .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-top: 3px solid transparent;
+        }
+        
+        .service-card:hover {
+            border-top: 3px solid #DC2626;
+        }
+        
+        .rtl-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        .nav-active {
+            color: #DC2626 !important;
+            font-weight: 600 !important;
+        }
+        
+        .mobile-nav-active {
+            background-color: #DC2626 !important;
+            color: white !important;
+        }
+        
+        /* RTL-specific spacing for all flex space-x classes */
+        html[dir="rtl"] .flex[class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(var(--space-x) * var(--tw-space-x-reverse));
+            margin-left: calc(var(--space-x) * calc(1 - var(--tw-space-x-reverse)));
+        }
+        
+        /* Define space-x values */
+        html[dir="rtl"] .flex.space-x-1 { --space-x: 0.25rem; }
+        html[dir="rtl"] .flex.space-x-2 { --space-x: 0.5rem; }
+        html[dir="rtl"] .flex.space-x-3 { --space-x: 0.75rem; }
+        html[dir="rtl"] .flex.space-x-4 { --space-x: 1rem; }
+        html[dir="rtl"] .flex.space-x-5 { --space-x: 1.25rem; }
+        html[dir="rtl"] .flex.space-x-6 { --space-x: 1.5rem; }
+        html[dir="rtl"] .flex.space-x-7 { --space-x: 1.75rem; }
+        html[dir="rtl"] .flex.space-x-8 { --space-x: 2rem; }
+        html[dir="rtl"] .flex.space-x-9 { --space-x: 2.25rem; }
+        html[dir="rtl"] .flex.space-x-10 { --space-x: 2.5rem; }
+        html[dir="rtl"] .flex.space-x-11 { --space-x: 2.75rem; }
+        html[dir="rtl"] .flex.space-x-12 { --space-x: 3rem; }
+        html[dir="rtl"] .flex.space-x-14 { --space-x: 3.5rem; }
+        html[dir="rtl"] .flex.space-x-16 { --space-x: 4rem; }
+        html[dir="rtl"] .flex.space-x-20 { --space-x: 5rem; }
+        html[dir="rtl"] .flex.space-x-24 { --space-x: 6rem; }
+        html[dir="rtl"] .flex.space-x-28 { --space-x: 7rem; }
+        html[dir="rtl"] .flex.space-x-32 { --space-x: 8rem; }
+        html[dir="rtl"] .flex.space-x-36 { --space-x: 9rem; }
+        html[dir="rtl"] .flex.space-x-40 { --space-x: 10rem; }
+        html[dir="rtl"] .flex.space-x-44 { --space-x: 11rem; }
+        html[dir="rtl"] .flex.space-x-48 { --space-x: 12rem; }
+        html[dir="rtl"] .flex.space-x-52 { --space-x: 13rem; }
+        html[dir="rtl"] .flex.space-x-56 { --space-x: 14rem; }
+        html[dir="rtl"] .flex.space-x-60 { --space-x: 15rem; }
+        html[dir="rtl"] .flex.space-x-64 { --space-x: 16rem; }
+        html[dir="rtl"] .flex.space-x-72 { --space-x: 18rem; }
+        html[dir="rtl"] .flex.space-x-80 { --space-x: 20rem; }
+        html[dir="rtl"] .flex.space-x-96 { --space-x: 24rem; }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-microchip text-accent text-2xl mr-2"></i>
+                            <span class="text-2xl font-bold text-dark">Nexus<span class="text-primary">Tech</span></span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center">
+                    <div class="relative dropdown group mr-8">
+                        <button class="text-gray-700 hover:text-primary font-medium flex items-center">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md w-40 py-2 mt-0">
+                            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Home 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="services.html" class="text-gray-700 hover:text-primary font-medium mr-8">Services</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary font-medium mr-8">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary font-medium mr-8">Contact</a>
+                    
+                    <div class="relative dropdown group mr-8">
+                        <button class="text-gray-700 hover:text-primary font-medium flex items-center">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md w-40 py-2 mt-0">
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Admin</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html#faq-section" class="text-gray-700 hover:text-primary font-medium mr-8">FAQ</a>
+                    
+                    <button id="rtl-toggle" class="rtl-toggle text-gray-700 hover:text-primary mx-4">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    
+                    <a href="login.html" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Login
+                    </a>
+                </div>
+                
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-rtl-toggle" class="rtl-toggle text-gray-700 mr-4">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div class="relative">
+                    <button class="text-gray-700 hover:text-primary font-medium flex items-center w-full">
+                        Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="pl-4 mt-2 space-y-1">
+                        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Home 1</a>
+                        <a href="index2.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Home 2</a>
+                    </div>
+                </div>
+                <a href="services.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Services</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">About</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Contact</a>
+                <div class="relative">
+                    <button class="text-gray-700 hover:text-primary font-medium flex items-center w-full">
+                        Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="pl-4 mt-2 space-y-1">
+                        <a href="user-dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">User</a>
+                        <a href="admin-dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Admin</a>
+                    </div>
+                </div>
+                <a href="contact.html#faq-section" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">FAQ</a>
+                <a href="login.html" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-primary to-secondary text-white text-center hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Our IT Services</h1>
+            <p class="text-xl max-w-3xl mx-auto">Comprehensive technology solutions tailored to meet your business needs and drive digital transformation.</p>
+            <div class="mt-8 max-w-4xl mx-auto">
+                <img src="https://small-bizsense.com/wp-content/uploads/2018/09/it_service.jpg" alt="IT Services" class="rounded-xl w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4 animate-fadeIn">Comprehensive IT Solutions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeIn delay-100">We offer a wide range of IT services designed to help your business thrive in the digital age. Our solutions are tailored to meet your specific requirements and drive measurable results.</p>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto animate-fadeIn delay-200">With our proven expertise and commitment to excellence, we've successfully delivered projects for clients across various industries, from startups to Fortune 500 companies.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl animate-slideIn">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary group-hover:bg-opacity-20">
+                        <i class="fas fa-laptop-code text-primary text-2xl transition-all duration-300 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4 transition-colors duration-300 group-hover:text-primary">Web Development</h3>
+                    <p class="text-gray-600 mb-6">Custom websites and web applications built with the latest technologies to meet your business needs and provide exceptional user experiences.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Responsive Design</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> E-commerce Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> CMS Integration</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Performance Optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> SEO Friendly</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center transform hover:translate-x-2 transition-transform duration-300">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-100">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">App Development</h3>
+                    <p class="text-gray-600 mb-6">Custom mobile applications for iOS and Android platforms to engage your customers and enhance your business operations.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Native App Development</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cross-Platform Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> UI/UX Design</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> App Store Deployment</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Maintenance & Updates</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-200">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Cloud Services</h3>
+                    <p class="text-gray-600 mb-6">Secure and scalable cloud solutions to store, manage, and access your data from anywhere while reducing infrastructure costs.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cloud Migration</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Infrastructure as a Service</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Disaster Recovery</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cloud Security</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 24/7 Monitoring</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Cyber Security</h3>
+                    <p class="text-gray-600 mb-6">Protect your business from cyber threats with our comprehensive security solutions and proactive monitoring services.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Threat Assessment</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Firewall Management</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Encryption</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Security Audits</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Incident Response</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-400">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Data Analytics</h3>
+                    <p class="text-gray-600 mb-6">Transform your data into actionable insights with our advanced analytics solutions and business intelligence services.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Visualization</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Predictive Analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Big Data Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Reporting & Dashboards</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Mining</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">IT Consulting</h3>
+                    <p class="text-gray-600 mb-6">Strategic IT consulting to help you make informed technology decisions and align your IT with business objectives.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Technology Strategy</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Digital Transformation</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> System Integration</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> IT Audit & Assessment</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Vendor Selection</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-600">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-network-wired text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Network Solutions</h3>
+                    <p class="text-gray-600 mb-6">Design, implementation, and management of secure and reliable network infrastructure for your organization.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Network Design</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Network Security</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Wireless Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Network Monitoring</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Bandwidth Optimization</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-700">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-sync-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">IT Support & Maintenance</h3>
+                    <p class="text-gray-600 mb-6">Proactive IT support and maintenance services to ensure your systems run smoothly and efficiently.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Help Desk Support</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> System Updates</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Hardware Maintenance</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Remote Monitoring</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Emergency Response</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 9 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500 animate-slideIn delay-800">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Infrastructure Management</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive management of your IT infrastructure to ensure optimal performance and reliability.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Server Management</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Storage Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Backup & Recovery</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Virtualization</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Capacity Planning</li>
+                    </ul>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-2xl shadow-lg p-8 animate-fadeIn">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">Our Service Approach</h3>
+                        <p class="text-gray-600 mb-6">We follow a structured approach to ensure the success of every project:</p>
+                        <div class="space-y-6">
+                            <div class="flex animate-slideIn">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">1</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-dark">Discovery & Analysis</h4>
+                                    <p class="text-gray-600">We thoroughly understand your business needs and technical requirements.</p>
+                                </div>
+                            </div>
+                            <div class="flex animate-slideIn delay-100">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">2</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-dark">Solution Design</h4>
+                                    <p class="text-gray-600">Our experts create a customized solution tailored to your goals.</p>
+                                </div>
+                            </div>
+                            <div class="flex animate-slideIn delay-200">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">3</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-dark">Implementation</h4>
+                                    <p class="text-gray-600">We execute the project with precision and attention to detail.</p>
+                                </div>
+                            </div>
+                            <div class="flex animate-slideIn delay-300">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">4</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-dark">Support & Optimization</h4>
+                                    <p class="text-gray-600">We provide ongoing support and continuous improvement.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-xl p-8 animate-fadeIn delay-400">
+                        <h4 class="text-xl font-bold text-dark mb-4">Service Benefits</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start animate-slideIn">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-bold">Cost Efficiency</h5>
+                                    <p class="text-gray-600">Reduce operational costs with our optimized solutions.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start animate-slideIn delay-100">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-bold">Scalability</h5>
+                                    <p class="text-gray-600">Solutions that grow with your business needs.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start animate-slideIn delay-200">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-bold">Security</h5>
+                                    <p class="text-gray-600">Enterprise-grade security to protect your assets.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start animate-slideIn delay-300">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-bold">Reliability</h5>
+                                    <p class="text-gray-600">High availability and minimal downtime guaranteed.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-dark to-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Need a Custom IT Solution?</h2>
+                    <p class="text-xl mb-8 text-gray-200">Our team of experts can create a tailored solution to meet your specific business requirements.</p>
+                    <a href="contact.html" class="inline-block bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">Request a Consultation</a>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                    <form>
+                        <div class="mb-4">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white placeholder-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white placeholder-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                        </div>
+                        <div class="mb-4">
+                            <select class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white text-gray-200 focus:outline-none focus:ring-2 focus:ring-white">
+                                <option value="" class="text-gray-800">Select Service</option>
+                                <option value="web" class="text-gray-800">Web Development</option>
+                                <option value="app" class="text-gray-800">App Development</option>
+                                <option value="cloud" class="text-gray-800">Cloud Services</option>
+                                <option value="security" class="text-gray-800">Cyber Security</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-microchip text-primary text-2xl mr-2"></i>
+                        <span class="text-2xl font-bold">Nexus<span class="text-primary">Tech</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Providing innovative IT solutions to help businesses thrive in the digital age.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Our Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Cloud Services</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Cyber Security</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Data Analytics</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">IT Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">123 Business Avenue, Tech City, TC 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+1 (234) 567-890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">info@nexustech.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">© 2025 NexusTech. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // RTL toggle using global functions
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+            
+            // Add event listeners to both toggle buttons
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', toggleDirection);
+            }
+            if (mobileRtlToggle) {
+                mobileRtlToggle.addEventListener('click', toggleDirection);
+            }
+            
+            // Highlight current page in navigation
+            highlightCurrentPage();
+        });
+        
+        // Function to highlight the current page in navigation
+        function highlightCurrentPage() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Desktop navigation links
+            const desktopLinks = document.querySelectorAll('.hidden.md\\:flex a, .hidden.md\\:flex .dropdown-menu a');
+            desktopLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'services.html' && href === 'services.html'))) {
+                    // Add active class to the link
+                    link.classList.add('nav-active');
+                }
+            });
+            
+            // Mobile navigation links
+            const mobileLinks = document.querySelectorAll('.md\\:hidden a, .md\\:hidden .dropdown-menu a');
+            mobileLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'services.html' && href === 'services.html'))) {
+                    // Add active class to the link
+                    link.classList.add('mobile-nav-active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - NexusTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M128 64h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm144 
+136l-40-40-24 24 64 64-64 64 24 24 40-40 40-40-40-40zm96 
+128h96v-32h-96v32zM0 416h640v32c0 17.7-14.3 32-32 32H32c-17.7 
+0-32-14.3-32-32v-32z'/>
+</svg>">
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626', // Dark red
+                        secondary: '#991B1B', // Deep red
+                        accent: '#F87171', // Light red
+                        dark: '#1e293b', // Dark slate
+                        light: '#f8fafc' // Light slate
+                    }
+                }
+            }
+        }
+
+        // Function to highlight active navigation link
+        function setActiveNavLink() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Loop through links and add active class to matching link
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || (currentPage === 'index.html' && href === 'index.html'))) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .register-container {
+            animation: fadeIn 0.5s ease-out;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                align-items: flex-start;
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .rtl-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        .password-toggle {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container w-full max-w-4xl px-4 py-8">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="flex flex-col md:flex-row">
+                <!-- Left side with image and highlights -->
+                <div class="md:w-1/2 bg-gradient-to-r from-primary to-secondary p-8 text-center md:text-left flex flex-col justify-center">
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center">
+                            <a href="index.html" class="flex items-center">
+                                <i class="fas fa-microchip text-white text-2xl mr-2"></i>
+                                <span class="text-2xl font-bold text-white">Nexus<span class="text-accent">Tech</span></span>
+                            </a>
+                        </div>
+                        <button id="rtl-toggle" class="rtl-toggle text-white">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                    </div>
+                    <div class="mt-6">
+                        <img src="https://th.bing.com/th/id/OIP.9epF0D8yOQpHYvubn7FYxAHaD4?w=284&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Register" class="rounded-lg w-full h-48 object-cover mx-auto">
+                    </div>
+                    <h1 class="text-3xl font-bold text-white mt-6">Create Account</h1>
+                    <p class="text-gray-200 mt-2">Join us today to access exclusive features</p>
+                </div>
+                
+                <!-- Right side with register form -->
+                <div class="md:w-1/2 p-8">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-gray-400"></i>
+                            </div>
+                            <input type="text" id="name" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" id="email" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-700 font-medium mb-2">Username</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-id-card text-gray-400"></i>
+                            </div>
+                            <input type="text" id="username" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Choose a username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" id="password" class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Create a password" required onkeyup="checkPasswordStrength()">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center password-toggle" onclick="togglePassword('password')">
+                                <i class="fas fa-eye text-gray-400"></i>
+                            </div>
+                        </div>
+                        <!-- Password Strength Meter -->
+                        <div class="mt-2">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Password Strength</span>
+                                <span id="password-strength-text" class="text-sm font-medium"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div id="password-strength-bar" class="h-2 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="confirm-password" class="block text-gray-700 font-medium mb-2">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" id="confirm-password" class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Confirm your password" required onkeyup="checkPasswordMatch()">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center password-toggle" onclick="togglePassword('confirm-password')">
+                                <i class="fas fa-eye text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div id="password-match-message" class="mt-2 text-sm"></div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-start">
+                            <input id="terms" type="checkbox" class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary mt-1" required>
+                            <label for="terms" class="ml-2 text-sm text-gray-700">
+                                I agree to the 
+                                <a href="#" class="text-primary hover:underline" onclick="showTermsModal(event)">Terms of Service</a> 
+                                and 
+                                <a href="#" class="text-primary hover:underline" onclick="showPrivacyModal(event)">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300">Create Account</button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">
+                        Already have an account? 
+                        <a href="login.html" class="text-primary font-medium hover:underline">Sign in</a>
+                    </p>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or register with</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-3 gap-3">
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fab fa-google text-red-500"></i>
+                        </a>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fab fa-facebook-f text-blue-600"></i>
+                        </a>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fab fa-linkedin-in text-blue-700"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Security Features -->
+                <div class="mt-8 border-t border-gray-200 pt-6">
+                    <h3 class="font-bold text-lg mb-3 text-center">Advanced Security Features</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-green-50 to-white rounded-lg border border-green-100">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-shield-alt text-green-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-1">256-bit SSL</h4>
+                            <p class="text-xs text-gray-600">Encrypted data transmission</p>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-green-50 to-white rounded-lg border border-green-100">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-user-lock text-green-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-1">Secure Login</h4>
+                            <p class="text-xs text-gray-600">Multi-factor authentication</p>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-green-50 to-white rounded-lg border border-green-100">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-sync-alt text-green-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-1">Auto Logout</h4>
+                            <p class="text-xs text-gray-600">Session timeout protection</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Registration Benefits -->
+                    <div class="mt-6 bg-blue-50 rounded-lg p-4 border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+                            <i class="fas fa-star mr-2"></i> Benefits of Registering
+                        </h4>
+                        <ul class="text-sm text-blue-700 space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
+                                <span>Access to exclusive content and resources</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
+                                <span>Personalized dashboard with analytics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
+                                <span>Priority customer support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
+                                <span>Early access to new features</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Terms of Service Modal -->
+        <div id="terms-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white rounded-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold text-dark">Terms of Service</h3>
+                        <button onclick="closeModal('terms-modal')" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="prose max-w-none text-gray-700">
+                        <p class="mb-4">Welcome to NexusTech. These terms of service outline the rules and regulations for the use of NexusTech's website and services.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">1. Acceptance of Terms</h4>
+                        <p class="mb-4">By accessing this website, we assume you accept these terms of service in full. Do not continue to use NexusTech's website if you do not accept all of the terms of service stated on this page.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">2. Intellectual Property</h4>
+                        <p class="mb-4">Unless otherwise stated, NexusTech and/or its licensors own the intellectual property rights for all material on this website. All intellectual property rights are reserved.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">3. User Responsibilities</h4>
+                        <p class="mb-4">You are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer. You agree to accept responsibility for all activities that occur under your account or password.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">4. Limitations of Liability</h4>
+                        <p class="mb-4">In no event shall NexusTech, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">5. Changes to Terms</h4>
+                        <p class="mb-4">NexusTech reserves the right, at its sole discretion, to modify or replace these terms at any time. By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms.</p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="closeModal('terms-modal')" class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-secondary transition duration-300">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Privacy Policy Modal -->
+        <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white rounded-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold text-dark">Privacy Policy</h3>
+                        <button onclick="closeModal('privacy-modal')" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="prose max-w-none text-gray-700">
+                        <p class="mb-4">Your privacy is important to us. This privacy policy explains how we collect, use, and protect your personal information.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">1. Information We Collect</h4>
+                        <p class="mb-4">We collect information you provide directly to us, such as when you create an account, fill out a form, or communicate with us. This may include your name, email address, phone number, and other contact information.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">2. How We Use Your Information</h4>
+                        <p class="mb-4">We use your information to provide, maintain, and improve our services, to communicate with you, and to comply with legal obligations.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">3. Information Sharing</h4>
+                        <p class="mb-4">We do not sell, trade, or otherwise transfer your personal information to outside parties without your consent, except as described in this policy or as required by law.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">4. Data Security</h4>
+                        <p class="mb-4">We implement appropriate security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information.</p>
+                        
+                        <h4 class="font-bold text-lg mb-2">5. Your Rights</h4>
+                        <p class="mb-4">You have the right to access, update, or delete your personal information. You may also have the right to object to or restrict certain processing of your information.</p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="closeModal('privacy-modal')" class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-secondary transition duration-300">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <p class="text-white text-sm">
+                © 2025 NexusTech. All rights reserved.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // RTL toggle using global functions
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const htmlElement = document.documentElement;
+            
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', toggleDirection);
+            }
+            
+            // Check for saved direction preference
+            const savedDirection = localStorage.getItem('techsolutions_direction');
+            if (savedDirection === DIRECTION_STATE.RTL) {
+                htmlElement.setAttribute('dir', DIRECTION_STATE.RTL);
+            }
+        });
+        
+        // Function to toggle password visibility
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+        // Function to check password strength
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('password-strength-bar');
+            const strengthText = document.getElementById('password-strength-text');
+            
+            let strength = 0;
+            let strengthLabel = '';
+            let strengthColor = '';
+            
+            if (password.length > 0) strength += 1;
+            if (password.length >= 8) strength += 1;
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    strengthLabel = 'Very Weak';
+                    strengthColor = 'bg-red-500';
+                    break;
+                case 2:
+                    strengthLabel = 'Weak';
+                    strengthColor = 'bg-orange-500';
+                    break;
+                case 3:
+                    strengthLabel = 'Medium';
+                    strengthColor = 'bg-yellow-500';
+                    break;
+                case 4:
+                    strengthLabel = 'Strong';
+                    strengthColor = 'bg-blue-500';
+                    break;
+                case 5:
+                    strengthLabel = 'Very Strong';
+                    strengthColor = 'bg-green-500';
+                    break;
+            }
+            
+            strengthBar.className = `h-2 rounded-full ${strengthColor}`;
+            strengthBar.style.width = `${(strength / 5) * 100}%`;
+            strengthText.textContent = strengthLabel;
+            strengthText.className = `text-sm font-medium ${strengthColor.replace('bg-', 'text-')}`;
+        }
+        
+        // Function to check password match
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const message = document.getElementById('password-match-message');
+            
+            if (confirmPassword.length === 0) {
+                message.textContent = '';
+                message.className = 'mt-2 text-sm';
+                return;
+            }
+            
+            if (password === confirmPassword) {
+                message.textContent = 'Passwords match';
+                message.className = 'mt-2 text-sm text-green-600';
+            } else {
+                message.textContent = 'Passwords do not match';
+                message.className = 'mt-2 text-sm text-red-600';
+            }
+        }
+        
+        // Function to show terms modal
+        function showTermsModal(event) {
+            event.preventDefault();
+            document.getElementById('terms-modal').classList.remove('hidden');
+        }
+        
+        // Function to show privacy modal
+        function showPrivacyModal(event) {
+            event.preventDefault();
+            document.getElementById('privacy-modal').classList.remove('hidden');
+        }
+        
+        // Function to close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

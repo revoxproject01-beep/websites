@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTL Test Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/globals.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">RTL/LTR Test Page</h1>
+            <button id="rtl-toggle" class="rtl-toggle bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <i class="fas fa-exchange-alt mr-2"></i>Toggle RTL/LTR
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">Test Content</h2>
+                <p class="mb-4">This is a test paragraph to check if RTL/LTR switching works correctly. The text direction should change when you click the toggle button.</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>First item in the list</li>
+                    <li>Second item in the list</li>
+                    <li>Third item in the list</li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">More Test Content</h2>
+                <p class="mb-4">Another paragraph to verify the direction change. Notice how the text alignment and list markers change position.</p>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-blue-100 p-4 rounded">
+                        <p>Box 1</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded">
+                        <p>Box 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <h3 class="font-bold text-lg mb-2">Current Status</h3>
+            <p>Current direction: <span id="current-direction" class="font-mono bg-gray-200 px-2 py-1 rounded">ltr</span></p>
+            <p class="mt-2">Local storage value: <span id="storage-value" class="font-mono bg-gray-200 px-2 py-1 rounded">ltr</span></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // RTL toggle button
+            const rtlToggle = document.getElementById('rtl-toggle');
+            
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', () => {
+                    toggleDirection();
+                    updateStatus();
+                });
+            }
+            
+            // Update status display
+            function updateStatus() {
+                const currentDirection = getCurrentDirection();
+                const storageValue = localStorage.getItem('techsolutions_direction') || 'not set';
+                
+                document.getElementById('current-direction').textContent = currentDirection;
+                document.getElementById('storage-value').textContent = storageValue;
+            }
+            
+            // Initial status update
+            updateStatus();
+            
+            // Update status when direction changes
+            const observer = new MutationObserver(updateStatus);
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['dir']
+            });
+        });
+    </script>
+</body>
+</html>

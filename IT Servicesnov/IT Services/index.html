@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusTech - Modern IT Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M128 64h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm144 
+136l-40-40-24 24 64 64-64 64 24 24 40-40 40-40-40-40zm96 
+128h96v-32h-96v32zM0 416h640v32c0 17.7-14.3 32-32 32H32c-17.7 
+0-32-14.3-32-32v-32z'/>
+</svg>">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M128 64h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm144 
+136l-40-40-24 24 64 64-64 64 24 24 40-40 40-40-40-40zm96 
+128h96v-32h-96v32zM0 416h640v32c0 17.7-14.3 32-32 32H32c-17.7 
+0-32-14.3-32-32v-32z'/>
+</svg>">
+
+    
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626', // Dark red
+                        secondary: '#991B1B', // Deep red
+                        accent: '#F87171', // Light red
+                        dark: '#1e293b', // Dark slate
+                        light: '#f8fafc' // Light slate
+                    }
+                }
+            }
+        }
+
+        // Function to highlight active navigation link
+        function setActiveNavLink() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Loop through links and add active class to matching link
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'index.html' && (href === 'index.html' || href === './')) ||
+                    (currentPage === '' && (href === 'index.html' || href === './')))) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-top: 3px solid transparent;
+        }
+        
+        .service-card:hover {
+            border-top: 3px solid #DC2626;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .team-member:hover .member-overlay {
+            opacity: 1;
+        }
+        
+        .rtl-toggle {
+            transition: transform 0.5s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        .nav-active {
+            color: #DC2626 !important;
+            font-weight: 600 !important;
+        }
+        
+        .mobile-nav-active {
+            background-color: #DC2626 !important;
+            color: white !important;
+        }
+        
+        /* RTL-specific spacing for all flex space-x classes */
+        html[dir="rtl"] .flex[class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(var(--space-x) * var(--tw-space-x-reverse));
+            margin-left: calc(var(--space-x) * calc(1 - var(--tw-space-x-reverse)));
+        }
+        
+        /* Define space-x values */
+        html[dir="rtl"] .flex.space-x-1 { --space-x: 0.25rem; }
+        html[dir="rtl"] .flex.space-x-2 { --space-x: 0.5rem; }
+        html[dir="rtl"] .flex.space-x-3 { --space-x: 0.75rem; }
+        html[dir="rtl"] .flex.space-x-4 { --space-x: 1rem; }
+        html[dir="rtl"] .flex.space-x-5 { --space-x: 1.25rem; }
+        html[dir="rtl"] .flex.space-x-6 { --space-x: 1.5rem; }
+        html[dir="rtl"] .flex.space-x-7 { --space-x: 1.75rem; }
+        html[dir="rtl"] .flex.space-x-8 { --space-x: 2rem; }
+        html[dir="rtl"] .flex.space-x-9 { --space-x: 2.25rem; }
+        html[dir="rtl"] .flex.space-x-10 { --space-x: 2.5rem; }
+        html[dir="rtl"] .flex.space-x-11 { --space-x: 2.75rem; }
+        html[dir="rtl"] .flex.space-x-12 { --space-x: 3rem; }
+        html[dir="rtl"] .flex.space-x-14 { --space-x: 3.5rem; }
+        html[dir="rtl"] .flex.space-x-16 { --space-x: 4rem; }
+        html[dir="rtl"] .flex.space-x-20 { --space-x: 5rem; }
+        html[dir="rtl"] .flex.space-x-24 { --space-x: 6rem; }
+        html[dir="rtl"] .flex.space-x-28 { --space-x: 7rem; }
+        html[dir="rtl"] .flex.space-x-32 { --space-x: 8rem; }
+        html[dir="rtl"] .flex.space-x-36 { --space-x: 9rem; }
+        html[dir="rtl"] .flex.space-x-40 { --space-x: 10rem; }
+        html[dir="rtl"] .flex.space-x-44 { --space-x: 11rem; }
+        html[dir="rtl"] .flex.space-x-48 { --space-x: 12rem; }
+        html[dir="rtl"] .flex.space-x-52 { --space-x: 13rem; }
+        html[dir="rtl"] .flex.space-x-56 { --space-x: 14rem; }
+        html[dir="rtl"] .flex.space-x-60 { --space-x: 15rem; }
+        html[dir="rtl"] .flex.space-x-64 { --space-x: 16rem; }
+        html[dir="rtl"] .flex.space-x-72 { --space-x: 18rem; }
+        html[dir="rtl"] .flex.space-x-80 { --space-x: 20rem; }
+        html[dir="rtl"] .flex.space-x-96 { --space-x: 24rem; }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .animate-slideIn {
+            animation: slideIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* New Animations */
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        .feature-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: featureSlideUp 0.6s forwards;
+        }
+        
+        @keyframes featureSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .process-step {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: processSlideIn 0.6s forwards;
+        }
+        
+        .process-step:nth-child(even) {
+            transform: translateX(20px);
+        }
+        
+        @keyframes processSlideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Staggered animations for process steps */
+        .process-step:nth-child(1) { animation-delay: 0.1s; }
+        .process-step:nth-child(2) { animation-delay: 0.3s; }
+        .process-step:nth-child(3) { animation-delay: 0.5s; }
+        .process-step:nth-child(4) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-10 backdrop-blur-sm bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-microchip text-accent text-2xl mr-2 animate-pulse"></i>
+                            <span class="text-2xl font-bold text-dark">Nexus<span class="text-primary">Tech</span></span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center">
+                    <div class="relative dropdown group mr-8">
+                        <button class="text-gray-700 hover:text-primary font-medium flex items-center transition-colors duration-300">
+                            Home <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-xl rounded-lg w-48 py-3 mt-2 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:block group-hover:mt-3">
+                            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md mx-2 transition-colors duration-300">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md mx-2 transition-colors duration-300">Home 2</a>
+                        </div>
+                    </div>
+                    
+                    <a href="services.html" class="text-gray-700 hover:text-primary font-medium mr-8 transition-colors duration-300">Services</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary font-medium mr-8 transition-colors duration-300">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary font-medium mr-8 transition-colors duration-300">Contact</a>
+                    
+                    <div class="relative dropdown group mr-8">
+                        <button class="text-gray-700 hover:text-primary font-medium flex items-center transition-colors duration-300">
+                            Dashboard <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-xl rounded-lg w-48 py-3 mt-2 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:block group-hover:mt-3">
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md mx-2 transition-colors duration-300">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md mx-2 transition-colors duration-300">Admin</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html#faq-section" class="text-gray-700 hover:text-primary font-medium mr-8 transition-colors duration-300">FAQ</a>
+                    
+                    <button id="rtl-toggle" class="rtl-toggle text-gray-700 hover:text-primary mx-4 transition-colors duration-300">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    
+                    <a href="login.html" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </a>
+                </div>
+                
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-rtl-toggle" class="rtl-toggle text-gray-700 mr-4 transition-colors duration-300">
+                        <i class="fas fa-globe"></i>
+                    </button>
+
+                    <button id="mobile-menu-button" class="text-gray-700 transition-colors duration-300">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-xl rounded-b-xl transition-all duration-500 transform opacity-0 scale-95 translate-y-2">
+            <div class="px-4 pt-4 pb-5 space-y-3 sm:px-5">
+                <div class="relative bg-gray-50 rounded-lg p-2">
+                    <button class="text-gray-700 hover:text-primary font-medium flex items-center w-full justify-between">
+                        Home <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="pl-4 mt-2 space-y-2 hidden">
+                        <a href="index.html" class="block px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300">Home 1</a>
+                        <a href="index2.html" class="block px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300">Home 2</a>
+                    </div>
+                </div>
+                <a href="services.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300 bg-gray-50">Services</a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300 bg-gray-50">About</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300 bg-gray-50">Contact</a>
+                <div class="relative bg-gray-50 rounded-lg p-2">
+                    <button class="text-gray-700 hover:text-primary font-medium flex items-center w-full justify-between">
+                        Dashboard <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="pl-4 mt-2 space-y-2 hidden">
+                        <a href="user-dashboard.html" class="block px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300">User</a>
+                        <a href="admin-dashboard.html" class="block px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300">Admin</a>
+                    </div>
+                </div>
+                <a href="contact.html#faq-section" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300 bg-gray-50">FAQ</a>
+                <a href="login.html" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-primary to-secondary text-white text-center hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-20 bg-gradient-to-r from-primary to-secondary text-white animate-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fadeIn">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Innovative IT Solutions for Your Business</h1>
+                    <p class="text-xl mb-8 text-gray-200">We provide cutting-edge technology services to help your business grow and succeed in the digital world.</p>
+                   <div class="flex flex-col sm:flex-row gap-4">
+    <a href="services.html" 
+       class="bg-accent hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-center transform hover:scale-105">
+        Our Services
+    </a>
+    <a href="contact.html" 
+       class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-center transform hover:scale-105">
+        Contact Us
+    </a>
+</div>
+
+                </div>
+                <div class="animate-slideIn animate-float">
+                    <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="IT Solutions" class="rounded-lg w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Our Featured Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We offer a wide range of IT services to help your business thrive in the digital age. Our expert team delivers innovative solutions tailored to your specific needs.</p>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">With over a decade of experience, we've helped hundreds of businesses transform their operations through cutting-edge technology solutions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Web Development</h3>
+                    <p class="text-gray-600 mb-6">Custom websites and web applications built with the latest technologies to meet your business needs. Our solutions are responsive, secure, and scalable.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Responsive Design</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> E-commerce Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> CMS Integration</li>
+                    </ul>
+                    <a href="services.html" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Cloud Services</h3>
+                    <p class="text-gray-600 mb-6">Secure and scalable cloud solutions to store, manage, and access your data from anywhere. We offer migration, management, and optimization services.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cloud Migration</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Infrastructure as a Service</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Disaster Recovery</li>
+                    </ul>
+                    <a href="services.html" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Cyber Security</h3>
+                    <p class="text-gray-600 mb-6">Protect your business from cyber threats with our comprehensive security solutions. Our services include threat assessment, monitoring, and incident response.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Threat Assessment</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Firewall Management</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Encryption</li>
+                    </ul>
+                    <a href="services.html" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">App Development</h3>
+                    <p class="text-gray-600 mb-6">Custom mobile applications for iOS and Android platforms to engage your customers. We create intuitive, feature-rich apps that deliver exceptional user experiences.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Native App Development</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cross-Platform Solutions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> UI/UX Design</li>
+                    </ul>
+                    <a href="services.html" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Data Analytics</h3>
+                    <p class="text-gray-600 mb-6">Transform your data into actionable insights with our advanced analytics solutions. We help you make informed decisions based on data-driven intelligence.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Visualization</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Predictive Analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Big Data Solutions</li>
+                    </ul>
+                    <a href="services.html" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 transition duration-500">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">IT Consulting</h3>
+                    <p class="text-gray-600 mb-6">Strategic IT consulting to help you make informed technology decisions for your business. Our experts provide guidance on digital transformation and optimization.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Technology Strategy</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Digital Transformation</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> System Integration</li>
+                    </ul>
+                    <a href="services.html" class="text-primary font-medium flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Showcase -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4 animate-fadeIn">Technologies We Work With</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeIn delay-100">We stay ahead of the curve by mastering the latest technologies and frameworks.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-white rounded-xl p-6 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-float">
+                    <i class="fab fa-react text-4xl text-primary"></i>
+                </div>
+                <div class="bg-white rounded-xl p-6 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-float delay-100">
+                    <i class="fab fa-angular text-4xl text-red-600"></i>
+                </div>
+                <div class="bg-white rounded-xl p-6 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-float delay-200">
+                    <i class="fab fa-node-js text-4xl text-green-600"></i>
+                </div>
+                <div class="bg-white rounded-xl p-6 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-float delay-300">
+                    <i class="fab fa-aws text-4xl text-orange-500"></i>
+                </div>
+                <div class="bg-white rounded-xl p-6 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-float delay-400">
+                    <i class="fab fa-python text-4xl text-blue-500"></i>
+                </div>
+                <div class="bg-white rounded-xl p-6 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-float delay-500">
+                    <i class="fab fa-docker text-4xl text-blue-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Animated Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4 animate-fadeIn">Innovative Features</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeIn delay-100">Discover what makes our solutions stand out from the competition</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 feature-card animate-slideIn">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+                        <i class="fas fa-bolt text-white text-2xl"></i>
+                        <div class="absolute inset-0 bg-white opacity-0 hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Lightning Fast</h3>
+                    <p class="text-gray-600">Optimized performance with loading times 3x faster than industry standards.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 feature-card animate-slideIn delay-100">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+                        <i class="fas fa-sync-alt text-white text-2xl"></i>
+                        <div class="absolute inset-0 bg-white opacity-0 hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Continuous Updates</h3>
+                    <p class="text-gray-600">Automatic updates ensure your system is always running the latest features.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 feature-card animate-slideIn delay-200">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+                        <i class="fas fa-lock text-white text-2xl"></i>
+                        <div class="absolute inset-0 bg-white opacity-0 hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Military-Grade Security</h3>
+                    <p class="text-gray-600">End-to-end encryption and multi-layered security protocols.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 feature-card animate-slideIn delay-300">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                        <div class="absolute inset-0 bg-white opacity-0 hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Fully Responsive</h3>
+                    <p class="text-gray-600">Perfect experience on all devices from desktop to mobile.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 feature-card animate-slideIn delay-400">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                        <div class="absolute inset-0 bg-white opacity-0 hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">Advanced Analytics</h3>
+                    <p class="text-gray-600">Real-time insights to help you make data-driven decisions.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 feature-card animate-slideIn delay-500">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+                        <i class="fas fa-headset text-white text-2xl"></i>
+                        <div class="absolute inset-0 bg-white opacity-0 hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">24/7 Support</h3>
+                    <p class="text-gray-600">Round-the-clock expert support whenever you need assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Process Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-fadeIn">Our Process</h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto animate-fadeIn delay-100">We follow a proven methodology to deliver exceptional results</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Process Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white bg-opacity-30 hidden lg:block"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Step 1 -->
+                    <div class="process-step lg:pr-16 lg:pb-16 lg:text-right animate-slideIn">
+                        <div class="relative mb-6">
+                            <div class="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center text-xl font-bold mx-auto lg:ml-auto lg:mr-0 relative z-10">
+                                1
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Discovery & Analysis</h3>
+                        <p class="text-gray-200">We begin by understanding your business goals, challenges, and requirements through in-depth discussions and research.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="process-step lg:pl-16 lg:pt-16 animate-slideIn delay-100">
+                        <div class="relative mb-6">
+                            <div class="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center text-xl font-bold mx-auto lg:mr-auto lg:ml-0 relative z-10">
+                                2
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Strategy & Planning</h3>
+                        <p class="text-gray-200">Our experts develop a comprehensive strategy and detailed project plan tailored to your specific needs and timeline.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="process-step lg:pr-16 lg:pb-16 lg:text-right animate-slideIn delay-200">
+                        <div class="relative mb-6">
+                            <div class="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center text-xl font-bold mx-auto lg:ml-auto lg:mr-0 relative z-10">
+                                3
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Design & Development</h3>
+                        <p class="text-gray-200">We create stunning designs and build robust solutions using cutting-edge technologies and best practices.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="process-step lg:pl-16 lg:pt-16 animate-slideIn delay-300">
+                        <div class="relative mb-6">
+                            <div class="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center text-xl font-bold mx-auto lg:mr-auto lg:ml-0 relative z-10">
+                                4
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Testing & Deployment</h3>
+                        <p class="text-gray-200">We rigorously test the solution and deploy it to production with minimal disruption to your operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos/Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Trusted by Industry Leaders</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We've helped hundreds of companies transform their businesses with our IT solutions.</p>
+            </div>
+            
+            <!-- Client Logos -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-20">
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google" class="h-8 object-contain">
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg">
+                    <img src="https://cdn.worldvectorlogo.com/logos/microsoft-corporation-logo.svg" alt="Microsoft" class="h-8 object-contain">
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" alt="Amazon" class="h-8 object-contain">
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png" alt="Apple" class="h-8 object-contain">
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" alt="IBM" class="h-8 object-contain">
+                </div>
+                <div class="flex items-center justify-center bg-gray-100 p-6 rounded-lg">
+                    <img src="https://cdn.worldvectorlogo.com/logos/oracle-2.svg" alt="Oracle" class="h-8 object-contain">
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="bg-gray-100 rounded-2xl p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                JD
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">John Doe</h4>
+                                <p class="text-gray-600">CEO, TechCorp</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">"TechSolutions transformed our IT infrastructure and significantly improved our operational efficiency. Their team is professional and responsive."</p>
+                        <div class="flex text-yellow-400 mt-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                AS
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Alice Smith</h4>
+                                <p class="text-gray-600">Director, Innovate Inc</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">"The cybersecurity solution implemented by TechSolutions protected our sensitive data and gave us peace of mind. Highly recommended!"</p>
+                        <div class="flex text-yellow-400 mt-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                RJ
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Robert Johnson</h4>
+                                <p class="text-gray-600">CTO, FutureTech</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">"Their web development team delivered our e-commerce platform ahead of schedule. The user experience is exceptional and our sales have increased by 40%."</p>
+                        <div class="flex text-yellow-400 mt-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Our Recent Projects</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore our latest work and see how we've helped businesses achieve their goals.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg relative transition-all duration-500 hover:shadow-2xl">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="E-Commerce Project" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-accent font-medium">E-Commerce</span>
+                        <h3 class="text-xl font-bold text-dark mt-2 mb-3">Global Retail Platform</h3>
+                        <p class="text-gray-600">A comprehensive e-commerce solution for a global retailer with multi-currency support.</p>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center opacity-0 transition-all duration-500">
+                        <a href="#" class="text-white font-bold py-3 px-6 border-2 border-white rounded-lg transform hover:scale-110 transition duration-300">View Case Study</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg relative transition-all duration-500 hover:shadow-2xl">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Healthcare App" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-accent font-medium">Mobile App</span>
+                        <h3 class="text-xl font-bold text-dark mt-2 mb-3">Healthcare Management App</h3>
+                        <p class="text-gray-600">A mobile application for healthcare providers to manage patient records and appointments.</p>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center opacity-0 transition-all duration-500">
+                        <a href="#" class="text-white font-bold py-3 px-6 border-2 border-white rounded-lg transform hover:scale-110 transition duration-300">View Case Study</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg relative transition-all duration-500 hover:shadow-2xl">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cloud Migration" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-accent font-medium">Cloud Migration</span>
+                        <h3 class="text-xl font-bold text-dark mt-2 mb-3">Enterprise Cloud Solution</h3>
+                        <p class="text-gray-600">Migrating a large enterprise's infrastructure to a secure and scalable cloud environment.</p>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center opacity-0 transition-all duration-500">
+                        <a href="#" class="text-white font-bold py-3 px-6 border-2 border-white rounded-lg transform hover:scale-110 transition duration-300">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="services.html" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition duration-300">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
+                    <p class="text-xl mb-8 text-gray-200">Contact us today for a free consultation and discover how our IT solutions can help your business grow.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+    <a href="contact.html" 
+       class="bg-white text-primary font-bold py-3 px-8 rounded-lg transition duration-300 text-center hover:bg-gray-100">
+        Contact Us
+    </a>
+    <a href="tel:+1234567890" 
+       class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-center flex items-center justify-center">
+        <i class="fas fa-phone mr-2"></i> +1 (234) 567-890
+    </a>
+</div>
+
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8">
+                    <h3 class="text-xl font-bold mb-6">Send us a message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white placeholder-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white placeholder-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                        </div>
+                        <div class="mb-4">
+                            <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white placeholder-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-microchip text-accent text-2xl mr-2"></i>
+                        <span class="text-2xl font-bold">Nexus<span class="text-primary">Tech</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Providing innovative IT solutions to help businesses thrive in the digital age.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Our Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Cloud Services</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Cyber Security</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">Data Analytics</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">IT Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">123 Business Avenue, Tech City, TC 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+1 (234) 567-890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">info@techsolutions.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">© 2025 NexusTech. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    // Toggle menu visibility with animation
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('hidden');
+                        setTimeout(() => {
+                            mobileMenu.classList.remove('opacity-0', 'scale-95', 'translate-y-2');
+                        }, 10);
+                    } else {
+                        mobileMenu.classList.add('opacity-0', 'scale-95', 'translate-y-2');
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            }
+            
+            // RTL toggle using global functions
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+            
+            // Add event listeners to both toggle buttons
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', toggleDirection);
+            }
+            if (mobileRtlToggle) {
+                mobileRtlToggle.addEventListener('click', toggleDirection);
+            }
+            
+            // Highlight current page in navigation
+            highlightCurrentPage();
+            
+            // Also call setActiveNavLink for consistency
+            setActiveNavLink();
+            
+            // Add dropdown functionality for mobile menu
+            const mobileDropdowns = document.querySelectorAll('#mobile-menu .relative');
+            mobileDropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('button');
+                const menu = dropdown.querySelector('div');
+                const icon = button.querySelector('i');
+                
+                button.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+            
+            // Add dropdown functionality for desktop menu
+            const desktopDropdowns = document.querySelectorAll('.dropdown');
+            desktopDropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('button');
+                const icon = button.querySelector('i');
+                
+                dropdown.addEventListener('mouseenter', () => {
+                    icon.classList.add('rotate-180');
+                });
+                
+                dropdown.addEventListener('mouseleave', () => {
+                    icon.classList.remove('rotate-180');
+                });
+            });
+            
+            // Animated counters
+            const counters = document.querySelectorAll('.animate-fadeIn .text-5xl');
+            const speed = 200; // The lower the faster
+            
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-count');
+                        const count = +counter.innerText;
+                        
+                        // Lower inc to slow and higher to slow
+                        const inc = target / speed;
+                        
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 1);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    updateCount();
+                });
+            };
+            
+            // Trigger counter animation when section is in view
+            const statsSection = document.querySelector('.bg-gradient-to-r.from-primary.to-secondary');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+            
+            // Pricing Toggle Functionality
+            const monthlyToggle = document.getElementById('monthly-toggle');
+            const annualToggle = document.getElementById('annual-toggle');
+            const monthlyPrices = document.querySelectorAll('.monthly-price');
+            const annualPrices = document.querySelectorAll('.annual-price');
+            
+            if (monthlyToggle && annualToggle) {
+                monthlyToggle.addEventListener('click', () => {
+                    monthlyToggle.classList.add('bg-primary', 'text-white');
+                    monthlyToggle.classList.remove('bg-transparent', 'text-gray-600');
+                    annualToggle.classList.add('bg-transparent', 'text-gray-600');
+                    annualToggle.classList.remove('bg-primary', 'text-white');
+                    
+                    monthlyPrices.forEach(price => price.classList.remove('hidden'));
+                    annualPrices.forEach(price => price.classList.add('hidden'));
+                });
+                
+                annualToggle.addEventListener('click', () => {
+                    annualToggle.classList.add('bg-primary', 'text-white');
+                    annualToggle.classList.remove('bg-transparent', 'text-gray-600');
+                    monthlyToggle.classList.add('bg-transparent', 'text-gray-600');
+                    monthlyToggle.classList.remove('bg-primary', 'text-white');
+                    
+                    annualPrices.forEach(price => price.classList.remove('hidden'));
+                    monthlyPrices.forEach(price => price.classList.add('hidden'));
+                });
+            }
+            
+            // Testimonial Carousel
+            const testimonialDots = document.querySelectorAll('.testimonial-dot');
+            if (testimonialDots.length > 0) {
+                testimonialDots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        // Reset all dots
+                        testimonialDots.forEach(d => d.classList.remove('bg-white'));
+                        testimonialDots.forEach(d => d.classList.add('bg-white', 'bg-opacity-50'));
+                        
+                        // Activate current dot
+                        dot.classList.remove('bg-white', 'bg-opacity-50');
+                        dot.classList.add('bg-white');
+                    });
+                });
+            }
+            
+            // Intersection Observer for feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            const processSteps = document.querySelectorAll('.process-step');
+            
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            featureCards.forEach(card => {
+                card.style.animationPlayState = 'paused';
+                animationObserver.observe(card);
+            });
+            
+            processSteps.forEach(step => {
+                step.style.animationPlayState = 'paused';
+                animationObserver.observe(step);
+            });
+        });
+        
+        // Function to highlight the current page in navigation
+        function highlightCurrentPage() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Desktop navigation links
+            const desktopLinks = document.querySelectorAll('.hidden.md\\:flex a, .hidden.md\\:flex .dropdown-menu a');
+            desktopLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'index.html' && (href === 'index.html' || href === './')) ||
+                    (currentPage === '' && (href === 'index.html' || href === './')))) {
+                    // Add active class to the link
+                    link.classList.add('nav-active');
+                }
+            });
+            
+            // Mobile navigation links
+            const mobileLinks = document.querySelectorAll('.md\\:hidden a, .md\\:hidden .dropdown-menu a');
+            mobileLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || 
+                    (currentPage === 'index.html' && (href === 'index.html' || href === './')) ||
+                    (currentPage === '' && (href === 'index.html' || href === './')))) {
+                    // Add active class to the link
+                    link.classList.add('mobile-nav-active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

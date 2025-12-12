@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - IT Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'>
+<path fill='blue' d='M128 64h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm144 
+136l-40-40-24 24 64 64-64 64 24 24 40-40 40-40-40-40zm96 
+128h96v-32h-96v32zM0 416h640v32c0 17.7-14.3 32-32 32H32c-17.7 
+0-32-14.3-32-32v-32z'/>
+</svg>">
+    <script src="js/globals.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626', // Dark red
+                        secondary: '#991B1B', // Deep red
+                        accent: '#F87171', // Light red
+                        dark: '#1e293b', // Dark slate
+                        light: '#f8fafc' // Light slate
+                    }
+                }
+            }
+        }
+
+        // Function to highlight active navigation link
+        function setActiveNavLink() {
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Loop through links and add active class to matching link
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href === currentPage || (currentPage === 'index.html' && href === 'index.html'))) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-container {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .rtl-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .rtl-toggle:hover {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container w-full max-w-2xl px-4 text-center">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-secondary p-8">
+                <div class="flex justify-between items-center">
+                    <div></div> <!-- Spacer -->
+                    <div class="flex items-center justify-center">
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-microchip text-white text-2xl mr-2"></i>
+                            <span class="text-2xl font-bold text-white">Nexus<span class="text-accent">Tech</span></span>
+                        </a>
+                    </div>
+                    <button id="rtl-toggle" class="rtl-toggle text-white">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-8 md:p-12">
+                <div class="text-9xl font-bold text-primary mb-6 float-animation">404</div>
+                <h1 class="text-3xl md:text-4xl font-bold text-dark mb-4">Page Not Found</h1>
+                <p class="text-gray-600 text-lg mb-8">Oops! The page you're looking for doesn't exist or has been moved.</p>
+                
+                <div class="max-w-md mx-auto mb-8">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="404 Error" class="rounded-lg w-full h-auto mb-8 pulse-animation">
+                    
+                    <form>
+                        <div class="relative">
+                            <input type="text" placeholder="Search our website..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent pl-12">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="index.html" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-center float-animation">
+                        <i class="fas fa-home mr-2"></i> Go Home
+                    </a>
+                    <a href="contact.html" class="bg-white border-2 border-primary text-primary hover:bg-gray-50 font-bold py-3 px-8 rounded-lg transition duration-300 text-center float-animation">
+                        <i class="fas fa-envelope mr-2"></i> Contact Us
+                    </a>
+                </div>
+                
+                <!-- Popular Pages -->
+                <div class="mt-12">
+                    <h2 class="text-xl font-bold text-dark mb-6">Popular Pages</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="index.html" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                            <i class="fas fa-home text-primary mr-3"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="services.html" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                            <i class="fas fa-cogs text-primary mr-3"></i>
+                            <span>Services</span>
+                        </a>
+                        <a href="about.html" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                            <i class="fas fa-info-circle text-primary mr-3"></i>
+                            <span>About Us</span>
+                        </a>
+                        <a href="contact.html" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Need More Help -->
+                <div class="mt-12 bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-dark mb-3">Need More Help?</h3>
+                    <p class="text-gray-600 mb-4">If you're still having trouble finding what you're looking for, our support team is here to help.</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="contact.html" class="bg-primary hover:bg-secondary text-white font-bold py-2 px-6 rounded-lg transition duration-300 text-center">
+                            <i class="fas fa-headset mr-2"></i> Contact Support
+                        </a>
+                        <a href="tel:+1234567890" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold py-2 px-6 rounded-lg transition duration-300 text-center">
+                            <i class="fas fa-phone mr-2"></i> Call Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8">
+            <p class="text-white text-sm">
+                © 2025 NexusTech. All rights reserved.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // RTL toggle using global functions
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const htmlElement = document.documentElement;
+            
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', toggleDirection);
+            }
+            
+            // Check for saved direction preference
+            const savedDirection = localStorage.getItem('techsolutions_direction');
+            if (savedDirection === DIRECTION_STATE.RTL) {
+                htmlElement.setAttribute('dir', DIRECTION_STATE.RTL);
+            }
+        });
+    </script>
+</body>
+</html>
