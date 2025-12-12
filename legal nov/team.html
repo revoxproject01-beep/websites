@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Apex Legal Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <script src="particles.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div class="flex items-center py-4">
+                        <a href="index.html" class="text-indigo-600 font-bold text-xl">Apex<span class="text-gray-900">Legal</span></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <div class="relative group">
+                            <button class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300 flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="index.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">Home Version 1</a>
+                                <a href="index2.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">Home Version 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">About</a>
+                        <a href="services.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">Services</a>
+                        <a href="team.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">Team</a>
+                        <a href="contact.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">Contact</a>
+                        <div class="relative group">
+                            <button class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300 flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">Admin Dashboard</a>
+                                <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">User Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3 rtl:space-x-reverse">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-globe"></i> 
+                    </button>
+                    <a href="login.html" class="py-2 px-4 bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300">Login</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div class="relative group">
+                    <button class="w-full text-left py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded flex justify-between items-center">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="ml-4 mt-1 space-y-1 hidden mobile-dropdown">
+                        <a href="index.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">Home Version 1</a>
+                        <a href="index2.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">Home Version 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">About</a>
+                <a href="services.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">Services</a>
+                <a href="team.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">Team</a>
+                <a href="contact.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">Contact</a>
+                <div class="relative group">
+                    <button class="w-full text-left py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded flex justify-between items-center">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="ml-4 mt-1 space-y-1 hidden mobile-dropdown">
+                        <a href="admin-dashboard.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">Admin Dashboard</a>
+                        <a href="user-dashboard.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">User Dashboard</a>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-gray-200">
+                    <button id="mobile-rtl-toggle" class="w-full text-left py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded flex items-center">
+                        <i class="fas fa-globe mr-2"></i>
+                    </button>
+                    <a href="login.html" class="block mt-2 py-2 px-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white text-center rounded hover:from-indigo-700 hover:to-purple-800">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-indigo-700 to-purple-800 text-white hero-section hero-gradient-animated relative overflow-hidden color-transition-1">
+        <div id="particles-js" class="absolute top-0 left-0 w-full h-full"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">Meet Our Legal Team</h1>
+                <p class="text-xl max-w-3xl mx-auto animate-fade-in-up animate-delay-200">Experienced attorneys dedicated to providing exceptional legal representation with integrity and professionalism.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Senior Partners -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Senior Partners</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our leadership team brings decades of experience and expertise across multiple practice areas.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Partner 1 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="David Mitchell" class="w-full h-64 object-cover animate-fade-in-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-2 animate-fade-in-left">David Mitchell</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Senior Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Expert in corporate law with extensive experience in business transactions and regulatory matters.</p>
+                        <div class="flex space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 2 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sarah Williams" class="w-full h-64 object-cover animate-fade-in-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-2 animate-fade-in-left">Sarah Williams</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Senior Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Specialist in family law with expertise in matrimonial disputes and estate matters.</p>
+                        <div class="flex space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 3 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Robert Thompson" class="w-full h-64 object-cover animate-fade-in-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-2 animate-fade-in-left">Robert Thompson</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Senior Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Experienced criminal defense lawyer with a strong track record in court proceedings.</p>
+                        <div class="flex space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Partners</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our partners bring specialized expertise and a commitment to excellence in their respective practice areas.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Partner 1 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Jennifer Parker" class="w-48 h-48 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2 animate-fade-in-left">Jennifer Parker</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Real estate law expert with focus on property transactions and disputes.</p>
+                        <div class="flex justify-center space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 2 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="David Morrison" class="w-48 h-48 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2 animate-fade-in-left">David Morrison</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Contract law specialist with expertise in business agreements.</p>
+                        <div class="flex justify-center space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 3 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Maria Rodriguez" class="w-48 h-48 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2 animate-fade-in-left">Maria Rodriguez</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Civil litigation expert with focus on personal injury matters.</p>
+                        <div class="flex justify-center space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 4 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="James Anderson" class="w-48 h-48 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2 animate-fade-in-left">James Anderson</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 animate-fade-in-left">Partner</p>
+                        <p class="text-gray-600 mb-4 animate-fade-in-up">Intellectual property specialist with expertise in patents and trademarks.</p>
+                        <div class="flex justify-center space-x-4 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Associates -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Associates</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our associates bring fresh perspectives and rigorous legal training to support our clients' needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Associate 1 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Emily Parker" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Emily Parker</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Corporate law expert with focus on regulatory matters.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 2 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Thomas Wilson" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Thomas Wilson</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Family law attorney with focus on matrimonial matters.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 3 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lisa Thompson" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Lisa Thompson</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Criminal defense attorney specializing in complex cases.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 4 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Kevin Davis" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Kevin Davis</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Real estate law specialist focusing on property matters.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 5 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Amanda Roberts" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Amanda Roberts</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Contract law expert specializing in business agreements.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 6 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Daniel Walker" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Daniel Walker</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Civil litigation attorney with focus on injury cases.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 7 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Sophia Green" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Sophia Green</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Intellectual property attorney specializing in copyright matters.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Associate 8 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Christopher Young" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Christopher Young</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Associate</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Immigration law specialist handling complex matters.</p>
+                        <div class="flex justify-center space-x-3 rtl:space-x-reverse animate-fade-in-up">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 btn-enhanced"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Staff -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Support Staff</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our dedicated support team ensures smooth operations and exceptional client service.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Staff 1 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Patricia Morgan" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Patricia Morgan</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Legal Secretary</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Experienced in managing comprehensive legal documentation.</p>
+                    </div>
+                </div>
+                
+                <!-- Staff 2 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Brian Carter" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Brian Carter</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Paralegal</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Focuses on corporate law research and case development.</p>
+                    </div>
+                </div>
+                
+                <!-- Staff 3 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Rebecca Nelson" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Rebecca Nelson</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">Office Manager</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Manages office operations and client relations.</p>
+                    </div>
+                </div>
+                
+                <!-- Staff 4 -->
+                <div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden text-center transition duration-300 color-transition-1">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Matthew Wilson" class="w-40 h-40 rounded-full mx-auto mt-8 object-cover animate-bounce-in">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2 animate-fade-in-left">Matthew Wilson</h3>
+                        <p class="text-indigo-600 font-semibold mb-3 animate-fade-in-left">IT Specialist</p>
+                        <p class="text-gray-600 text-sm mb-3 animate-fade-in-up">Handles technology infrastructure and security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Philosophy -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 order-1 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Team Collaboration" class="rounded-lg shadow-lg w-full h-auto">
+                </div>
+                <div class="md:w-1/2 pl-0 md:pl-12 md:rtl:pr-12 md:rtl:pl-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Team Philosophy</h2>
+                    <p class="text-gray-600 mb-6">We believe that outstanding legal representation comes from a collaborative approach that leverages the diverse expertise of our entire team.</p>
+                    <p class="text-gray-600 mb-6">Our legal professionals work closely with support staff to ensure that every aspect of your case receives the attention it deserves. This collaborative environment allows us to provide comprehensive legal services while maintaining the highest standards of quality.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <p class="text-gray-600">Cross-functional collaboration between practice areas</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <p class="text-gray-600">Professional development and mentorship programs</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <p class="text-gray-600">Continuing education and training initiatives</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <p class="text-gray-600">Regular team collaboration and case evaluations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-indigo-700 to-indigo-900 text-white color-transition-1">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Team of Legal Professionals</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">We're always looking for talented legal professionals to join our expanding practice.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="px-8 py-3 bg-white text-indigo-700 font-semibold rounded hover:bg-gray-100 transition duration-300 color-transition-2">View Career Opportunities</a>
+                    <a href="contact.html" class="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-indigo-700 transition duration-300 color-transition-3">Contact HR</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Apex<span class="text-indigo-600">Legal</span></h3>
+                    <p class="text-gray-400 mb-6">Providing expert legal counsel and representation for individuals and businesses since 2003.</p>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300">Our Team</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Corporate Law</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Real Estate Law</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Family Law</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Criminal Defense</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Civil Litigation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-indigo-600"></i>
+                            <span class="text-gray-400">123 Legal Avenue, Suite 100<br>Law City, LC 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-indigo-600"></i>
+                            <span class="text-gray-400">(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-indigo-600"></i>
+                            <span class="text-gray-400">info@legalfirm.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">© 2025 Apex Legal Solutions | All rights reserved | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('particles-js')) {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: {
+                            value: 80,
+                            density: {
+                                enable: true,
+                                value_area: 800
+                            }
+                        },
+                        color: {
+                            value: "#ffffff"
+                        },
+                        shape: {
+                            type: "circle",
+                            stroke: {
+                                width: 0,
+                                color: "#000000"
+                            }
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 1,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 3,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                size_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#ffffff",
+                            opacity: 0.4,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 1,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false,
+                            attract: {
+                                enable: true,
+                                rotateX: 600,
+                                rotateY: 1200
+                            }
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: "grab"
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: "push"
+                            },
+                            resize: true
+                        },
+                        modes: {
+                            grab: {
+                                distance: 140,
+                                line_linked: {
+                                    opacity: 1
+                                }
+                            },
+                            push: {
+                                particles_nb: 4
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+            
+            // Add animation classes to elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.scroll-animate');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('animate');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            // Initial check
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Legal Solutions | Home Version 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <script src="particles.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+      <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div class="flex items-center py-4">
+                        <a href="index.html" class="text-indigo-600 font-bold text-xl">Apex<span class="text-gray-900">Legal</span></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <div class="relative group">
+                            <button class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300 flex items-center">
+                                Home <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="index.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">Home Version 1</a>
+                                <a href="index2.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">Home Version 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">About</a>
+                        <a href="services.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">Services</a>
+                        <a href="team.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">Team</a>
+                        <a href="contact.html" class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300">Contact</a>
+                        <div class="relative group">
+                            <button class="py-4 px-2 text-gray-900 font-medium hover:text-indigo-600 transition duration-300 flex items-center">
+                                Dashboard <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">Admin Dashboard</a>
+                                <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">User Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3 rtl:space-x-reverse">
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <a href="login.html" class="py-2 px-4 bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300">Login</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div class="relative group">
+                    <button class="w-full text-left py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded flex justify-between items-center">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="ml-4 mt-1 space-y-1 hidden mobile-dropdown">
+                        <a href="index.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">Home Version 1</a>
+                        <a href="index2.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">Home Version 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">About</a>
+                <a href="services.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">Services</a>
+                <a href="team.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">Team</a>
+                <a href="contact.html" class="block py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded">Contact</a>
+                <div class="relative group">
+                    <button class="w-full text-left py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded flex justify-between items-center">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="ml-4 mt-1 space-y-1 hidden mobile-dropdown">
+                        <a href="admin-dashboard.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">Admin Dashboard</a>
+                        <a href="user-dashboard.html" class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded">User Dashboard</a>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-gray-200">
+                    <button id="mobile-rtl-toggle" class="w-full text-left py-2 px-3 text-gray-900 font-medium hover:bg-gray-100 rounded flex items-center">
+                        <i class="fas fa-globe mr-2"></i> 
+                    </button>
+                    <a href="login.html" class="block mt-2 py-2 px-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white text-center rounded hover:from-indigo-700 hover:to-purple-800">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-gray-900 to-indigo-900 text-white relative overflow-hidden">
+        <div id="particles-js" class="absolute top-0 left-0 w-full h-full"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="flex flex-col-reverse md:flex-row items-center">
+                <div class="md:w-1/2 mt-10 md:mt-0">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.Pm0SJN1TMiVEsEvw8yrt8gHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Legal Team" class="rounded-lg shadow-xl">
+                        <img src="https://media.istockphoto.com/photos/law-and-justice-concept-with-attorney-picture-id1178579178?k=20&m=1178579178&s=612x612&w=0&h=XiZsroolmgWRj8YTJq5PNzkO33mfOmWwsHPMpTBaOL0=" alt="Court Room" class="rounded-lg shadow-xl mt-8">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.meBjS5SszS3gCWCRtRegfwHaEv?w=1024&h=655&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Legal Documents" class="rounded-lg shadow-xl">
+                        <img src="https://media.istockphoto.com/photos/law-and-justice-theme-judge-chamber-picture-id1292362577?k=20&m=1292362577&s=612x612&w=0&h=QM_tnNr5K8VLtq4t2w2vLrv3t8TG9MRBF6BlhpXx770=" alt="Client Meeting" class="rounded-lg shadow-xl mt-8">
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:px-12">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Trusted Legal Representation You Can Count On</h1>
+                    <p class="text-xl mb-8">Over two decades of experience providing exceptional legal services to individuals and businesses across diverse practice areas.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#services" class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300 color-transition-2">Our Services</a>
+                        <a href="contact.html" class="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-indigo-700 transition duration-300 color-transition-3">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services -->
+    <section id="services" class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Legal Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Expert legal solutions tailoindigo to meet your specific needs with personalized attention and dedication.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 card-hover color-transition-1">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto service-icon">
+                        <i class="fas fa-briefcase text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Corporate Law</h3>
+                    <p class="text-gray-900 mb-4 text-center">Specialized corporate legal services for businesses of all sizes, from startups to multinational corporations.</p>
+                    <a href="services.html" class="text-indigo-900 font-medium flex items-center justify-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 card-hover color-transition-2">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto service-icon">
+                        <i class="fas fa-home text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Real Estate Law</h3>
+                    <p class="text-gray-900 mb-4 text-center">Expert guidance for property transactions, disputes, and regulatory compliance matters.</p>
+                    <a href="services.html" class="text-indigo-900 font-medium flex items-center justify-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 card-hover color-transition-3">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto service-icon">
+                        <i class="fas fa-users text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Family Law</h3>
+                    <p class="text-gray-900 mb-4 text-center">Sensitive and professional handling of family legal matters including divorce, custody, and estate planning.</p>
+                    <a href="services.html" class="text-indigo-900 font-medium flex items-center justify-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 card-hover color-transition-1">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto service-icon">
+                        <i class="fas fa-gavel text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Criminal Defense</h3>
+                    <p class="text-gray-900 mb-4 text-center">Strong defense representation for individuals facing criminal charges at all levels of the court system.</p>
+                    <a href="services.html" class="text-indigo-900 font-medium flex items-center justify-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 card-hover color-transition-2">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto service-icon">
+                        <i class="fas fa-file-contract text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Contract Law</h3>
+                    <p class="text-gray-900 mb-4 text-center">Drafting, review, and negotiation of contracts to protect your business interests and minimize risk.</p>
+                    <a href="services.html" class="text-indigo-900 font-medium flex items-center justify-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 card-hover color-transition-3">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto service-icon">
+                        <i class="fas fa-balance-scale text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Civil Litigation</h3>
+                    <p class="text-gray-900 mb-4 text-center">Skilled representation in civil disputes including personal injury, commercial litigation, and more.</p>
+                    <a href="services.html" class="text-indigo-900 font-medium flex items-center justify-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:px-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About Our Firm</h2>
+                    <p class="text-gray-600 mb-6">With over two decades of experience, our law firm has been providing exceptional legal services to clients across various industries. We combine deep legal expertise with a client-centeindigo approach to achieve the best possible outcomes.</p>
+                    <p class="text-gray-600 mb-8">Our team of dedicated attorneys specializes in diverse areas of law, ensuring comprehensive legal support for both individuals and businesses. We pride ourselves on our integrity, professionalism, and commitment to excellence.</p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="">
+                            <div class="text-4xl font-extrabold text-indigo-600 mb-1">20+</div>
+                            <div class="font-semibold text-gray-900">Years Experience</div>
+                        </div>
+                        <div class="">
+                            <div class="text-4xl font-extrabold text-indigo-600 mb-1">150+</div>
+                            <div class="font-semibold text-gray-900">Cases Won</div>
+                        </div>
+                        <div class="">
+                            <div class="text-4xl font-extrabold text-indigo-600 mb-1">50+</div>
+                            <div class="font-semibold text-gray-900">Legal Experts</div>
+                        </div>
+                        <div class="">
+                            <div class="text-4xl font-extrabold text-indigo-600 mb-1">98%</div>
+                            <div class="font-semibold text-gray-900">Client Satisfaction</div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="inline-block px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300">Learn More About Us</a>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.meBjS5SszS3gCWCRtRegfwHaEv?w=1024&h=655&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Legal Strategy" class="rounded-lg shadow-xl">
+                        <img src="https://cabrera.law/wp-content/uploads/2016/08/legal-cases-we-handle-bg.jpg" alt="Client Meeting" class="rounded-lg shadow-xl mt-8">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Court Room" class="rounded-lg shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Legal Documents" class="rounded-lg shadow-xl mt-8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Legal Process -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Legal Process</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We follow a structured approach to ensure the best possible outcomes for our clients.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 color-transition-1">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-indigo-600 font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Initial Consultation</h3>
+                    <p class="text-gray-900">We listen to your concerns and assess your legal needs to determine the best course of action.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 color-transition-2">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-indigo-600 font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Case Strategy</h3>
+                    <p class="text-gray-900">Our legal experts develop a comprehensive strategy tailored to your specific situation.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 color-transition-3">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-indigo-600 font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Execution</h3>
+                    <p class="text-gray-900">We implement our strategy with precision, handling all legal documentation and proceedings.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 color-transition-1">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-indigo-600 font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Resolution</h3>
+                    <p class="text-gray-900">We work tirelessly to achieve the best possible outcome and keep you informed throughout.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="contact.html" class="inline-block px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300 color-transition-2">Start Your Case Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear what our satisfied clients have to say about our legal services.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md color-transition-1">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="John Davidson" class="w-16 h-16 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">John Davidson</h4>
+                            <p class="text-gray-900">CEO, TechCorp Inc.</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-900 italic">"The legal team provided exceptional guidance during our company acquisition. Their expertise and attention to detail were instrumental in achieving a favorable outcome."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md color-transition-2">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sarah Reynolds" class="w-16 h-16 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sarah Reynolds</h4>
+                            <p class="text-gray-900">Entrepreneur</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-900 italic">"During a difficult family law matter, the attorneys showed great compassion while fighting vigorously for my rights. I couldn't be more grateful for their support."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md color-transition-3">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Michael Johnson" class="w-16 h-16 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Michael Johnson</h4>
+                            <p class="text-gray-900">Real Estate Developer</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-900 italic">"Their real estate law expertise saved us from a costly legal dispute. The proactive approach and thorough preparation prevented major complications."</p>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md color-transition-1">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Emily Peterson" class="w-16 h-16 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Emily Peterson</h4>
+                            <p class="text-gray-900">Small Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-900 italic">"The contract review service saved my business thousands in potential liabilities. Their attention to detail is unmatched in the industry."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plan / Legal Packages -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Legal Service Packages</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Affordable and transparent pricing options tailoindigo to your legal needs.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 color-transition-1">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white text-center py-6 rounded-t-lg">
+                        <h3 class="text-2xl font-bold">Basic Plan</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$299</span>
+                            <span class="text-lg">/month</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Document Review (up to 5 docs/month)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Email Legal Advice</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>30-min Phone Consultation</span>
+                            </li>
+                            <li class="flex items-center opacity-50">
+                                <i class="fas fa-times-circle text-indigo-900 mr-3"></i>
+                                <span>Court Representation</span>
+                            </li>
+                            <li class="flex items-center opacity-50">
+                                <i class="fas fa-times-circle text-indigo-900 mr-3"></i>
+                                <span>Contract Drafting</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block text-center py-3 px-6 bg-gray-100 text-gray-900 font-semibold rounded hover:bg-gray-200 transition duration-300">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="border-2 border-indigo-600 rounded-lg shadow-xl transform scale-105 relative color-transition-2">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-indigo-600 to-purple-700 text-white px-4 py-1 rounded-bl-lg font-bold">POPULAR</div>
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white text-center py-6 rounded-t-lg">
+                        <h3 class="text-2xl font-bold">Professional Plan</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$599</span>
+                            <span class="text-lg">/month</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Unlimited Document Reviews</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Priority Email Support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>2hr Monthly Consultation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Basic Contract Drafting</span>
+                            </li>
+                            <li class="flex items-center opacity-50">
+                                <i class="fas fa-times-circle text-indigo-900 mr-3"></i>
+                                <span>Court Representation</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block text-center py-3 px-6 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 color-transition-3">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white text-center py-6 rounded-t-lg">
+                        <h3 class="text-2xl font-bold">Enterprise Plan</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$999</span>
+                            <span class="text-lg">/month</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Unlimited Everything</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Dedicated Legal Advisor</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>24/7 Priority Support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Full Court Representation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Custom Contract Creation</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block text-center py-3 px-6 bg-gray-100 text-gray-900 font-semibold rounded hover:bg-gray-200 transition duration-300">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / News Section -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Legal Insights & News</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Stay informed with our latest articles and legal updates.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 color-transition-1">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.meBjS5SszS3gCWCRtRegfwHaEv?w=1024&h=655&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Corporate Law Update" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-900 font-semibold">Corporate Law</span>
+                        <h3 class="text-xl font-bold my-3">New Regulations Impacting Corporate Governance</h3>
+                        <p class="text-gray-300 mb-4">Recent legislative changes are reshaping corporate compliance requirements...</p>
+                        <div class="flex items-center text-gray-900 text-sm">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>June 15, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 color-transition-2">
+                    <img src="https://images.unsplash.com/photo-1587840171670-8b850147754e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Family Law" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-900 font-semibold">Family Law</span>
+                        <h3 class="text-xl font-bold my-3">Navigating Divorce in the Digital Age</h3>
+                        <p class="text-gray-300 mb-4">How digital assets and social media impact modern divorce proceedings...</p>
+                        <div class="flex items-center text-gray-900 text-sm">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>May 28, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 3 -->
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 color-transition-3">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Real Estate" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-900 font-semibold">Real Estate</span>
+                        <h3 class="text-xl font-bold my-3">Commercial Leasing Trends Post-Pandemic</h3>
+                        <p class="text-gray-300 mb-4">How remote work has transformed commercial real estate markets...</p>
+                        <div class="flex items-center text-gray-900 text-sm">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>April 12, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded hover:from-indigo-700 hover:to-purple-800 transition duration-300">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us / Contact CTA -->
+    <section class="py-16 bg-gradient-to-r from-indigo-700 to-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Secure Your Legal Future?</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">Contact our legal experts today for a confidential consultation tailoindigo to your needs.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html" class="px-8 py-3 bg-white text-indigo-700 font-semibold rounded hover:bg-gray-100 transition duration-300 color-transition-1">Schedule Consultation</a>
+                    <a href="tel:+1234567890" class="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-indigo-700 transition duration-300 color-transition-2">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Apex<span class="text-indigo-600">Legal</span></h3>
+                    <p class="text-gray-400 mb-6">Providing expert legal counsel and representation for individuals and businesses since 2003.</p>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300">Our Team</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Corporate Law</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Real Estate Law</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Family Law</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Criminal Defense</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Civil Litigation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-indigo-600"></i>
+                            <span class="text-gray-400">123 Legal Avenue, Suite 100<br>Law City, LC 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-indigo-600"></i>
+                            <span class="text-gray-400">(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-indigo-600"></i>
+                            <span class="text-gray-400">info@legalfirm.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">© 2025 Apex Legal Solutions | All rights reserved | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
