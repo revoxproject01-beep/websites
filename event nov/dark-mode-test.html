@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Text Visibility Test - TechConf 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    
+    <!-- Navigation Test -->
+    <nav class="navbar bg-white dark:bg-gray-800 shadow-sm px-4 py-3 mb-8">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold">Dark Mode Test</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="btn-primary hidden md:inline-block mr-2">Login</a>
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-green-600 font-medium">Test Link</a>
+                <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Test -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-16 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 p-4 open">
+            <div class="space-y-4">
+                <a href="#" class="block text-gray-700 dark:text-gray-300">Home Version 1</a>
+                <a href="#" class="block text-gray-700 dark:text-gray-300">Home Version 2</a>
+                <a href="#" class="block text-gray-700 dark:text-gray-300">Events</a>
+                <a href="#" class="block text-gray-700 dark:text-gray-300">Schedule</a>
+                <a href="login.html" class="btn-primary inline-block mt-4 mr-2">Login</a>
+                <a href="#" class="btn-primary inline-block mt-4">Register Now</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="max-w-4xl mx-auto p-6 space-y-8">
+        
+        <!-- Text Color Test Cards -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4">Light Text Colors</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-900 dark:text-white">Primary text (gray-900/white)</p>
+                    <p class="text-gray-700 dark:text-gray-300">Secondary text (gray-700/gray-300)</p>
+                    <p class="text-gray-600 dark:text-gray-400">Body text (gray-600/gray-400)</p>
+                    <p class="text-gray-500">Meta text (gray-500)</p>
+                    <p class="text-gray-400">Subtle text (gray-400)</p>
+                </div>
+            </div>
+            
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4">Enhanced Text Colors</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-900 dark:text-white">Primary text - Perfect visibility</p>
+                    <p class="text-gray-700 dark:text-gray-300">Secondary text - Enhanced contrast</p>
+                    <p class="text-gray-600 dark:text-gray-400">Body text - Improved readability</p>
+                    <p class="text-gray-500">Meta text - Better mobile visibility</p>
+                    <p class="text-sm text-gray-500">Small meta text - Mobile optimized</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section Test -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold mb-6 text-center">Stats Section Test</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="text-center">
+                    <div class="counter text-4xl font-bold text-green-600 mb-2">5000</div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium">Attendees</p>
+                </div>
+                <div class="text-center">
+                    <div class="counter text-4xl font-bold text-green-600 mb-2">50</div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium">Speakers</p>
+                </div>
+                <div class="text-center">
+                    <div class="counter text-4xl font-bold text-green-600 mb-2">25</div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium">Sponsors</p>
+                </div>
+                <div class="text-center">
+                    <div class="counter text-4xl font-bold text-green-600 mb-2">100</div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium">Sessions</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Style Test -->
+        <div class="card p-6">
+            <h2 class="text-2xl font-bold mb-4">Dashboard Elements Test</h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">John Smith</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Premium Ticket</p>
+                        </div>
+                    </div>
+                    <span class="text-sm text-gray-500">2 min ago</span>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Sarah Johnson</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Enterprise Ticket</p>
+                        </div>
+                    </div>
+                    <span class="text-sm text-gray-500">5 min ago</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Form Test -->
+        <div class="card p-6">
+            <h2 class="text-2xl font-bold mb-4">Form Elements Test</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email Address</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Message</label>
+                    <textarea class="form-input h-24" placeholder="Your message here"></textarea>
+                </div>
+                <button class="btn-primary">Submit Form</button>
+                <button class="btn-secondary ml-4">Cancel</button>
+            </div>
+        </div>
+        
+        <!-- Instructions -->
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-4 rounded-lg">
+            <h3 class="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">Test Instructions:</h3>
+            <ul class="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+                <li>• This page loads in dark mode by default</li>
+                <li>• Check text visibility on mobile devices</li>
+                <li>• All text should have sufficient contrast</li>
+                <li>• Gray text should be readable but not too bright</li>
+                <li>• Icons and buttons should be clearly visible</li>
+            </ul>
+        </div>
+        
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

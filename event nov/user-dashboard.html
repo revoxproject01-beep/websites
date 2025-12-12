@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - EventSphere 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+    
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm px-4 py-3 fixed top-0 left-0 right-0 z-50">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button id="sidebar-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-globe text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">EventSphere</span>
+            </div>
+            
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 relative">
+                        <i class="fas fa-bell text-gray-600 dark:text-gray-400"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                </div>
+                <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+                
+                
+                <div class="flex items-center space-x-2">
+                    
+                    <span class="hidden md:block font-medium">John Doe</span>
+                    <i class="fas fa-chevron-down text-sm text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+   class="sidebar fixed lg:static inset-y-0 left-0 rtl:left-auto rtl:right-0 z-40 w-64 
+          bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full lg:translate-x-0 transition-transform duration-300 pt-16 lg:pt-0 top-16">
+
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="#dashboard" class="sidebar-link active flex items-center px-4 py-3 text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg font-medium">
+                        <i class="fas fa-chart-bar mr-3 rtl:mr-0 rtl:ml-3"></i>Dashboard
+                    </a>
+                    <a href="#events" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-calendar mr-3 rtl:mr-0 rtl:ml-3"></i>My Events
+                    </a>
+                    <a href="#tickets" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-ticket-alt mr-3 rtl:mr-0 rtl:ml-3"></i>My Tickets
+                    </a>
+                    <a href="#schedule" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-calendar-check mr-3 rtl:mr-0 rtl:ml-3"></i>Personal Schedule
+                    </a>
+                    <a href="#bookmarks" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-bookmark mr-3 rtl:mr-0 rtl:ml-3"></i>Saved Sessions
+                    </a>
+                    <a href="#networking" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-users mr-3 rtl:mr-0 rtl:ml-3"></i>Networking
+                    </a>
+                    <a href="#profile" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-user mr-3 rtl:mr-0 rtl:ml-3"></i>Profile
+                    </a>
+                    
+                    <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="index.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                            <i class="fas fa-external-link-alt mr-3 rtl:mr-0 rtl:ml-3"></i>Event Website
+                        </a>
+                        <a href="login.html" class="flex items-center px-4 py-3 text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg">
+                            <i class="fas fa-sign-in-alt mr-3 rtl:mr-0 rtl:ml-3"></i>Login
+                        </a>
+                        <a href="login.html" class="flex items-center px-4 py-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg">
+                            <i class="fas fa-sign-out-alt mr-3 rtl:mr-0 rtl:ml-3"></i>Logout
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-0 p-4 sm:p-6 min-h-screen">
+            <!-- Dashboard Overview -->
+            <div id="dashboard-content">
+                <div class="mb-6">
+                    <h1 class="text-3xl font-bold mb-2">Welcome back, John!</h1>
+                    <p class="text-gray-700 dark:text-gray-300">Here's your EventSphere 2025 dashboard. Event starts in 45 days!</p>
+                </div>
+                
+                <!-- Event Countdown -->
+                <div class="card p-6 mb-8 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">EventSphere 2025 Starts In:</h3>
+                            <p class="text-indigo-100">December 5-7, 2025 | Global Convention Center</p>
+                        </div>
+                        <div class="countdown grid grid-cols-4 gap-4 text-center mt-4 md:mt-0" data-date="2025-12-05T09:00:00">
+                            <div>
+                                <div class="days text-3xl font-bold">00</div>
+                                <div class="text-sm">Days</div>
+                            </div>
+                            <div>
+                                <div class="hours text-3xl font-bold">00</div>
+                                <div class="text-sm">Hours</div>
+                            </div>
+                            <div>
+                                <div class="minutes text-3xl font-bold">00</div>
+                                <div class="text-sm">Min</div>
+                            </div>
+                            <div>
+                                <div class="seconds text-3xl font-bold">00</div>
+                                <div class="text-sm">Sec</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+                    <div class="card p-4 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                <i class="fas fa-ticket-alt text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">My Tickets</p>
+                                <p class="text-2xl font-bold text-gray-700 dark:text-gray-300">1</p>
+                                <p class="text-sm text-indigo-600">Premium Ticket</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                <i class="fas fa-calendar-check text-blue-600 text-xl"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Sessions Saved</p>
+                                <p class="text-2xl font-bold text-gray-700 dark:text-gray-300">8</p>
+                                <p class="text-sm text-blue-600">Across 3 days</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-pink-100 dark:bg-pink-900 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                <i class="fas fa-users text-pink-600 text-xl"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Networking</p>
+                                <p class="text-2xl font-bold text-gray-700 dark:text-gray-300">12</p>
+                                <p class="text-sm text-pink-600">Connections made</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                <i class="fas fa-certificate text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Certificates</p>
+                                <p class="text-2xl font-bold text-gray-700 dark:text-gray-300">0</p>
+                                <p class="text-sm text-purple-600">Post-event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts and Content Row -->
+                <div class="grid lg:grid-cols-2 gap-6 mb-8">
+                    <!-- Interest Chart -->
+                    <div class="card p-6">
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">My Interest Areas</h3>
+                        <div class="w-full overflow-hidden" style="height: 300px;">
+                            <canvas id="interestChart" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="card p-6">
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Recent Notifications</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-indigo-600 rounded-full mt-2 mr-3 rtl:mr-0 rtl:ml-3 flex-shrink-0"></div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-medium text-gray-700 dark:text-gray-300">New Speaker Added</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-400">Dr. Sarah Johnson confirmed for AI session</p>
+                                    <p class="text-xs text-gray-500">2 hours ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 rtl:mr-0 rtl:ml-3 flex-shrink-0"></div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-medium text-gray-700 dark:text-gray-300">Schedule Update</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-400">Blockchain workshop time changed</p>
+                                    <p class="text-xs text-gray-500">1 day ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-pink-600 rounded-full mt-2 mr-3 rtl:mr-0 rtl:ml-3 flex-shrink-0"></div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-medium text-gray-700 dark:text-gray-300">Networking Event</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-400">Evening mixer details released</p>
+                                    <p class="text-xs text-gray-500">3 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#notifications" class="text-indigo-600 hover:text-indigo-700 text-sm font-medium mt-4 inline-block">View all notifications →</a>
+                    </div>
+                </div>
+                
+                <!-- My Schedule and Saved Sessions -->
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <!-- Today's Schedule -->
+                    <div class="card p-6">
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">My Schedule for Today</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <div class="text-center mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                    <div class="text-lg font-bold text-indigo-600">10:00</div>
+                                    <div class="text-xs text-gray-500">AM</div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium">Opening Keynote</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-400 truncate">The Future of AI - Dr. Sarah Johnson</p>
+                                    <p class="text-xs text-indigo-600">Main Stage</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                <div class="text-center mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                    <div class="text-lg font-bold text-blue-600">2:00</div>
+                                    <div class="text-xs text-gray-500">PM</div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium">Blockchain Workshop</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-400 truncate">Hands-on DeFi Development</p>
+                                    <p class="text-xs text-blue-600">Tech Hall</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="schedule.html" class="text-indigo-600 hover:text-indigo-700 text-sm font-medium mt-4 inline-block">View full schedule →</a>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="card p-6">
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Quick Actions</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button class="p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center">
+                                <i class="fas fa-solid fa-qrcode text-indigo-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">My QR Code</p>
+                            </button>
+                            <button class="p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center">
+                                <i class="fas fa-map text-blue-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Venue Map</p>
+                            </button>
+                            <button class="p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center">
+                                <i class="fas fa-download text-pink-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Download App</p>
+                            </button>
+                            <button class="p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center">
+                                <i class="fas fa-share text-purple-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Share Event</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Apply saved direction on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction') || 'ltr';
+            document.documentElement.setAttribute('dir', savedDirection);
+        });
+        
+        document.addEventListener('DOMContentLoaded', function () {
+  const interestCanvas = document.getElementById('interestChart');
+
+  if (interestCanvas) {
+    try {
+      const interestCtx = interestCanvas.getContext('2d');
+      new Chart(interestCtx, {
+        type: 'radar',
+        data: {
+          labels: ['AI/ML', 'Blockchain', 'Cloud', 'Security', 'Mobile', 'Data Science'],
+          datasets: [{
+            label: 'My Interests',
+            data: [90, 75, 60, 80, 45, 85],
+            borderColor: '#6366f1',
+            backgroundColor: 'rgba(99, 102, 241, 0.2)',
+            pointBackgroundColor: '#6366f1',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            r: {
+              beginAtZero: true,
+              max: 100,
+              ticks: { display: false },
+              grid: { color: 'rgba(156, 163, 175, 0.3)' },
+              angleLines: { color: 'rgba(156, 163, 175, 0.3)' }
+            }
+          }
+        }
+      });
+    } catch (err) {
+      console.error('Chart initialization failed:', err);
+      interestCanvas.parentElement.innerHTML =
+        '<p class="text-gray-500 text-center py-8">Chart could not be loaded</p>';
+    }
+  }
+});
+
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize dashboard functionality
+            if (window.eventWebsite) {
+                window.eventWebsite.initDashboard();
+            }
+            
+            // Initialize countdown
+            if (window.eventWebsite) {
+                window.eventWebsite.initCountdowns();
+            }
+            
+            // Interest Areas Chart
+            const interestCanvas = document.getElementById('interestChart');
+            if (interestCanvas) {
+                try {
+                    const interestCtx = interestCanvas.getContext('2d');
+                    new Chart(interestCtx, {
+                        type: 'radar',
+                        data: {
+                            labels: ['AI/ML', 'Blockchain', 'Cloud', 'Security', 'Mobile', 'Data Science'],
+                            datasets: [{
+                                label: 'My Interests',
+                                data: [90, 75, 60, 80, 45, 85],
+                                borderColor: '#6366f1',
+                                backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                                pointBackgroundColor: '#6366f1',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                r: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    ticks: {
+                                        display: false
+                                    },
+                                    grid: {
+                                        color: 'rgba(156, 163, 175, 0.3)'
+                                    },
+                                    angleLines: {
+                                        color: 'rgba(156, 163, 175, 0.3)'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error initializing interest chart:', error);
+                    interestCanvas.parentElement.innerHTML = '<p class="text-gray-500 text-center py-8">Chart could not be loaded</p>';
+                }
+            }
+        });
+        (function () {
+  // expose namespace used by your page
+  window.eventWebsite = window.eventWebsite || {};
+
+  window.eventWebsite.initDashboard = function () {
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const rtlToggle = document.getElementById('rtl-toggle'); // optional (present in HTML)
+
+    if (!sidebar || !toggleBtn) return;
+
+    const getIsRtl = () =>
+      (document.documentElement.getAttribute('dir') || '').toLowerCase() === 'rtl';
+
+    const iconEl = () => toggleBtn.querySelector('i');
+
+    const setIconToBars = () => {
+      const i = iconEl();
+      if (!i) return;
+      i.classList.remove('fa-times');
+      i.classList.add('fa-bars');
+    };
+    const setIconToTimes = () => {
+      const i = iconEl();
+      if (!i) return;
+      i.classList.remove('fa-bars');
+      i.classList.add('fa-times');
+    };
+
+    const openSidebar = () => {
+      if (getIsRtl()) {
+        sidebar.classList.remove('translate-x-full');
+      } else {
+        sidebar.classList.remove('-translate-x-full');
+      }
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      setIconToTimes();
+    };
+
+    const closeSidebar = () => {
+      if (getIsRtl()) {
+        sidebar.classList.add('translate-x-full');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+      }
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      setIconToBars();
+    };
+
+    const isSidebarOpen = () => {
+      return getIsRtl()
+        ? !sidebar.classList.contains('translate-x-full')
+        : !sidebar.classList.contains('-translate-x-full');
+    };
+
+    const toggleSidebar = (e) => {
+      if (e) e.stopPropagation();
+      if (isSidebarOpen()) closeSidebar();
+      else openSidebar();
+    };
+
+    // Initial state: hide sidebar on small screens, show on lg+
+    const applyInitialState = () => {
+      if (window.innerWidth >= 1024) {
+        // large screens: always visible
+        sidebar.classList.remove('-translate-x-full', 'translate-x-full');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        setIconToBars(); // keep hamburger (not "X") on desktop
+      } else {
+        // small screens: hidden by default
+        if (getIsRtl()) sidebar.classList.add('translate-x-full');
+        else sidebar.classList.add('-translate-x-full');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        setIconToBars();
+      }
+    };
+
+    // attach listeners
+    toggleBtn.addEventListener('click', toggleSidebar);
+
+    // close when clicking/tapping outside the sidebar (mobile only)
+    document.addEventListener(
+      'click',
+      (ev) => {
+        if (window.innerWidth >= 1024) return; // do nothing on large screens
+        if (!sidebar.contains(ev.target) && !toggleBtn.contains(ev.target)) {
+          if (isSidebarOpen()) closeSidebar();
+        }
+      },
+      { passive: true }
+    );
+
+    // close on Escape
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && isSidebarOpen() && window.innerWidth < 1024) {
+        closeSidebar();
+      }
+    });
+
+    // handle resize: make sure sidebar shows on large screens, and toggles back on small
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        applyInitialState();
+      }, 120);
+    });
+
+    // optional: support a basic RTL toggle (your page has an rtl-toggle button)
+    if (rtlToggle) {
+      rtlToggle.addEventListener('click', () => {
+        const html = document.documentElement;
+        const currentDir = html.getAttribute('dir');
+        const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
+        // Save direction to localStorage for persistence across pages
+        localStorage.setItem('direction', newDir);
+
+        // Reset sidebar positioning classes to ensure proper transition
+        if (window.innerWidth < 1024) {
+          if (currentDir === 'rtl') {
+            // Was RTL, now switching to LTR
+            sidebar.classList.remove('translate-x-full');
+            sidebar.classList.add('-translate-x-full');
+          } else {
+            // Was LTR, now switching to RTL
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-full');
+          }
+        } else {
+          // On large screens, remove both classes
+          sidebar.classList.remove('-translate-x-full', 'translate-x-full');
+        }
+
+        // after switching direction, update sidebar classes so it's hidden on small screens
+        applyInitialState();
+      });
+    }
+
+    // apply state once on init
+    applyInitialState();
+  };
+})();
+
+
+    </script>
+</body>
+</html>

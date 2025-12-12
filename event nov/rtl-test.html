@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTL Sidebar Test - Event Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#16A34A',
+                        secondary: '#FACC15'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm px-4 py-3 fixed top-0 left-0 right-0 z-50">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <button id="sidebar-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold">اختبار الشريط الجانبي</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <button onclick="toggleDirection()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar fixed lg:static inset-y-0 left-0 rtl:left-auto rtl:right-0 z-40 w-64 bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full rtl:translate-x-full lg:translate-x-0 rtl:lg:translate-x-0 transition-transform duration-300 pt-16 lg:pt-0">
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="#" class="sidebar-link active flex items-center px-4 py-3 text-green-600 bg-green-50 dark:bg-green-900/20 rounded-lg font-medium">
+                        <i class="fas fa-chart-bar mr-3 rtl:mr-0 rtl:ml-3"></i>لوحة التحكم
+                    </a>
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-calendar mr-3 rtl:mr-0 rtl:ml-3"></i>الأحداث
+                    </a>
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-users mr-3 rtl:mr-0 rtl:ml-3"></i>التسجيلات
+                    </a>
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-microphone mr-3 rtl:mr-0 rtl:ml-3"></i>المتحدثون
+                    </a>
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-cog mr-3 rtl:mr-0 rtl:ml-3"></i>الإعدادات
+                    </a>
+                </nav>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-0 rtl:lg:mr-0 p-6">
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold mb-2">اختبار الشريط الجانبي RTL</h1>
+                <p class="text-gray-600 dark:text-gray-400">تأكد من عمل الشريط الجانبي في وضع RTL على جميع أحجام الشاشة.</p>
+            </div>
+            
+            <!-- Test Cards similar to dashboard -->
+            <div class="grid gap-4 sm:gap-6 mb-6">
+                <!-- Stats Card Test -->
+                <div class="card p-4 sm:p-6">
+                    <div class="flex items-center justify-between min-w-0">
+                        <div class="flex items-center min-w-0 flex-1">
+                            <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                                <i class="fas fa-users text-green-600 text-lg"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-2xl font-bold truncate">2,847</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 truncate">إجمالي التسجيلات</p>
+                            </div>
+                        </div>
+                        <div class="text-green-600 flex-shrink-0 ml-2 rtl:ml-0 rtl:mr-2">
+                            <i class="fas fa-arrow-up text-sm"></i>
+                            <span class="text-sm">12%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User List Test -->
+                <div class="card p-4 sm:p-6">
+                    <h3 class="text-lg font-semibold mb-4">المستخدمون الجدد</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between min-w-0">
+                            <div class="flex items-center min-w-0 flex-1">
+                                <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 rtl:mr-0 rtl:ml-3 flex-shrink-0">
+                                    <i class="fas fa-user text-blue-600"></i>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-medium truncate">أحمد محمد علي</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 truncate">تذكرة ممتازة</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500 flex-shrink-0 ml-2 rtl:ml-0 rtl:mr-2">منذ دقيقتين</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between min-w-0">
+                            <div class="flex items-center min-w-0 flex-1">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-3 rtl:mr-0 rtl:ml-3 flex-shrink-0">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-medium truncate">فاطمة أحمد السالم</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 truncate">تذكرة الشركات</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500 flex-shrink-0 ml-2 rtl:ml-0 rtl:mr-2">منذ 5 دقائق</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Grid Test -->
+                <div class="card p-4 sm:p-6">
+                    <h3 class="text-lg font-semibold mb-4">إجراءات سريعة</h3>
+                    <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                        <button class="p-3 sm:p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center transition-colors">
+                            <i class="fas fa-plus text-green-600 text-lg sm:text-xl mb-2"></i>
+                            <p class="text-xs sm:text-sm font-medium">إضافة متحدث</p>
+                        </button>
+                        <button class="p-3 sm:p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center transition-colors">
+                            <i class="fas fa-calendar-plus text-blue-600 text-lg sm:text-xl mb-2"></i>
+                            <p class="text-xs sm:text-sm font-medium">جدولة جلسة</p>
+                        </button>
+                        <button class="p-3 sm:p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center transition-colors">
+                            <i class="fas fa-envelope text-yellow-600 text-lg sm:text-xl mb-2"></i>
+                            <p class="text-xs sm:text-sm font-medium">إرسال نشرة</p>
+                        </button>
+                        <button class="p-3 sm:p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-center transition-colors">
+                            <i class="fas fa-download text-purple-600 text-lg sm:text-xl mb-2"></i>
+                            <p class="text-xs sm:text-sm font-medium">تصدير البيانات</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Test Controls -->
+            <div class="card p-4 text-center">
+                <h3 class="font-semibold mb-3">اختبار التخطيط</h3>
+                <div class="space-y-2">
+                    <button onclick="toggleDirection()" class="w-full p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                        تبديل الاتجاه (RTL/LTR)
+                    </button>
+                    <button onclick="toggleSidebar()" class="w-full p-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors lg:hidden">
+                        تبديل الشريط الجانبي
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function toggleDirection() {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            html.setAttribute('dir', newDir);
+            html.lang = newDir === 'rtl' ? 'ar' : 'en';
+            
+            // Update sidebar positioning after direction change
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar && window.innerWidth < 1024) {
+                sidebar.classList.remove('-translate-x-full', 'translate-x-full');
+                if (newDir === 'rtl') {
+                    sidebar.classList.add('translate-x-full');
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            }
+        }
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            
+            if (sidebar) {
+                if (isRTL) {
+                    sidebar.classList.toggle('translate-x-full');
+                } else {
+                    sidebar.classList.toggle('-translate-x-full');
+                }
+            }
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.eventWebsite && window.eventWebsite.initDashboard) {
+                window.eventWebsite.initDashboard();
+            }
+            
+            // Setup sidebar toggle button
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+        });
+    </script>
+</body>
+</html>

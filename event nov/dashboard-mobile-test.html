@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Mobile Menu Test - TechConf 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+    
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm px-4 py-3 fixed top-0 left-0 right-0 z-50">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button id="sidebar-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold">Dashboard Test</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar fixed lg:static inset-y-0 left-0 rtl:left-auto rtl:right-0 z-40 w-64 bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full rtl:translate-x-full lg:translate-x-0 rtl:lg:translate-x-0 transition-transform duration-300 pt-16 lg:pt-0">
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="#dashboard" class="sidebar-link active flex items-center px-4 py-3 text-green-600 bg-green-50 dark:bg-green-900/20 rounded-lg font-medium">
+                        <i class="fas fa-chart-bar mr-3 rtl:mr-0 rtl:ml-3"></i>Dashboard
+                    </a>
+                    <a href="#test1" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-calendar mr-3 rtl:mr-0 rtl:ml-3"></i>Test Item 1
+                    </a>
+                    <a href="#test2" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-users mr-3 rtl:mr-0 rtl:ml-3"></i>Test Item 2
+                    </a>
+                    <a href="#test3" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-cog mr-3 rtl:mr-0 rtl:ml-3"></i>Test Item 3
+                    </a>
+                </nav>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-0 p-6">
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold mb-2">Dashboard Mobile Menu Test</h1>
+                <p class="text-gray-600 dark:text-gray-400">This page tests the mobile sidebar functionality.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-2">Test Instructions</h3>
+                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                        <li>• Resize browser to mobile width (&lt;1024px)</li>
+                        <li>• Click hamburger menu button</li>
+                        <li>• Sidebar should slide in from left</li>
+                        <li>• Icon should change to X</li>
+                        <li>• Click outside to close</li>
+                        <li>• Test RTL toggle functionality</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-2">Expected Behavior</h3>
+                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                        <li>• Sidebar hidden by default on mobile</li>
+                        <li>• Smooth slide-in animation when opened</li>
+                        <li>• Click-outside to close works</li>
+                        <li>• Hamburger transforms to X icon</li>
+                        <li>• RTL support works correctly</li>
+                        <li>• Auto-close on window resize</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-2">Current Status</h3>
+                    <div class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                        <p id="viewport-info">Viewport: <span class="font-mono">Loading...</span></p>
+                        <p id="direction-info">Direction: <span class="font-mono">Loading...</span></p>
+                        <p id="theme-info">Theme: <span class="font-mono">Loading...</span></p>
+                        <p id="sidebar-status">Sidebar: <span class="font-mono">Loading...</span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            window.eventWebsite.initDashboard();
+            
+            // Status monitoring
+            function updateStatus() {
+                const viewport = document.getElementById('viewport-info');
+                const direction = document.getElementById('direction-info');
+                const theme = document.getElementById('theme-info');
+                const sidebarStatus = document.getElementById('sidebar-status');
+                const sidebar = document.getElementById('sidebar');
+                
+                if (viewport) {
+                    viewport.innerHTML = `Viewport: <span class="font-mono">${window.innerWidth}x${window.innerHeight}</span>`;
+                }
+                
+                if (direction) {
+                    const dir = document.documentElement.getAttribute('dir') || 'ltr';
+                    direction.innerHTML = `Direction: <span class="font-mono">${dir.toUpperCase()}</span>`;
+                }
+                
+                if (theme) {
+                    const isDark = document.documentElement.classList.contains('dark');
+                    theme.innerHTML = `Theme: <span class="font-mono">${isDark ? 'DARK' : 'LIGHT'}</span>`;
+                }
+                
+                if (sidebarStatus && sidebar) {
+                    const hasTranslateX = sidebar.classList.contains('-translate-x-full') || sidebar.classList.contains('translate-x-full');
+                    const hasTranslateX0 = sidebar.classList.contains('translate-x-0');
+                    let status = 'VISIBLE';
+                    if (window.innerWidth < 1024) {
+                        status = hasTranslateX0 ? 'OPEN' : 'CLOSED';
+                    }
+                    sidebarStatus.innerHTML = `Sidebar: <span class="font-mono">${status}</span>`;
+                }
+            }
+            
+            // Update status on load and resize
+            updateStatus();
+            window.addEventListener('resize', updateStatus);
+            
+            // Monitor theme and direction changes
+            const observer = new MutationObserver(updateStatus);
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['class', 'dir']
+            });
+        });
+    </script>
+</body>
+</html>

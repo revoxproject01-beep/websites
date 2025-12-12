@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - EventSphere 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-800 min-h-screen text-white">
+    
+    <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
+        <div class="text-center max-w-4xl mx-auto">
+            
+            <!-- Logo -->
+            <div class="flex items-center justify-center space-x-3 mb-8 rtl:space-x-reverse">
+                <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                    <i class="fas fa-globe text-white text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold">EventSphere 2025</span>
+            </div>
+            
+            <!-- Main Heading -->
+            <h1 class="text-6xl lg:text-8xl font-bold mb-6 leading-tight">
+                Coming <span class="text-pink-300">Soon</span>
+            </h1>
+            
+            <p class="text-2xl lg:text-3xl mb-8 text-indigo-100">
+                The Next Evolution of Global Events Awaits
+            </p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-3xl mx-auto mb-12" data-date="2025-12-05T09:00:00">
+                <h3 class="text-2xl font-semibold mb-6">Event Launches In:</h3>
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="days text-5xl lg:text-6xl font-bold mb-2">00</div>
+                        <div class="text-lg text-indigo-200">Days</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="hours text-5xl lg:text-6xl font-bold mb-2">00</div>
+                        <div class="text-lg text-indigo-200">Hours</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="minutes text-5xl lg:text-6xl font-bold mb-2">00</div>
+                        <div class="text-lg text-indigo-200">Minutes</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="seconds text-5xl lg:text-6xl font-bold mb-2">00</div>
+                        <div class="text-lg text-indigo-200">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto mb-12">
+                <h3 class="text-2xl font-bold mb-4">Be the First to Know</h3>
+                <p class="text-indigo-200 mb-6">
+                    Subscribe to get exclusive updates, early bird discounts, and speaker announcements.
+                </p>
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address" 
+                        class="flex-1 px-6 py-4 bg-white/20 border border-white/30 rounded-lg text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                        required
+                    >
+                    <button type="submit" class="btn-secondary px-8 py-4 whitespace-nowrap">
+                        <i class="fas fa-bell mr-2"></i>Notify Me
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Links -->
+            <div class="flex justify-center space-x-8 text-indigo-200">
+                <a href="index.html" class="hover:text-white transition-colors">
+                    <i class="fas fa-home mr-2"></i>Current Event
+                </a>
+                <a href="contact.html" class="hover:text-white transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="fixed top-4 right-4">
+             <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

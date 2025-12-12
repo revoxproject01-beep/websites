@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EventSphere 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-globe text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">EventSphere</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                <div class="dropdown">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">
+                        Home <i class="fas fa-chevron-down ml-1"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="index.html"
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home
+                            Version 1</a>
+                        <a href="index2.html"
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home
+                            Version 2</a>
+                    </div>
+                </div>
+
+                <a href="event-details.html"
+                    class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Events</a>
+                <a href="schedule.html"
+                    class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Schedule</a>
+
+                <div class="dropdown">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">
+                        Dashboard <i class="fas fa-chevron-down ml-1"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="user-dashboard.html"
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">User
+                            Dashboard</a>
+                        <a href="admin-dashboard.html"
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Admin
+                            Dashboard</a>
+                    </div>
+                </div>
+
+                <a href="faq.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">FAQ</a>
+                <a href="contact.html"
+                    class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Contact</a>
+            </div>
+
+            <!-- Theme & RTL Toggles -->
+            <div class="flex items-center space-x-4">
+                <button id="rtl-toggle"
+                    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+
+                <a href="login.html" class="btn-primary hidden lg:inline-block mr-2">Login</a>
+                <a href="register.html" class="btn-primary hidden lg:inline-block">Register Now</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden bg-white border-t border-gray-200 dark:border-gray-700 p-4">
+            <div class="space-y-4">
+                <a href="index.html" class="block text-gray-700 dark:text-gray-300">Home Version 1</a>
+                <a href="index2.html" class="block text-gray-700 dark:text-gray-300">Home Version 2</a>
+                <a href="event-details.html" class="block text-gray-700 dark:text-gray-300">Events</a>
+                <a href="schedule.html" class="block text-gray-700 dark:text-gray-300">Schedule</a>
+                <a href="user-dashboard.html" class="block text-gray-700 dark:text-gray-300">User Dashboard</a>
+                <a href="admin-dashboard.html" class="block text-gray-700 dark:text-gray-300">Admin Dashboard</a>
+                <a href="faq.html" class="block text-gray-700 dark:text-gray-300">FAQ</a>
+                <a href="contact.html" class="block text-gray-700 dark:text-gray-300">Contact</a>
+                <a href="login.html" class="btn-primary inline-block mt-4 mr-2">Login</a>
+                <a href="register.html" class="btn-primary inline-block mt-4">Register Now</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero -->
+    <section class="pt-20 pb-16 px-4 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">Contact Us</h1>
+            <p class="text-xl">Get in touch with our team for any questions or support</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+
+                <!-- Contact Form -->
+                <div class="card p-8">
+                    <h2 class="text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">Send us a Message</h2>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name
+                                    *</label>
+                                <input type="text" class="form-input" placeholder="Your full name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email
+                                    *</label>
+                                <input type="email" class="form-input" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject
+                                *</label>
+                            <input type="text" class="form-input" placeholder="What is this about?" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message
+                                *</label>
+                            <textarea rows="6" class="form-input" placeholder="Tell us more details..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full">
+                            <i class="fas fa-paper-plane text-white mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-6">Get in Touch</h3>
+                        <div class="space-y-6">
+                            <!-- Contact item -->
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div
+                                        class="w-12 h-12   flex items-center justify-center mr-4 flex-shrink-0 rtl:ml-2 rtl:mr-0 ">
+                                        <i class="fas fa-phone text-indigo-600 text-xl"></i> </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Phone</h4>
+                                        <p class="text-gray-700 dark:text-gray-400">+1 (555) 987-6543</p>
+                                        <p class="text-sm text-gray-700 dark:text-gray-400">Mon-Fri 9AM-6PM EST</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div
+                                        class="w-12 h-12  flex items-center justify-center mr-4 flex-shrink-0 rtl:ml-2 rtl:mr-0">
+                                        <i class="fas fa-envelope text-indigo-600 text-xl"></i> </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Email</h4>
+                                        <p class="text-gray-700 dark:text-gray-400">info@eventsphere2025.com</p>
+                                        <p class="text-sm text-gray-700 dark:text-gray-400">We'll respond within 24
+                                            hours</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div
+                                        class="w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0 rtl:ml-2 rtl:mr-0">
+                                        <i class="fas fa-map-marker-alt text-indigo-600 text-xl"></i> </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Event Venue</h4>
+                                        <p class="text-gray-700 dark:text-gray-400">Global Convention Center</p>
+                                        <p class="text-gray-700 dark:text-gray-400">888 8th Avenue, New York, NY 10018
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Map Section -->
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-4">Location</h3>
+                        <div class="rounded-lg overflow-hidden h-64">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.184133404672!2d-73.9924976845919!3d40.75773097932694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" class="w-full h-full">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EventSphere</span>
+                    </div>
+                    <p class="text-gray-400">
+                        The premier global event platform bringing together innovators, developers, and industry
+                        leaders.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-400 hover:text-white">Home</a>
+                        <a href="event-details.html" class="block text-gray-400 hover:text-white">Events</a>
+                        <a href="schedule.html" class="block text-gray-400 hover:text-white">Schedule</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <div class="space-y-2">
+                        <a href="faq.html" class="block text-gray-400 hover:text-white">FAQ</a>
+                        <a href="register.html" class="block text-gray-400 hover:text-white">Registration</a>
+                        <a href="login.html" class="block text-gray-400 hover:text-white">Login</a>
+                        <a href="#" class="block text-gray-400 hover:text-white">Help Center</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 EventSphere. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-white mr-4 rtl:ml-4 rtl:mr-0">Privacy
+                        Policy</a>
+                    <a href="terms-of-service.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

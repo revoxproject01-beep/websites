@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventSphere 2025 - Premier Global Event Platform</title>
+    <meta name="description" content="Join EventSphere 2025, the world's leading event platform featuring industry experts, innovative sessions, and networking opportunities.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
+    
+ <nav class="navbar fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-globe text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">EventSphere</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                <div class="dropdown">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">
+                        Home <i class="fas fa-chevron-down ml-1"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Version 1</a>
+                        <a href="index2.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Version 2</a>
+                    </div>
+                </div>
+                
+                <a href="event-details.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Events</a>
+                <a href="schedule.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Schedule</a>
+                
+                <div class="dropdown">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">
+                        Dashboard <i class="fas fa-chevron-down ml-1"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Admin Dashboard</a>
+                    </div>
+                </div>
+                
+                <a href="faq.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">FAQ</a>
+                <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Contact</a>
+            </div>
+            
+            <!-- Theme & RTL Toggles -->
+            <div class="flex items-center space-x-4">
+                <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+                
+                <a href="login.html" class="btn-primary hidden lg:inline-block mr-2">Login</a>
+                <a href="register.html" class="btn-primary hidden lg:inline-block">Register Now</a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden bg-white border-t border-gray-200 dark:border-gray-700 p-4">
+            <div class="space-y-4">
+                <a href="index.html" class="block text-gray-700 dark:text-gray-300">Home Version 1</a>
+                <a href="index2.html" class="block text-gray-700 dark:text-gray-300">Home Version 2</a>
+                <a href="event-details.html" class="block text-gray-700 dark:text-gray-300">Events</a>
+                <a href="schedule.html" class="block text-gray-700 dark:text-gray-300">Schedule</a>
+                <a href="user-dashboard.html" class="block text-gray-700 dark:text-gray-300">User Dashboard</a>
+                <a href="admin-dashboard.html" class="block text-gray-700 dark:text-gray-300">Admin Dashboard</a>
+                <a href="faq.html" class="block text-gray-700 dark:text-gray-300">FAQ</a>
+                <a href="contact.html" class="block text-gray-700 dark:text-gray-300">Contact</a>
+                <a href="login.html" class="btn-primary inline-block mt-4 mr-2">Login</a>
+                <a href="register.html" class="btn-primary inline-block mt-4">Register Now</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-20 pb-16 px-4 min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/80 to-purple-600/80"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                        Welcome to <span class="text-pink-300">EventSphere 2025</span>
+                    </h1>
+                    <p class="text-xl text-indigo-100 mb-8 leading-relaxed">
+                        Connect with global innovators, thought leaders, and industry pioneers at the world's premier event platform. 
+                        Experience transformative sessions, networking opportunities, and hands-on workshops that will shape tomorrow's possibilities.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="register.html" class="btn-secondary text-center">
+                            <i class="fas fa-ticket-alt mr-2 rtl:ml-2 rtl:mr-0"></i>Get Your Tickets
+                        </a>
+                        <a href="#agenda" class="bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition-all text-center">
+                            <i class="fas fa-calendar mr-2 rtl:ml-2 rtl:mr-0"></i>View Agenda
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-in-right">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-2xl font-bold text-white mb-6">Event Highlights</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center text-white">
+                                <i class="fas fa-calendar-day text-pink-300 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                                <div class="flex space-x-8"></div>
+                                <span>December 5-7, 2025</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i class="fas fa-map-marker-alt text-pink-300 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                                <span>Global Convention Center, New York</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i class="fas fa-users text-pink-300 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                                <span>7000+ Expected Attendees</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i class="fas fa-microphone text-pink-300 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                                <span>80+ Expert Speakers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+<section class="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center fade-in">
+        <div class="flex justify-center items-baseline">
+          <div class="counter text-4xl font-bold mb-2" data-target="7000">0</div>
+          <span class="text-3xl font-bold text-pink-500 ml-1">+</span>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 font-medium">Attendees</p>
+      </div>
+
+      <div class="text-center fade-in">
+        <div class="flex justify-center items-baseline">
+          <div class="counter text-4xl font-bold mb-2" data-target="80">0</div>
+          <span class="text-3xl font-bold text-pink-500 ml-1">+</span>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 font-medium">Speakers</p>
+      </div>
+
+      <div class="text-center fade-in">
+        <div class="flex justify-center items-baseline">
+          <div class="counter text-4xl font-bold mb-2" data-target="40">0</div>
+          <span class="text-3xl font-bold text-pink-500 ml-1">+</span>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 font-medium">Sponsors</p>
+      </div>
+
+      <div class="text-center fade-in">
+        <div class="flex justify-center items-baseline">
+          <div class="counter text-4xl font-bold mb-2" data-target="150">0</div>
+          <span class="text-3xl font-bold text-pink-500 ml-1">+</span>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 font-medium">Sessions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200; // adjust speed for animation
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+
+    const updateCount = () => {
+      const increment = target / speed;
+      if (count < target) {
+        count += increment;
+        counter.textContent = Math.ceil(count);
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.textContent = target;
+      }
+    };
+
+    updateCount();
+  });
+});
+</script>
+
+
+    
+    
+    <!-- About Conference Section -->
+    <section class="py-16 px-4" id="about">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl font-bold mb-6">About EventSphere 2025</h2>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        EventSphere 2025 is the world's premier event platform bringing together the brightest minds across industries. 
+                        For three transformative days, we'll explore cutting-edge innovations, emerging trends, and the future 
+                        of global connectivity.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-600 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">150+ Expert-led sessions across 10 innovation tracks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-600 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Interactive workshops and live demonstrations</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-600 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Exclusive networking events and startup showcase</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-600 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Access to cutting-edge tech demos and exhibitions</span>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="event-details.html" class="btn-primary">
+                            <i class="fas fa-info-circle mr-2 rtl:ml-2 rtl:mr-0"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-in-right">
+                    <div class="bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-indigo-900 dark:to-purple-800 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Innovation Tracks</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-brain text-indigo-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">AI & Automation</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-link text-purple-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">Blockchain</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-cloud text-blue-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">Cloud Solutions</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-shield-alt text-red-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">Cybersecurity</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-mobile-alt text-pink-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">Mobile Innovation</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-database text-yellow-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">Data Science</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-microchip text-green-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">IoT</h4>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+                                <i class="fas fa-rocket text-teal-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-gray-700">Future Tech</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Preview Section -->
+    <section class="py-16 px-4 bg-gray-50 dark:bg-gray-800" id="agenda">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Conference Agenda</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                    Three days packed with innovative sessions, workshops, and networking opportunities
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Day 1 -->
+                <div class="card p-6 fade-in">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-center">
+                            <span class="text-white font-bold text-xl">1</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Day 1</h3>
+                        <p class="text-indigo-600 font-medium">December 5, 2025</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">9:00 AM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Opening Keynote</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">The Future of Digital Transformation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">11:00 AM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">AI Workshop</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Machine Learning Fundamentals</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">2:00 PM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Panel Discussion</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Ethics in Technology</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">6:00 PM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Welcome Reception</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Networking & Cocktails</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2 -->
+                <div class="card p-6 fade-in">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-center">
+                            <span class="text-white font-bold text-xl">2</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Day 2</h3>
+                        <p class="text-purple-600 font-medium">December 6, 2025</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">9:00 AM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Cloud Architecture</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Scalable Solutions</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">11:00 AM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Blockchain Deep Dive</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">DeFi & Smart Contracts</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">2:00 PM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Security Workshop</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Cybersecurity Best Practices</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">7:00 PM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Startup Showcase</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Innovation Spotlight</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 3 -->
+                <div class="card p-6 fade-in">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-center">
+                            <span class="text-white font-bold text-xl">3</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Day 3</h3>
+                        <p class="text-pink-600 font-medium">December 7, 2025</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">9:00 AM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Future of Work</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Remote & Hybrid Technologies</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">11:00 AM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">IoT & Edge Computing</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Connected World</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">2:00 PM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Closing Keynote</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Technology Trends 2026</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-16 text-sm text-gray-500 flex-shrink-0">4:00 PM</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Farewell Reception</h4>
+                                <p class="text-sm text-gray-700 dark:text-gray-400">Awards & Networking</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="schedule.html" class="btn-primary">
+                    <i class="fas fa-calendar-alt mr-2 rtl:ml-2 rtl:mr-0"></i>View Full Schedule
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors & Partners Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Our Partners & Sponsors</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    Supported by leading technology companies and industry innovators
+                </p>
+            </div>
+            
+            <!-- Platinum Sponsors -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-center mb-8 text-gray-700 dark:text-gray-300">Platinum Sponsors</h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg mx-auto mb-4 flex items-center justify-center icon-center">
+                            <i class="fas fa-cloud text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300">CloudTech Inc.</h4>
+                    </div>
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg mx-auto mb-4 flex items-center justify-center icon-center">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300">AI Solutions</h4>
+                    </div>
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center icon-center">
+                            <i class="fas fa-link text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300">BlockChain Co.</h4>
+                    </div>
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-lg mx-auto mb-4 flex items-center justify-center icon-center">
+                            <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300">SecureNet</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gold Sponsors -->
+            <div class="mb-12">
+                <h3 class="text-xl font-semibold text-center mb-6 text-gray-700 dark:text-gray-300">Gold Sponsors</h3>
+                <div class="grid grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="card p-4 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mx-auto mb-2 flex items-center justify-center icon-center">
+                            <i class="fas fa-mobile-alt text-white"></i>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">MobileTech</p>
+                    </div>
+                    <div class="card p-4 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center icon-center">
+                            <i class="fas fa-database text-white"></i>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">DataFlow</p>
+                    </div>
+                    <div class="card p-4 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-red-500 rounded-lg mx-auto mb-2 flex items-center justify-center icon-center">
+                            <i class="fas fa-rocket text-white"></i>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">StartupHub</p>
+                    </div>
+                    <div class="card p-4 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-teal-400 to-green-500 rounded-lg mx-auto mb-2 flex items-center justify-center icon-center">
+                            <i class="fas fa-microchip text-white"></i>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">IoT Systems</p>
+                    </div>
+                    <div class="card p-4 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-lg mx-auto mb-2 flex items-center justify-center icon-center">
+                            <i class="fas fa-code text-white"></i>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">DevTools</p>
+                    </div>
+                    <div class="card p-4 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center icon-center">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Analytics Pro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 px-4" id="speakers">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Featured Speakers</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                    Learn from industry pioneers and thought leaders who are shaping the future of technology
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 text-center fade-in">
+                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center icon-center">
+                            <i class="fas fa-user text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Dr. Sarah Johnson</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Chief Technology Officer, TechCorp</p>
+                    <p class="text-gray-700 dark:text-gray-400">Expert in AI and Machine Learning with 15+ years of experience in Silicon Valley startups.</p>
+                </div>
+                
+                <div class="card p-6 text-center fade-in">
+                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center icon-center">
+                            <i class="fas fa-user text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Michael Chen</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Founder & CEO, InnovateLab</p>
+                    <p class="text-gray-700 dark:text-gray-400">Blockchain pioneer and cryptocurrency expert, author of "Future of Digital Finance".</p>
+                </div>
+                
+                <div class="card p-6 text-center fade-in">
+                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center icon-center">
+                            <i class="fas fa-user text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Emma Rodriguez</h3>
+                    <p class="text-indigo-600 font-medium mb-3">VP of Engineering, CloudTech</p>
+                    <p class="text-gray-700 dark:text-gray-400">Cloud infrastructure specialist leading digital transformation initiatives for Fortune 500 companies.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="event-details.html" class="btn-primary">
+                    <i class="fas fa-users mr-2 rtl:ml-2 rtl:mr-0"></i>View All Speakers
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Workshops Section -->
+    <section class="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Interactive Workshops</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    Hands-on learning experiences with industry experts and cutting-edge tools
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 fade-in">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mb-4 mx-auto icon-center">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">AI Development Workshop</h3>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4">Build your first neural network and deploy it to production using modern frameworks.</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="fas fa-clock mr-1 rtl:ml-1 rtl:mr-0"></i> 3 hours • <i class="fas fa-users ml-2 mr-1 rtl:ml-1 rtl:mr-0"></i> 30 participants
+                    </div>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">Register for Workshop →</a>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4 mx-auto icon-center">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">Cybersecurity Lab</h3>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4">Learn ethical hacking techniques and defensive strategies in our secure lab environment.</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="fas fa-clock mr-1 rtl:ml-1 rtl:mr-0"></i> 4 hours • <i class="fas fa-users ml-2 mr-1 rtl:ml-1 rtl:mr-0"></i> 25 participants
+                    </div>
+                    <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Register for Workshop →</a>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto icon-center">
+                        <i class="fas fa-cloud text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">Cloud Architecture</h3>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4">Design and deploy scalable cloud solutions using AWS, Azure, and Google Cloud.</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="fas fa-clock mr-1 rtl:ml-1 rtl:mr-0"></i> 3.5 hours • <i class="fas fa-users ml-2 mr-1 rtl:ml-1 rtl:mr-0"></i> 40 participants
+                    </div>
+                    <a href="#" class="text-purple-600 hover:text-purple-700 font-medium">Register for Workshop →</a>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center mb-4 mx-auto icon-center">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300  mb-3">Mobile App Development</h3>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4">Create cross-platform mobile apps using React Native and Flutter frameworks.</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="fas fa-clock mr-1 rtl:ml-1 rtl:mr-0"></i> 4 hours • <i class="fas fa-users ml-2 mr-1 rtl:ml-1 rtl:mr-0"></i> 35 participants
+                    </div>
+                    <a href="#" class="text-pink-600 hover:text-pink-700 font-medium">Register for Workshop →</a>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mb-4 mx-auto icon-center">
+                        <i class="fas fa-link text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">Blockchain Development</h3>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4">Build smart contracts and DApps on Ethereum and other blockchain platforms.</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="fas fa-clock mr-1 rtl:ml-1 rtl:mr-0"></i> 3 hours • <i class="fas fa-users ml-2 mr-1 rtl:ml-1 rtl:mr-0"></i> 20 participants
+                    </div>
+                    <a href="#" class="text-red-600 hover:text-red-700 font-medium">Register for Workshop →</a>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mb-4 mx-auto icon-center">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300  mb-3">Data Science Bootcamp</h3>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4">Analyze real datasets and build predictive models using Python and R.</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="fas fa-clock mr-1 rtl:ml-1 rtl:mr-0"></i> 5 hours • <i class="fas fa-users ml-2 mr-1 rtl:ml-1 rtl:mr-0"></i> 50 participants
+                    </div>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">Register for Workshop →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold mb-4">What Attendees Say</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    Hear from past participants about their EventSphere experience
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4 italic">
+                        "EventSphere 2023 was a game-changer for my career. The networking opportunities 
+                        and cutting-edge sessions provided insights I couldn't get anywhere else."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mr-3 rtl:ml-2 rtl:mr-0 icon-center">
+                            <span class="text-white font-semibold ">SJ</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-700 dark:text-gray-300">Sarah Johnson</p>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">Senior Developer, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4 italic">
+                        "The workshops were incredibly hands-on and practical. I left with actionable 
+                        knowledge I could implement immediately in my startup."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mr-3 rtl:ml-2 rtl:mr-0 icon-center">
+                            <span class="text-white font-semibold">MC</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-700 dark:text-gray-300">Michael Chen</p>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">Founder, InnovateAI</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-400 mb-4 italic">
+                        "Amazing conference! The diversity of topics and quality of speakers exceeded 
+                        my expectations. Already planning to attend next year."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mr-3 rtl:ml-2 rtl:mr-0 icon-center">
+                            <span class="text-white font-semibold">ER</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-700 dark:text-gray-300">Emma Rodriguez</p>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">VP Engineering, CloudTech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Live Event Updates Section -->
+    <section class="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Live Event Updates</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    Stay connected with real-time updates, social feeds, and event announcements
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Event Timeline</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-4 h-4 bg-indigo-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300 mr-2">Now</span>
+                                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full">Live</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Registration & Check-in Open</h4>
+                                <p class="text-gray-700 dark:text-gray-400 text-sm">Main lobby and welcome reception area</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-4 h-4 bg-purple-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="text-sm text-gray-500 mr-2">9:00 AM</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Upcoming</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Opening Keynote</h4>
+                                <p class="text-gray-700 dark:text-gray-400 text-sm">"The Future of AI" - Dr. Sarah Johnson</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-4 h-4 bg-gray-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="text-sm text-gray-500 mr-2">11:00 AM</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">Scheduled</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Breakout Sessions Begin</h4>
+                                <p class="text-gray-700 dark:text-gray-400 text-sm">Multiple tracks across 6 conference rooms</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-4 h-4 bg-gray-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <span class="text-sm text-gray-500 mr-2">6:00 PM</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">Scheduled</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300">Networking Reception</h4>
+                                <p class="text-gray-700 dark:text-gray-400 text-sm">Rooftop terrace with cocktails and appetizers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Social Media Feed</h3>
+                    <div class="space-y-4">
+                        <div class="card p-4">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3 rtl:ml-2 rtl:mr-0 icon-center">
+                                    <i class="fab fa-twitter text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-700 dark:text-gray-300 text-sm">@EventSphere2025</p>
+                                    <p class="text-gray-500 text-xs">5 minutes ago</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">🚀 The future is here! Amazing opening keynote by Dr. Sarah Johnson about AI's transformative potential. #EventSphere2025 #AI #Innovation</p>
+                        </div>
+                        
+                        <div class="card p-4">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center mr-3 rtl:ml-2 rtl:mr-0 icon-center">
+                                    <i class="fab fa-instagram text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-700 dark:text-gray-300 text-sm">@eventsphere_official</p>
+                                    <p class="text-gray-500 text-xs">12 minutes ago</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">Behind the scenes at our innovation showcase! 🔬✨ VR demos are absolutely mind-blowing. #EventSphere2025 #VR #Innovation</p>
+                        </div>
+                        
+                        <div class="card p-4">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3 rtl:ml-2 rtl:mr-0 icon-center">
+                                    <i class="fab fa-linkedin text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-700 dark:text-gray-300 text-sm">EventSphere 2025</p>
+                                    <p class="text-gray-500 text-xs">25 minutes ago</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">Networking has never been better! Connect with industry leaders and make lasting professional relationships. #EventSphere2025 #Networking</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <a href="#" class="btn-primary">
+                            <i class="fas fa-hashtag mr-2 rtl:ml-2 rtl:mr-0"></i>Follow #EventSphere2025
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter & CTA -->
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold text-white mb-4">Stay Updated</h2>
+                <p class="text-xl text-indigo-100 mb-8">
+                    Subscribe to our newsletter for the latest updates, speaker announcements, and exclusive content.
+                </p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Enter your email" class="form-input flex-1" required>
+                    <button type="submit" class="btn-secondary whitespace-nowrap">
+                        <i class="fas fa-envelope mr-2 rtl:ml-2 rtl:mr-0"></i>Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EventSphere</span>
+                    </div>
+                    <p class="text-gray-400">
+                        The premier global event platform bringing together innovators, developers, and industry leaders.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-400 hover:text-white">Home</a>
+                        <a href="event-details.html" class="block text-gray-400 hover:text-white">Events</a>
+                        <a href="schedule.html" class="block text-gray-400 hover:text-white">Schedule</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white">Contact</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <div class="space-y-2">
+                        <a href="faq.html" class="block text-gray-400 hover:text-white">FAQ</a>
+                        <a href="register.html" class="block text-gray-400 hover:text-white">Registration</a>
+                        <a href="login.html" class="block text-gray-400 hover:text-white">Login</a>
+                        <a href="#" class="block text-gray-400 hover:text-white">Help Center</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 EventSphere. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-white mr-4 rtl:ml-4 rtl:mr-0">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

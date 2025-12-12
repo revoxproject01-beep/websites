@@ -1,0 +1,926 @@
+/* Event Management Website - Professional Styling */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+
+/* Mobile Alignment Fixes */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent horizontal scrolling on all devices */
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Ensure proper mobile viewport handling */
+@media screen and (max-width: 768px) {
+  html {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  .fixed {
+    max-width: 100vw;
+  }
+  
+  /* Fix for container elements that might cause horizontal overflow */
+  .max-w-7xl, .max-w-6xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Ensure grid elements don't cause overflow */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .lg\:grid-cols-2, .lg\:grid-cols-3, .lg\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Prevent images from causing overflow */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Fix for sections that might cause overflow */
+  section {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* RTL Fixes for Workshop Icons */
+[dir="rtl"] .workshop-card .rounded-full.flex.items-center.justify-center,
+[dir="ltr"] .workshop-card .rounded-full.flex.items-center.justify-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 50%;
+  transform: translateX(0) !important;
+}
+
+.workshop-icon-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Mobile Icon Centering Fixes */
+@media screen and (max-width: 768px) {
+  /* Ensure all circular icons are centered on mobile */
+  .rounded-full.flex.items-center.justify-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix for larger icons in index2.html */
+  .w-20.h-20.rounded-2xl.flex.items-center.justify-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix for showcase icons */
+  .grid.grid-cols-2 .rounded-full.flex.items-center.justify-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* RTL/LTR Icon Centering Fixes */
+/* Ensure icons stay centered regardless of text direction */
+[dir="rtl"] .rounded-full.flex.items-center.justify-center,
+[dir="ltr"] .rounded-full.flex.items-center.justify-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 50% !important;
+  transform: translateX(0) !important;
+}
+
+[dir="rtl"] .w-20.h-20.rounded-2xl.flex.items-center.justify-center,
+[dir="ltr"] .w-20.h-20.rounded-2xl.flex.items-center.justify-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 50% !important;
+  transform: translateX(0) !important;
+}
+
+/* Universal centering class for icons */
+.icon-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Dark Mode Text Visibility Improvements */
+/* Ensure better contrast for mobile dark mode text */
+.dark .text-gray-500 {
+  color: #D1D5DB !important; /* lighter gray for better visibility */
+}
+
+.dark .text-gray-600 {
+  color: #E5E7EB !important; /* much lighter gray for better contrast */
+}
+
+.dark .text-gray-400 {
+  color: #F3F4F6 !important; /* even lighter for better readability */
+}
+
+/* Mobile-specific dark mode improvements */
+@media (max-width: 768px) {
+  .dark .text-gray-500 {
+    color: #E5E7EB !important; /* increase visibility on mobile */
+  }
+  
+  .dark .text-gray-600 {
+    color: #F9FAFB !important; /* high contrast for mobile readability */
+  }
+  
+  .dark .text-gray-400 {
+    color: #FFFFFF !important; /* maximum readability on mobile */
+  }
+  
+  /* Improve mobile menu text visibility */
+  .dark .mobile-menu a {
+    color: #FFFFFF !important;
+  }
+  
+  .dark .mobile-menu a:hover {
+    color: #22C55E !important;
+  }
+  
+  /* Dashboard mobile sidebar text improvements */
+  .dark .sidebar-link {
+    color: #F9FAFB !important;
+  }
+  
+  .dark .sidebar-link:hover {
+    color: #FFFFFF !important;
+  }
+  
+  /* Card content text improvements */
+  .dark .card p {
+    color: #F3F4F6 !important;
+  }
+  
+  /* Form text improvements */
+  .dark .form-input {
+    color: #FFFFFF !important;
+  }
+  
+  .dark .form-input::placeholder {
+    color: #D1D5DB !important;
+  }
+  
+  /* Improve text visibility for all text elements on mobile */
+  .dark .text-gray-700 {
+    color: #F3F4F6 !important; /* Light gray for better visibility */
+  }
+  
+  .dark .text-gray-300 {
+    color: #F9FAFB !important; /* Near white for maximum readability */
+  }
+}
+
+/* Navigation text improvements for dark mode */
+.dark nav a {
+  color: #F3F4F6 !important;
+}
+
+.dark nav a:hover {
+  color: #22C55E !important;
+}
+
+/* Button text improvements */
+.dark .btn-secondary {
+  color: #1F2937 !important; /* dark text on yellow background */
+  background-color: #FACC15;
+}
+
+/* Icon improvements in dark mode */
+.dark .fas,
+.dark .fab,
+.dark .far {
+  color: #E5E7EB;
+}
+
+.dark .text-gray-600.dark\:text-gray-400,
+.dark .text-gray-500 {
+  color: #E5E7EB !important;
+}
+
+/* Ensure dropdown content is visible */
+.dark .dropdown-content a {
+  color: #F3F4F6 !important;
+}
+
+.dark .dropdown-content a:hover {
+  color: #22C55E !important;
+}
+
+/* Counter text visibility */
+.dark .counter {
+  color: #22C55E !important;
+}
+
+/* Improve timestamp and meta text visibility */
+.dark .text-sm.text-gray-500,
+.dark .text-xs.text-gray-500 {
+  color: #D1D5DB !important;
+}
+
+/* Custom CSS Variables for Color Palette */
+:root {
+  --primary-color: #6366f1;     /* Indigo - New primary color */
+  --secondary-color: #8b5cf6;   /* Violet - New secondary color */
+  --accent-color: #f472b6;      /* Pink - New accent color */
+  --bg-color: #FFFFFF;          /* White Background */
+  --text-color: #1e293b;        /* Slate text */
+  --light-text: #64748b;        /* Light slate text */
+  
+  /* Dark Mode Colors */
+  --dark-bg: #0f172a;
+  --dark-surface: #1e293b;
+  --dark-text: #f1f5f9;
+  --dark-accent: #334155;
+  
+  /* New gradient colors */
+  --gradient-start: #8b5cf6;
+  --gradient-end: #ec4899;
+}
+
+/* Dark Mode Styles */
+.dark {
+  --bg-color: var(--dark-bg);
+  --text-color: var(--dark-text);
+  --accent-color: var(--dark-accent);
+  --light-text: #94a3b8;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Fix for sidebar positioning in RTL mode */
+@media screen and (max-width: 1023px) {
+  [dir="rtl"] .sidebar.fixed.inset-y-0.left-0 {
+    left: auto;
+    right: 0;
+  }
+  
+  /* Ensure sidebar slides from the right in RTL mode */
+  [dir="rtl"] .sidebar.fixed.transform.translate-x-full {
+    transform: translateX(100%);
+  }
+  
+  [dir="rtl"] .sidebar.fixed.transform:not(.translate-x-full) {
+    transform: translateX(0);
+  }
+  
+  /* Ensure proper z-index - sidebar should be under navbar */
+  .sidebar.fixed {
+    z-index: 40 !important; /* Lower than navbar z-index */
+  }
+  
+  /* Ensure navbar stays on top */
+  .navbar.fixed {
+    z-index: 50 !important;
+  }
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced Transition Effects and Animations */
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Custom Components */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(110, 110, 245, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(226, 226, 229, 0.5);
+  color: white !important; /* Ensure text remains white on hover */
+  text-decoration: none !important; /* Prevent underline if it's a link */
+}
+
+
+/* Active state for btn-primary */
+.btn-primary:active,
+.btn-primary.active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(233, 233, 235, 0.4);
+  color: white !important; /* Ensure text remains white */
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; /* Ensure background stays the same */
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.5);
+}
+
+/* Navigation Styles */
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+.dark .navbar {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.navbar a:hover {
+  color: var(--primary-color);
+}
+
+/* Active state for navigation links */
+.navbar a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.navbar a.active::after {
+  width: 100%;
+  background-color: var(--primary-color);
+  left: 0;
+  transform: translateX(0);
+}
+
+/* Mobile menu active state */
+.mobile-menu a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+  background-color: rgba(99, 102, 241, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: block;
+  margin: 0 -12px;
+}
+
+/* Dropdown active state */
+.dropdown a.active {
+  color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Card Styles */
+.card {
+  background: var(--bg-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.card:hover::before {
+  transform: translateX(100%);
+}
+
+.dark .card {
+  background: var(--dark-surface);
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation Classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.fade-in.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.slide-in-left.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.slide-in-right.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.zoom-in.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Advanced Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Staggered Animations */
+.staggered-animation {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.staggered-animation.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delayed Animations */
+.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.delay-400 {
+  transition-delay: 0.4s;
+}
+
+.delay-500 {
+  transition-delay: 0.5s;
+}
+
+/* Counter Animation */
+.counter {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: counterPulse 2s infinite;
+}
+
+@keyframes counterPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Form Styles */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.dark .form-input {
+  background: var(--dark-surface);
+  border-color: var(--dark-accent);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 4rem; /* 64px - height of navbar */
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 40;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile menu links */
+.mobile-menu a {
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: block;
+  color: #1F2937; /* dark text for light mode */
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-menu a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.mobile-menu a:hover::before {
+  left: 100%;
+}
+
+.mobile-menu a:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  transform: translateX(5px);
+}
+
+.dark .mobile-menu {
+  background: rgba(31, 41, 55, 0.98);
+  backdrop-filter: blur(10px);
+}
+
+.dark .mobile-menu a {
+  color: #F9FAFB !important; /* bright white text for dark mode */
+}
+
+.dark .mobile-menu a:hover {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #818cf8 !important;
+}
+
+/* Dropdown Animation */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+/* Right-aligned dropdowns */
+.dropdown-content.right-aligned {
+  left: auto;
+  right: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dark .dropdown-content {
+  background: var(--dark-surface);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading Animation */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(99, 102, 241, 0.3);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--accent-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
+
+/* Schedule Page Styles */
+.schedule-day {
+  display: none;
+}
+
+.schedule-day.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-btn {
+  background: transparent;
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.tab-btn.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* RTL Support for Schedule Page */
+[dir="rtl"] .mr-3 {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+[dir="rtl"] .ml-3 {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+
+/* Responsive Schedule Items */
+@media (max-width: 768px) {
+  .schedule-day.active {
+    animation: none;
+  }
+  
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .card {
+    padding: 1rem !important;
+  }
+  
+  .card .flex.items-center.mb-2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .card .flex.items-center {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .card .flex.items-center .mr-3,
+  .card .flex.items-center .ml-3 {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

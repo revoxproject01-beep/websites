@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EventSphere 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
+    
+    <!-- Login Form -->
+    <div class="max-w-md w-full">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="flex items-center justify-center space-x-2 mb-4">
+                <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-globe text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold text-gray-900 dark:text-white">EventSphere</span>
+            </a>
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h1>
+            <p class="text-gray-700 dark:text-gray-300">Sign in to your account to continue</p>
+        </div>
+        
+        <!-- Login Card -->
+        <div class="card p-8">
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                    <input type="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" class="form-input pr-12" placeholder="Enter your password" required>
+                        <button type="button" class="password-toggle absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                            👁️
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm text-indigo-600 hover:text-indigo-700">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn-primary w-full">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-700 dark:text-gray-300">
+                    Don't have an account? 
+                    <a href="register.html" class="text-indigo-600 hover:text-indigo-700 font-medium">Register here</a>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Back to Home -->
+        <div class="text-center mt-6">
+            <a href="index.html" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 text-sm">
+                <i class="fas fa-arrow-left mr-1"></i>Back to Home
+            </a>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="fixed top-4 right-4">
+            <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

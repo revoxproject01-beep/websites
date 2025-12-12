@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ - EventSphere 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    
+    <!-- Navigation -->
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-globe text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">EventSphere</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                <div class="dropdown">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">
+                        Home <i class="fas fa-chevron-down ml-1"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Version 1</a>
+                        <a href="index2.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Version 2</a>
+                    </div>
+                </div>
+                
+                <a href="event-details.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Events</a>
+                <a href="schedule.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Schedule</a>
+                
+                <div class="dropdown">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">
+                        Dashboard <i class="fas fa-chevron-down ml-1"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Admin Dashboard</a>
+                    </div>
+                </div>
+                
+                <a href="faq.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">FAQ</a>
+                <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 font-medium">Contact</a>
+            </div>
+            
+            <!-- Theme & RTL Toggles -->
+            <div class="flex items-center space-x-4">
+                <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+                
+                <a href="login.html" class="btn-primary hidden lg:inline-block mr-2">Login</a>
+                <a href="register.html" class="btn-primary hidden lg:inline-block">Register Now</a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden bg-white border-t border-gray-200 dark:border-gray-700 p-4">
+            <div class="space-y-4">
+                <a href="index.html" class="block text-gray-700 dark:text-gray-300">Home Version 1</a>
+                <a href="index2.html" class="block text-gray-700 dark:text-gray-300">Home Version 2</a>
+                <a href="event-details.html" class="block text-gray-700 dark:text-gray-300">Events</a>
+                <a href="schedule.html" class="block text-gray-700 dark:text-gray-300">Schedule</a>
+                <a href="user-dashboard.html" class="block text-gray-700 dark:text-gray-300">User Dashboard</a>
+                <a href="admin-dashboard.html" class="block text-gray-700 dark:text-gray-300">Admin Dashboard</a>
+                <a href="faq.html" class="block text-gray-700 dark:text-gray-300">FAQ</a>
+                <a href="contact.html" class="block text-gray-700 dark:text-gray-300">Contact</a>
+                <a href="login.html" class="btn-primary inline-block mt-4 mr-2">Login</a>
+                <a href="register.html" class="btn-primary inline-block mt-4">Register Now</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="pt-20 pb-16 px-4 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+            <p class="text-xl">Find answers to common questions about EventSphere 2025</p>
+        </div>
+    </section>
+    
+    <!-- Search -->
+    <section class="py-8 px-4 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-4xl mx-auto">
+            <div class="relative">
+                <input type="text" placeholder="Search FAQ..." class="form-input pl-12 w-full">
+                <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Content -->
+    <section class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- General Questions -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">General Information</h2>
+                <div class="space-y-3">
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">What is EventSphere 2025?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">EventSphere 2025 is a premier global event platform featuring industry leaders, innovative sessions, and networking opportunities. It covers AI, blockchain, cloud computing, cybersecurity, and more.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">When and where is the conference?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">The conference takes place December 5-7, 2025, at the Global Convention Center, located at 888 8th Avenue, New York, NY 10018.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">Who should attend EventSphere 2025?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">The conference is perfect for software developers, technology executives, product managers, entrepreneurs, startup founders, and anyone interested in the latest technology trends.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Registration -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Registration & Tickets</h2>
+                <div class="space-y-3">
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">How do I register for the conference?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">You can register online through our registration page. Simply select your ticket type, fill in your details, and complete the payment process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">What are the different ticket types?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">We offer three ticket types: Standard ($399), Premium ($599), and Enterprise ($1199). Each includes different levels of access and benefits.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">What is your refund policy?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">Full refunds are available up to 30 days before the event. 50% refunds are available up to 14 days before the event. No refunds after that date.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Details -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Event Details</h2>
+                <div class="space-y-3">
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">What topics will be covered?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">Topics include Artificial Intelligence, Machine Learning, Blockchain, Cloud Computing, Cybersecurity, Mobile Development, IoT, and Data Science.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">Is food provided?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">Yes, all ticket types include lunch and coffee breaks. Premium and Enterprise tickets also include access to exclusive networking dinners.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">Will sessions be recorded?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">Selected sessions will be recorded and made available to registered attendees within 7 days after the conference.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logistics -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Logistics & Travel</h2>
+                <div class="space-y-3">
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">Is parking available at the venue?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">Yes, paid parking is available at the venue. We also recommend public transportation as the venue is easily accessible by subway and bus.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">Do you have hotel recommendations?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">We have partnerships with several nearby hotels offering discounted rates for conference attendees. Check your registration confirmation email for booking codes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item card">
+                        <button class="faq-question w-full text-left p-4 flex items-center justify-between">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300">What should I bring to the conference?</span>
+                            <i class="faq-icon fas fa-chevron-down text-indigo-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-4 pb-4 hidden">
+                            <p class="text-gray-700 dark:text-gray-400">Bring your laptop, business cards, comfortable shoes, and your ticket confirmation. We'll provide all conference materials and WiFi access.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- Contact CTA -->
+    <section class="py-16 px-4 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">Still Have Questions?</h2>
+            <p class="text-xl mb-8">Our support team is here to help</p>
+            <a href="contact.html" class="btn-secondary">
+                <i class="fas fa-envelope mr-2  rtl:ml-2 rtl:mr-0"></i>Contact Support
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+   <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EventSphere</span>
+                    </div>
+                    <p class="text-gray-400">
+                        The premier global event platform bringing together innovators, developers, and industry leaders.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-400 hover:text-white">Home</a>
+                        <a href="event-details.html" class="block text-gray-400 hover:text-white">Events</a>
+                        <a href="schedule.html" class="block text-gray-400 hover:text-white">Schedule</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white">Contact</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <div class="space-y-2">
+                        <a href="faq.html" class="block text-gray-400 hover:text-white">FAQ</a>
+                        <a href="register.html" class="block text-gray-400 hover:text-white">Registration</a>
+                        <a href="login.html" class="block text-gray-400 hover:text-white">Login</a>
+                        <a href="#" class="block text-gray-400 hover:text-white">Help Center</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 EventSphere. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-white mr-4 rtl:ml-4 rtl:mr-0">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize FAQ functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update the FAQ initialization to work with the current HTML structure
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-icon');
+                
+                question.addEventListener('click', () => {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            const otherIcon = otherItem.querySelector('.faq-icon');
+                            otherAnswer.classList.add('hidden');
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    answer.classList.toggle('hidden');
+                    const isHidden = answer.classList.contains('hidden');
+                    icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
