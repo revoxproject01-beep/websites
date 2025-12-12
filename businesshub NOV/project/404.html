@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - GlobEnt Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        primaryDark: '#6b21a8',
+                        primaryLight: '#a855f7',
+                        secondary: '#0d9488',
+                        accent: '#db2777'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .scale-hover:hover { transform: scale(1.05); }
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white smooth-transition min-h-screen flex items-center justify-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- 404 Illustration -->
+        <div class="mb-8">
+            <div class="floating inline-block">
+                <svg class="w-64 h-64 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29.82-5.877 2.172M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="mb-8 fade-in">
+            <h1 class="text-8xl md:text-9xl font-bold text-primary mb-4">404</h1>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Page Not Found</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                Oops! The page you're looking for seems to have wandered off. It might have been moved, deleted, or you entered the wrong URL.
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 fade-in">
+            <a href="index.html" class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primaryDark smooth-transition scale-hover">
+                Go Home
+            </a>
+            <a href="contact.html" class="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white smooth-transition scale-hover">
+                Contact Support
+            </a>
+        </div>
+
+        <!-- Helpful Links -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 fade-in">
+            <h3 class="text-xl font-semibold mb-6">Maybe you were looking for:</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center scale-hover">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m0 0H6a2 2 0 00-2 2v6a2 2 0 002 2h2m8-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2m-8 0v4a2 2 0 002 2h4a2 2 0 002-2v-4m-8 0H8m4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Our Services</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Explore our consulting solutions</p>
+                    <a href="services.html" class="text-primary hover:text-primaryDark font-medium">View Services →</a>
+                </div>
+                <div class="text-center scale-hover">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">About Us</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Learn about our company</p>
+                    <a href="about.html" class="text-primary hover:text-primaryDark font-medium">About Apex Solutions →</a>
+                </div>
+                <div class="text-center scale-hover">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Get Help</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Contact our support team</p>
+                    <a href="contact.html" class="text-primary hover:text-primaryDark font-medium">Contact Us →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="mt-8 fade-in">
+            <div class="max-w-md mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Search our website..." class="w-full p-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white smooth-transition">
+                    <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="mt-8 fade-in">
+            <button id="darkModeToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+                <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

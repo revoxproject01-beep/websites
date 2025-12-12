@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - GlobEnt Solutions</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7e22ce',
+            primaryDark: '#6b21a8',
+            primaryLight: '#a855f7',
+            secondary: '#0d9488',
+            accent: '#db2777'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="css/nav-highlight.css" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .smooth-transition {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .scale-hover:hover {
+      transform: scale(1.05);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans transition-colors duration-300 dark:bg-gray-900 min-h-screen relative flex items-center justify-center overflow-hidden">
+
+  <!-- Gradient Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary to-primaryDark opacity-90 z-0"></div>
+
+  <!-- Pattern Overlay -->
+  <div class="absolute inset-0 pattern-bg opacity-20 z-0"></div>
+
+  <!-- Auth Container -->
+  <div class="relative z-10 w-full max-w-md">
+
+    <!-- Login Form -->
+    <div id="loginForm" class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 fade-in">
+      <div class="text-center mb-6">
+        <a href="index.html" class="text-2xl font-bold text-primary mb-4 inline-block">GlobEnt</a>
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h1>
+        <p class="text-gray-600 dark:text-gray-400">Sign in to your Global account</p>
+      </div>
+
+      <form class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+          <input type="email" required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white smooth-transition">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+          <div class="relative">
+            <input type="password" id="password" required
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white pr-10 smooth-transition">
+            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+              <i class="fas fa-eye text-gray-400 hover:text-gray-600"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+            <label class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Remember me</label>
+          </div>
+          <a href="#" class="text-sm text-primary hover:text-primaryDark">Forgot password?</a>
+        </div>
+
+        <button type="button" onclick="window.location.href='index.html'" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primaryDark transition-colors duration-200 smooth-transition scale-hover">
+Sign In
+</button>
+      </form>
+
+      <div class="mt-6 text-center">
+        <p class="text-gray-600 dark:text-gray-400">Don't have an account?
+          <a href="#" id="showRegister" class="text-primary hover:text-primaryDark font-semibold">Sign up</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Register Form (Initially Hidden) -->
+    <div id="registerForm"
+      class="hidden bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 fade-in">
+      <div class="text-center mb-6">
+        <a href="index.html" class="text-2xl font-bold text-primary mb-4 inline-block">GlobEnt</a>
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Create Account</h1>
+        <p class="text-gray-600 dark:text-gray-400">Sign up to get started with GlobEnt Solutions</p>
+      </div>
+
+      <form class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+          <input type="text" required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white smooth-transition">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+          <input type="email" required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white smooth-transition">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+          <input type="password" required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white smooth-transition">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
+          <input type="password" required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white smooth-transition">
+        </div>
+
+        <button type="submit"
+          class="w-full bg-primary text-white py-2 rounded-md hover:bg-primaryDark transition-colors duration-200 smooth-transition scale-hover">
+          Sign Up
+        </button>
+      </form>
+
+      <div class="mt-6 text-center">
+        <p class="text-gray-600 dark:text-gray-400">Already have an account?
+          <a href="#" id="showLogin" class="text-primary hover:text-primaryDark font-semibold">Sign in</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Theme Toggle -->
+  <div class="fixed top-4 right-4 flex space-x-2 z-20  rtl:space-x-reverse ">
+    <button id="rtlToggle"
+      class="p-2 bg-white dark:bg-gray-800 rounded-md text-gray-500 dark:text-gray-400 hover:text-primary transition-colors duration-200 shadow-lg smooth-transition">
+      <i class="fas fa-globe"></i>
+    </button>
+    <button id="darkModeToggle"
+      class="p-2 bg-white dark:bg-gray-800 rounded-md text-gray-500 dark:text-gray-400 hover:text-primary transition-colors duration-200 shadow-lg smooth-transition">
+      <i class="fas fa-moon dark:hidden"></i>
+      <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <div class="absolute bottom-4 w-full text-center text-white/80 text-sm z-10">
+    <p>&copy; 2025 GlobEnt Solutions. All rights reserved.</p>
+  </div>
+
+  <style>
+    .pattern-bg {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  </style>
+
+  <script>
+    // Toggle between Login and Register
+    document.getElementById("showRegister").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("registerForm").classList.remove("hidden");
+    });
+
+    document.getElementById("showLogin").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("registerForm").classList.add("hidden");
+      document.getElementById("loginForm").classList.remove("hidden");
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/nav-highlight.js"></script>
+
+</body>
+
+</html>
+
+<script>
+// Add active class to current page in navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Add active class to current page link
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            // For main navigation links
+            if (!link.closest('.absolute')) {
+                link.classList.add('text-primary', 'font-semibold');
+            }
+            // For dropdown links
+            else {
+                link.classList.add('bg-blue-50', 'dark:bg-blue-900');
+            }
+        }
+    });
+});
+</script>

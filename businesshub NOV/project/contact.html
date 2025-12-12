@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GBS</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        primaryDark: '#6b21a8',
+                        primaryLight: '#a855f7',
+                        secondary: '#0d9488',
+                        accent: '#db2777'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/nav-highlight.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .scale-hover:hover { transform: scale(1.05); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in { animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white smooth-transition">
+    <!-- Navigation -->
+  <nav class="bg-white dark:bg-gray-900 shadow-lg fixed w-full top-0 z-50 smooth-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">GlobEnt</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button class="text-gray-700 dark:text-gray-300 hover:text-primary flex items-center smooth-transition">
+                            Home <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition">
+                            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Page 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Page 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">About</a>
+                    <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Services</a>
+                    <div class="relative group">
+                        <button class="text-gray-700 dark:text-gray-300 hover:text-primary flex items-center smooth-transition">
+                            Dashboard <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition">
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">User Dashboard</a>
+                        </div>
+                    </div>
+                    <a href="faq.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">FAQ</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Contact</a>
+                      <div class="flex items-center space-x-2">
+                    <!-- Theme Toggles -->
+                    <button id="darkModeToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </button>
+                    <button id="rtlToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                    <a href="login.html" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-md smooth-transition">Login</a>
+                </div>
+</div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <!-- Dark mode toggle -->
+<button class="darkModeToggle p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+  <!-- Sun icon (light mode) -->
+  <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 
+             9.003 9.003 0 0012 21a9.003 9.003 
+             0 008.354-5.646z"></path>
+  </svg>
+  <!-- Moon icon (dark mode) -->
+  <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3
+             m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707
+             m12.728 0l-.707.707M6.343 17.657l-.707.707
+             M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  </svg>
+</button>
+
+<!-- RTL toggle -->
+<button class="rtlToggle p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 
+             002 2 2 2 0 012 2v2.945M8 3.935V5.5
+             A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2
+             2 2 0 104 0 2 2 0 012-2h1.064
+             M15 20.488V18a2 2 0 012-2h3.064
+             M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+</button>
+
+                    <a href="login.html" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-md smooth-transition">Login</a>
+                    <button id="mobileMenuToggle" class="text-gray-500 hover:text-primary smooth-transition">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white dark:bg-gray-900 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Home 1</a>
+                                <a href="index2.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Home 2</a>
+                <a href="user-dashboard.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">User</a>
+                <a href="admin-dashboard.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Admin</a>
+
+
+                <a href="about.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">About</a>
+                <a href="services.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Services</a>
+                                                <a href="faq.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">FAQ</a>
+
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Contact</a>
+                <a href="login.html" class="block px-3 py-2 text-primary smooth-transition">Login</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-primaryDark text-white pt-32 pb-24 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="inline-block bg-white/20 backdrop-blur-sm rounded-full px-4 py-1 mb-4">
+                        <span class="text-sm font-medium">CONNECT WITH US</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 slide-in">Connect With Us</h1>
+                    <p class="text-xl md:text-2xl mb-8 max-w-3xl slide-in">Ready to accelerate your growth? Let's start the conversation and explore how we can help you achieve exceptional results.</p>
+<div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:items-center slide-in rtl:space-x-reverse">
+                        <a href="#contactForm" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 smooth-transition scale-hover inline-block w-full md:w-auto text-center">Send Message</a>
+                        <a href="tel:+15551234567" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary smooth-transition scale-hover inline-block w-full md:w-auto text-center mt-4 md:mt-0">Call Now</a>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Global Locations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.pexels.com/photos/3184422/pexels-photo-3184422.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Contact Us" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold mb-6">Send Us a Message</h2>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium mb-2">First Name *</label>
+                                <input type="text" id="firstName" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium mb-2">Last Name *</label>
+                                <input type="text" id="lastName" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email Address *</label>
+                            <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium mb-2">Company Name</label>
+                            <input type="text" id="company" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-sm font-medium mb-2">Service Interest</label>
+                            <select id="service" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                                <option value="">Select a service</option>
+                                <option value="strategy">Strategy Consulting</option>
+                                <option value="digital">Digital Innovation</option>
+                                <option value="change">Organizational Transformation</option>
+                                <option value="operations">Operations Optimization</option>
+                                <option value="financial">Financial Advisory</option>
+                                <option value="hr">HR Consulting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-medium mb-2">Project Budget</label>
+                            <select id="budget" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                                <option value="">Select budget range</option>
+                                <option value="10k-50k">$15,000 - $50,000</option>
+                                <option value="50k-100k">$50,000 - $125,000</option>
+                                <option value="100k-200k">$125,000 - $250,000</option>
+                                <option value="200k+">$200,000+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="timeline" class="block text-sm font-medium mb-2">Project Timeline</label>
+                            <select id="timeline" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 smooth-transition">
+                                <option value="">Select timeline</option>
+                                <option value="immediate">Immediate (1-2 months)</option>
+                                <option value="short">Short-term (2-6 months)</option>
+                                <option value="medium">Medium-term (6-12 months)</option>
+                                <option value="long">Long-term (12+ months)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message *</label>
+                            <textarea id="message" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600" placeholder="Tell us about your project or opportunity..."></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="newsletter" class="mr-2">
+                            <label for="newsletter" class="text-sm text-gray-600 dark:text-gray-400">I'd like to receive updates about GlobEnt Solutions services and insights</label>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-md hover:bg-primaryDark smooth-transition font-semibold scale-hover">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & Map -->
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold mb-6">Contact Information</h2>
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 rtl:mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-1">Office Address</h3>
+                                <p class="text-gray-600 dark:text-gray-400">123 Growth Avenue, Suite 100<br>New York, NY 10001<br>United States</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 rtl:mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-1">Phone Numbers</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Main: +1 (555) 123-4567<br>Toll-free: +1 (800) 123-4567<br>International: +1 (212) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 rtl:mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-1">Email Addresses</h3>
+                                <p class="text-gray-600 dark:text-gray-400">General: info@globalbusiness.com<br>Sales: sales@globalbusiness.com<br>Support: support@globalbusiness.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start ">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 rtl:mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-1">Business Hours</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Monday - Friday: 9:00 AM - 6:00 PM EST<br>Saturday: 10:00 AM - 2:00 PM EST<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                   <div class="bg-gray-200 dark:bg-gray-700 h-64 rounded-lg overflow-hidden relative">
+  <!-- Map -->
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125322.50873824842!2d76.967235!3d11.013968899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859a36d478a65%3A0x5e3f288f2d1dd029!2sWelcomhotel%20By%20ITC%20Hotels%2C%20Race%20Course%2C%20Coimbatore-%20LEED%C2%AE%20Platinum%20and%20Zero%20Carbon%20Certified%20Premium%20Hotel%7C%20Centrally%20located!5e0!3m2!1sen!2sin!4v1757184131410!5m2!1sen!2sin"
+    class="w-full h-full"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Global Locations</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">We serve clients worldwide from our strategic locations</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg text-center scale-hover">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">New York (HQ)</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">123 Growth Avenue, Suite 100<br>New York, NY 10001</p>
+                    <p class="text-primary font-medium">+1 (555) 123-4567</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg text-center scale-hover">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">London</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">456 Consulting Street, 2nd Floor<br>London, EC2M 7PP, UK</p>
+                    <p class="text-primary font-medium">+44 20 7123 4567</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg text-center scale-hover">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Singapore</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">789 Business Tower, Level 25<br>Singapore 018989</p>
+                    <p class="text-primary font-medium">+65 6123 4567</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">GlobEnt</h3>
+                    <p class="text-gray-400">Strategic business transformation experts for forward-thinking organizations.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Strategy Consulting</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Digital Transformation</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Change Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white smooth-transition">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white smooth-transition">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white smooth-transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 info@globalbusiness.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Growth Avenue, Suite 100</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 GlobEnt Solutions. All rights reserved. <a href="#" class="hover:text-white smooth-transition">Privacy Policy</a> | <a href="#" class="hover:text-white smooth-transition">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const html = document.documentElement;
+  
+  // Dark mode toggles
+  const darkToggles = document.querySelectorAll(".darkModeToggle");
+  // RTL toggles
+  const rtlToggles = document.querySelectorAll(".rtlToggle");
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+  }
+
+  // Load saved RTL state
+  if (localStorage.getItem("rtl") === "true") {
+    html.setAttribute("dir", "rtl");
+  }
+
+  // Dark mode toggle
+  darkToggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      if (html.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  });
+
+  // RTL toggle
+  rtlToggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (html.getAttribute("dir") === "rtl") {
+        html.removeAttribute("dir");
+        localStorage.setItem("rtl", "false");
+      } else {
+        html.setAttribute("dir", "rtl");
+        localStorage.setItem("rtl", "true");
+      }
+    });
+  });
+
+  // Mobile menu toggle
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+});
+const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (mobileMenuToggle && mobileMenu) {
+  mobileMenuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+}
+
+</script>
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/nav-highlight.js"></script>
+</body>
+</html>
+
+<script>
+// Add active class to current page in navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Add active class to current page link
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            // For main navigation links
+            if (!link.closest('.absolute')) {
+                link.classList.add('text-primary', 'font-semibold');
+            }
+            // For dropdown links
+            else {
+                link.classList.add('bg-blue-50', 'dark:bg-blue-900');
+            }
+        }
+    });
+});
+</script>

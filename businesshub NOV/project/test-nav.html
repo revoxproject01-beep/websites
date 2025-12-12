@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Highlight Test - Global Business Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Simple test to verify nav highlighting
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('Navigation highlighting test page loaded');
+            
+            // Check if nav-highlight.js is loaded
+            const scripts = document.getElementsByTagName('script');
+            let navHighlightLoaded = false;
+            for (let script of scripts) {
+                if (script.src && script.src.includes('nav-highlight.js')) {
+                    navHighlightLoaded = true;
+                    break;
+                }
+            }
+            
+            if (navHighlightLoaded) {
+                console.log('✓ nav-highlight.js is loaded');
+            } else {
+                console.log('✗ nav-highlight.js is NOT loaded');
+            }
+            
+            // Check if nav-highlight.css is loaded
+            const links = document.getElementsByTagName('link');
+            let navHighlightCSSLoaded = false;
+            for (let link of links) {
+                if (link.href && link.href.includes('nav-highlight.css')) {
+                    navHighlightCSSLoaded = true;
+                    break;
+                }
+            }
+            
+            if (navHighlightCSSLoaded) {
+                console.log('✓ nav-highlight.css is loaded');
+            } else {
+                console.log('✗ nav-highlight.css is NOT loaded');
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Navigation Highlighting Test</h1>
+    <p>Check the browser console for test results.</p>
+    <p>This page tests if the navigation highlighting files are properly loaded.</p>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test - Global Business Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        primaryDark: '#6b21a8',
+                        primaryLight: '#a855f7',
+                        secondary: '#0d9488',
+                        accent: '#db2777'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/nav-highlight.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .scale-hover:hover { transform: scale(1.05); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white smooth-transition">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg fixed w-full top-0 z-50 smooth-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">Global Business</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button class="text-gray-700 dark:text-gray-300 hover:text-primary flex items-center smooth-transition">
+                            Home <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition">
+                            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Page 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Page 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">About</a>
+                    <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Services</a>
+                    <div class="relative group">
+                        <button class="text-gray-700 dark:text-gray-300 hover:text-primary flex items-center smooth-transition">
+                            Dashboard <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition">
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">User Dashboard</a>
+                        </div>
+                    </div>
+                    <a href="faq.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">FAQ</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Contact</a>
+                    <div class="flex items-center space-x-2">
+                        <!-- Theme Toggles -->
+                        <button id="darkModeToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                            <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </button>
+                        <button id="rtlToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </button>
+                        <a href="login.html" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-md smooth-transition">Login</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="darkModeToggle p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 
+                                9.003 9.003 0 0012 21a9.003 9.003 
+                                0 008.354-5.646z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3
+                                m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707
+                                m12.728 0l-.707.707M6.343 17.657l-.707.707
+                                M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="rtlToggle p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 
+                                002 2 2 2 0 012 2v2.945M8 3.935V5.5
+                                A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2
+                                2 2 0 104 0 2 2 0 012-2h1.064
+                                M15 20.488V18a2 2 0 012-2h3.064
+                                M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </button>
+                    <a href="login.html" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-md smooth-transition">Login</a>
+                    <button id="mobileMenuToggle" class="text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="text-3xl font-bold mb-6">Navigation Highlighting Test</h1>
+            <p class="text-lg mb-8">This page tests the navigation highlighting functionality. The current page link in the navigation should be highlighted.</p>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-semibold mb-4">How Navigation Highlighting Works</h2>
+                <ul class="list-disc pl-6 space-y-2 mb-6">
+                    <li>The JavaScript code in <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">js/nav-highlight.js</code> automatically detects the current page</li>
+                    <li>It adds the <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">nav-active</code> class to the matching navigation link</li>
+                    <li>Dropdown menu items get the <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">dropdown-active</code> class when active</li>
+                    <li>Special handling for related pages (e.g., index2.html also highlights the Home link)</li>
+                </ul>
+                
+                <h2 class="text-2xl font-semibold mb-4">Testing Links</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="index.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">Home Page</a>
+                    <a href="about.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">About Page</a>
+                    <a href="services.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">Services Page</a>
+                    <a href="faq.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">FAQ Page</a>
+                    <a href="contact.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">Contact Page</a>
+                    <a href="login.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">Login Page</a>
+                    <a href="admin-dashboard.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">Admin Dashboard</a>
+                    <a href="user-dashboard.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">User Dashboard</a>
+                    <a href="index2.html" class="block bg-primary/10 hover:bg-primary/20 p-4 rounded-lg transition-colors">Home Page 2</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Global Business Solutions</h3>
+                    <p class="text-gray-400">Strategic business transformation experts for forward-thinking organizations.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Strategy Consulting</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Digital Transformation</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Change Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white smooth-transition">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white smooth-transition">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white smooth-transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 info@globalbusiness.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Growth Avenue, Suite 100</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Global Business Solutions. All rights reserved. <a href="#" class="hover:text-white smooth-transition">Privacy Policy</a> | <a href="#" class="hover:text-white smooth-transition">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const html = document.documentElement;
+            
+            // Dark mode toggles
+            const darkToggles = document.querySelectorAll(".darkModeToggle");
+            // RTL toggles
+            const rtlToggles = document.querySelectorAll(".rtlToggle");
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            // Load saved theme
+            if (localStorage.getItem("theme") === "dark") {
+                html.classList.add("dark");
+            }
+
+            // Load saved RTL state
+            if (localStorage.getItem("rtl") === "true") {
+                html.setAttribute("dir", "rtl");
+            }
+
+            // Dark mode toggle
+            darkToggles.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    html.classList.toggle("dark");
+                    if (html.classList.contains("dark")) {
+                        localStorage.setItem("theme", "dark");
+                    } else {
+                        localStorage.setItem("theme", "light");
+                    }
+                });
+            });
+
+            // RTL toggle
+            rtlToggles.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    if (html.getAttribute("dir") === "rtl") {
+                        html.removeAttribute("dir");
+                        localStorage.setItem("rtl", "false");
+                    } else {
+                        html.setAttribute("dir", "rtl");
+                        localStorage.setItem("rtl", "true");
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("hidden");
+                });
+            }
+        });
+        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/nav-highlight.js"></script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobEnt Solutions - Strategic Growth Experts</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        primaryDark: '#6b21a8',
+                        primaryLight: '#a855f7',
+                        secondary: '#0d9488',
+                        accent: '#db2777'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/nav-highlight.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .scale-hover:hover { transform: scale(1.05); }
+        .pattern-bg { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237e22ce' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in { animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white smooth-transition">
+    <!-- Navigation -->
+     <nav class="bg-white dark:bg-gray-900 shadow-lg fixed w-full top-0 z-50 smooth-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">GlobEnt</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button class="text-gray-700 dark:text-gray-300 hover:text-primary flex items-center smooth-transition">
+                            Home <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition">
+                            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Page 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home Page 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">About</a>
+                    <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Services</a>
+                    <div class="relative group">
+                        <button class="text-gray-700 dark:text-gray-300 hover:text-primary flex items-center smooth-transition">
+                            Dashboard <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition">
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">User Dashboard</a>
+                        </div>
+                    </div>
+                    <a href="faq.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">FAQ</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Contact</a>
+                      <div class="flex items-center space-x-2">
+                    <!-- Theme Toggles -->
+                    <button id="darkModeToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </button>
+                    <button id="rtlToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 104 0 2 2 0 012-2h1.064M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                    <a href="login.html" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-md smooth-transition">Login</a>
+                </div>
+</div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <!-- Dark mode toggle -->
+<button class="darkModeToggle p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+  <!-- Sun icon (light mode) -->
+  <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 
+             9.003 9.003 0 0012 21a9.003 9.003 
+             0 008.354-5.646z"></path>
+  </svg>
+  <!-- Moon icon (dark mode) -->
+  <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3
+             m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707
+             m12.728 0l-.707.707M6.343 17.657l-.707.707
+             M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  </svg>
+</button>
+
+<!-- RTL toggle -->
+<button class="rtlToggle p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3.055 11H5a2 2 0 
+             002 2 2 2 0 012 2v2.945M8 3.935V5.5
+             A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2
+             2 2 0 104 0 2 2 0 012-2h1.064
+             M15 20.488V18a2 2 0 012-2h3.064
+             M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+</button>
+
+                    <a href="login.html" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-md smooth-transition">Login</a>
+                    <button id="mobileMenuToggle" class="text-gray-500 hover:text-primary smooth-transition">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white dark:bg-gray-900 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Home 1</a>
+                                <a href="index2.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Home 2</a>
+                <a href="user-dashboard.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">User</a>
+                <a href="admin-dashboard.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Admin</a>
+
+
+                <a href="about.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">About</a>
+                <a href="services.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Services</a>
+                                <a href="faq.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">FAQ</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">Contact</a>
+                <a href="login.html" class="block px-3 py-2 text-primary smooth-transition">Login</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Enhanced Hero Section -->
+    <section class="pt-32 pb-24 pattern-bg fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full mb-4">
+                    <span class="text-sm font-medium">INNOVATION DRIVES SUCCESS</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 slide-in">Accelerate Growth With Strategic Advisory</h1>
+                <p class="text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-3xl mx-auto slide-in">Partner with industry experts to unlock your business potential and achieve measurable growth through proven frameworks and data-driven insights.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center slide-in">
+                    <a href="contact.html" class="bg-primary hover:bg-primaryDark text-white px-8 py-4 rounded-lg font-semibold text-center smooth-transition scale-hover">Start Your Transformation</a>
+                    <a href="about.html" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold text-center hover:bg-primary hover:text-white smooth-transition scale-hover">Discover Our Approach</a>
+                </div>
+                <div class="mt-12 flex flex-wrap justify-center gap-8">
+                    <div class="flex items-center bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="font-medium">ISO 9001 Certified</span>
+                    </div>
+                    <div class="flex items-center bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="font-medium">Global Recognition</span>
+                    </div>
+                    <div class="flex items-center bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="font-medium">24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 mt-16">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 fade-in hover:shadow-xl smooth-transition">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Performance Analytics</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Data-driven insights and performance measurement systems for informed decision making.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 fade-in hover:shadow-xl smooth-transition">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Strategic Planning</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Comprehensive strategic planning and market analysis to guide long-term business decisions.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 fade-in hover:shadow-xl smooth-transition">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Digital Innovation</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Cutting-edge digital innovation strategies and technology implementation.</p>
+                </div>
+            </div>
+            
+            <!-- Client Success Metrics -->
+            <div class="mt-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold mb-2">Client Success Metrics</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Real results from our strategic partnerships</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-primary mb-1">450+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Projects</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-primary mb-1">97%</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Success Rate</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-primary mb-1">12+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Years Expertise</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-primary mb-1">45+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Experts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">450+</div>
+                    <div class="text-blue-100">Projects Successfully Executed</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">97%</div>
+                    <div class="text-blue-100">Client Success Rate</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">12+</div>
+                    <div class="text-blue-100">Years of Excellence</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">45+</div>
+                    <div class="text-blue-100">Industry Experts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+   <section class="py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 fade-in">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Business Strategies</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400">End-to-end advisory services tailored to your objectives</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<div class="space-y-8">
+<div class="flex fade-in">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+</div>
+</div>
+<div class="ml-4 rtl:mr-4">
+<h3 class="text-xl font-semibold mb-2">Operational Excellence</h3>
+<p class="text-gray-600 dark:text-gray-400">Streamline operations and maximize efficiency across all organizational functions.</p>
+</div>
+</div>
+<div class="flex fade-in">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+</div>
+</div>
+<div class="ml-4 rtl:mr-4">
+<h3 class="text-xl font-semibold mb-2">Strategic Risk Mitigation</h3>
+<p class="text-gray-600 dark:text-gray-400">Identify and mitigate business risks with comprehensive evaluation frameworks.</p>
+</div>
+</div>
+<div class="flex fade-in">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path></svg>
+</div>
+</div>
+<div class="ml-4 rtl:mr-4">
+<h3 class="text-xl font-semibold mb-2">Digital Process Enhancement</h3>
+<p class="text-gray-600 dark:text-gray-400">Implement cutting-edge solutions to reduce costs and improve precision.</p>
+</div>
+</div>
+<div class="flex fade-in">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+</div>
+</div>
+<div class="ml-4 rtl:mr-4">
+<h3 class="text-xl font-semibold mb-2">Performance Analytics</h3>
+<p class="text-gray-600 dark:text-gray-400">Data-driven insights and performance measurement systems for informed decision making.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fade-in">
+<img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business Solutions" class="rounded-lg shadow-lg">
+</div>
+</div>
+</div>
+</section>
+
+    <!-- Case Study Preview -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Transformation Stories</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Measurable impact from valued partnerships</p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold mb-4">TechStart Inc. Strategic Transformation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">We helped TechStart Inc. modernize their entire IT infrastructure and business processes, resulting in a 55% increase in operational efficiency and $1.8M in cost savings within the first year.</p>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Strategic Transformation</span>
+                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Process Enhancement</span>
+                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Technology</span>
+                        </div>
+                        <a href="services.html" class="text-primary font-medium hover:text-primaryDark">Read Full Case Study →</a>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary mb-2">55%</div>
+                        <div class="text-gray-600 dark:text-gray-400 mb-4">Performance Improvement</div>
+                        <div class="text-3xl font-bold text-primary mb-2">$1.8M</div>
+                        <div class="text-gray-600 dark:text-gray-400">Value Generated</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Testimonials -->
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">SR</div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Roberts</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Director, Healthcare Plus</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 italic">"The digital innovation strategies implemented by GlobEnt Solutions helped us streamline patient care processes, reducing wait times by 40% and improving patient satisfaction scores significantly."</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">MP</div>
+                        <div>
+                            <h4 class="font-semibold">Michael Peterson</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">CFO, FinTech Solutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 italic">"Their financial strategy advisory helped us optimize our investment portfolio, resulting in a 15% increase in ROI over 18 months. The team's expertise in regulatory compliance was particularly valuable."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Begin Your Journey?</h2>
+            <p class="text-xl text-blue-100 mb-8">Schedule a complimentary consultation and discover how we can help accelerate your growth</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 smooth-transition scale-hover">Schedule Consultation</a>
+                <a href="services.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary smooth-transition scale-hover">Explore All Solutions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Insights -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Latest Insights</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Thought leadership and industry perspectives</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl smooth-transition">
+                    <img src="https://images.pexels.com/photos/3183170/pexels-photo-3183170.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI in Business" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                            <span>Technology</span>
+                            <span class="mx-2">•</span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">AI Implementation Strategies for Modern Enterprises</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Practical approaches to integrating artificial intelligence into business operations for maximum impact.</p>
+                        <a href="#" class="text-primary font-medium hover:text-primaryDark">Read Article →</a>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl smooth-transition">
+                    <img src="https://images.pexels.com/photos/3184410/pexels-photo-3184410.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sustainability" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                            <span>Sustainability</span>
+                            <span class="mx-2">•</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Building Sustainable Business Practices</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">How organizations can integrate environmental and social responsibility into their core business strategies.</p>
+                        <a href="#" class="text-primary font-medium hover:text-primaryDark">Read Article →</a>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl smooth-transition">
+                    <img src="https://images.pexels.com/photos/3184450/pexels-photo-3184450.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Remote Work" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                            <span>Workplace</span>
+                            <span class="mx-2">•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Optimizing Remote and Hybrid Work Models</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Best practices for maintaining productivity and employee engagement in distributed work environments.</p>
+                        <a href="#" class="text-primary font-medium hover:text-primaryDark">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Strategic Process</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">A proven approach to delivering exceptional results</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Discovery & Assessment</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We begin by thoroughly understanding your business, challenges, and objectives through in-depth analysis.</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Strategy Development</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Our experts craft a customized strategic roadmap aligned with your specific business goals.</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Implementation</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We work alongside your team to execute the strategy with precision and attention to detail.</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Optimization & Growth</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We continuously monitor results and refine approaches to ensure sustained success and growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Recognition -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Awards & Recognition</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Industry acknowledgment of our excellence</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Best Consulting Firm 2023</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Awarded by GlobEnt Excellence for outstanding client results and innovation.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Digital Innovation Leader</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Recognized for pioneering digital transformation strategies in 2023.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Sustainable Business Impact</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Honored for measurable positive environmental and social impact initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-primary to-primaryDark rounded-2xl p-8 md:p-12 text-white text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">Connect with our experts today to discover how our strategic solutions can drive measurable growth for your organization.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 smooth-transition scale-hover">Schedule Consultation</a>
+                    <a href="services.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary smooth-transition scale-hover">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">What our partners say about working with us</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="flex mb-4">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 italic mb-6">"The strategic insights provided by GlobEnt Solutions transformed our approach to market expansion. Their data-driven methodology helped us enter three new markets with a 92% success rate."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">AR</div>
+                        <div>
+                            <h4 class="font-semibold">Amanda Roberts</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">CMO, Global Retail Group</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="flex mb-4">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 italic mb-6">"Working with their team on our digital transformation was a game-changer. They delivered a solution that not only met but exceeded our expectations, with implementation completed 20% under budget."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">TW</div>
+                        <div>
+                            <h4 class="font-semibold">Thomas Williams</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">CTO, Tech Innovations Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="flex mb-4">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 italic mb-6">"Their organizational transformation approach helped us navigate a complex merger while maintaining employee morale and productivity. The structured methodology was key to our successful integration."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">EJ</div>
+                        <div>
+                            <h4 class="font-semibold">Elizabeth Johnson</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">HR Director, Global Manufacturing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">GlobEnt</h3>
+                    <p class="text-gray-400 mb-4">Strategic business transformation experts for forward-thinking organizations. We help enterprises navigate complexity and achieve sustainable growth.</p>
+                    <div class="flex gap-4">
+    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+        </svg>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.671.15-.198.297-.768.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.297.298-.496.099-.198.05-.372-.025-.521-.075-.149-.671-1.611-.919-2.207-.242-.58-.487-.501-.671-.51-.173-.007-.372-.009-.571-.009-.198 0-.52.074-.793.372-.273.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.617h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.865 9.865 0 0 1-1.51-5.287c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.896a9.825 9.825 0 0 1 2.898 6.991c-.002 5.45-4.436 9.884-9.891 9.884M20.52 3.48A11.815 11.815 0 0 0 12 0C5.383 0 0 5.383 0 12c0 2.111.552 4.169 1.6 5.974L0 24l6.203-1.599A11.94 11.94 0 0 0 12 24c6.617 0 12-5.383 12-12 0-3.193-1.244-6.19-3.48-8.52"/>
+    </svg>
+</a>
+
+    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+    </a>
+</div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Our Solutions</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Business Strategy</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Digital Innovation</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Organizational Transformation</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Operational Excellence</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Financial Strategy</a></li>
+                        <li><a href="services.html" class="hover:text-white smooth-transition">Human Capital Strategy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white smooth-transition">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white smooth-transition">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white smooth-transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white smooth-transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white smooth-transition">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-white smooth-transition">White Papers</a></li>
+                        <li><a href="#" class="hover:text-white smooth-transition">Industry Reports</a></li>
+                        <li><a href="#" class="hover:text-white smooth-transition">Webinars</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 info@globalbusiness.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Growth Avenue, Suite 100</li>
+                        <li>🏢 New York, NY 10001</li>
+                    </ul>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">Newsletter</h4>
+                        <p class="text-gray-400 text-sm mb-2">Subscribe to our monthly insights</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="px-3 py-2 text-gray-800 rounded-l text-sm w-full">
+                            <button class="bg-primary hover:bg-primaryDark px-4 py-2 rounded-r text-sm">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 GlobEnt Solutions. All rights reserved. <a href="#" class="hover:text-white smooth-transition">Privacy Policy</a> | <a href="#" class="hover:text-white smooth-transition">Terms of Service</a> | <a href="#" class="hover:text-white smooth-transition">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const html = document.documentElement;
+  
+  // Dark mode toggles
+  const darkToggles = document.querySelectorAll(".darkModeToggle");
+  // RTL toggles
+  const rtlToggles = document.querySelectorAll(".rtlToggle");
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+  }
+
+  // Load saved RTL state
+  if (localStorage.getItem("rtl") === "true") {
+    html.setAttribute("dir", "rtl");
+  }
+
+  // Dark mode toggle
+  darkToggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      if (html.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  });
+
+  // RTL toggle
+  rtlToggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (html.getAttribute("dir") === "rtl") {
+        html.removeAttribute("dir");
+        localStorage.setItem("rtl", "false");
+      } else {
+        html.setAttribute("dir", "rtl");
+        localStorage.setItem("rtl", "true");
+      }
+    });
+  });
+
+  // Mobile menu toggle
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+});
+const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (mobileMenuToggle && mobileMenu) {
+  mobileMenuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+}
+
+</script>
+    <script src="js/main.js"></script>
+    <script src="js/nav-highlight.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/* Additional styles for navigation highlighting */
+.nav-active {
+    color: #7e22ce !important;
+    font-weight: 600;
+    border-bottom: 2px solid #7e22ce;
+}
+
+.dropdown-active {
+    background-color: #eff6ff !important;
+}

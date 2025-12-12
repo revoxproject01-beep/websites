@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Highlighting Test - Global Business Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        primaryDark: '#6b21a8',
+                        primaryLight: '#a855f7',
+                        secondary: '#0d9488',
+                        accent: '#db2777'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/nav-highlight.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .test-nav-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            background-color: #f3f4f6;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #374151;
+        }
+        .test-nav-link:hover {
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white smooth-transition">
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-6">Navigation Highlighting Test</h1>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Test Links</h2>
+            <p class="mb-4">Click on the links below to test navigation highlighting on different pages:</p>
+            
+            <div class="flex flex-wrap gap-2">
+                <a href="index.html" class="test-nav-link">Home Page 1</a>
+                <a href="index2.html" class="test-nav-link">Home Page 2</a>
+                <a href="about.html" class="test-nav-link">About</a>
+                <a href="services.html" class="test-nav-link">Services</a>
+                <a href="faq.html" class="test-nav-link">FAQ</a>
+                <a href="contact.html" class="test-nav-link">Contact</a>
+                <a href="login.html" class="test-nav-link">Login</a>
+                <a href="admin-dashboard.html" class="test-nav-link">Admin Dashboard</a>
+                <a href="user-dashboard.html" class="test-nav-link">User Dashboard</a>
+            </div>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">How Navigation Highlighting Works</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>The JavaScript in <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">js/nav-highlight.js</code> automatically detects the current page</li>
+                <li>It adds the <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">nav-active</code> class to the matching navigation link</li>
+                <li>Dropdown menu items get the <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">dropdown-active</code> class when active</li>
+                <li>Special handling for related pages (e.g., index2.html also highlights the Home link)</li>
+                <li>Dropdown buttons are highlighted for dashboard and home pages</li>
+            </ul>
+            
+            <h3 class="text-lg font-semibold mt-6 mb-3">Expected Behavior</h3>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>On <strong>index.html</strong> and <strong>index2.html</strong>: The "Home" link and dropdown button should be highlighted</li>
+                <li>On <strong>about.html</strong>: The "About" link should be highlighted</li>
+                <li>On <strong>services.html</strong>: The "Services" link should be highlighted</li>
+                <li>On <strong>faq.html</strong>: The "FAQ" link should be highlighted</li>
+                <li>On <strong>contact.html</strong>: The "Contact" link should be highlighted</li>
+                <li>On <strong>login.html</strong>: The "Login" link should be highlighted</li>
+                <li>On <strong>admin-dashboard.html</strong> and <strong>user-dashboard.html</strong>: The dashboard dropdown button should be highlighted</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/nav-highlight.js"></script>
+</body>
+</html>

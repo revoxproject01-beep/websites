@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - GlobEnt Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        primaryDark: '#6b21a8',
+                        primaryLight: '#a855f7',
+                        secondary: '#0d9488',
+                        accent: '#db2777'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/nav-highlight.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .scale-hover:hover { transform: scale(1.05); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 smooth-transition">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">GlobEnt</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </button>
+                    <button id="rtlToggle" class="p-2 rounded-md text-gray-500 hover:text-primary smooth-transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                    <div class="relative">
+                        <button id="userMenuToggle" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-primary smooth-transition">
+                            <img src="https://images.pexels.com/photos/2182973/pexels-photo-2182973.jpeg?auto=compress&cs=tinysrgb&w=50" alt="User" class="w-8 h-8 rounded-full">
+                            <span>John Doe</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg z-10">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">Profile Settings</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">Admin Panel</a>
+                            <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+ 
+    <!-- Stats Bar -->
+ 
+
+   <div class="flex">
+  <!-- Sidebar -->
+  <div id="sidebar" class="bg-white dark:bg-gray-800 w-64 min-h-screen shadow-lg hidden md:block">
+    <div class="p-6 flex justify-between items-center md:block">
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Client Portal</h2>
+      <!-- Close button (mobile only) -->
+      <button id="closeSidebar" class="md:hidden text-gray-600 dark:text-gray-300">
+        ✖
+      </button>
+    </div>
+    <nav class="mt-6">
+      <a href="#dashboard" class="user-tab-btn flex items-center px-6 py-3 text-primary bg-blue-50 dark:bg-blue-900 border-r-2 border-primary">
+        Dashboard
+      </a>
+      <a href="#dashboard" class="user-tab-btn flex items-center px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700">
+        Profile
+      </a>
+      <a href="#dashboard" class="user-tab-btn flex items-center px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700">
+        My Projects
+      </a>
+      <a href="#dashboard" class="user-tab-btn flex items-center px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700">
+        Messages
+      </a>
+      <a href="#dashboard" class="user-tab-btn flex items-center px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700">
+        Support
+      </a>
+      <a href="#dashboard" class="user-tab-btn flex items-center px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700">
+        Settings
+      </a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1">
+    <!-- Top Bar -->
+    <div class="p-4 bg-gray-100 dark:bg-gray-900 shadow flex justify-between items-center">
+      <!-- Hamburger Menu (mobile only) -->
+      <button id="menuToggle" class="md:hidden text-gray-700 dark:text-gray-300">
+        ☰
+      </button>
+      <h1 class="text-xl font-bold text-gray-800 dark:text-white">Client Dashboard</h1>
+    </div>
+
+   <div id="dashboard" class="user-tab-content p-6">
+  <h2 class="text-2xl font-bold mb-4">My Dashboard</h2>
+  <p class="text-gray-700 dark:text-gray-300 mb-6">Welcome back! Here's a quick overview of your account and activities.</p>
+
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg scale-hover">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">My Projects</h3>
+      <p class="text-3xl font-bold text-primary">25</p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg scale-hover">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Active Engagements</h3>
+      <p class="text-3xl font-bold text-yellow-500">3</p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg scale-hover">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Saved Solutions</h3>
+      <p class="text-3xl font-bold text-pink-500">12</p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg scale-hover">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Messages</h3>
+      <p class="text-3xl font-bold text-green-500">5</p>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+<h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Investment Trends</h3>
+<canvas id="userSpendingChart" class="h-48"></canvas>
+</div>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+<h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Revenue by Ticket Type</h3>
+<div class="w-full overflow-hidden flex justify-center">
+<div class="w-48 h-48 sm:w-56 sm:h-56">
+<canvas id="revenueChart" class="w-full h-full max-w-full"></canvas>
+</div>
+</div>
+</div>
+</div>
+                    
+
+  <!-- Recent Activity -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Recent Activity</h3>
+    <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+      <li>📋 You initiated a new project <strong>"Digital Strategy"</strong> on Sep 12.</li>
+      <li>🔄 Your project <strong>"Market Analysis"</strong> is in progress.</li>
+      <li>💾 You saved <strong>"Operational Excellence"</strong> to your solutions.</li>
+      <li>💬 New message from Consultant regarding your project timeline.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Spending Trends (Line Chart)
+  const ctxSpend = document.getElementById('userSpendingChart');
+  new Chart(ctxSpend, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [{
+        label: 'Spending ($)',
+        data: [200, 350, 300, 450, 500, 600, 700],
+        borderColor: 'rgba(59,130,246,1)',
+        backgroundColor: 'rgba(59,130,246,0.2)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: { responsive: true, plugins: { legend: { display: true } } }
+  });
+
+  // Orders by Category (Doughnut Chart)
+   const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Standard', 'Premium', 'Enterprise'],
+                    datasets: [{
+                        data: [650000, 420000, 130000],
+                        backgroundColor: ['#16A34A', '#FACC15', '#3B82F6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+</script>
+
+  </div>
+</div>
+  <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">GlobEnt</h3>
+                    <p class="text-gray-400">Strategic business transformation experts for forward-thinking organizations.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-white">Strategy Consulting</a></li>
+                        <li><a href="services.html" class="hover:text-white">Digital Transformation</a></li>
+                        <li><a href="services.html" class="hover:text-white">Change Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 info@globalbusiness.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Growth Avenue, Suite 100</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 GlobEnt Solutions. All rights reserved. <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+<!-- JavaScript -->
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const menuToggle = document.getElementById("menuToggle");
+  const closeSidebar = document.getElementById("closeSidebar");
+
+  // Open sidebar
+  menuToggle.addEventListener("click", () => {
+    sidebar.classList.remove("hidden");
+    sidebar.classList.add("absolute", "z-50", "top-0", "left-0");
+  });
+
+  // Close sidebar
+  closeSidebar.addEventListener("click", () => {
+    sidebar.classList.add("hidden");
+    sidebar.classList.remove("absolute", "z-50", "top-0", "left-0");
+  });
+</script>
+
+    <script src="js/main.js"></script>
+    <script src="js/user-dashboard.js"></script>
+    <script src="js/nav-highlight.js"></script>
+</body>
+</html>
+
+<script>
+// Add active class to current page in navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Add active class to current page link
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            // For main navigation links
+            if (!link.closest('.absolute')) {
+                link.classList.add('text-primary', 'font-semibold');
+            }
+            // For dropdown links
+            else {
+                link.classList.add('bg-blue-50', 'dark:bg-blue-900');
+            }
+        }
+    });
+});
+</script>
