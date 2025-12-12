@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Global Aid Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <style>
+        /* Custom styles for this page */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navbar -->
+   <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-seedling text-blue-800 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-blue-800">Global Aid Foundation</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1 rtl:ml-3 rtl:mr-0"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium nav-link-enhanced">Initiatives</a>
+                   
+                    <a href="about.html" class="font-medium nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium nav-link-enhanced">Contact</a>
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="login.html" class="font-medium hover:text-blue-800 transition-colors rtl:ml-3 rtl:mr-0">Login</a>
+                    <a href="donate.html" class="btn-primary-enhanced">Support Now</a>
+                </div>
+
+                <!-- RTL Toggle & Hamburger -->
+                <div class="flex items-center">
+                    <button id="rtl-toggle" class="mr-4 text-gray-600 hover:text-blue-800">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="hamburger" class="lg:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center nav-link-enhanced">
+                            Home <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="index.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium py-1 nav-link-enhanced">Initiatives</a>
+                   
+                    <a href="about.html" class="font-medium py-1 nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium py-1 nav-link-enhanced">Contact</a>
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center nav-link-enhanced">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="user-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2 pt-2 border-t">
+                        <a href="login.html" class="font-medium py-1 nav-link-enhanced">Login</a>
+                        <a href="donate.html" class="btn-primary-enhanced text-center">Support Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <div class="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8 scale-in">
+                    <i class="fas fa-exclamation-triangle text-blue-800 text-6xl"></i>
+                </div>
+                <h1 class="text-5xl font-bold mb-6">404 - Page Not Found</h1>
+                <p class="text-xl text-gray-700 mb-10">Oops! The page you're looking for doesn't exist or has been moved.</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12 animate-staggered">
+                    <a href="index.html" class="btn-primary-enhanced scale-in">
+                        <i class="fas fa-home mr-2"></i>Go to Homepage
+                    </a>
+                    <a href="contact.html" class="bg-white border-2 border-blue-800 text-blue-800 hover:bg-blue-50 px-8 py-4 rounded-lg font-bold text-lg transition-colors scale-in">
+                        <i class="fas fa-envelope mr-2"></i>Contact Support
+                    </a>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-8 card-enhanced fade-in">
+                    <h2 class="text-2xl font-bold mb-4">Popular Pages</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="index.html" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow card-enhanced">
+                            <i class="fas fa-home text-blue-800 mr-2"></i>Home
+                        </a>
+                        <a href="campaigns.html" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow card-enhanced">
+                            <i class="fas fa-bullhorn text-blue-800 mr-2"></i>Initiatives
+                        </a>
+                        <a href="donate.html" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow card-enhanced">
+                            <i class="fas fa-hand-holding-heart text-blue-800 mr-2"></i>Support Us
+                        </a>
+                        <a href="about.html" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow card-enhanced">
+                            <i class="fas fa-info-circle text-blue-800 mr-2"></i>About Us
+                        </a>
+                        <a href="contact.html" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow card-enhanced">
+                            <i class="fas fa-envelope text-blue-800 mr-2"></i>Contact
+                        </a>
+                        <a href="faq.html" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow card-enhanced">
+                            <i class="fas fa-question-circle text-blue-800 mr-2"></i>FAQ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-seedling text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-blue-600">Global Aid Foundation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering communities through sustainable development and humanitarian action.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f rtl:ml-3 rtl:mr-0"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="campaigns.html" class="text-gray-400 hover:text-white">Initiatives</a></li>
+                        <li><a href="donate.html" class="text-gray-400 hover:text-white">Support Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Clean Water</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Economic Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Emergency Relief</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>456 Ocean Avenue, San Francisco, CA 94107</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span>+1 (555) 987-6543</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>info@bluewaveinitiative.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Global Aid Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // RTL toggle
+        document.getElementById('rtl-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                localStorage.setItem('direction', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                localStorage.setItem('direction', 'rtl');
+            }
+        });
+
+        // Check for saved direction preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction');
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .card-enhanced');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                // Set initial state
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

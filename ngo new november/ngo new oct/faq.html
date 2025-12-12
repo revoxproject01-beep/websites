@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Aid Foundation - Frequently Asked Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <style>
+        /* Ocean Blue Theme */
+        :root {
+            --primary: #1e40af; /* blue-800 */
+            --primary-dark: #1e3a8a; /* blue-900 */
+            --primary-light: #dbeafe; /* blue-100 */
+            --primary-accent: #3b82f6; /* blue-500 */
+            --secondary: #059669; /* emerald-600 */
+            --dark: #1f2937; /* gray-800 */
+            --light: #f9fafb; /* gray-50 */
+            --light-gray: #e5e7eb; /* gray-200 */
+        }
+        
+        /* Enhanced Button Styles */
+        .btn-primary-enhanced {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-enhanced:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary-enhanced:focus {
+            outline: 2px solid var(--primary-accent);
+            outline-offset: 2px;
+        }
+        
+        .btn-primary-enhanced::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+        
+        .btn-primary-enhanced:hover::after {
+            transform: rotate(30deg) translate(20%, 20%);
+        }
+        
+        /* Enhanced Outline Button */
+        .btn-outline-enhanced {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline-enhanced:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+        }
+        
+        .btn-outline-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-outline-enhanced:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced Card Styles */
+        .card-enhanced {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-enhanced:hover {
+            box-shadow: 0 10px 15px rgba(30, 64, 175, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-enhanced:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* Enhanced Progress Bar */
+        .progress-container-enhanced {
+            background-color: var(--light-gray);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-enhanced {
+            background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .progress-bar-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Enhanced Stats Section */
+        .stats-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        
+        .stat-number-enhanced {
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .stat-number-enhanced::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .stats-gradient:hover .stat-number-enhanced::after {
+            transform: scaleX(1);
+        }
+        
+        .stat-label-enhanced {
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Enhanced Donation Buttons */
+        .donation-btn {
+            border: 2px solid var(--light-gray);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .donation-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(30, 64, 175, 0.1);
+        }
+        
+        .donation-btn.selected {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
+        }
+        
+        .donation-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .donation-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced Navigation */
+        .nav-link-enhanced {
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link-enhanced:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link-enhanced::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link-enhanced:hover::after {
+            width: 100%;
+        }
+        
+        /* Fix for removing red border box on dropdown items */
+        .dropdown-item:focus {
+            outline: none;
+        }
+        
+        /* Enhanced Hero Section */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+        }
+        
+        /* Hero text animations - Zoom In Effect */
+        .hero-title {
+            animation: zoomIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+        
+        .hero-subtitle {
+            animation: slideInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.7s;
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Particle effect for hero section */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: floatParticle 15s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+        
+        /* Active nav link styling */
+        .active-nav-link {
+            color: #1e40af !important;
+            position: relative;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-seedling text-blue-800 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-blue-800">Global Aid Foundation</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1 rtl:ml-3 rtl:mr-0"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium nav-link-enhanced">Initiatives</a>
+              
+                    <a href="about.html" class="font-medium nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium nav-link-enhanced">Contact</a>
+                    <a href="faq.html" class="font-medium nav-link-enhanced active-nav-link">FAQ</a>
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="login.html" class="font-medium hover:text-blue-800 transition-colors rtl:ml-3 rtl:mr-0">Login</a>
+                    <a href="donate.html" class="btn-primary-enhanced">Donate Now</a>
+                </div>
+
+                <!-- RTL Toggle & Hamburger -->
+                <div class="flex items-center">
+                    <button id="rtl-toggle" class="mr-4 text-gray-600 hover:text-blue-800">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="hamburger" class="lg:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center nav-link-enhanced">
+                            Home <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="index.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium py-1 nav-link-enhanced">Campaigns</a>
+                    
+                    <a href="about.html" class="font-medium py-1 nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium py-1 nav-link-enhanced">Contact</a>
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center nav-link-enhanced">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="user-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2 pt-2 border-t">
+                        <a href="login.html" class="font-medium py-1 nav-link-enhanced">Login</a>
+                        <a href="donate.html" class="btn-primary-enhanced text-center">Support Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-900 text-white py-20 overflow-hidden">
+        <div class="hero-particles" id="hero-particles"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Frequently Asked Questions</h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto hero-subtitle">Find answers to common questions about our organization and humanitarian programs</p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Category Navigation -->
+                <div class="flex flex-wrap gap-2 mb-12 justify-center fade-in-staggered">
+                    <button class="category-btn active btn-primary-enhanced">All</button>
+                    <button class="category-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg">Contributions</button>
+                    <button class="category-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg">Volunteering</button>
+                    <button class="category-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg">Programs</button>
+                    <button class="category-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg">Account</button>
+                </div>
+                
+                <!-- FAQ Items -->
+                <div class="faq-container">
+                    <!-- Contributions Category -->
+                    <div class="faq-category" data-category="contributions">
+                        <h2 class="text-2xl font-bold mb-6 slide-in-left">Contribution Questions</h2>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>How are contributions used by the organization?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>100% of your contributions directly support our humanitarian programs and services. We are committed to transparency and efficiency, ensuring that your support creates maximum positive impact. Our operational costs are covered by separate foundation grants and institutional funding.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>Are contributions tax deductible?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>Yes, all contributions to our organization are tax deductible to the fullest extent permitted by law. You will receive an official receipt for your contribution that can be used for tax purposes. For contributions over $250, we are required by the IRS to provide written acknowledgment.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>Can I make a contribution in honor of someone?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>Absolutely! You can make a contribution in honor or memory of someone special. We can send a personalized acknowledgment to the honoree or their family if you wish. Simply include this information in the comments section when making your contribution.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>How do I modify or cancel a recurring contribution?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>You can modify or cancel your recurring contribution at any time by contacting our donor services team at 1-800-555-AID or by emailing donors@globalaid.org. Please include your name, email, and contribution details in your request.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Volunteering Category -->
+                    <div class="faq-category" data-category="volunteering">
+                        <h2 class="text-2xl font-bold mb-6 slide-in-left">Volunteering Questions</h2>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>What is the minimum age requirement for volunteering?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>Most of our volunteer opportunities are open to individuals 16 years and older. Some positions may require volunteers to be 18 or older due to safety or legal requirements. Age requirements are clearly indicated in each volunteer opportunity description.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>Do I need special qualifications to volunteer?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>No special qualifications are required for many of our volunteer opportunities. We provide comprehensive training for all roles. However, some positions may require specific skills or experience, which will be clearly noted in the position description.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>Are remote volunteering opportunities available?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>Yes, we offer several remote volunteering opportunities including data entry, social media management, grant writing, and translation services. These positions allow you to contribute meaningfully from anywhere with an internet connection.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Programs Category -->
+                    <div class="faq-category" data-category="programs">
+                        <h2 class="text-2xl font-bold mb-6 slide-in-left">Program Questions</h2>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>How are communities selected for program implementation?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>We work with local partners and community leaders to identify communities with the greatest need. Our selection process considers factors such as socioeconomic conditions, access to basic services, and community readiness to participate in development programs.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>What is the typical duration of your programs?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>Our programs vary in duration depending on the complexity of the challenge and the community's needs. Emergency response programs may last a few months, while long-term development programs typically run for 3-5 years to ensure sustainable impact.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>How is program success measured and evaluated?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>We use a comprehensive monitoring and evaluation system that tracks both quantitative indicators (such as number of people served, infrastructure developed, participants trained) and qualitative outcomes (community feedback, behavioral changes). We publish annual impact reports with detailed metrics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Account Category -->
+                    <div class="faq-category" data-category="account">
+                        <h2 class="text-2xl font-bold mb-6 slide-in-left">Account Questions</h2>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>How do I update my account information?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>You can update your account information by logging into your dashboard and navigating to the "Profile Settings" section. Here you can update your personal information, password, and communication preferences.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>I forgot my password. How can I reset it?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>Click on the "Forgot Password" link on the login page. Enter your email address, and we'll send you a password reset link. The link will expire in 24 hours for security reasons.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border rounded-lg mb-4 faq-item">
+                            <button class="flex justify-between items-center w-full p-6 text-left font-medium faq-question hover:bg-gray-50">
+                                <span>How do I unsubscribe from communications?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="px-6 pb-6 hidden faq-answer">
+                                <p>You can unsubscribe from our communications by clicking the "Unsubscribe" link at the bottom of any newsletter. Alternatively, you can log into your account and update your communication preferences in the profile settings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Need Help -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <h2 class="text-3xl font-bold mb-4">Still Need Assistance?</h2>
+                <p class="text-gray-600 mb-8">Our support team is ready to assist you with any additional questions</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="contact.html" class="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-medium transition-colors btn-hover-effect">
+                        <i class="fas fa-envelope mr-2"></i>Contact Us
+                    </a>
+                    <a href="tel:1800555AID" class="bg-white border border-blue-800 text-blue-800 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors btn-hover-effect">
+                        <i class="fas fa-phone mr-2"></i>Call Us: 1-800-555-AID
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="fade-in-staggered">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-seedling text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-blue-600">Global Aid Foundation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering communities through sustainable development and humanitarian assistance.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f rtl:ml-3 rtl:mr-0"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="fade-in-staggered">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="campaigns.html" class="text-gray-400 hover:text-white">Campaigns</a></li>
+                        <li><a href="donate.html" class="text-gray-400 hover:text-white">Donate</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="fade-in-staggered">
+                    <h3 class="text-lg font-bold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Clean Water</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Economic Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Emergency Relief</a></li>
+                    </ul>
+                </div>
+                
+                <div class="fade-in-staggered">
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>456 Humanitarian Avenue, Geneva, CH 1201</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>info@globalaid.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Global Aid Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // RTL toggle
+        document.getElementById('rtl-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                localStorage.setItem('direction', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                localStorage.setItem('direction', 'rtl');
+            }
+        });
+
+        // Check for saved direction preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction');
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
+        // FAQ accordion
+        const faqButtons = document.querySelectorAll('.border.rounded-lg.mb-4 button');
+        faqButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.border.rounded-lg.mb-4').forEach(item => {
+                    if (item !== this.closest('.border.rounded-lg.mb-4')) {
+                        const otherContent = item.querySelector('button').nextElementSibling;
+                        const otherIcon = item.querySelector('button i');
+                        if (!otherContent.classList.contains('hidden')) {
+                            otherContent.classList.add('hidden');
+                            otherIcon.classList.remove('fa-chevron-up');
+                            otherIcon.classList.add('fa-chevron-down');
+                        }
+                    }
+                });
+                
+                // Toggle current FAQ item
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const faqCategories = document.querySelectorAll('.faq-category');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-blue-800', 'text-white');
+                    btn.classList.add('bg-gray-200');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active', 'bg-blue-800', 'text-white');
+                this.classList.remove('bg-gray-200');
+                
+                // Get category
+                const category = this.textContent.toLowerCase();
+                
+                // Show/hide categories
+                faqCategories.forEach(categoryDiv => {
+                    if (category === 'all') {
+                        categoryDiv.style.display = 'block';
+                        categoryDiv.classList.add('fade-in');
+                    } else {
+                        const categoryData = categoryDiv.getAttribute('data-category');
+                        if (categoryData === category) {
+                            categoryDiv.style.display = 'block';
+                            categoryDiv.classList.add('fade-in');
+                        } else {
+                            categoryDiv.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add animation classes on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animations to elements already in view
+            const elements = document.querySelectorAll('.fade-in, .fade-in-staggered, .slide-in-left, .slide-in-right');
+            elements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0) translateX(0)';
+            });
+        });
+
+        // Create particles for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('hero-particles');
+            if (particlesContainer) {
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random size
+                    const size = Math.random() * 10 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Random animation delay and duration
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Initialize hero section animations
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            
+            if (heroTitle) heroTitle.style.opacity = '1';
+            if (heroSubtitle) heroSubtitle.style.opacity = '1';
+            
+            // Highlight current page in navbar
+            const currentPage = 'faq.html';
+            const navLinks = document.querySelectorAll('.nav-link-enhanced');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

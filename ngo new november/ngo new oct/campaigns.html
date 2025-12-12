@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initiatives - Global Aid Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <style>
+        /* Custom styles for this page */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+        }
+        
+        /* Hero text animations - Zoom In Effect */
+        .hero-title {
+            animation: zoomIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+        
+        .hero-subtitle {
+            animation: slideInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.7s;
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Particle effect for hero section */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: floatParticle 15s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+        
+        /* Active nav link styling */
+        .active-nav-link {
+            color: #1e40af !important;
+            position: relative;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-seedling text-blue-800 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-blue-800">Global Aid Foundation</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1 rtl:ml-3 rtl:mr-0"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium nav-link-enhanced active-nav-link">Initiatives</a>
+                   
+                    <a href="about.html" class="font-medium nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium nav-link-enhanced">Contact</a>
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="login.html" class="font-medium hover:text-blue-800 transition-colors rtl:ml-3 rtl:mr-0">Login</a>
+                    <a href="donate.html" class="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded transition-colors">Support Now</a>
+                </div>
+
+                <!-- RTL Toggle & Hamburger -->
+                <div class="flex items-center">
+                    <button id="rtl-toggle" class="mr-4 text-gray-600 hover:text-blue-800">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="hamburger" class="lg:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="index.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium py-1 nav-link-enhanced">Initiatives</a>
+                  
+                    <a href="about.html" class="font-medium py-1 nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium py-1 nav-link-enhanced">Contact</a>
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="user-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2 pt-2 border-t">
+                        <a href="login.html" class="font-medium py-1 nav-link-enhanced">Login</a>
+                        <a href="donate.html" class="btn-primary-enhanced text-center">Support Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-900 text-white py-20 relative overflow-hidden">
+        <div class="hero-particles" id="hero-particles"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Our Initiatives</h1>
+            <p class="text-xl max-w-2xl mx-auto hero-subtitle">Discover our ongoing initiatives to create positive change around the world</p>
+        </div>
+      
+    </section>
+
+    <!-- Filter and Sort Bar -->
+    <section class="py-6 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold">All Initiatives</h2>
+                    <p class="text-gray-600">Showing 12 initiatives</p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <div class="relative">
+                        <select class="border rounded-lg p-2 pl-8">
+                            <option>All Causes</option>
+                            <option>Education</option>
+                            <option>Healthcare</option>
+                            <option>Clean Water</option>
+                            <option>Emergency Relief</option>
+                        </select>
+                        <i class="fas fa-filter absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <div class="relative">
+                        <select class="border rounded-lg p-2 pl-8">
+                            <option>Sort by: Newest</option>
+                            <option>Sort by: Most Funded</option>
+                            <option>Sort by: Ending Soon</option>
+                        </select>
+                        <i class="fas fa-sort-amount-down-alt absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <!-- Sidebar -->
+                <div class="md:w-1/4 md:pr-8 mb-8 md:mb-0 rtl:ml-3 rtl:mr-0">
+                    <div class="bg-white rounded-lg shadow p-6 mb-6 scale-in">
+                        <h3 class="text-lg font-bold mb-4">Search Initiatives</h3>
+                        <div class="relative">
+                            <input type="text" placeholder="Search..." class="w-full border rounded-lg p-3 pl-10">
+                            <i class="fas fa-search absolute left-3 top-4 text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-6 mb-6 scale-in">
+                        <h3 class="text-lg font-bold mb-4">Popular Initiatives</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center fade-in-staggered">
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Clean Water Initiative" class="w-12 h-12 rounded mr-3">
+                                <div>
+                                    <h4 class="font-medium">Clean Water Initiative</h4>
+                                    <p class="text-blue-800 text-sm">$38,000 raised</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center fade-in-staggered">
+                                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Education for All" class="w-12 h-12 rounded mr-3">
+                                <div>
+                                    <h4 class="font-medium">Education for All</h4>
+                                    <p class="text-blue-800 text-sm">$22,500 raised</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center fade-in-staggered">
+                                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Healthcare Access" class="w-12 h-12 rounded mr-3">
+                                <div>
+                                    <h4 class="font-medium">Healthcare Access</h4>
+                                    <p class="text-blue-800 text-sm">$48,300 raised</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-6 scale-in">
+                        <h3 class="text-lg font-bold mb-4">Quick Support</h3>
+                        <p class="text-gray-600 mb-4">Support our general fund with a quick contribution</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <button class="donation-btn" data-amount="15">$15</button>
+                            <button class="donation-btn" data-amount="35">$35</button>
+                            <button class="donation-btn" data-amount="75">$75</button>
+                            <button class="donation-btn" data-amount="150">$150</button>
+                        </div>
+                        <a href="donate.html" class="btn-primary-enhanced block w-full text-center">Support Now</a>
+                    </div>
+                </div>
+                
+                <!-- Initiatives Grid -->
+                <div class="md:w-3/4">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-staggered">
+                        <!-- Initiative 1 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Clean Water Initiative" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Clean Water</span>
+                                    <span class="text-gray-500 text-sm">18 days left</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Clean Water Initiative</h3>
+                                <p class="text-gray-700 mb-4">Providing access to clean drinking water for remote communities in Sub-Saharan Africa.</p>
+                                <div class="mb-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Raised: $38,000</span>
+                                        <span class="text-sm">Goal: $60,000</span>
+                                    </div>
+                                    <div class="h-2 progress-container-enhanced">
+                                        <div class="h-full progress-bar-enhanced" style="width: 63%"></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-blue-800 hover:text-blue-900 font-medium">Learn More →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Initiative 2 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Education for All" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Education</span>
+                                    <span class="text-gray-500 text-sm">35 days left</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Education for All</h3>
+                                <p class="text-gray-700 mb-4">Building schools and training teachers in underserved areas across Southeast Asia.</p>
+                                <div class="mb-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Raised: $22,500</span>
+                                        <span class="text-sm">Goal: $35,000</span>
+                                    </div>
+                                    <div class="h-2 progress-container-enhanced">
+                                        <div class="h-full progress-bar-enhanced" style="width: 64%"></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-blue-800 hover:text-blue-900 font-medium">Learn More →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Initiative 3 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Healthcare Access" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Healthcare</span>
+                                    <span class="text-gray-500 text-sm">48 days left</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Healthcare Access</h3>
+                                <p class="text-gray-700 mb-4">Bringing medical services to remote villages and communities in Latin America.</p>
+                                <div class="mb-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Raised: $48,300</span>
+                                        <span class="text-sm">Goal: $70,000</span>
+                                    </div>
+                                    <div class="h-2 progress-container-enhanced">
+                                        <div class="h-full progress-bar-enhanced" style="width: 69%"></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-blue-800 hover:text-blue-900 font-medium">Learn More →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Initiative 4 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                            <img src="https://www.redcross.org/content/dam/redcross/uncategorized/7/Floods-Friday-3.jpg.transform/1288/q70/feature/image.jpeg" alt="Emergency Relief" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Emergency</span>
+                                    <span class="text-gray-500 text-sm">Ongoing</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Emergency Relief for Disaster Victims</h3>
+                                <p class="text-gray-700 mb-4">Providing immediate aid to families affected by recent disasters</p>
+                                <div class="mb-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Raised: $72,000</span>
+                                        <span class="text-sm">Goal: $120,000</span>
+                                    </div>
+                                    <div class="h-2 progress-container-enhanced">
+                                        <div class="h-full progress-bar-enhanced" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-blue-800 hover:text-blue-900 font-medium">Learn More →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Initiative 5 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                            <img src="https://tse4.mm.bing.net/th/id/OIP._NYgOOhEo_kwurbP2Hj1mwHaE7?w=863&h=575&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Food Security" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Food Security</span>
+                                    <span class="text-gray-500 text-sm">10 days left</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Food Security Program</h3>
+                                <p class="text-gray-700 mb-4">Combatting hunger through sustainable agriculture initiatives</p>
+                                <div class="mb-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Raised: $32,400</span>
+                                        <span class="text-sm">Goal: $45,000</span>
+                                    </div>
+                                    <div class="h-2 progress-container-enhanced">
+                                        <div class="h-full progress-bar-enhanced" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-blue-800 hover:text-blue-900 font-medium">Learn More →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Initiative 6 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Women Empowerment" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Women Empowerment</span>
+                                    <span class="text-gray-500 text-sm">65 days left</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Women Empowerment Initiative</h3>
+                                <p class="text-gray-700 mb-4">Empowering women through education, healthcare, and economic opportunities.</p>
+                                <div class="mb-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Raised: $18,200</span>
+                                        <span class="text-sm">Goal: $30,000</span>
+                                    </div>
+                                    <div class="h-2 progress-container-enhanced">
+                                        <div class="h-full progress-bar-enhanced" style="width: 61%"></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-blue-800 hover:text-blue-900 font-medium">Learn More →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Load More Button -->
+                    <div class="text-center mt-12 fade-in">
+                        <button class="btn-primary-enhanced">Load More Initiatives</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 stats-gradient text-white">
+        <div class="container mx-auto px-4 text-center fade-in">
+            <h2 class="text-3xl font-bold mb-4">Support Our Mission</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Your contribution can help us expand our reach and impact more lives</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="donate.html" class="btn-primary-enhanced">Support Now</a>
+                <a href="contact.html" class="btn-primary-enhanced">Volunteer With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-seedling text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-blue-600">Global Aid Foundation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering communities through sustainable development and humanitarian action.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f rtl:ml-3 rtl:mr-0"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="campaigns.html" class="text-gray-400 hover:text-white">Initiatives</a></li>
+                        <li><a href="donate.html" class="text-gray-400 hover:text-white">Support Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Clean Water</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Economic Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Emergency Relief</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>456 Ocean Avenue, San Francisco, CA 94107</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span>+1 (555) 987-6543</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>info@bluewaveinitiative.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Global Aid Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // RTL toggle
+        document.getElementById('rtl-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                localStorage.setItem('direction', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                localStorage.setItem('direction', 'rtl');
+            }
+        });
+
+        // Check for saved direction preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction');
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
+        // Load more initiatives functionality
+        document.querySelector('button').addEventListener('click', function() {
+            alert('In a real implementation, this would load more initiatives via AJAX');
+        });
+
+        // Amount selection for donation buttons
+        const amountButtons = document.querySelectorAll('.donation-btn');
+        if (amountButtons.length > 0) {
+            amountButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove selected class from all buttons
+                    amountButtons.forEach(btn => btn.classList.remove('selected'));
+                    
+                    // Add selected class to clicked button
+                    this.classList.add('selected');
+                });
+            });
+        }
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .fade-in-staggered, .card-enhanced');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                // Set initial state
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                observer.observe(element);
+            });
+        });
+
+        // Create particles for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('hero-particles');
+            if (particlesContainer) {
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random size
+                    const size = Math.random() * 10 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Random animation delay and duration
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Initialize hero section animations
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            
+            if (heroTitle) heroTitle.style.opacity = '1';
+            if (heroSubtitle) heroSubtitle.style.opacity = '1';
+            
+            // Highlight current page in navbar
+            const currentPage = 'campaigns.html';
+            const navLinks = document.querySelectorAll('.nav-link-enhanced');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

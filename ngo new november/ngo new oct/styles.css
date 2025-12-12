@@ -1,0 +1,1078 @@
+/* Custom Styles for Global Aid Foundation Website */
+
+/* New Color Scheme and Theme */
+:root {
+  /* Primary Colors - Ocean Blue Theme */
+  --primary: #1e40af; /* blue-800 */
+  --primary-dark: #1e3a8a; /* blue-900 */
+  --primary-light: #dbeafe; /* blue-100 */
+  --primary-accent: #3b82f6; /* blue-500 */
+  
+  /* Secondary Colors */
+  --secondary: #059669; /* emerald-600 */
+  --secondary-dark: #047857; /* emerald-700 */
+  --secondary-light: #d1fae5; /* emerald-100 */
+  
+  /* Accent Colors */
+  --accent: #f59e0b; /* amber-500 */
+  --accent-dark: #d97706; /* amber-600 */
+  
+  /* Neutral Colors */
+  --dark: #1f2937; /* gray-800 */
+  --light: #f9fafb; /* gray-50 */
+  --gray: #6b7280; /* gray-500 */
+  --light-gray: #e5e7eb; /* gray-200 */
+  
+  /* Status Colors */
+  --success: #10b981; /* emerald-500 */
+  --warning: #f59e0b; /* amber-500 */
+  --error: #ef4444; /* red-500 */
+}
+
+/* Enhanced Text Contrast */
+.text-gray-500 {
+  color: #4b5563; /* Improved contrast from default gray-500 */
+}
+
+.text-gray-600 {
+  color: #374151; /* Improved contrast from default gray-600 */
+}
+
+.text-sm.text-gray-500 {
+  color: #374151; /* Better contrast for small light text */
+}
+
+.text-xs.text-gray-500 {
+  color: #1f2937; /* Better contrast for extra small light text */
+}
+
+.text-sm.text-gray-600 {
+  color: #1f2937; /* Better contrast for small medium text */
+}
+
+/* Dashboard Specific Contrast Improvements */
+.dashboard-text-xs {
+  color: #1f2937; /* High contrast for dashboard timestamps */
+  font-weight: 500; /* Slightly bolder for better readability */
+  margin-bottom: 0.25rem; /* Add some bottom spacing */
+  line-height: 1.4; /* Improve line height for readability */
+}
+
+.dashboard-text-sm {
+  color: #1f2937; /* High contrast for dashboard descriptions */
+  font-weight: 500; /* Slightly bolder for better readability */
+  margin-bottom: 0.5rem; /* Add more bottom spacing */
+  line-height: 1.5; /* Improve line height for readability */
+}
+
+/* General text spacing improvements for better readability on all pages */
+@media (max-width: 768px) {
+  /* Improve spacing for small text elements */
+  .text-sm {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .text-xs {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+  
+  /* Improve spacing in list items for better touch targets */
+  .space-y-3 > div,
+  .space-y-3 > li {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Add extra spacing between paragraphs in mobile view */
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Additional spacing improvements for dashboard text on mobile */
+  .dashboard-text-sm {
+    margin-bottom: 0.75rem; /* Increase spacing on smaller screens */
+  }
+  
+  .dashboard-text-xs {
+    margin-bottom: 0.5rem; /* Increase spacing on smaller screens */
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .ml-4 {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir="rtl"] .mr-3 {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .pr-10 {
+  padding-right: 0;
+  padding-left: 2.5rem;
+}
+
+[dir="rtl"] .pl-10 {
+  padding-left: 0;
+  padding-right: 2.5rem;
+}
+
+[dir="rtl"] .pl-8 {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+[dir="rtl"] .pl-3 {
+  padding-left: 0;
+  padding-right: 0.75rem;
+}
+
+[dir="rtl"] .right-3 {
+  right: auto;
+  left: 0.75rem;
+}
+
+[dir="rtl"] .left-3 {
+  left: auto;
+  right: 0.75rem;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+  
+  #mobile-menu:not(.hidden) {
+    display: block;
+  }
+}
+
+/* Focus Styles for Accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Progress Bar Animation */
+@keyframes progress {
+  0% { width: 0; }
+}
+
+.progress-animate {
+  animation: progress 2s ease-in-out;
+}
+
+/* Carousel Animation */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.carousel-slide {
+  animation: slide 30s linear infinite;
+}
+
+/* Testimonial Slider */
+.testimonial-slider {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Form Validation */
+.form-error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* Button Hover Effects */
+.btn-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.btn-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Hover Effects */
+.card-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion Animation */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.open {
+  max-height: 1000px;
+}
+
+/* Sidebar Animation */
+.sidebar-transition {
+  transition: all 0.3s ease;
+}
+
+/* Notification Badge */
+.notification-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Placeholder for Charts */
+.chart-placeholder {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Responsive Utilities */
+@media (max-width: 640px) {
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+  
+  .sm\:space-y-4 {
+    margin-top: 1rem;
+  }
+  
+  .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+/* Dark Mode Override (if needed) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--dark);
+    --text-color: var(--light);
+  }
+}
+
+/* Enhanced Text Contrast */
+.text-gray-500 {
+  color: #4b5563; /* Improved contrast from default gray-500 */
+}
+
+.text-gray-600 {
+  color: #374151; /* Improved contrast from default gray-600 */
+}
+
+.text-sm.text-gray-500 {
+  color: #374151; /* Better contrast for small light text */
+}
+
+.text-xs.text-gray-500 {
+  color: #1f2937; /* Better contrast for extra small light text */
+}
+
+.text-sm.text-gray-600 {
+  color: #1f2937; /* Better contrast for small medium text */
+}
+
+/* Image Styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hero Image Styles */
+.hero-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Campaign Image Styles */
+.campaign-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Team Image Styles */
+.team-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Premium Animations */
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Staggered Fade In for multiple elements */
+.fade-in-staggered {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.fade-in-staggered:nth-child(1) { animation-delay: 0.1s; }
+.fade-in-staggered:nth-child(2) { animation-delay: 0.2s; }
+.fade-in-staggered:nth-child(3) { animation-delay: 0.3s; }
+.fade-in-staggered:nth-child(4) { animation-delay: 0.4s; }
+.fade-in-staggered:nth-child(5) { animation-delay: 0.5s; }
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Slide In from Left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+/* Slide In from Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease-out forwards;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulseGrow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-grow {
+  animation: pulseGrow 2s ease-in-out infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Morph Animation */
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* Enhanced Button Styles */
+.btn-primary-enhanced {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-enhanced:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary-enhanced:focus {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
+}
+
+.btn-primary-enhanced::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.btn-primary-enhanced:hover::after {
+  transform: rotate(30deg) translate(20%, 20%);
+}
+
+/* Enhanced Outline Button */
+.btn-outline-enhanced {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-enhanced:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+}
+
+.btn-outline-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-outline-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Card Styles */
+.card-enhanced {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-enhanced:hover {
+  box-shadow: 0 10px 15px rgba(30, 64, 175, 0.1);
+  transform: translateY(-5px);
+}
+
+.card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card-enhanced:hover::before {
+  transform: scaleX(1);
+}
+
+/* Enhanced Progress Bar */
+.progress-container-enhanced {
+  background-color: var(--light-gray);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-enhanced {
+  background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-bar-enhanced::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Enhanced Stats Section */
+.stats-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.stat-number-enhanced {
+  color: white;
+  font-weight: 800;
+  font-size: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: inline-block;
+}
+
+.stat-number-enhanced::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--secondary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+.stats-gradient:hover .stat-number-enhanced::after {
+  transform: scaleX(1);
+}
+
+.stat-label-enhanced {
+  color: white;
+  font-weight: 600;
+}
+
+/* Enhanced Donation Buttons */
+.donation-btn {
+  border: 2px solid var(--light-gray);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-btn:hover {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.1);
+}
+
+.donation-btn.selected {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-color: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
+}
+
+.donation-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.donation-btn:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Navigation */
+.nav-link-enhanced {
+  color: var(--dark);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link-enhanced:hover {
+  color: var(--primary);
+}
+
+.nav-link-enhanced::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link-enhanced:hover::after {
+  width: 100%;
+}
+
+/* Fix for removing red border box on dropdown items */
+.dropdown-item:focus {
+  outline: none;
+}
+
+/* Enhanced Hero Section */
+.hero-gradient {
+  background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+}
+
+/* Section Animations */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll Reveal Animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium Animations - Additional Effects */
+/* Zoom In Animation */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.zoom-in {
+  animation: zoomIn 0.6s ease-out forwards;
+}
+
+/* Rotate In Animation */
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.rotate-in {
+  animation: rotateIn 0.7s ease-out forwards;
+}
+
+/* Blur In Animation */
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.blur-in {
+  animation: blurIn 0.8s ease-out forwards;
+}
+
+/* Elastic Animation */
+@keyframes elastic {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.elastic {
+  animation: elastic 0.8s ease-out;
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Swing Animation */
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(10deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.swing {
+  animation: swing 1s ease-in-out;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Flip Animation */
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateY(0);
+    animation-timing-function: ease-out;
+  }
+  40% {
+    transform: perspective(400px) translateZ(150px) rotateY(170deg);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: perspective(400px) rotateY(360deg) scale(0.95);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: perspective(400px) scale(1);
+    animation-timing-function: ease-in;
+  }
+}
+
+.flip {
+  animation: flip 1s ease-in-out;
+}
+
+/* Jelly Animation */
+@keyframes jelly {
+  0% { transform: scale(1, 1); }
+  30% { transform: scale(1.25, 0.75); }
+  40% { transform: scale(0.75, 1.25); }
+  50% { transform: scale(1.15, 0.85); }
+  65% { transform: scale(0.95, 1.05); }
+  75% { transform: scale(1.05, 0.95); }
+  100% { transform: scale(1, 1); }
+}
+
+.jelly {
+  animation: jelly 0.8s ease-in-out;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.bounce {
+  animation: bounce 1s ease infinite;
+}
+
+/* Roll In Animation */
+@keyframes rollIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-120deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+.roll-in {
+  animation: rollIn 0.8s ease-out forwards;
+}
+
+/* Roll Out Animation */
+@keyframes rollOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) rotate(120deg);
+  }
+}
+
+.roll-out {
+  animation: rollOut 0.8s ease-out forwards;
+}
+
+/* Light Speed In Animation */
+@keyframes lightSpeedIn {
+  0% {
+    transform: translateX(100%) skewX(-30deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-20%) skewX(20deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0%) skewX(-5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%) skewX(0deg);
+    opacity: 1;
+  }
+}
+
+.light-speed-in {
+  animation: lightSpeedIn 0.5s ease-out forwards;
+}
+
+/* Hinge Animation */
+@keyframes hinge {
+  0% {
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate(80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  40%, 80% {
+    transform: rotate(60deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(700px);
+    opacity: 0;
+  }
+}
+
+.hinge {
+  animation: hinge 2s ease-in-out forwards;
+}
+
+/* Jack In The Box Animation */
+@keyframes jackInTheBox {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) rotate(30deg);
+    transform-origin: center bottom;
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.jack-in-the-box {
+  animation: jackInTheBox 0.7s ease-in-out forwards;
+}

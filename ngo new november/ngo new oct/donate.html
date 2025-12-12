@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us - Global Aid Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <style>
+        /* Custom styles for this page */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+        }
+        
+        /* Hero text animations - Zoom In Effect */
+        .hero-title {
+            animation: zoomIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+        
+        .hero-subtitle {
+            animation: slideInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.7s;
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Particle effect for hero section */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: floatParticle 15s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+        
+        /* Active nav link styling */
+        .active-nav-link {
+            color: #1e40af !important;
+            position: relative;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-seedling text-blue-800 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-blue-800">Global Aid Foundation</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1 rtl:ml-3 rtl:mr-0"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium nav-link-enhanced">Initiatives</a>
+                  
+                    <a href="about.html" class="font-medium nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium nav-link-enhanced">Contact</a>
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="login.html" class="font-medium hover:text-blue-800 transition-colors rtl:ml-3 rtl:mr-0">Login</a>
+                    <a href="donate.html" class="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded transition-colors">Support Now</a>
+                </div>
+
+                <!-- RTL Toggle & Hamburger -->
+                <div class="flex items-center">
+                    <button id="rtl-toggle" class="mr-4 text-gray-600 hover:text-blue-800">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="hamburger" class="lg:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="index.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium py-1 nav-link-enhanced">Initiatives</a>
+          
+                    <a href="about.html" class="font-medium py-1 nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium py-1 nav-link-enhanced">Contact</a>
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="user-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2 pt-2 border-t">
+                        <a href="login.html" class="font-medium py-1 nav-link-enhanced">Login</a>
+                        <a href="donate.html" class="btn-primary-enhanced text-center">Support Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-900 text-white py-20 relative overflow-hidden">
+        <div class="hero-particles" id="hero-particles"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Make a Difference Today</h1>
+            <p class="text-xl max-w-2xl mx-auto hero-subtitle">Your generous contribution helps us continue our vital work in communities around the world</p>
+        </div>
+    </section>
+
+    <!-- Donation Form -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <!-- Form Section -->
+                        <div class="md:w-2/3 p-8">
+                            <h2 class="text-2xl font-bold mb-6">Contribution Details</h2>
+                            
+                            <form id="donation-form">
+                                <!-- Donation Type -->
+                                <div class="mb-8">
+                                    <h3 class="text-lg font-semibold mb-4">Contribution Type</h3>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <label class="border rounded-lg p-4 cursor-pointer hover:border-blue-800 scale-in">
+                                            <input type="radio" name="donation-type" value="general" class="mr-2" checked>
+                                            General Fund
+                                            <p class="text-gray-600 text-sm mt-1">Support our ongoing operations and emergency relief efforts</p>
+                                        </label>
+                                        <label class="border rounded-lg p-4 cursor-pointer hover:border-blue-800 scale-in">
+                                            <input type="radio" name="donation-type" value="specific" class="mr-2">
+                                            Specific Cause
+                                            <p class="text-gray-600 text-sm mt-1">Direct your contribution to a particular program or initiative</p>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Amount Selection -->
+                                <div class="mb-8">
+                                    <h3 class="text-lg font-semibold mb-4">Contribution Amount</h3>
+                                    <div class="grid grid-cols-3 gap-4 mb-4">
+                                        <button type="button" class="donation-btn" data-amount="15">$15</button>
+                                        <button type="button" class="donation-btn" data-amount="35">$35</button>
+                                        <button type="button" class="donation-btn" data-amount="75">$75</button>
+                                        <button type="button" class="donation-btn" data-amount="150">$150</button>
+                                        <button type="button" class="donation-btn" data-amount="350">$350</button>
+                                        <button type="button" class="donation-btn" data-amount="750">$750</button>
+                                    </div>
+                                    <div class="relative">
+                                        <span class="absolute left-3 top-3 text-gray-500">$</span>
+                                        <input type="number" id="custom-amount" placeholder="Or enter custom amount" class="w-full border rounded-lg p-3 pl-8">
+                                    </div>
+                                </div>
+                                
+                                <!-- Recurring Donation -->
+                                <div class="mb-8">
+                                    <h3 class="text-lg font-semibold mb-4">Recurring Contribution</h3>
+                                    <div class="flex items-center mb-4">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" id="recurring" class="mr-2">
+                                            <span>Make this a monthly contribution</span>
+                                        </label>
+                                    </div>
+                                    <div id="frequency-options" class="hidden">
+                                        <label class="block mb-2">Frequency</label>
+                                        <select class="w-full border rounded-lg p-3">
+                                            <option>Monthly</option>
+                                            <option>Quarterly</option>
+                                            <option>Annually</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Personal Information -->
+                                <div class="mb-8">
+                                    <h3 class="text-lg font-semibold mb-4">Your Information</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label class="block mb-2">First Name</label>
+                                            <input type="text" class="w-full border rounded-lg p-3" required>
+                                        </div>
+                                        <div>
+                                            <label class="block mb-2">Last Name</label>
+                                            <input type="text" class="w-full border rounded-lg p-3" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block mb-2">Email</label>
+                                        <input type="email" class="w-full border rounded-lg p-3" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block mb-2">Phone (Optional)</label>
+                                        <input type="tel" class="w-full border rounded-lg p-3">
+                                    </div>
+                                </div>
+                                
+                                <!-- Payment Information -->
+                                <div class="mb-8">
+                                    <h3 class="text-lg font-semibold mb-4">Payment Information</h3>
+                                    <div class="mb-4">
+                                        <label class="block mb-2">Card Number</label>
+                                        <input type="text" class="w-full border rounded-lg p-3" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label class="block mb-2">Expiration Date</label>
+                                            <input type="text" class="w-full border rounded-lg p-3" placeholder="MM/YY" required>
+                                        </div>
+                                        <div>
+                                            <label class="block mb-2">CVV</label>
+                                            <input type="text" class="w-full border rounded-lg p-3" placeholder="123" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <button type="submit" class="w-full btn-primary-enhanced">Complete Contribution</button>
+                            </form>
+                        </div>
+                        
+                        <!-- Summary Section -->
+                        <div class="md:w-1/3 bg-gray-50 p-8">
+                            <h3 class="text-xl font-bold mb-6">Contribution Summary</h3>
+                            
+                            <div class="mb-6">
+                                <div class="flex justify-between mb-2">
+                                    <span>General Fund Contribution</span>
+                                    <span id="donation-amount">$0</span>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Processing Fee</span>
+                                    <span>$0.00</span>
+                                </div>
+                                <div class="flex justify-between font-bold text-lg mt-4 pt-4 border-t">
+                                    <span>Total</span>
+                                    <span id="total-amount">$0.00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">Why Contribute?</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-start fade-in-staggered">
+                                        <i class="fas fa-check text-blue-800 mt-1 mr-2"></i>
+                                        <span>100% of your contribution goes directly to programs</span>
+                                    </li>
+                                    <li class="flex items-start fade-in-staggered">
+                                        <i class="fas fa-check text-blue-800 mt-1 mr-2"></i>
+                                        <span>We're rated 4-star by Charity Navigator</span>
+                                    </li>
+                                    <li class="flex items-start fade-in-staggered">
+                                        <i class="fas fa-check text-blue-800 mt-1 mr-2"></i>
+                                        <span>Transparent reporting on how funds are used</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">How Your Contribution Helps</h4>
+                                <img src="https://wallpapers.com/images/hd/help-pictures-1920-x-826-hjob55sjmkog6tko.jpg" alt="Contribution impact" class="rounded-lg mb-3">
+                                <p class="text-gray-600">Your contribution directly supports communities in need around the world.</p>
+                            </div>
+                            
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h4 class="font-bold mb-2">Need Help?</h4>
+                                <p class="text-gray-600 mb-3">Contact our donor support team</p>
+                                <p class="flex items-center text-blue-800">
+                                    <i class="fas fa-phone mr-2"></i>
+                                    <span>1-800-555-WAVE</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges 
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 fade-in">
+                <h2 class="text-2xl font-bold mb-4">Recognized for Excellence</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We maintain the highest standards of accountability and transparency</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="text-center fade-in-staggered">
+                    <img src="https://images.unsplash.com/photo-1607746882462-bcd85f6c0c08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Charity Navigator" class="mx-auto h-12 mb-2">
+                    <p class="text-sm text-gray-600">4-Star Rating</p>
+                </div>
+                <div class="text-center fade-in-staggered">
+                    <img src="https://images.unsplash.com/photo-1607746882464-bcd85f6c0c08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="GuideStar" class="mx-auto h-12 mb-2">
+                    <p class="text-sm text-gray-600">Platinum Seal</p>
+                </div>
+                <div class="text-center fade-in-staggered">
+                    <img src="https://images.unsplash.com/photo-1607746882466-bcd85f6c0c08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="BBB Wise Giving" class="mx-auto h-12 mb-2">
+                    <p class="text-sm text-gray-600">Accredited</p>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold mb-4">Supporter Stories</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Hear from people who have supported our mission</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto animate-staggered">
+                <div class="bg-gray-800 rounded-lg p-6 scale-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Michael Thompson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Michael Thompson</h3>
+                            <p class="text-gray-400 text-sm">Monthly Supporter for 4 years</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Knowing that my monthly contribution is making a real difference in people's lives gives me tremendous satisfaction. The impact reports I receive show exactly how my contribution is being used."</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-6 scale-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Sarah Johnson</h3>
+                            <p class="text-gray-400 text-sm">First-time Supporter</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"I was impressed by the transparency and efficiency of this organization. My contribution went directly to helping families in need, and I received regular updates on the impact."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto">Find answers to common questions about contributions</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="border rounded-lg mb-4 card-enhanced">
+                    <button class="flex justify-between items-center w-full p-6 text-left font-medium hover:bg-gray-50">
+                        <span>How will my contribution be used?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-700">100% of your contribution goes directly to our programs and services. We are committed to transparency and efficiency, ensuring that your contribution makes the maximum impact possible. Our administrative costs are covered by separate foundation grants.</p>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg mb-4 card-enhanced">
+                    <button class="flex justify-between items-center w-full p-6 text-left font-medium hover:bg-gray-50">
+                        <span>Is my contribution tax deductible?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-700">Yes, all contributions to our organization are tax deductible to the fullest extent allowed by law. You will receive a receipt for your contribution that can be used for tax purposes. For contributions over $250, we are required by the IRS to provide a written acknowledgment.</p>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg mb-4 card-enhanced">
+                    <button class="flex justify-between items-center w-full p-6 text-left font-medium hover:bg-gray-50">
+                        <span>Can I make a contribution in someone's name?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-700">Absolutely! You can make a contribution in honor or memory of someone special. We can send a personalized card to the honoree or their family if you wish. Just let us know in the comments section when making your contribution.</p>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg mb-4 card-enhanced">
+                    <button class="flex justify-between items-center w-full p-6 text-left font-medium hover:bg-gray-50">
+                        <span>How can I cancel a recurring contribution?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-700">You can cancel or modify your recurring contribution at any time by contacting our donor services team at 1-800-555-WAVE or by emailing donors@bluewaveinitiative.org. Please include your name, email, and contribution details in your request.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-seedling text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-blue-600">Global Aid Foundation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering communities through sustainable development and humanitarian action.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f rtl:ml-3 rtl:mr-0"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="campaigns.html" class="text-gray-400 hover:text-white">Initiatives</a></li>
+                        <li><a href="donate.html" class="text-gray-400 hover:text-white">Support Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Clean Water</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Economic Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Emergency Relief</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>456 Ocean Avenue, San Francisco, CA 94107</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span>+1 (555) 987-6543</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>info@bluewaveinitiative.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Global Aid Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // RTL toggle
+        document.getElementById('rtl-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                localStorage.setItem('direction', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                localStorage.setItem('direction', 'rtl');
+            }
+        });
+
+        // Check for saved direction preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction');
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
+        // Amount selection
+        const amountButtons = document.querySelectorAll('.donation-btn');
+        const customAmountInput = document.getElementById('custom-amount');
+        const donationAmount = document.getElementById('donation-amount');
+        const totalAmount = document.getElementById('total-amount');
+
+        amountButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove selected class from all buttons
+                amountButtons.forEach(btn => btn.classList.remove('selected'));
+                
+                // Add selected class to clicked button
+                this.classList.add('selected');
+                
+                // Update donation amount
+                const amount = this.getAttribute('data-amount');
+                donationAmount.textContent = `$${amount}`;
+                totalAmount.textContent = `$${amount}.00`;
+                
+                // Clear custom amount input
+                customAmountInput.value = '';
+            });
+        });
+
+        // Custom amount input
+        customAmountInput.addEventListener('input', function() {
+            const amount = this.value;
+            if (amount && !isNaN(amount) && amount > 0) {
+                // Remove selected class from all buttons
+                amountButtons.forEach(btn => btn.classList.remove('selected'));
+                
+                // Update donation amount
+                donationAmount.textContent = `$${amount}`;
+                totalAmount.textContent = `$${parseFloat(amount).toFixed(2)}`;
+            }
+        });
+
+        // Recurring donation toggle
+        const recurringCheckbox = document.getElementById('recurring');
+        const frequencyOptions = document.getElementById('frequency-options');
+
+        recurringCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                frequencyOptions.classList.remove('hidden');
+            } else {
+                frequencyOptions.classList.add('hidden');
+            }
+        });
+
+        // FAQ accordion
+        const faqButtons = document.querySelectorAll('.border.rounded-lg.mb-4 button');
+        faqButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your contribution! This is a demo form - in a real implementation, this would process your payment.');
+        });
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .fade-in-staggered');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                // Set initial state
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                observer.observe(element);
+            });
+        });
+
+        // Create particles for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('hero-particles');
+            if (particlesContainer) {
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random size
+                    const size = Math.random() * 10 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Random animation delay and duration
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Initialize hero section animations
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            
+            if (heroTitle) heroTitle.style.opacity = '1';
+            if (heroSubtitle) heroSubtitle.style.opacity = '1';
+            
+            // Highlight current page in navbar
+            const currentPage = 'donate.html';
+            const navLinks = document.querySelectorAll('.nav-link-enhanced');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Aid Foundation Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <style>
+        /* Custom styles for this page */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+        }
+        
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 256px; /* h-64 equivalent */
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm px-4 py-3 fixed top-0 left-0 right-0 z-50">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button id="sidebar-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                </button>
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-seedling text-blue-800 text-2xl mr-2 rtl:ml-3 rtl:mr-0"></i>
+                    <span class="text-xl font-bold text-blue-800">Global Aid Foundation</span>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button id="rtl-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-globe text-gray-600 dark:text-gray-400"></i>
+                </button>
+
+                <div class="flex items-center space-x-2">
+                    <span class="hidden md:block font-medium">Admin User</span>
+                    <i class="fas fa-chevron-down text-sm text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex pt-16">
+       <!-- Sidebar -->
+       <aside id="sidebar"
+           class="sidebar fixed lg:static inset-y-0 left-0 rtl:left-auto rtl:right-0 z-40 w-64 
+                  bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full lg:translate-x-0 transition-transform duration-300 pt-16 lg:pt-0">
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="#dashboard" class="sidebar-link active flex items-center px-4 py-3 text-blue-800 bg-blue-50 dark:bg-blue-900/20 rounded-lg font-medium">
+                        <i class="fas fa-chart-bar mr-3 rtl:mr-0 rtl:ml-3"></i>Dashboard
+                    </a>
+                    <a href="#events" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-calendar mr-3 rtl:mr-0 rtl:ml-3"></i>Events
+                    </a>
+                    <a href="#registrations" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-users mr-3 rtl:mr-0 rtl:ml-3"></i>Registrations
+                    </a>
+                    <a href="#speakers" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-microphone mr-3 rtl:mr-0 rtl:ml-3"></i>Speakers
+                    </a>
+                    <a href="#schedule" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-clock mr-3 rtl:mr-0 rtl:ml-3"></i>Schedule
+                    </a>
+                    <a href="#analytics" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-chart-line mr-3 rtl:mr-0 rtl:ml-3"></i>Analytics
+                    </a>
+                    <a href="#settings" class="sidebar-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-cog mr-3 rtl:mr-0 rtl:ml-3"></i>Settings
+                    </a>
+
+                    <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="index.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                            <i class="fas fa-external-link-alt mr-3 rtl:mr-0 rtl:ml-3"></i>View Website
+                        </a>
+                        <a href="login.html" class="flex items-center px-4 py-3 text-white hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg btn-primary-enhanced">
+                            <i class="fas fa-sign-out-alt mr-3 rtl:mr-0 rtl:ml-3"></i>Logout
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+   <main class="flex-1 lg:ml-0 p-6">
+    <!-- Dashboard Overview -->
+    <div id="dashboard-content">
+        <div class="mb-6 fade-in">
+            <h1 class="text-3xl font-bold mb-2 text-blue-800">Dashboard Overview</h1>
+            <p class="text-gray-700 dark:text-gray-300">Welcome back! Here's what's happening with Global Aid Foundation.</p>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 animate-staggered">
+            <div class="card p-4 sm:p-6 bg-blue-50 rounded-lg shadow card-enhanced">
+                <div class="flex items-center">
+                    <div class="p-3 bg-blue-200 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                        <i class="fas fa-users text-blue-800 text-xl"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm text-blue-700 truncate">Total Volunteers</p>
+                        <p class="text-xl sm:text-2xl font-bold text-blue-700">1,847</p>
+                        <p class="text-sm text-blue-600">+18% from last month</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-4 sm:p-6 bg-amber-100 rounded-lg shadow card-enhanced">
+                <div class="flex items-center">
+                    <div class="p-3 bg-amber-200 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                        <i class="fas fa-donate text-amber-600 text-xl"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm text-gray-700 truncate">Total Contributions</p>
+                        <p class="text-xl sm:text-2xl font-bold text-gray-700">$485,620</p>
+                        <p class="text-sm text-amber-600">+12% from last campaign</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-4 sm:p-6 bg-emerald-100 rounded-lg shadow card-enhanced">
+                <div class="flex items-center">
+                    <div class="p-3 bg-emerald-200 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                        <i class="fas fa-hand-holding-heart text-emerald-600 text-xl"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm text-gray-700 truncate">Active Initiatives</p>
+                        <p class="text-xl sm:text-2xl font-bold text-gray-700">15</p>
+                        <p class="text-sm text-emerald-600">4 ongoing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-4 sm:p-6 bg-violet-100 rounded-lg shadow card-enhanced">
+                <div class="flex items-center">
+                    <div class="p-3 bg-violet-200 rounded-lg mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                        <i class="fas fa-calendar-alt text-violet-600 text-xl"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm text-gray-700 truncate">Upcoming Events</p>
+                        <p class="text-xl sm:text-2xl font-bold text-gray-700">12</p>
+                        <p class="text-sm text-violet-600">3 scheduled this month</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8 animate-staggered">
+            <div class="card p-4 sm:p-6 bg-white rounded-lg shadow card-enhanced">
+                <h3 class="text-lg font-semibold text-blue-800 mb-4">Volunteer Growth</h3>
+                <div class="w-full overflow-hidden">
+                    <canvas id="registrationChart" class="w-full h-48 max-w-full"></canvas>
+                </div>
+            </div>
+
+            <div class="card p-4 sm:p-6 bg-white rounded-lg shadow card-enhanced">
+                <h3 class="text-lg font-semibold text-blue-800 mb-4">Contributions by Initiative</h3>
+                <div class="w-full overflow-hidden">
+                    <canvas id="revenueChart" class="w-full h-48 max-w-full"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="mb-8 card-enhanced fade-in">
+            <h3 class="text-lg font-semibold text-blue-800 mb-4">Recent Activities</h3>
+            <ul class="space-y-3">
+                <li class="p-4 bg-white rounded-lg shadow flex justify-between items-center">
+                    <p class="text-sm dashboard-text-sm">John Doe joined as a volunteer</p>
+                    <span class="text-xs dashboard-text-xs">2 hours ago</span>
+                </li>
+                <li class="p-4 bg-white rounded-lg shadow flex justify-between items-center">
+                    <p class="text-sm dashboard-text-sm">Contribution of $750 received</p>
+                    <span class="text-xs dashboard-text-xs">5 hours ago</span>
+                </li>
+                <li class="p-4 bg-white rounded-lg shadow flex justify-between items-center">
+                    <p class="text-sm dashboard-text-sm">New initiative "Ocean Cleanup" added</p>
+                    <span class="text-xs dashboard-text-xs">1 day ago</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Top Volunteers -->
+        <div class="mb-8 card-enhanced fade-in">
+            <h3 class="text-lg font-semibold text-blue-800 mb-4">Top Volunteers</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow">
+                    
+                    <p class="font-medium text-gray-700">Alice Smith</p>
+                    <p class="text-sm dashboard-text-sm">65 tasks</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow">
+                    
+                    <p class="font-medium text-gray-700">Bob Johnson</p>
+                    <p class="text-sm dashboard-text-sm">58 tasks</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow">
+                    
+                    <p class="font-medium text-gray-700">Clara Lee</p>
+                    <p class="text-sm dashboard-text-sm">52 tasks</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow">
+                   
+                    <p class="font-medium text-gray-700">David Kim</p>
+                    <p class="text-sm dashboard-text-sm">47 tasks</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>
+
+
+    </div>
+
+    <script>
+        // Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationCtx = document.getElementById('registrationChart').getContext('2d');
+            new Chart(registrationCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'Registrations',
+                        data: [180, 320, 750, 1420, 2350, 3180, 3847],
+                        borderColor: '#1E40AF',
+                        backgroundColor: 'rgba(30, 64, 175, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    plugins: { 
+                        legend: { 
+                            display: false 
+                        },
+                        tooltip: {
+                            backgroundColor: '#1F2937',
+                            titleColor: '#F9FAFB',
+                            bodyColor: '#F9FAFB',
+                            borderColor: '#E5E7EB',
+                            borderWidth: 1
+                        }
+                    }, 
+                    scales: { 
+                        y: { 
+                            beginAtZero: true,
+                            grid: {
+                                color: '#E5E7EB'
+                            },
+                            ticks: {
+                                color: '#6B7280'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: '#E5E7EB'
+                            },
+                            ticks: {
+                                color: '#6B7280'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Clean Water', 'Education', 'Healthcare', 'Emergency Relief'],
+                    datasets: [{ data: [185000, 120000, 95000, 85620], backgroundColor: ['#1E40AF', '#059669', '#DC2626', '#F59E0B'] }]
+                },
+                options: { 
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { 
+                            position: 'bottom',
+                            labels: {
+                                color: '#1F2937',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        } 
+                    },
+                    cutout: '60%'
+                }
+            });
+        });
+
+        // Check for saved direction preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction');
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
+        // Sidebar toggle
+        (function () {
+            window.eventWebsite = window.eventWebsite || {};
+            window.eventWebsite.initDashboard = function () {
+                const sidebar = document.getElementById('sidebar');
+                const toggleBtn = document.getElementById('sidebar-toggle');
+                const rtlToggle = document.getElementById('rtl-toggle');
+
+                if (!sidebar || !toggleBtn) return;
+
+                const getIsRtl = () => (document.documentElement.getAttribute('dir') || '').toLowerCase() === 'rtl';
+                const iconEl = () => toggleBtn.querySelector('i');
+                const setIconToBars = () => { const i = iconEl(); if(!i) return; i.classList.remove('fa-times'); i.classList.add('fa-bars'); };
+                const setIconToTimes = () => { const i = iconEl(); if(!i) return; i.classList.remove('fa-bars'); i.classList.add('fa-times'); };
+
+                const openSidebar = () => { 
+                    // For both LTR and RTL, we use translate-x-0 to show the sidebar
+                    sidebar.classList.remove('-translate-x-full', 'translate-x-full'); 
+                    sidebar.classList.add('translate-x-0'); 
+                    toggleBtn.setAttribute('aria-expanded','true'); 
+                    setIconToTimes(); 
+                };
+                const closeSidebar = () => { 
+                    // For both LTR and RTL, we hide the sidebar by moving it off-screen
+                    // In RTL, we move it to the right (positive translate), in LTR to the left (negative translate)
+                    sidebar.classList.remove('translate-x-0'); 
+                    if(getIsRtl()) {
+                        sidebar.classList.add('translate-x-full'); 
+                    } else {
+                        sidebar.classList.add('-translate-x-full'); 
+                    }
+                    toggleBtn.setAttribute('aria-expanded','false'); 
+                    setIconToBars(); 
+                };
+                const isSidebarOpen = () => sidebar.classList.contains('translate-x-0');
+                const toggleSidebar = (e) => { if(e) e.stopPropagation(); isSidebarOpen() ? closeSidebar() : openSidebar(); };
+
+                const applyInitialState = () => {
+                    if(window.innerWidth >= 1024){ 
+                        sidebar.classList.remove('-translate-x-full','translate-x-full'); 
+                        sidebar.classList.add('lg:translate-x-0');
+                        toggleBtn.setAttribute('aria-expanded','true'); 
+                        setIconToBars(); 
+                    }
+                    else{ 
+                        // On mobile, sidebar should be hidden by default
+                        sidebar.classList.remove('translate-x-0');
+                        if(getIsRtl()) {
+                            sidebar.classList.add('translate-x-full'); 
+                        } else {
+                            sidebar.classList.add('-translate-x-full'); 
+                        }
+                        toggleBtn.setAttribute('aria-expanded','false'); 
+                        setIconToBars(); 
+                    }
+                };
+
+                toggleBtn.addEventListener('click', toggleSidebar);
+                document.addEventListener('click', (ev)=>{ if(window.innerWidth>=1024)return; if(!sidebar.contains(ev.target)&&!toggleBtn.contains(ev.target)){ if(isSidebarOpen()) closeSidebar(); } }, {passive:true});
+                document.addEventListener('keydown',(ev)=>{ if(ev.key==='Escape' && isSidebarOpen() && window.innerWidth<1024){ closeSidebar(); } });
+
+                let resizeTimer=null;
+                window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(()=>{ applyInitialState(); },120); });
+
+                if(rtlToggle){ 
+                    rtlToggle.addEventListener('click',()=>{ 
+                        const html=document.documentElement; 
+                        const currentDir=html.getAttribute('dir'); 
+                        const newDir=currentDir==='rtl'?'ltr':'rtl'; 
+                        html.setAttribute('dir',newDir); 
+                        localStorage.setItem('direction',newDir); 
+                        // Reset all possible sidebar positioning classes before applying new state
+                        sidebar.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'lg:translate-x-0');
+                        // Call applyInitialState() which handles everything based on new direction
+                        applyInitialState(); 
+                    }); 
+                }
+
+                applyInitialState();
+            };
+            document.addEventListener('DOMContentLoaded', window.eventWebsite.initDashboard);
+        })();
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .card-enhanced');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                // Set initial state
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

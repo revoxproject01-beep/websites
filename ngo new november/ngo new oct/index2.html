@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Aid Foundation - Home Alternative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <style>
+        /* Ocean Blue Theme */
+        :root {
+            --primary: #1e40af; /* blue-800 */
+            --primary-dark: #1e3a8a; /* blue-900 */
+            --primary-light: #dbeafe; /* blue-100 */
+            --primary-accent: #3b82f6; /* blue-500 */
+            --secondary: #059669; /* emerald-600 */
+            --dark: #1f2937; /* gray-800 */
+            --light: #f9fafb; /* gray-50 */
+            --light-gray: #e5e7eb; /* gray-200 */
+        }
+        
+        /* Enhanced Button Styles */
+        .btn-primary-enhanced {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-enhanced:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary-enhanced:focus {
+            outline: 2px solid var(--primary-accent);
+            outline-offset: 2px;
+        }
+        
+        .btn-primary-enhanced::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+        
+        .btn-primary-enhanced:hover::after {
+            transform: rotate(30deg) translate(20%, 20%);
+        }
+        
+        /* Enhanced Outline Button */
+        .btn-outline-enhanced {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline-enhanced:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+        }
+        
+        .btn-outline-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-outline-enhanced:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced Card Styles */
+        .card-enhanced {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-enhanced:hover {
+            box-shadow: 0 10px 15px rgba(30, 64, 175, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-enhanced:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* Enhanced Progress Bar */
+        .progress-container-enhanced {
+            background-color: var(--light-gray);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-enhanced {
+            background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .progress-bar-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Enhanced Stats Section */
+        .stats-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        
+        .stat-number-enhanced {
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .stat-number-enhanced::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .stats-gradient:hover .stat-number-enhanced::after {
+            transform: scaleX(1);
+        }
+        
+        .stat-label-enhanced {
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Enhanced Donation Buttons */
+        .donation-btn {
+            border: 2px solid var(--light-gray);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .donation-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(30, 64, 175, 0.1);
+        }
+        
+        .donation-btn.selected {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
+        }
+        
+        .donation-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .donation-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced Navigation */
+        .nav-link-enhanced {
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link-enhanced:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link-enhanced::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link-enhanced:hover::after {
+            width: 100%;
+        }
+        
+        /* Fix for removing red border box on dropdown items */
+        .dropdown-item:focus {
+            outline: none;
+        }
+        
+        /* Enhanced Hero Section */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 58, 138, 0.7));
+        }
+        
+        /* Hero text animations */
+        .hero-title {
+            animation: fadeInDown 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+        
+        .hero-subtitle {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.6s;
+        }
+        
+        .hero-buttons {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.9s;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Floating animation for hero image */
+        .hero-image-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Active nav link styling */
+        .active-nav-link {
+            color: #1e40af !important;
+            position: relative;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-seedling text-blue-800 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-blue-800">Global Aid Foundation</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Home <i class="fas fa-chevron-down text-xs ml-1 rtl:ml-3 rtl:mr-0"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="index.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item active-nav-link">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium nav-link-enhanced">Initiatives</a>
+                 
+                    <a href="about.html" class="font-medium nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium nav-link-enhanced">Contact</a>
+                    <div class="relative group">
+                        <button class="font-medium nav-link-enhanced flex items-center focus:outline-none">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-0 py-2 w-40">
+                            <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="login.html" class="font-medium hover:text-blue-800 transition-colors rtl:ml-3 rtl:mr-0">Login</a>
+                    <a href="donate.html" class="btn-primary-enhanced">Support Now</a>
+                </div>
+
+                <!-- RTL Toggle & Hamburger -->
+                <div class="flex items-center">
+                    <button id="rtl-toggle" class="mr-4 text-gray-600 hover:text-blue-800">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button id="hamburger" class="lg:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center nav-link-enhanced">
+                            Home <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="index.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 1</a>
+                            <a href="index2.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="campaigns.html" class="font-medium py-1 nav-link-enhanced">Initiatives</a>
+                    
+                    <a href="about.html" class="font-medium py-1 nav-link-enhanced">About</a>
+                    <a href="contact.html" class="font-medium py-1 nav-link-enhanced">Contact</a>
+                    <div class="relative">
+                        <button class="font-medium w-full text-left flex justify-between items-center nav-link-enhanced">
+                            Dashboard <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="mt-2 pl-4 space-y-2">
+                            <a href="user-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">User</a>
+                            <a href="admin-dashboard.html" class="block py-1 hover:bg-blue-50 hover:text-blue-800 dropdown-item">Admin</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2 pt-2 border-t">
+                        <a href="login.html" class="font-medium py-1 nav-link-enhanced">Login</a>
+                        <a href="donate.html" class="btn-primary-enhanced text-center">Support Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 text-white overflow-hidden flex items-center" style="height: 500px;">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="max-w-2xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 hero-title">Together We Transform Lives</h1>
+                <p class="text-xl mb-8 font-semibold hero-subtitle">Join our mission to create positive change in communities worldwide through sustainable development and humanitarian assistance.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 hero-buttons">
+                    <a href="donate.html" class="btn-primary-enhanced btn-hover-effect">Donate Now</a>
+                    <a href="campaigns.html" class="btn-outline-enhanced btn-hover-effect">Our Campaigns</a>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Image -->
+        <div class="absolute inset-0 z-0 hero-image-float">
+            <img src="https://images.unsplash.com/photo-1509043759401-136742328bb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                 alt="People helping each other" 
+                 class="w-full h-full object-cover opacity-20">
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 stats-gradient -mt-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center fade-in-staggered">
+                    <div class="text-3xl font-bold stat-number-enhanced mb-2">75K+</div>
+                    <p class="stat-label-enhanced">Lives Transformed</p>
+                </div>
+                <div class="text-center fade-in-staggered">
+                    <div class="text-3xl font-bold stat-number-enhanced mb-2">150+</div>
+                    <p class="stat-label-enhanced">Countries</p>
+                </div>
+                <div class="text-center fade-in-staggered">
+                    <div class="text-3xl font-bold stat-number-enhanced mb-2">120+</div>
+                    <p class="stat-label-enhanced">Programs</p>
+                </div>
+                <div class="text-center fade-in-staggered">
+                    <div class="text-3xl font-bold stat-number-enhanced mb-2">30+</div>
+                    <p class="stat-label-enhanced">Years</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 rtl:ml-6 rtl:mr-0 fade-in">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.kAnwZmI2iiuNo_W4zyeuVwHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="About Global Aid Foundation" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 fade-in">
+                    <h2 class="text-3xl font-bold mb-6">Creating Sustainable Change Through Compassionate Action</h2>
+                    <p class="text-gray-600 mb-6">For over three decades, Global Aid Foundation has been at the forefront of humanitarian assistance, working tirelessly to improve lives in underserved communities worldwide.</p>
+                    <p class="text-gray-600 mb-6">Our approach combines immediate relief with long-term development solutions, ensuring sustainable change that empowers communities to thrive independently.</p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-800 mt-1 mr-3"></i>
+                            <p>Direct community engagement and participation</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-800 mt-1 mr-3"></i>
+                            <p>Transparent reporting and accountability</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-800 mt-1 mr-3"></i>
+                            <p>Sustainable development focused solutions</p>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn-primary-enhanced">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaigns Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold mb-4">Featured Campaigns</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto">Discover our current initiatives making a difference around the world</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Campaign 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.-3Ijdk12yDORq6qqSwhe0gHaE7?w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Clean Water Initiative" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Clean Water Initiative</h3>
+                        <p class="text-gray-700 mb-4">Providing access to clean drinking water for remote communities</p>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Raised: $45,000</span>
+                                <span class="text-sm">Goal: $60,000</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden progress-container-enhanced">
+                                <div class="h-full bg-blue-800 rounded-full progress-bar-enhanced" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <a href="campaigns.html" class="text-blue-800 hover:text-blue-900 font-medium">Support This Cause →</a>
+                    </div>
+                </div>
+                
+                <!-- Campaign 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Education for All" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Education for All</h3>
+                        <p class="text-gray-700 mb-4">Building schools and training teachers in underserved areas</p>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Raised: $28,500</span>
+                                <span class="text-sm">Goal: $40,000</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden progress-container-enhanced">
+                                <div class="h-full bg-blue-800 rounded-full progress-bar-enhanced" style="width: 71%"></div>
+                            </div>
+                        </div>
+                        <a href="campaigns.html" class="text-blue-800 hover:text-blue-900 font-medium">Support This Cause →</a>
+                    </div>
+                </div>
+                
+                <!-- Campaign 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-enhanced">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Healthcare Access" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Healthcare Access</h3>
+                        <p class="text-gray-700 mb-4">Bringing medical services to remote villages and communities</p>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Raised: $52,300</span>
+                                <span class="text-sm">Goal: $70,000</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden progress-container-enhanced">
+                                <div class="h-full bg-blue-800 rounded-full progress-bar-enhanced" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <a href="campaigns.html" class="text-blue-800 hover:text-blue-900 font-medium">Support This Cause →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="campaigns.html" class="btn-primary-enhanced">View All Campaigns</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Help -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold mb-4">Our Approach to Creating Change</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our comprehensive approach addresses both immediate needs and long-term solutions</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center fade-in-staggered">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hand-holding-heart text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Immediate Relief</h3>
+                    <p class="text-gray-600">Emergency response to natural disasters and crises with food, shelter, and medical aid</p>
+                </div>
+                
+                <div class="text-center fade-in-staggered">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-school text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Education Programs</h3>
+                    <p class="text-gray-600">Building schools, training teachers, and providing scholarships to children in need</p>
+                </div>
+                
+                <div class="text-center fade-in-staggered">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-seedling text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sustainable Solutions</h3>
+                    <p class="text-gray-600">Long-term development projects that empower communities to become self-sufficient</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold mb-4">Impact Stories</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Hear from those whose lives have been transformed by our work</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 rounded-lg p-8 card-enhanced">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Maria Rodriguez" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Maria Rodriguez</h3>
+                            <p class="text-gray-300">Beneficiary, Clean Water Program</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Thanks to Global Aid Foundation, our village now has clean water for the first time in my children's lives. The wells they built have eliminated waterborne diseases and given our community hope for a healthier future."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="bg-blue-800 rounded-lg p-12 text-center text-white">
+                <h2 class="text-3xl font-bold mb-4 fade-in">Ready to Make a Difference?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">Your support can transform lives and communities around the world</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 fade-in">
+                    <a href="donate.html" class="btn-primary-enhanced">Donate Now</a>
+                    <a href="contact.html" class="btn-outline-enhanced text-white border-white hover:bg-white hover:text-blue-800">Volunteer With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="fade-in-staggered">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-seedling text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-blue-600">Global Aid Foundation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering communities through sustainable development and humanitarian assistance.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f rtl:ml-3 rtl:mr-0"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="fade-in-staggered">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="campaigns.html" class="text-gray-400 hover:text-white">Campaigns</a></li>
+                        <li><a href="donate.html" class="text-gray-400 hover:text-white">Donate</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="fade-in-staggered">
+                    <h3 class="text-lg font-bold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Clean Water</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Economic Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Emergency Relief</a></li>
+                    </ul>
+                </div>
+                
+                <div class="fade-in-staggered">
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>456 Humanitarian Avenue, Geneva, CH 1201</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>info@globalaid.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Global Aid Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // RTL toggle
+        document.getElementById('rtl-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                localStorage.setItem('direction', 'ltr');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                localStorage.setItem('direction', 'rtl');
+            }
+        });
+
+        // Check for saved direction preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDirection = localStorage.getItem('direction');
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
+        // Add animation classes on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animations to elements already in view
+            const elements = document.querySelectorAll('.fade-in, .fade-in-staggered, .slide-in-left, .slide-in-right');
+            elements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0) translateX(0)';
+            });
+            
+            // Initialize hero section animations
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroButtons = document.querySelector('.hero-buttons');
+            
+            if (heroTitle) heroTitle.style.opacity = '1';
+            if (heroSubtitle) heroSubtitle.style.opacity = '1';
+            if (heroButtons) heroButtons.style.opacity = '1';
+            
+            // Highlight current page in navbar
+            const currentPage = 'index2.html';
+            const navLinks = document.querySelectorAll('.nav-link-enhanced');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+            
+            // Also highlight in dropdown
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                if (item.getAttribute('href') === currentPage) {
+                    item.classList.add('active-nav-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
