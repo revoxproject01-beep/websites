@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - EduVate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-content.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .btn-primary {
+            @apply bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-lg font-medium transition-colors;
+        }
+        .btn-accent {
+            @apply bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors;
+        }
+    </style>
+</head>
+<body class="font-poppins smooth-scroll bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full top-0 z-50 bg-white dark:bg-gray-900 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-teal-500 to-sky-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">EduVate</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <!-- Home Dropdown -->
+                    <div class="relative">
+                        <button class="home-dropdown-btn flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+                            Home
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="home-dropdown dropdown-content absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 z-50">
+                            <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">Home 2</a>
+                        </div>
+                    </div>
+
+                    <a href="courses.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Courses</a>
+                    <a href="about.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                    <a href="pricing.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Pricing</a>
+                    <a href="faq.html" class="font-medium text-blue-600 dark:text-blue-400">FAQ</a>
+                    <a href="contact.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+
+                    <!-- Dashboard Dropdown -->
+                    <div class="relative">
+                        <button class="dashboard-dropdown-btn flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+                            Dashboard
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="dashboard-dropdown dropdown-content absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 z-50">
+                            <a href="user-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">Admin Dashboard</a>
+                        </div>
+                    </div>
+
+                    <!-- Theme & RTL Toggles -->
+                    <div class="flex items-center gap-2">
+
+                        <button id="rtl-toggle" class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">🌐</button>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <div class="flex items-center gap-4">
+                        <a href="login.html" class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">Login</a>
+                        <a href="register.html" class="px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">Register</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 dark:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-50 bg-white dark:bg-gray-900 hidden overflow-y-auto">
+            <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+                <span class="text-xl font-bold text-gray-900 dark:text-white">EduVate</span>
+                <button id="mobile-menu-close" class="p-2 text-gray-700 dark:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-4 space-y-2">
+                <!-- Home Section -->
+                <div class="mobile-dropdown-section">
+                    <button class="mobile-home-btn flex items-center justify-between w-full py-2 text-left text-gray-900 dark:text-white font-medium">
+                        Home
+                        <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-home-dropdown hidden pl-4 space-y-1">
+                        <a href="index.html" class="block py-1 text-gray-600 dark:text-gray-400">Home 1</a>
+                        <a href="index2.html" class="block py-1 text-gray-600 dark:text-gray-400">Home 2</a>
+                    </div>
+                </div>
+
+                <!-- Other Links -->
+                <a href="courses.html" class="block py-2 text-gray-900 dark:text-white">Courses</a>
+                <a href="about.html" class="block py-2 text-gray-900 dark:text-white">About</a>
+                <a href="pricing.html" class="block py-2 text-gray-900 dark:text-white">Pricing</a>
+                <a href="faq.html" class="block py-2 text-blue-600 dark:text-blue-400 font-medium">FAQ</a>
+                <a href="contact.html" class="block py-2 text-gray-900 dark:text-white">Contact</a>
+
+                <!-- Dashboard Section -->
+                <div class="mobile-dropdown-section border-t dark:border-gray-700 pt-2">
+                    <button class="mobile-dashboard-btn flex items-center justify-between w-full py-2 text-left text-gray-900 dark:text-white font-medium">
+                        Dashboard
+                        <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dashboard-dropdown hidden pl-4 space-y-1">
+                        <a href="user-dashboard.html" class="block py-1 text-gray-600 dark:text-gray-400">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block py-1 text-gray-600 dark:text-gray-400">Admin Dashboard</a>
+                    </div>
+                </div>
+
+                <!-- Toggles -->
+                <div class="border-t dark:border-gray-700 pt-2 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+
+                        <button id="rtl-toggle-mobile" class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">🌐</button>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="border-t dark:border-gray-700 pt-2 space-y-2">
+                    <a href="login.html" class="block py-2 px-4 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">Login</a>
+                    <a href="register.html" class="block py-2 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mt-2">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white glow-pulse">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h1 class="text-4xl lg:text-5xl font-bold mb-6 rainbow-fast">Frequently Asked Questions</h1>
+            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Find answers to the most common questions about our platform and courses</p>
+        </div>
+    </section>
+
+    <!-- Search -->
+    <section class="py-8 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" id="faq-search" placeholder="Search for questions..." class="w-full pl-12 pr-4 py-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+                    <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-8 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                <button class="category-btn active bg-purple-600 text-white px-4 md:px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm md:text-base transform hover:scale-105" data-category="all">All Questions</button>
+                <button class="category-btn bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 md:px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-purple-50 dark:hover:bg-gray-600 text-sm md:text-base transform hover:scale-105" data-category="courses">Courses</button>
+                <button class="category-btn bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 md:px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-purple-50 dark:hover:bg-gray-600 text-sm md:text-base transform hover:scale-105" data-category="pricing">Pricing</button>
+                <button class="category-btn bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 md:px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-purple-50 dark:hover:bg-gray-600 text-sm md:text-base transform hover:scale-105" data-category="technical">Technical</button>
+                <button class="category-btn bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 md:px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-purple-50 dark:hover:bg-gray-600 text-sm md:text-base transform hover:scale-105" data-category="certificates">Certificates</button>
+                <button class="category-btn bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 md:px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-purple-50 dark:hover:bg-gray-600 text-sm md:text-base transform hover:scale-105" data-category="account">Account</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Items -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto space-y-4" id="faq-container">
+                
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 card-3d" data-category="courses">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">How do I enroll in a course?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            To enroll in a course, simply browse our course catalog, click on the course you're interested in, and click the "Enroll Now" button. You'll need to create an account and complete the payment process. Once enrolled, you'll have immediate access to all course materials.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="pricing">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">What payment methods do you accept?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, and Google Pay. For enterprise customers, we also offer bank transfer and purchase order options.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="pricing">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">Can I get a refund if I'm not satisfied?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Yes! We offer a 30-day money-back guarantee on all courses. If you're not completely satisfied with your purchase, contact our support team within 30 days of enrollment for a full refund.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="courses">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">How long do I have access to a course after purchase?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            You have lifetime access to all purchased courses. This means you can revisit the material anytime, access any future updates to the course content, and learn at your own pace without any time restrictions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="certificates">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">Do I get a certificate upon course completion?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Yes! Upon successful completion of a course (completing all lessons and passing any required assessments), you'll receive a digital certificate of completion. Premium subscribers receive industry-recognized certificates that can be shared on LinkedIn and other professional platforms.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="technical">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">Can I download videos for offline viewing?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Offline download is available for Standard and Premium subscribers through our mobile app. You can download course videos to your device and watch them without an internet connection. Basic plan users have streaming access only.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="account">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">How do I reset my password?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            To reset your password, go to the login page and click "Forgot password?" Enter your email address, and we'll send you a password reset link. Follow the instructions in the email to create a new password.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="courses">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">Are there prerequisites for courses?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Prerequisites vary by course and are clearly listed on each course page. Most beginner courses have no prerequisites, while intermediate and advanced courses may require prior knowledge or completion of foundational courses. Check the course description for specific requirements.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="technical">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">What devices can I use to access courses?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            You can access courses on any device with an internet connection, including desktop computers, laptops, tablets, and smartphones. We also have dedicated mobile apps for iOS and Android devices with offline viewing capabilities.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="pricing">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">Do you offer student discounts?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Yes! We offer a 50% student discount on all subscription plans. To qualify, you need a valid student ID from an accredited educational institution. Contact our support team with your student verification documents to apply for the discount.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="account">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">How do I cancel my subscription?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            You can cancel your subscription at any time from your account dashboard. Go to Settings > Subscription and click "Cancel Subscription." Your access will continue until the end of your current billing period, and you won't be charged again.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="courses">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">Can I interact with instructors and other students?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Absolutely! Each course has a community forum where you can ask questions, share insights, and connect with fellow students. Instructors regularly participate in discussions and provide additional guidance. Premium subscribers also get access to live Q&A sessions and 1-on-1 mentoring.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" data-category="technical">
+                    <button class="faq-question w-full px-4 md:px-6 py-4 text-left font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-xl flex items-center justify-between">
+                        <span class="text-sm md:text-base">What if I experience technical issues?</span>
+                        <svg class="faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <div class="px-4 md:px-6 pb-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Our technical support team is available 24/7 to help resolve any issues. You can reach us through live chat, email, or phone. We also have a comprehensive help center with troubleshooting guides and video tutorials for common issues.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white glow-pulse">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h2 class="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+            <p class="text-xl mb-8 opacity-90">Join thousands of students who have already transformed their careers</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="register.html" class="btn-accent px-8 py-3">Start Free Trial</a>
+                <a href="courses.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300">View Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">EduVate</span>
+                    </div>
+                    <p class="text-gray-400">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">All Courses</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">About Us</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Pricing</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Categories</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Web Development</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Data Science</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Design</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Business</a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Support</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Help Center</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 EduVate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+            mobileMenuBtn.addEventListener("click", () => {
+                mobileMenu.classList.remove("hidden");
+                document.body.style.overflow = 'hidden';
+            });
+
+            mobileMenuClose.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                document.body.style.overflow = 'auto';
+            });
+
+            // Desktop Dropdown Functions
+            function setupDesktopDropdown(triggerSelector, dropdownSelector) {
+                const trigger = document.querySelector(triggerSelector);
+                const dropdown = document.querySelector(dropdownSelector);
+                const icon = trigger.querySelector('svg');
+                let isOpen = false;
+
+                function toggleDropdown() {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        dropdown.classList.add('show');
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        dropdown.classList.remove('show');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                }
+
+                trigger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleDropdown();
+                });
+
+                // Close on outside click
+                document.addEventListener('click', function() {
+                    if (isOpen) {
+                        isOpen = false;
+                        dropdown.classList.remove('show');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Setup desktop dropdowns
+            setupDesktopDropdown('.home-dropdown-btn', '.home-dropdown');
+            setupDesktopDropdown('.dashboard-dropdown-btn', '.dashboard-dropdown');
+
+            // Mobile Dropdown Functions
+            function setupMobileDropdown(triggerSelector, dropdownSelector) {
+                const trigger = document.querySelector(triggerSelector);
+                const dropdown = document.querySelector(dropdownSelector);
+                const icon = trigger.querySelector('svg');
+                let isOpen = false;
+
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    isOpen = !isOpen;
+                    
+                    if (isOpen) {
+                        dropdown.classList.remove('hidden');
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        dropdown.classList.add('hidden');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+
+            // Setup mobile dropdowns
+            setupMobileDropdown('.mobile-home-btn', '.mobile-home-dropdown');
+            setupMobileDropdown('.mobile-dashboard-btn', '.mobile-dashboard-dropdown');
+
+            // Theme Toggle Functions
+            function toggleTheme() {
+                document.documentElement.classList.toggle("dark");
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            }
+
+            // RTL Toggle Functions
+            function toggleRTL() {
+                const html = document.documentElement;
+                html.dir = html.dir === "rtl" ? "ltr" : "rtl";
+                localStorage.setItem('dir', html.dir);
+            }
+
+            // Setup theme toggles
+            const themeToggleDesktop = document.getElementById("theme-toggle");
+            const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+
+            if (themeToggleDesktop) themeToggleDesktop.addEventListener("click", toggleTheme);
+            if (themeToggleMobile) themeToggleMobile.addEventListener("click", toggleTheme);
+
+            // Setup RTL toggles
+            const rtlToggleDesktop = document.getElementById("rtl-toggle");
+            const rtlToggleMobile = document.getElementById("rtl-toggle-mobile");
+
+            rtlToggleDesktop.addEventListener("click", toggleRTL);
+            rtlToggleMobile.addEventListener("click", toggleRTL);
+
+            // Load saved preferences
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.dir = 'rtl';
+            }
+
+            // FAQ Accordion functionality with smooth animations
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const faqItem = this.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const icon = this.querySelector('.faq-icon');
+                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                    
+                    // Close all other FAQ items
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== this) {
+                            const otherItem = otherQuestion.parentElement;
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            const otherIcon = otherQuestion.querySelector('.faq-icon');
+                            
+                            otherAnswer.style.maxHeight = '0px';
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Toggle current FAQ item
+                    if (isOpen) {
+                        answer.style.maxHeight = '0px';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('faq-search');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                let hasResults = false;
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show "No results" message if needed
+                const container = document.getElementById('faq-container');
+                let noResultsMsg = container.querySelector('.no-results');
+                
+                if (!hasResults && searchTerm) {
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.className = 'no-results text-center py-8 text-gray-500 dark:text-gray-400';
+                        noResultsMsg.innerHTML = '<p class="text-lg">No questions found matching your search.</p>';
+                        container.appendChild(noResultsMsg);
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            });
+            
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update active button with smooth transition
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('bg-blue-600', 'text-white');
+                        btn.classList.add('bg-white', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                    });
+                    
+                    this.classList.add('bg-blue-600', 'text-white');
+                    this.classList.remove('bg-white', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                    
+                    // Filter FAQ items with animation
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                            // Reset any open FAQ items when switching categories
+                            const answer = item.querySelector('.faq-answer');
+                            const icon = item.querySelector('.faq-icon');
+                            answer.style.maxHeight = '0px';
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Clear search when filtering by category
+                    searchInput.value = '';
+                    const noResultsMsg = document.querySelector('.no-results');
+                    if (noResultsMsg) noResultsMsg.remove();
+                });
+            });
+
+            // Close mobile menu when clicking on links
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add("hidden");
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVate - Transform Your Future</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-poppins smooth-scroll bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+<nav class="navbar fixed w-full top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">EduVate</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+<div class="hidden lg:flex items-center gap-8">
+    <!-- Home Dropdown -->
+<div class="relative group">
+    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-indigo-400 font-medium transition-colors">
+        Home
+        <svg class="w-4 h-4 ml-1 rtl:mr-1 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="absolute top-full left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+        <a href="index.html" class="block px-4 py-2 hover:bg-purple-50 dark:hover:bg-gray-700">Home 1</a>
+        <a href="index2.html" class="block px-4 py-2 hover:bg-purple-50 dark:hover:bg-gray-700">Home 2</a>
+    </div>
+</div>
+
+
+    <a href="courses.html" class="font-medium hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Courses</a>
+    <a href="about.html" class="font-medium hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">About</a>
+    <a href="pricing.html" class="font-medium hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Pricing</a>
+    <a href="faq.html" class="font-medium hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">FAQ</a>
+    <a href="contact.html" class="font-medium hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+
+    <!-- ✅ New Dashboard Link -->
+<div class="relative group">
+    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-indigo-400 font-medium transition-colors">
+        Dashboard
+        <svg class="w-4 h-4 ml-1 rtl:mr-1 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="absolute top-full left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+        <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-purple-50 dark:hover:bg-gray-700">User</a>
+        <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-purple-50 dark:hover:bg-gray-700">Admin</a>
+    </div>
+</div>
+
+    <!-- Theme & RTL Toggles -->
+    <div class="flex items-center gap-2">
+        <button id="rtl-toggle" class="p-2 rounded-lg hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">🌐</button>
+    </div>
+
+    <!-- Auth Buttons -->
+    <div class="flex items-center gap-4">
+        <a href="login.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Login</a>
+        <a href="register.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Register</a>
+    </div>
+</div>
+
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+ <div id="mobile-menu" class="fixed inset-0 z-50 bg-white dark:bg-gray-900 hidden overflow-y-auto">
+    <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+        <span class="text-xl font-bold">EduVate</span>
+        <button id="mobile-menu-close" class="p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="p-4 space-y-2 text-left rtl:text-right">
+        <!-- Main Links -->
+        <a href="index.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Home 1</a>
+        <a href="index2.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Home 2</a>
+        <a href="courses.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Courses</a>
+        <a href="about.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">About</a>
+        <a href="pricing.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Pricing</a>
+        <a href="faq.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">FAQ</a>
+        <a href="contact.html" class="block py-2 hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+
+        <!-- Dashboard Section -->
+        <div class="border-t dark:border-gray-700 pt-2">
+            
+            <a href="user-dashboard.html" class="block py-1 ps-4 rtl:pe-4">User</a>
+            <a href="admin-dashboard.html" class="block py-1 ps-4 rtl:pe-4">Admin</a>
+        </div>
+
+        <!-- Global Toggles -->
+        <div class="border-t dark:border-gray-700 pt-2 flex items-center gap-4">
+            <button id="rtl-toggle-mobile" class="p-2 rounded-lg hover:text-purple-600 dark:hover:text-indigo-400 transition-colors">🌐</button>
+        </div>
+
+        <!-- Auth Buttons -->
+        <div class="border-t dark:border-gray-700 pt-2">
+            <a href="login.html" class="block py-2 px-4 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">Login</a>
+            <a href="register.html" class="block py-2 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mt-2">Register</a>
+        </div>
+    </div>
+</div>
+
+    </nav>
+
+    <!-- Hero Section - Version 2 -->
+    <section class="pt-20 pb-12 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+<div class="absolute inset-0" 
+     style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000\' fill-opacity=\'1\'%3E%3Ccircle cx=\'7\' cy=\'7\' r=\'7\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+</div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-4xl mx-auto animate-on-scroll">
+                <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                    Transform Your <span class="rainbow-fast">Future</span> Today
+                </h1>
+                <p class="text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                    Join millions of learners worldwide and unlock your potential with our cutting-edge online courses designed by industry experts.
+                </p>
+                
+                <!-- Search Bar -->
+                <div class="bg-white dark:bg-gray-800 rounded-full shadow-2xl p-2 flex flex-col md:flex-row items-center max-w-2xl mx-auto mb-8 card-3d hover-glow">
+                    <div class="flex-1 flex items-center px-4 py-3 w-full md:w-auto">
+                        <svg class="w-5 h-5 text-gray-400 mr-3 float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" placeholder="What do you want to learn?" class="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 outline-none">
+                    </div>
+                    <button class="btn-primary rounded-full px-8 py-3 w-full md:w-auto mt-2 md:mt-0 hover-glow">Search Courses</button>
+                </div>
+
+                <!-- Course Highlights -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                    <div class="card p-6 text-center card-hover card-animated hover-glow float">
+                        <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4 hover-spin">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">1200+ Courses</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Choose from our extensive library of courses</p>
+                    </div>
+
+                    <div class="card p-6 text-center card-hover card-glow hover-glow float" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4 hover-spin">
+                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Expert Instructors</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Learn from industry professionals</p>
+                    </div>
+
+                    <div class="card p-6 text-center card-hover card-spin hover-glow float" style="animation-delay: 0.4s;">
+                        <div class="w-16 h-16 bg-violet-100 dark:bg-violet-900 rounded-full flex items-center justify-center mx-auto mb-4 hover-spin">
+                            <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Certification</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Earn recognized certificates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white glow-pulse">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="animate-on-scroll float">
+                    <div class="text-4xl font-bold mb-2 counter plus" data-target="50000">0</div>
+                    <div class="text-lg opacity-90">Happy Students</div>
+                </div>
+                <div class="animate-on-scroll float" style="animation-delay: 0.1s;">
+                    <div class="text-4xl font-bold mb-2 counter plus" data-target="1200">0</div>
+                    <div class="text-lg opacity-90">Online Courses</div>
+                </div>
+                <div class="animate-on-scroll float" style="animation-delay: 0.2s;">
+                    <div class="text-4xl font-bold mb-2 counter plus" data-target="150">0</div>
+                    <div class="text-lg opacity-90">Expert Instructors</div>
+                </div>
+                <div class="animate-on-scroll float" style="animation-delay: 0.3s;">
+                    <div class="text-4xl font-bold mb-2 counter plus" data-target="95">0</div>
+                    <div class="text-lg opacity-90">Success Rate %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Courses -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-12 animate-on-scroll">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Popular Courses</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400">Trending courses this month</p>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Course Card Template -->
+            <div class="card animate-on-scroll bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition p-4 flex flex-col card-3d hover-glow">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Web Development" class="w-full h-40 object-cover transform hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-sm font-semibold glow-pulse">$89</div>
+                </div>
+                <div class="mt-4 flex flex-col flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-blue-600 font-medium uppercase">Development</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm rainbow-fast">★</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">4.9</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">Web Development Bootcamp</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">120 Lessons • 40 Hours</p>
+                    <a href="course-details.html" class="mt-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-center font-medium py-2 rounded-lg transition hover-glow">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- Copy & edit for other courses -->
+            <div class="card animate-on-scroll bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition p-4 flex flex-col card-animated hover-glow">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Data Science" class="w-full h-40 object-cover transform hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-sm font-semibold glow-pulse-secondary">$129</div>
+                </div>
+                <div class="mt-4 flex flex-col flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-green-600 font-medium uppercase">Data Science</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm rainbow-fast">★</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">4.8</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">Python Data Science</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">95 Lessons • 35 Hours</p>
+                    <a href="course-details.html" class="mt-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-center font-medium py-2 rounded-lg transition hover-glow">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="card animate-on-scroll bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition p-4 flex flex-col card-glow hover-glow">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Digital Marketing" class="w-full h-40 object-cover transform hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-sm font-semibold glow-pulse-accent">$69</div>
+                </div>
+                <div class="mt-4 flex flex-col flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-orange-600 font-medium uppercase">Marketing</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm rainbow-fast">★</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">4.7</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">Digital Marketing Pro</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">80 Lessons • 25 Hours</p>
+                    <a href="course-details.html" class="mt-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-center font-medium py-2 rounded-lg transition hover-glow">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="card animate-on-scroll bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition p-4 flex flex-col card-spin hover-glow">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Graphic Design" class="w-full h-40 object-cover transform hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-sm font-semibold glow-pulse">$79</div>
+                </div>
+                <div class="mt-4 flex flex-col flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-purple-600 font-medium uppercase">Design</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm rainbow-fast">★</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">4.6</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">Graphic Design Master</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">60 Lessons • 30 Hours</p>
+                    <a href="course-details.html" class="mt-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-center font-medium py-2 rounded-lg transition hover-glow">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore All Courses Button -->
+        <div class="text-center mt-12">
+            <a href="courses.html" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-8 py-3 rounded-lg transition">Explore All Courses</a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Learning Path -->
+  <section class="py-16 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12 animate-on-scroll">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Your Learning Journey</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400">Follow a structured path to success</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <!-- Step 1 -->
+            <div class="flex flex-col md:flex-row items-center mb-12 animate-on-scroll card-3d hover-glow">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pe-8">
+                    <div class="flex items-center mb-4 gap-x-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full flex items-center justify-center font-bold float">1</div>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">Choose Your Path</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Select from our curated learning paths designed by industry experts to match your career goals.</p>
+                </div>
+                <div class="md:w-1/2 md:ps-8">
+                    <img src="https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Choose Path" class="rounded-lg shadow-lg float" style="animation-delay: 0.1s;">
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex flex-col md:flex-row-reverse items-center mb-12 animate-on-scroll card-animated hover-glow">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:ps-8">
+                    <div class="flex items-center mb-4 gap-x-4">
+                        <div class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-bold float" style="animation-delay: 0.2s;">2</div>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">Learn & Practice</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Engage with interactive content, complete hands-on projects, and apply your knowledge in real-world scenarios.</p>
+                </div>
+                <div class="md:w-1/2 md:pe-8">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Learn Practice" class="rounded-lg shadow-lg float" style="animation-delay: 0.3s;">
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex flex-col md:flex-row items-center animate-on-scroll card-glow hover-glow">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pe-8">
+                    <div class="flex items-center mb-4 gap-x-4">
+                        <div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold float" style="animation-delay: 0.4s;">3</div>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">Get Certified</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Earn industry-recognized certificates and showcase your new skills to potential employers.</p>
+                </div>
+                <div class="md:w-1/2 md:ps-8">
+                    <img src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Get Certified" class="rounded-lg shadow-lg float" style="animation-delay: 0.5s;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-teal-500 to-sky-500 text-white glow-pulse">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 rainbow-fast">Start Your Learning Adventure</h2>
+            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Join over 50,000 students who have already transformed their careers with our courses</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="register.html" class="btn-accent px-8 py-4 text-lg hover-glow">Join Free Today</a>
+                <a href="pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 hover-glow">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">EduVate</span>
+                    </div>
+                    <p class="text-gray-400">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                    <div class="flex space-x-4">
+<div class="flex space-x-4 rtl:space-x-reverse">
+    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+        </svg>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+    </a>
+</div>
+
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="courses.html" class="block text-gray-400 hover:text-white transition-colors">All Courses</a>
+                        <a href="about.html" class="block text-gray-400 hover:text-white transition-colors">About Us</a>
+                        <a href="pricing.html" class="block text-gray-400 hover:text-white transition-colors">Pricing</a>
+                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Categories</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Web Development</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Data Science</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Mobile Development</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Design</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Business</a>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Support</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Help Center</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+                        <a href="admin-dashboard.html" class="block text-gray-400 hover:text-white transition-colors">Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 EduVate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+ <script>
+    // Toggle Mobile Menu
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+    mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+    });
+
+    mobileMenuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+    });
+
+    // ✅ RTL Toggle (Desktop + Mobile)
+    const rtlToggleDesktop = document.getElementById("rtl-toggle");
+    const rtlToggleMobile = document.getElementById("rtl-toggle-mobile");
+
+    function toggleRTL() {
+        const html = document.documentElement;
+        html.dir = html.dir === "rtl" ? "ltr" : "rtl";
+    }
+
+    rtlToggleDesktop.addEventListener("click", toggleRTL);
+    rtlToggleMobile.addEventListener("click", toggleRTL);
+
+    // ✅ Dark Mode Toggle (Desktop + Mobile)
+    const themeToggleDesktop = document.getElementById("theme-toggle");
+    const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+
+    function toggleTheme() {
+        document.documentElement.classList.toggle("dark");
+    }
+
+    themeToggleDesktop.addEventListener("click", toggleTheme);
+    themeToggleMobile.addEventListener("click", toggleTheme);
+    
+    // Highlight current page in navigation
+    const currentPage = window.location.pathname.split('/').pop() || 'index2.html';
+    const navLinks = document.querySelectorAll('.navbar a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('text-purple-600', 'dark:text-purple-400', 'font-bold');
+        }
+    });
+</script>
+
+
+</body>
+</html>

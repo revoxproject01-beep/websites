@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EduVate</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-poppins smooth-scroll bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+<nav class="navbar fixed w-full top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">EduVate</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+<!-- Desktop Navigation -->
+<div class="hidden lg:flex items-center gap-8">
+    <!-- Home Dropdown -->
+<div class="relative group">
+    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+        Home
+        <svg class="w-4 h-4 ml-1 rtl:mr-1 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="absolute top-full left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+        <a href="index.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Home 1</a>
+        <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Home 2</a>
+    </div>
+</div>
+
+
+    <a href="courses.html" class="font-medium">Courses</a>
+    <a href="about.html" class="font-medium">About</a>
+    <a href="pricing.html" class="font-medium">Pricing</a>
+    <a href="faq.html" class="font-medium">FAQ</a>
+    <a href="contact.html" class="font-medium">Contact</a>
+
+    <!-- ✅ New Dashboard Link -->
+<div class="relative group">
+    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+        Dashboard
+        <svg class="w-4 h-4 ml-1 rtl:mr-1 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="absolute top-full left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+        <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">User</a>
+        <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Admin</a>
+    </div>
+</div>
+
+    <!-- Theme & RTL Toggles -->
+    <div class="flex items-center gap-2">
+        <button id="rtl-toggle" class="p-2 rounded-lg">🌐</button>
+    </div>
+
+    <!-- Auth Buttons -->
+    <div class="flex items-center gap-4">
+        <a href="login.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Login</a>
+        <a href="register.html" class="font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Register</a>
+    </div>
+</div>
+
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+ <div id="mobile-menu" class="fixed inset-0 z-50 bg-white dark:bg-gray-900 hidden overflow-y-auto">
+    <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+        <span class="text-xl font-bold">EduVate</span>
+        <button id="mobile-menu-close" class="p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="p-4 space-y-2 text-left rtl:text-right">
+        <!-- Main Links -->
+        <a href="index.html" class="block py-2">Home 1</a>
+        <a href="index2.html" class="block py-2">Home 2</a>
+        <a href="courses.html" class="block py-2">Courses</a>
+        <a href="about.html" class="block py-2">About</a>
+        <a href="pricing.html" class="block py-2">Pricing</a>
+        <a href="faq.html" class="block py-2">FAQ</a>
+        <a href="contact.html" class="block py-2">Contact</a>
+
+        <!-- Dashboard Section -->
+        <div class="border-t dark:border-gray-700 pt-2">
+            
+            <a href="user-dashboard.html" class="block py-1 ps-4 rtl:pe-4">User</a>
+            <a href="admin-dashboard.html" class="block py-1 ps-4 rtl:pe-4">Admin</a>
+        </div>
+
+        <!-- Global Toggles -->
+        <div class="border-t dark:border-gray-700 pt-2 flex items-center gap-4">
+            <button id="rtl-toggle-mobile" class="p-2 rounded-lg">🌐</button>
+        </div>
+
+        <!-- Auth Buttons -->
+        <div class="border-t dark:border-gray-700 pt-2">
+            <a href="login.html" class="block py-2 px-4 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">Login</a>
+            <a href="register.html" class="block py-2 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mt-2">Register</a>
+        </div>
+    </div>
+</div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white glow-pulse">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h1 class="text-4xl lg:text-5xl font-bold mb-6 rainbow-fast">About EduVate</h1>
+            <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto">We're on a mission to make quality education accessible to everyone, everywhere. Join our community of learners and start your journey today.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 animate-on-scroll">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 rainbow">Our Story</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                        Founded in 2018, EduPlatform started with a simple idea: to democratize education and make high-quality learning accessible to everyone. What began as a small team of passionate educators has grown into a global platform serving over 50,000 students worldwide.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                        Our platform has evolved from offering just a few courses to hosting over 1,200 comprehensive programs across multiple disciplines, all taught by industry experts and seasoned professionals.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center card-3d hover-glow float">
+                            <div class="text-3xl font-bold text-teal-500 mb-2 counter jump" data-target="50000">0</div>
+                            <div class="text-gray-600 dark:text-gray-400">Students Enrolled</div>
+                        </div>
+                        <div class="text-center card-animated hover-glow float" style="animation-delay: 0.2s;">
+                            <div class="text-3xl font-bold text-sky-500 mb-2 counter jump" data-target="1200">0</div>
+                            <div class="text-gray-600 dark:text-gray-400">Courses Available</div>
+                        </div>
+                        <div class="text-center card-glow hover-glow float" style="animation-delay: 0.4s;">
+                            <div class="text-3xl font-bold text-violet-500 mb-2 counter jump" data-target="150">0</div>
+                            <div class="text-gray-600 dark:text-gray-400">Expert Instructors</div>
+                        </div>
+                        <div class="text-center card-spin hover-glow float" style="animation-delay: 0.6s;">
+                            <div class="text-3xl font-bold text-amber-500 mb-2 counter jump" data-target="95">0</div>
+                            <div class="text-gray-600 dark:text-gray-400">Success Rate %</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 animate-on-scroll">
+                    <img src="https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Our Story" class="rounded-2xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Mission & Values</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">The principles that guide everything we do</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card text-center p-8 animate-on-scroll card-3d hover-glow float">
+                    <div class="w-16 h-16 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center mx-auto mb-6 hover-spin">
+                        <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Quality Education</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We believe in providing world-class education that meets industry standards and prepares students for real-world challenges.</p>
+                </div>
+
+                <div class="card text-center p-8 animate-on-scroll card-animated hover-glow float" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-sky-100 dark:bg-sky-900 rounded-full flex items-center justify-center mx-auto mb-6 hover-spin">
+                        <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Accessibility</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Education should be accessible to everyone, regardless of location, background, or financial situation.</p>
+                </div>
+
+                <div class="card text-center p-8 animate-on-scroll card-glow hover-glow float" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-violet-100 dark:bg-violet-900 rounded-full flex items-center justify-center mx-auto mb-6 hover-spin">
+                        <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Innovation</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We continuously innovate our teaching methods and technology to enhance the learning experience.</p>
+                </div>
+
+                <div class="card text-center p-8 animate-on-scroll card-spin hover-glow float" style="animation-delay: 0.6s;">
+                    <div class="w-16 h-16 bg-amber-100 dark:bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-6 hover-spin">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Integrity</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We maintain the highest standards of academic integrity and ethical practices in all our operations.</p>
+                </div>
+
+                <div class="card text-center p-8 animate-on-scroll card-wobble hover-glow float" style="animation-delay: 0.8s;">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mx-auto mb-6 hover-spin">
+                        <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Community</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We foster a supportive learning community where students and instructors collaborate and grow together.</p>
+                </div>
+
+                <div class="card text-center p-8 animate-on-scroll card-3d hover-glow float" style="animation-delay: 1.0s;">
+                    <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900 rounded-full flex items-center justify-center mx-auto mb-6 hover-spin">
+                        <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Excellence</h3>
+                    <p class="text-gray-600 dark:text-gray-400">We strive for excellence in everything we do, from course content to student support services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">The passionate people behind EduPlatform</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card text-center p-6 card-hover animate-on-scroll card-3d hover-glow float">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200" alt="John Smith" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover float" style="animation-delay: 0.1s;">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">John Smith</h3>
+                    <p class="text-teal-600 font-medium mb-2">CEO & Co-Founder</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Former tech executive with 15+ years of experience in education technology.</p>
+                </div>
+
+                <div class="card text-center p-6 card-hover animate-on-scroll card-animated hover-glow float" style="animation-delay: 0.2s;">
+                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Sarah Johnson" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover float" style="animation-delay: 0.3s;">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Sarah Johnson</h3>
+                    <p class="text-sky-600 font-medium mb-2">CTO & Co-Founder</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Software architect passionate about creating scalable learning platforms.</p>
+                </div>
+
+                <div class="card text-center p-6 card-hover animate-on-scroll card-glow hover-glow float" style="animation-delay: 0.4s;">
+                    <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Michael Chen" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover float" style="animation-delay: 0.5s;">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Michael Chen</h3>
+                    <p class="text-violet-600 font-medium mb-2">Head of Education</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">PhD in Education with expertise in curriculum design and online learning.</p>
+                </div>
+
+                <div class="card text-center p-6 card-hover animate-on-scroll card-spin hover-glow float" style="animation-delay: 0.6s;">
+                    <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Emily Rodriguez" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover float" style="animation-delay: 0.7s;">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Emily Rodriguez</h3>
+                    <p class="text-amber-600 font-medium mb-2">Head of Marketing</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Digital marketing expert focused on growing educational communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Our Achievements</h2>
+                <p class="text-xl opacity-90">Recognition and milestones we're proud of</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center animate-on-scroll card-3d hover-glow float">
+                    <div class="text-4xl mb-4 rainbow-fast">🏆</div>
+                    <h3 class="text-xl font-bold mb-2">Best EdTech Platform 2023</h3>
+                    <p class="opacity-80">Awarded by Global Education Awards</p>
+                </div>
+
+                <div class="text-center animate-on-scroll card-animated hover-glow float" style="animation-delay: 0.2s;">
+                    <div class="text-4xl mb-4 rainbow-fast">🌟</div>
+                    <h3 class="text-xl font-bold mb-2">4.9/5 Student Rating</h3>
+                    <p class="opacity-80">Based on 10,000+ reviews</p>
+                </div>
+
+                <div class="text-center animate-on-scroll card-glow hover-glow float" style="animation-delay: 0.4s;">
+                    <div class="text-4xl mb-4 rainbow-fast">🎓</div>
+                    <h3 class="text-xl font-bold mb-2">50,000+ Graduates</h3>
+                    <p class="opacity-80">Successfully completed courses</p>
+                </div>
+
+                <div class="text-center animate-on-scroll card-spin hover-glow float" style="animation-delay: 0.6s;">
+                    <div class="text-4xl mb-4 rainbow-fast">🌍</div>
+                    <h3 class="text-xl font-bold mb-2">180+ Countries</h3>
+                    <p class="opacity-80">Students worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900 glow-pulse">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 rainbow">Join Our Mission</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">Be part of our growing community and help us make quality education accessible to everyone.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+<a href="register.html" class="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition hover-glow">Start Learning Today</a>
+<a href="contact.html" class="px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition hover-glow">Get In Touch</a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">EduVate</span>
+                    </div>
+                    <p class="text-gray-400">&copy; 2025 EduVate. All rights reserved.</p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="courses.html" class="block text-gray-400 hover:text-white transition-colors">All Courses</a>
+                        <a href="pricing.html" class="block text-gray-400 hover:text-white transition-colors">Pricing</a>
+                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Categories</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Web Development</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Data Science</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Design</a>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Support</h3>
+                    <div class="space-y-2">
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Contact Us</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Help Center</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+     <script>
+    // Toggle Mobile Menu
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+    mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+    });
+
+    mobileMenuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+    });
+
+    // ✅ RTL Toggle (Desktop + Mobile)
+    const rtlToggleDesktop = document.getElementById("rtl-toggle");
+    const rtlToggleMobile = document.getElementById("rtl-toggle-mobile");
+
+    function toggleRTL() {
+        const html = document.documentElement;
+        html.dir = html.dir === "rtl" ? "ltr" : "rtl";
+    }
+
+    rtlToggleDesktop.addEventListener("click", toggleRTL);
+    rtlToggleMobile.addEventListener("click", toggleRTL);
+
+    // ✅ Dark Mode Toggle (Desktop + Mobile)
+    const themeToggleDesktop = document.getElementById("theme-toggle");
+    const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+
+    function toggleTheme() {
+        document.documentElement.classList.toggle("dark");
+    }
+
+    themeToggleDesktop.addEventListener("click", toggleTheme);
+    themeToggleMobile.addEventListener("click", toggleTheme);
+    
+    // Highlight current page in navigation
+    const currentPage = window.location.pathname.split('/').pop() || 'about.html';
+    const navLinks = document.querySelectorAll('.navbar a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('text-purple-600', 'dark:text-purple-400', 'font-bold');
+        }
+    });
+</script>
+
+</body>
+</html>

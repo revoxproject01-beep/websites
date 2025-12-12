@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - EduVate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-poppins bg-gradient-to-br from-teal-500 via-sky-500 to-cyan-500 min-h-screen">
+    <!-- Background Animation -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -inset-10 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full mix-blend-multiply animate-pulse float"></div>
+            <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply animate-pulse animation-delay-2000 float" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply animate-pulse animation-delay-4000 float" style="animation-delay: 4s;"></div>
+        </div>
+    </div>
+
+<div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div class="text-center text-white max-w-4xl mx-auto">
+            <!-- Logo -->
+            <div class="flex items-center justify-center space-x-2 mb-8">
+                <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center hover-spin">
+                    <svg class="w-10 h-10 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <span class="text-3xl font-bold rainbow-fast">EduVate</span>
+            </div>
+
+            <h1 class="text-5xl lg:text-7xl font-bold mb-6 animate-bounce rainbow-fast">Coming Soon</h1>
+            <p class="text-xl lg:text-2xl mb-12 opacity-90 max-w-2xl mx-auto">
+                We're working hard to bring you something amazing. Get ready for the future of online learning!
+            </p>
+
+            <!-- Countdown Timer -->
+<div id="countdown" class="flex justify-center mb-12 space-x-8 rtl:space-x-reverse">
+    <div class="text-center card-3d hover-glow">
+        <div class="text-4xl lg:text-6xl font-bold mb-2">00</div>
+        <div class="text-lg opacity-75">Days</div>
+    </div>
+    <div class="text-center card-animated hover-glow">
+        <div class="text-4xl lg:text-6xl font-bold mb-2">00</div>
+        <div class="text-lg opacity-75">Hours</div>
+    </div>
+    <div class="text-center card-glow hover-glow">
+        <div class="text-4xl lg:text-6xl font-bold mb-2">00</div>
+        <div class="text-lg opacity-75">Minutes</div>
+    </div>
+    <div class="text-center card-spin hover-glow">
+        <div class="text-4xl lg:text-6xl font-bold mb-2">00</div>
+        <div class="text-lg opacity-75">Seconds</div>
+    </div>
+</div>
+
+            <!-- Email Subscription -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 rainbow-fast">Get Notified When We Launch</h2>
+                <p class="text-lg mb-6 opacity-90">Be the first to know when we're live and get exclusive early access</p>
+                
+                <form class="flex flex-col sm:flex-row justify-center max-w-md mx-auto">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address" 
+                        class="flex-1 px-6 py-4 rounded-l-lg sm:rounded-r-none rounded-r-lg text-gray-900 placeholder-gray-500 outline-none focus:ring-4 focus:ring-white/30 card-3d hover-glow"
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-gradient-to-r from-teal-500 to-sky-500 hover:from-teal-600 hover:to-sky-600 px-8 py-4 rounded-r-lg sm:rounded-l-none rounded-l-lg font-bold text-white transition-all duration-300 transform hover:scale-105 shadow-lg mt-4 sm:mt-0 hover-glow"
+                    >
+                        Notify Me
+                    </button>
+                </form>
+            </div>
+
+            <!-- Features Preview -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
+                <div class="text-center card-3d hover-glow">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm hover-spin">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Premium Courses</h3>
+                    <p class="opacity-90">Access to thousands of high-quality courses from industry experts</p>
+                </div>
+                
+                <div class="text-center card-animated hover-glow">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm hover-spin">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI-Powered Learning</h3>
+                    <p class="opacity-90">Personalized learning paths powered by advanced AI technology</p>
+                </div>
+                
+                <div class="text-center card-glow hover-glow">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm hover-spin">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Certified Learning</h3>
+                    <p class="opacity-90">Earn industry-recognized certificates and showcase your skills</p>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+<div class="flex justify-center mb-8 space-x-6 rtl:space-x-reverse">
+    <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/30 transition-colors card-3d hover-glow">
+        <svg class="w-6 h-6 hover-spin" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+        </svg>
+    </a>
+
+    <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/30 transition-colors card-animated hover-glow">
+        <svg class="w-6 h-6 hover-spin" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+    </a>
+</div>
+
+<div class="flex justify-center gap-4">
+    <a href="index.html" class="bg-white text-teal-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover-glow">
+        Visit Current Site
+    </a>
+    <button id="rtl-toggle" class="p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors backdrop-blur-sm card-3d hover-glow">
+        <span class="font-medium">🌐</span>
+    </button>
+</div>
+
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Countdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the date we're counting down to (30 days from now)
+            const countDownDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = `
+                    <div class="text-center card-3d hover-glow">
+                        <div class="text-4xl lg:text-6xl font-bold mb-2">${days.toString().padStart(2, '0')}</div>
+                        <div class="text-lg opacity-75">Days</div>
+                    </div>
+                    <div class="text-center card-animated hover-glow">
+                        <div class="text-4xl lg:text-6xl font-bold mb-2">${hours.toString().padStart(2, '0')}</div>
+                        <div class="text-lg opacity-75">Hours</div>
+                    </div>
+                    <div class="text-center card-glow hover-glow">
+                        <div class="text-4xl lg:text-6xl font-bold mb-2">${minutes.toString().padStart(2, '0')}</div>
+                        <div class="text-lg opacity-75">Minutes</div>
+                    </div>
+                    <div class="text-center card-spin hover-glow">
+                        <div class="text-4xl lg:text-6xl font-bold mb-2">${seconds.toString().padStart(2, '0')}</div>
+                        <div class="text-lg opacity-75">Seconds</div>
+                    </div>
+                `;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = '<h2 class="text-4xl font-bold text-center rainbow-fast">We\'re Live!</h2>';
+                }
+            }, 1000);
+
+            // Form submission
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert('Thank you! We\'ll notify you at ' + email + ' when we launch.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>

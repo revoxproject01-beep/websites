@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - EduVate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-poppins smooth-scroll bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+<nav class="navbar fixed w-full top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">EduVate</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+<!-- Desktop Navigation -->
+<div class="hidden lg:flex items-center gap-8">
+    <!-- Home Dropdown -->
+<div class="relative group">
+    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+        Home
+        <svg class="w-4 h-4 ml-1 rtl:mr-1 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="absolute top-full left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+        <a href="index.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Home 1</a>
+        <a href="index2.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Home 2</a>
+    </div>
+</div>
+
+    <a href="courses.html" class="font-medium">Courses</a>
+    <a href="about.html" class="font-medium">About</a>
+    <a href="pricing.html" class="font-medium">Pricing</a>
+    <a href="faq.html" class="font-medium">FAQ</a>
+    <a href="contact.html" class="font-medium">Contact</a>
+
+    <!-- ✅ New Dashboard Link -->
+<div class="relative group">
+    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+        Dashboard
+        <svg class="w-4 h-4 ml-1 rtl:mr-1 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="absolute top-full left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+        <a href="user-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">User</a>
+        <a href="admin-dashboard.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Admin</a>
+    </div>
+</div>
+
+    <!-- Theme & RTL Toggles -->
+    <div class="flex items-center gap-2">
+        <button id="rtl-toggle" class="p-2 rounded-lg">🌐</button>
+    </div>
+
+    <!-- Auth Buttons -->
+    <div class="flex items-center gap-4">
+        <a href="login.html" class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">Login</a>
+        <a href="register.html" class="px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">Register</a>
+    </div>
+</div>
+
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+ <div id="mobile-menu" class="fixed inset-0 z-50 bg-white dark:bg-gray-900 hidden overflow-y-auto">
+    <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+        <span class="text-xl font-bold">EduVate</span>
+        <button id="mobile-menu-close" class="p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="p-4 space-y-2 text-left rtl:text-right">
+        <!-- Main Links -->
+        <a href="index.html" class="block py-2">Home 1</a>
+        <a href="index2.html" class="block py-2">Home 2</a>
+        <a href="courses.html" class="block py-2">Courses</a>
+        <a href="about.html" class="block py-2">About</a>
+        <a href="pricing.html" class="block py-2">Pricing</a>
+        <a href="faq.html" class="block py-2">FAQ</a>
+        <a href="contact.html" class="block py-2">Contact</a>
+
+        <!-- Dashboard Section -->
+        <div class="border-t dark:border-gray-700 pt-2">
+            
+            <a href="user-dashboard.html" class="block py-1 ps-4 rtl:pe-4">User</a>
+            <a href="admin-dashboard.html" class="block py-1 ps-4 rtl:pe-4">Admin</a>
+        </div>
+
+        <!-- Global Toggles -->
+        <div class="border-t dark:border-gray-700 pt-2 flex items-center gap-4">
+            <button id="rtl-toggle-mobile" class="p-2 rounded-lg">🌐</button>
+        </div>
+
+        <!-- Auth Buttons -->
+        <div class="border-t dark:border-gray-700 pt-2">
+            <a href="login.html" class="block py-2 px-4 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">Login</a>
+            <a href="register.html" class="block py-2 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mt-2">Register</a>
+        </div>
+    </div>
+</div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white glow-pulse">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h1 class="text-4xl lg:text-5xl font-bold mb-6 rainbow-fast">Choose Your Learning Plan</h1>
+            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Flexible pricing options to fit your learning goals and budget</p>
+        </div>
+    </section>
+
+    <!-- Billing Toggle -->
+    <section class="py-8 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <div class="inline-flex items-center bg-gray-100 dark:bg-gray-700 rounded-full p-1 card-3d hover-glow">
+                <button id="monthly-btn" class="px-6 py-2 rounded-full bg-purple-600 text-white font-medium transition-all duration-300 hover-glow">Monthly</button>
+                <button id="annual-btn" class="px-6 py-2 rounded-full text-gray-600 dark:text-gray-300 font-medium transition-all duration-300 hover-glow">Annual (Save 20%)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="card p-8 relative animate-on-scroll card-3d">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Basic</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Perfect for beginners getting started</p>
+                    
+                    <div class="mb-6">
+                        <div class="pricing-display" data-monthly="19" data-annual="15">
+                            <span class="text-4xl font-bold text-gray-900 dark:text-white">$19</span>
+                            <span class="text-gray-600 dark:text-gray-400">/month</span>
+                        </div>
+                        <div class="annual-savings hidden text-sm text-green-600 mt-1">Save $48/year</div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Access to 50+ courses</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Verified certificates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Basic video quality (720p)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Community forum access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Mobile app access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Basic certificates</span>
+                        </li>
+                    </ul>
+
+<button class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition">Get Started</button>
+                </div>
+
+                <!-- Standard Plan (Most Popular) -->
+                <div class="card p-8 relative border-2 border-teal-500 animate-on-scroll card-3d">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-teal-500 text-white px-6 py-2 rounded-full text-sm font-medium">Most Popular</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Standard</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Best value for serious learners</p>
+                    
+                    <div class="mb-6">
+                        <div class="pricing-display" data-monthly="39" data-annual="31">
+                            <span class="text-4xl font-bold text-gray-900 dark:text-white">$39</span>
+                            <span class="text-gray-600 dark:text-gray-400">/month</span>
+                        </div>
+                        <div class="annual-savings hidden text-sm text-green-600 mt-1">Save $96/year</div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Access to 500+ courses</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">HD video quality (1080p)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Offline download feature</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Priority support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Verified certificates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Coding exercises & projects</span>
+                        </li>
+                    </ul>
+
+<button class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition">Get Started</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="card p-8 relative animate-on-scroll card-3d">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Premium</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Complete learning experience</p>
+                    
+                    <div class="mb-6">
+                        <div class="pricing-display" data-monthly="79" data-annual="63">
+                            <span class="text-4xl font-bold text-gray-900 dark:text-white">$79</span>
+                            <span class="text-gray-600 dark:text-gray-400">/month</span>
+                        </div>
+                        <div class="annual-savings hidden text-sm text-green-600 mt-1">Save $192/year</div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Unlimited course access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">4K video quality</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">1-on-1 mentorship sessions</span>
+                        </li>
+                        
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Career counseling</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Industry-recognized certificates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-400">Job placement assistance</span>
+                        </li>
+                    </ul>
+
+<button class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Comparison -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Compare Plans</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">See what's included in each plan</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                    <thead>
+                        <tr class="border-b dark:border-gray-700">
+                            <th class="text-left p-6 font-semibold text-gray-900 dark:text-white">Features</th>
+                            <th class="text-center p-6 font-semibold text-gray-900 dark:text-white">Basic</th>
+                            <th class="text-center p-6 font-semibold text-gray-900 dark:text-white">Standard</th>
+                            <th class="text-center p-6 font-semibold text-gray-900 dark:text-white">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="p-6 text-gray-600 dark:text-gray-400">Course Access</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">50+ courses</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">500+ courses</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">Unlimited</td>
+                        </tr>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="p-6 text-gray-600 dark:text-gray-400">Video Quality</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">720p</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">1080p</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">4K</td>
+                        </tr>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="p-6 text-gray-600 dark:text-gray-400">Offline Downloads</td>
+                            <td class="p-6 text-center">❌</td>
+                            <td class="p-6 text-center text-green-600">✅</td>
+                            <td class="p-6 text-center text-green-600">✅</td>
+                        </tr>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="p-6 text-gray-600 dark:text-gray-400">Certificates</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">Basic</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">Verified</td>
+                            <td class="p-6 text-center text-gray-600 dark:text-gray-400">Industry-recognized</td>
+                        </tr>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="p-6 text-gray-600 dark:text-gray-400">1-on-1 Mentorship</td>
+                            <td class="p-6 text-center">❌</td>
+                            <td class="p-6 text-center">❌</td>
+                            <td class="p-6 text-center text-green-600">✅</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 text-gray-600 dark:text-gray-400">Job Placement</td>
+                            <td class="p-6 text-center">❌</td>
+                            <td class="p-6 text-center">❌</td>
+                            <td class="p-6 text-center text-green-600">✅</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div class="container mx-auto px-4 text-center animate-on-scroll">
+            <h2 class="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+            <p class="text-xl mb-8 opacity-90">Join thousands of students who have already transformed their careers</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="register.html" class="btn-accent px-8 py-3">Start Free Trial</a>
+                <a href="courses.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-teal-600 transition-all duration-300">View Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">EduVate</span>
+                    </div>
+                    <p class="text-gray-400">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="courses.html" class="block text-gray-400 hover:text-white transition-colors">All Courses</a>
+                        <a href="about.html" class="block text-gray-400 hover:text-white transition-colors">About Us</a>
+                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Categories</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Web Development</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Data Science</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Design</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Business</a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Support</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Help Center</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="admin-dashboard.html" class="block text-gray-400 hover:text-white transition-colors">Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 EduVate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Pricing toggle functionality
+        const monthlyBtn = document.getElementById('monthly-btn');
+        const annualBtn = document.getElementById('annual-btn');
+        const pricingDisplays = document.querySelectorAll('.pricing-display');
+        const annualSavings = document.querySelectorAll('.annual-savings');
+
+        monthlyBtn.addEventListener('click', () => {
+            monthlyBtn.classList.add('bg-blue-600', 'text-white');
+            monthlyBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+            annualBtn.classList.remove('bg-blue-600', 'text-white');
+            annualBtn.classList.add('text-gray-600', 'dark:text-gray-300');
+            
+            pricingDisplays.forEach(display => {
+                const monthlyPrice = display.dataset.monthly;
+                display.innerHTML = `<span class="text-4xl font-bold text-gray-900 dark:text-white">$${monthlyPrice}</span><span class="text-gray-600 dark:text-gray-400">/month</span>`;
+            });
+            
+            annualSavings.forEach(saving => {
+                saving.classList.add('hidden');
+            });
+        });
+
+        annualBtn.addEventListener('click', () => {
+            annualBtn.classList.add('bg-blue-600', 'text-white');
+            annualBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+            monthlyBtn.classList.remove('bg-blue-600', 'text-white');
+            monthlyBtn.classList.add('text-gray-600', 'dark:text-gray-300');
+            
+            pricingDisplays.forEach(display => {
+                const annualPrice = display.dataset.annual;
+                display.innerHTML = `<span class="text-4xl font-bold text-gray-900 dark:text-white">$${annualPrice}</span><span class="text-gray-600 dark:text-gray-400">/month</span>`;
+            });
+            
+            annualSavings.forEach(saving => {
+                saving.classList.remove('hidden');
+            });
+        });
+    </script>
+     <script>
+    // Toggle Mobile Menu
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+    mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+    });
+
+    mobileMenuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+    });
+
+    // ✅ RTL Toggle (Desktop + Mobile)
+    const rtlToggleDesktop = document.getElementById("rtl-toggle");
+    const rtlToggleMobile = document.getElementById("rtl-toggle-mobile");
+
+    function toggleRTL() {
+        const html = document.documentElement;
+        html.dir = html.dir === "rtl" ? "ltr" : "rtl";
+    }
+
+    rtlToggleDesktop.addEventListener("click", toggleRTL);
+    rtlToggleMobile.addEventListener("click", toggleRTL);
+
+    // ✅ Dark Mode Toggle (Desktop + Mobile)
+    const themeToggleDesktop = document.getElementById("theme-toggle");
+    const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+
+    function toggleTheme() {
+        document.documentElement.classList.toggle("dark");
+    }
+
+    themeToggleDesktop.addEventListener("click", toggleTheme);
+    themeToggleMobile.addEventListener("click", toggleTheme);
+</script>
+
+</body>
+</html>

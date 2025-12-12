@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - EduVate</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body class="font-poppins bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+   <nav class="bg-white dark:bg-gray-800 shadow-sm border-b dark:border-gray-700">
+  <div class="px-6">
+    <div class="flex justify-between items-center py-4">
+      <!-- Left side -->
+   <div class="flex items-center space-x-4 rtl:space-x-reverse">
+  <!-- Mobile hamburger -->
+  <button id="menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 card-3d hover-glow">
+    <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+      <!-- Logo -->
+  <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+    <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center hover-spin">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+      </svg>
+    </div>
+    <span class="text-xl font-bold text-gray-900 dark:text-white">EduVate</span>
+  </a>
+</div>
+
+
+      <!-- Right side -->
+      <div class="flex items-center rtl:space-x-reverse space-x-4">
+    <button id="rtl-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors card-3d hover-glow">
+      <span class="text-sm font-medium">🌐</span>
+    </button>
+
+    <div class="relative">
+      <button id="user-menu-button" class="flex items-center space-x-2 rtl:space-x-reverse p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors card-3d hover-glow">
+        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="User" class="w-8 h-8 rounded-full">
+
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <!-- User Dropdown Menu -->
+      <div id="user-dropdown" class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 hidden z-50">
+        <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</a>
+      </div>
+    </div>
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    <div class="flex min-h-screen w-full">
+        <!-- Sidebar -->
+         <!-- Sidebar -->
+
+  <div class="flex min-h-screen w-full">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-sm min-h-screen fixed md:relative top-16 md:top-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+      <nav class="mt-6 space-y-2 px-4">
+        <a href="#" class="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 flex items-center px-3 py-2 rounded-lg card-3d hover-glow">
+          <i class="fas fa-chart-line mr-3"></i> Dashboard
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 card-animated hover-glow">
+          <i class="fas fa-users mr-3"></i> Enrolled Subjects
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 card-glow hover-glow">
+          <i class="fas fa-project-diagram mr-3"></i> Projects
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 card-spin hover-glow">
+          <i class="fas fa-chart-bar mr-3"></i> Analytics
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 card-wobble hover-glow">
+          <i class="fas fa-cog mr-3"></i> Instructors
+        </a>
+           <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 card-animated hover-glow">
+          <i class="fas fa-cog mr-3"></i> Settings
+        </a>
+                <a href="index.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 card-glow hover-glow">
+          <i class="fas fa-cog mr-3"></i>Back To Home
+        </a>
+
+      </nav>
+    </aside>
+
+
+ 
+        <!-- Main Content -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            <!-- Dashboard Overview -->
+            <section id="dashboard-section" class="content-section">
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 rainbow-fast">Welcome back, Sarah! 👋</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Continue your learning journey and track your progress.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-3d hover-glow float">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Enrolled Courses</p>
+                                <p class="text-3xl font-bold text-gray-900 dark:text-white counter" data-target="12">12</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center hover-spin">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-animated hover-glow float" style="animation-delay: 0.1s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Completed</p>
+                                <p class="text-3xl font-bold text-gray-900 dark:text-white counter" data-target="8">8</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center hover-spin">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-glow hover-glow float" style="animation-delay: 0.2s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Certificates</p>
+                                <p class="text-3xl font-bold text-gray-900 dark:text-white counter" data-target="6">6</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center hover-spin">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-spin hover-glow float" style="animation-delay: 0.3s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Learning Hours</p>
+                                <p class="text-3xl font-bold text-gray-900 dark:text-white counter" data-target="247">247</p>
+                            </div>
+                            <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center hover-spin">
+                                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+  <!-- User Growth Chart -->
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-3d hover-glow flex flex-col h-full">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 rainbow-fast">User Growth</h2>
+    <div class="flex-grow">
+      <canvas id="userGrowthChart" class="w-full h-full"></canvas>
+    </div>
+
+    <!-- Quick Stats under chart -->
+    <div class="mt-4 grid grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+      <div>
+        <p class="font-semibold">New Users</p>
+        <p class="text-green-500">+342</p>
+      </div>
+      <div>
+        <p class="font-semibold">Total Users</p>
+        <p>12,430</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course Categories Chart -->
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-animated hover-glow flex flex-col h-full">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 rainbow-fast">Course Categories</h2>
+    <div class="flex-grow">
+      <canvas id="courseCategoryChart" class="w-full h-full"></canvas>
+    </div>
+
+    <!-- Progress Bars under chart -->
+    <div class="mt-4 space-y-2">
+      <div>
+        <p class="text-sm">AI/ML <span class="float-right">45%</span></p>
+        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+          <div class="bg-blue-500 h-2 rounded-full" style="width: 45%"></div>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm">Data Science <span class="float-right">25%</span></p>
+        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+          <div class="bg-green-500 h-2 rounded-full" style="width: 25%"></div>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm">Cyber Security <span class="float-right">15%</span></p>
+        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+          <div class="bg-purple-500 h-2 rounded-full" style="width: 15%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                <!-- Continue Learning & Recent Activity -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Continue Learning -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-glow hover-glow">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 rainbow-fast">Continue Learning</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg card-3d hover-glow flex-wrap sm:flex-nowrap">
+                                <img class="h-12 w-12 rounded object-cover" src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Course">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold text-gray-900 dark:text-white truncate">React Advanced Concepts</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Lesson 12: Advanced Hooks</p>
+                                    <div class="mt-2">
+                                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                                            <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 75%" data-progress="75"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">75% Complete</p>
+                                    </div>
+                                </div>
+                                <button class="btn-primary text-sm px-4 py-2 hover-glow whitespace-nowrap mt-2 sm:mt-0">Continue</button>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg card-animated hover-glow flex-wrap sm:flex-nowrap">
+                                <img class="h-12 w-12 rounded object-cover" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Course">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold text-gray-900 dark:text-white truncate">Python Data Science</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Lesson 8: Data Visualization</p>
+                                    <div class="mt-2">
+                                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                                            <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 45%" data-progress="45"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">45% Complete</p>
+                                    </div>
+                                </div>
+                                <button class="btn-primary text-sm px-4 py-2 hover-glow whitespace-nowrap mt-2 sm:mt-0">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-spin hover-glow">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 rainbow-fast">Recent Activity</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 card-3d hover-glow flex-wrap sm:flex-nowrap">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center hover-spin flex-shrink-0">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-gray-900 dark:text-white font-medium truncate">Completed JavaScript Basics</p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm truncate">Earned certificate</p>
+                                </div>
+                                <span class="text-gray-400 text-sm whitespace-nowrap mt-2 sm:mt-0">2 days ago</span>
+                            </div>
+                            <div class="flex items-center space-x-4 card-animated hover-glow flex-wrap sm:flex-nowrap">
+                                <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center hover-spin flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-gray-900 dark:text-white font-medium truncate">Started new course</p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm truncate">UI/UX Design Fundamentals</p>
+                                </div>
+                                <span class="text-gray-400 text-sm whitespace-nowrap mt-2 sm:mt-0">3 days ago</span>
+                            </div>
+                            <div class="flex items-center space-x-4 card-glow hover-glow flex-wrap sm:flex-nowrap">
+                                <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center hover-spin flex-shrink-0">
+                                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-gray-900 dark:text-white font-medium truncate">Added to wishlist</p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm truncate">Advanced Machine Learning</p>
+                                </div>
+                                <span class="text-gray-400 text-sm whitespace-nowrap mt-2 sm:mt-0">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Courses Section -->
+            <section id="courses-section" class="content-section hidden">
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 rainbow-fast">My Courses</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Track your progress and continue learning.</p>
+                </div>
+
+                <div class="mb-6">
+                    <div class="flex space-x-4">
+                        <button class="course-filter-btn active px-4 py-2 bg-gradient-to-r from-teal-500 to-sky-500 text-white rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-md hover-glow" data-filter="all">All Courses</button>
+                        <button class="course-filter-btn px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-md hover-glow" data-filter="in-progress">In Progress</button>
+                        <button class="course-filter-btn px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-md hover-glow" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Course Card -->
+                    <div class="course-item bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-3d hover-glow" data-status="in-progress">
+                        <div class="relative">
+                            <img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Course" class="w-full h-40 object-cover">
+                            <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm">In Progress</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Complete Web Development</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">By John Smith</p>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span class="text-gray-600 dark:text-gray-400">Progress</span>
+                                    <span class="text-gray-900 dark:text-white font-medium">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-teal-500 to-sky-500 hover:from-teal-600 hover:to-sky-600 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-md hover-glow">Continue Learning</button>
+                        </div>
+                    </div>
+
+                    <!-- More course cards would go here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Mobile sidebar backdrop -->
+    <div id="mobile-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+
+    <script src="js/main.js"></script>
+<script>
+    // Dark mode toggle
+    const toggle = document.getElementById('dark-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
+    }
+
+    // Mobile sidebar toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('mobile-backdrop');
+    
+    function toggleSidebar() {
+      sidebar.classList.toggle('-translate-x-full');
+      backdrop.classList.toggle('hidden');
+    }
+    
+    menuToggle.addEventListener('click', toggleSidebar);
+    backdrop.addEventListener('click', toggleSidebar);
+    
+    // Close sidebar when clicking on nav links (mobile)
+    const navLinks = sidebar.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) { // Only on mobile
+          sidebar.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+        }
+      });
+    });
+    
+    // Counter animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            updateCount();
+        });
+        
+        // Initialize charts
+        const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+        new Chart(userGrowthCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+              label: 'New Users',
+              data: [120, 190, 150, 220, 300, 250],
+              backgroundColor: 'rgba(37, 99, 235, 0.7)', // blue
+              borderRadius: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+        
+        // Course Categories Chart (Doughnut Chart)
+        const courseCategoryCtx = document.getElementById('courseCategoryChart').getContext('2d');
+        new Chart(courseCategoryCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['AI/ML', 'Data Science', 'Cyber Security'],
+            datasets: [{
+              data: [45, 25, 15],
+              backgroundColor: ['#3b82f6', '#10b981', '#8b5cf6'],
+              borderWidth: 2,
+              borderColor: '#fff'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }
+        });
+    });
+    
+    // User menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const userMenuButton = document.getElementById('user-menu-button');
+      const userDropdown = document.getElementById('user-dropdown');
+      
+      if (userMenuButton && userDropdown) {
+        userMenuButton.addEventListener('click', function() {
+          userDropdown.classList.toggle('hidden');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+            userDropdown.classList.add('hidden');
+          }
+        });
+      
+      // Highlight current page in navigation
+      const currentPage = window.location.pathname.split('/').pop() || 'user-dashboard.html';
+      const navLinks2 = document.querySelectorAll('nav a');
+      navLinks2.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('text-purple-600', 'dark:text-purple-400', 'font-bold');
+        }
+      });
+    }
+  });
+</script>
+
+
+</body>
+</html>
