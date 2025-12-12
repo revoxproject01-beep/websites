@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Premium Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1', // indigo
+                        secondary: '#8b5cf6', // violet
+                        accent: '#ec4899', // pink
+                        background: '#0f172a', // slate-900
+                        text: '#f1f5f9' // slate-50
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #6366f1);
+            background-size: 300% 300%;
+            z-index: -1;
+            border-radius: 16px;
+            animation: gradient 8s ease infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration, 3s) infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background text-text transition-colors duration-300">
+    <!-- Geometric Background -->
+    <div class="geometric-bg" id="geometricBg"></div>
+    
+    <!-- Particle Background -->
+    <div class="particle-bg" id="particleBg"></div>
+    
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-sm border-b border-slate-700 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Nexus Freelancer</a>
+      
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:block">
+                    <div class="flex items-center space-x-6">
+                        <a href="index.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Home</a>
+                        <a href="about.html" class="text-slate-300 hover:text-primary transition-colors duration-200">About</a>
+                        <a href="portfolio.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Portfolio</a>
+                        <a href="blog.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Blog</a>
+                        <a href="contact.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- RTL Toggle -->
+                    <button id="rtlToggle" class="p-2 rounded-md text-slate-400 hover:text-primary transition-colors duration-200" title="Toggle RTL">
+                        🌐
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuButton" class="lg:hidden p-2 rounded-md text-slate-400 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-slate-300 hover:text-primary">About</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Portfolio</a>
+                <a href="blog.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Blog</a>
+                <a href="contact.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="min-h-screen flex items-center justify-center pt-16 pb-16 px-4 section-bg-1 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-left"></div>
+        <div class="decorative-corner decorative-corner-bottom-right"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-circle" style="top: 15%; right: 10%; width: 100px; height: 100px;"></div>
+        <div class="floating-element floating-square" style="bottom: 20%; left: 12%; width: 70px; height: 70px;"></div>
+        <div class="floating-element floating-triangle" style="top: 25%; left: 8%;"></div>
+        
+        <div class="max-w-4xl w-full relative z-10">
+            <div class="gradient-border p-8 md:p-12 text-center">
+                <div class="inline-block mb-8">
+                    <div class="relative">
+                        <h1 class="text-9xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-pop-in">404</h1>
+                        <div class="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-accent blur-xl opacity-30 animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate-slide-in-up">Lost in Digital Space</h2>
+                <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto animate-slide-in-up animation-delay-200">The page you're looking for seems to have drifted into the digital void. Don't worry, even the best explorers sometimes take a wrong turn.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html" 
+                       class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        Return Home
+                    </a>
+                    
+                    <a href="contact.html" 
+                       class="px-8 py-4 rounded-xl bg-transparent border-2 border-slate-600 text-slate-300 font-medium hover:border-primary hover:text-white transition-all duration-300 inline-flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Contact Support
+                    </a>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-slate-700">
+                    <h3 class="text-xl font-semibold text-white mb-4">Explore Our Site</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                        <a href="about.html" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 transition-colors duration-200">
+                            <div class="text-primary text-2xl mb-2">👤</div>
+                            <div class="text-sm text-slate-300">About</div>
+                        </a>
+                        <a href="portfolio.html" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 transition-colors duration-200">
+                            <div class="text-secondary text-2xl mb-2">💼</div>
+                            <div class="text-sm text-slate-300">Portfolio</div>
+                        </a>
+                        <a href="blog.html" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 transition-colors duration-200">
+                            <div class="text-accent text-2xl mb-2">📝</div>
+                            <div class="text-sm text-slate-300">Blog</div>
+                        </a>
+                        <a href="pricing.html" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 transition-colors duration-200">
+                            <div class="text-indigo-400 text-2xl mb-2">💰</div>
+                            <div class="text-sm text-slate-300">Pricing</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Nexus</h3>
+                    <p class="mb-4">Premium digital solutions crafted with precision and passion for exceptional user experiences.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-primary transition-colors duration-200">Home</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition-colors duration-200">About</a></li>
+                        <li><a href="portfolio.html" class="hover:text-primary transition-colors duration-200">Portfolio</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="blog.html" class="hover:text-primary transition-colors duration-200">Blog</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors duration-200">Pricing</a></li>
+                        <li><a href="faq.html" class="hover:text-primary transition-colors duration-200">FAQ</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-primary transition-colors duration-200">Coming Soon</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm">
+                © 2025 Nexus Digital. All rights reserved. 
+                | <a href="#" class="hover:text-primary">Privacy Policy</a> 
+                | <a href="#" class="hover:text-primary">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Create stars for background
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3;
+                
+                // Random animation duration
+                const duration = 2 + Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
+</html>

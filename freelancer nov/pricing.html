@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Premium Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1', // indigo
+                        secondary: '#8b5cf6', // violet
+                        accent: '#ec4899', // pink
+                        background: '#0f172a', // slate-900
+                        text: '#f1f5f9' // slate-50
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .popular-plan {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.5);
+        }
+        
+        .popular-badge {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+    </style>
+</head>
+<body class="bg-background text-text transition-colors duration-300">
+    <!-- Geometric Background -->
+    <div class="geometric-bg" id="geometricBg"></div>
+    
+    <!-- Particle Background -->
+    <div class="particle-bg" id="particleBg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-sm border-b border-slate-700 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">Nexus Freelancer</a>
+                   
+                </div>
+                <div class="hidden lg:block">
+                    <div class="flex items-center space-x-6">
+                        <div class="relative group">
+                            <a href="#" class="text-slate-300 hover:text-primary transition-colors duration-200 flex items-center">
+                                Home <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </a>
+                            <div class="absolute top-full left-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-primary">Home Version 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-primary">Home Version 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="text-slate-300 hover:text-primary transition-colors duration-200">About</a>
+                        <a href="portfolio.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Portfolio</a>
+                        <a href="blog.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Blog</a>
+                        <a href="pricing.html" class="text-primary transition-colors duration-200">Pricing</a>
+                        <a href="faq.html" class="text-slate-300 hover:text-primary transition-colors duration-200">FAQ</a>
+                        <a href="contact.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- RTL Toggle -->
+                    <button id="rtlToggle" class="p-2 rounded-md text-slate-400 hover:text-primary transition-colors duration-200" title="Toggle RTL">
+                        🌐
+                    </button>
+
+                    <button id="mobileMenuButton" class="lg:hidden p-2 rounded-md text-slate-400 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Home 1</a>
+                <a href="index2.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Home 2</a>
+                <a href="about.html" class="block px-3 py-2 text-slate-300 hover:text-primary">About</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Portfolio</a>
+                <a href="blog.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Blog</a>
+                <a href="pricing.html" class="block px-3 py-2 text-primary">Pricing</a>
+                <a href="faq.html" class="block px-3 py-2 text-slate-300 hover:text-primary">FAQ</a>
+                <a href="contact.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center animate-flip-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-slide-in-up">Pricing Plans</h1>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8 animate-slide-in-up animation-delay-200">
+                    Choose the perfect plan for your project needs. All plans include professional quality work and dedicated support.
+                </p>
+                
+                <!-- Billing Toggle -->
+                <div class="flex items-center justify-center space-x-4 mb-12">
+                    <span class="text-slate-300">Monthly</span>
+                    <button id="billingToggle" class="relative w-14 h-7 bg-slate-700 rounded-full focus:outline-none">
+                        <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform translate-x-0"></div>
+                    </button>
+                    <span class="text-slate-300">Yearly <span class="text-primary font-medium">(Save 20%)</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-20 section-bg-1 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-left"></div>
+        <div class="decorative-corner decorative-corner-bottom-right"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-circle" style="top: 10%; right: 5%; width: 80px; height: 80px;"></div>
+        <div class="floating-element floating-square" style="bottom: 15%; left: 8%; width: 60px; height: 60px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="card-gradient rounded-xl p-8 border border-slate-700">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Basic</h3>
+                        <p class="text-slate-300 mb-6">Perfect for small projects and startups</p>
+                        <div class="text-4xl font-bold text-white mb-2">
+                            $<span id="basicPrice">499</span>
+                        </div>
+                        <p class="text-slate-300">per project</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">5 Page Website</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Responsive Design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Basic SEO Setup</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Contact Form</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">2 Revisions</span>
+                        </li>
+                        <li class="flex items-center text-slate-500">
+                            <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                            <span>E-commerce Integration</span>
+                        </li>
+                        <li class="flex items-center text-slate-500">
+                            <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                            <span>Priority Support</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors duration-200">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Pro Plan (Popular) -->
+                <div class="popular-plan rounded-xl p-8 relative transform scale-105 shadow-xl">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="popular-badge text-white text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</span>
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Professional</h3>
+                        <p class="text-slate-200 mb-6">For growing businesses and agencies</p>
+                        <div class="text-4xl font-bold text-white mb-2">
+                            $<span id="proPrice">1499</span>
+                        </div>
+                        <p class="text-slate-200">per project</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>15 Page Website</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Custom Design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Advanced SEO</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>CMS Integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>E-commerce Ready</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>5 Revisions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Priority Support</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 rounded-lg font-medium transition-opacity duration-200">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="card-gradient rounded-xl p-8 border border-slate-700">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Enterprise</h3>
+                        <p class="text-slate-300 mb-6">For large-scale projects and corporations</p>
+                        <div class="text-4xl font-bold text-white mb-2">
+                            $<span id="enterprisePrice">3999</span>
+                        </div>
+                        <p class="text-slate-300">per project</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Unlimited Pages</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Custom Features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">API Integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Advanced Analytics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Multi-language Support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Unlimited Revisions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">24/7 Support</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors duration-200">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="py-20 bg-slate-900/50 section-bg-2 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-right"></div>
+        <div class="decorative-corner decorative-corner-bottom-left"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-triangle" style="top: 8%; left: 7%;"></div>
+        <div class="floating-element floating-circle" style="bottom: 12%; right: 10%; width: 70px; height: 70px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Additional Services</h2>
+                <p class="text-xl text-slate-300">Extend your project with these optional add-ons</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-gradient p-6 rounded-lg shadow-md text-center">
+                    <div class="text-3xl mb-4">🚀</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Performance Optimization</h3>
+                    <p class="text-slate-300 mb-4">Speed up your website for better user experience</p>
+                    <div class="text-2xl font-bold text-primary mb-2">$299</div>
+                </div>
+                
+                <div class="card-gradient p-6 rounded-lg shadow-md text-center">
+                    <div class="text-3xl mb-4">📱</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Mobile App</h3>
+                    <p class="text-slate-300 mb-4">Native or hybrid mobile application</p>
+                    <div class="text-2xl font-bold text-primary mb-2">$1,999</div>
+                </div>
+                
+                <div class="card-gradient p-6 rounded-lg shadow-md text-center">
+                    <div class="text-3xl mb-4">🎨</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Brand Identity</h3>
+                    <p class="text-slate-300 mb-4">Logo design and brand guidelines</p>
+                    <div class="text-2xl font-bold text-primary mb-2">$799</div>
+                </div>
+                
+                <div class="card-gradient p-6 rounded-lg shadow-md text-center">
+                    <div class="text-3xl mb-4">📈</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Marketing Setup</h3>
+                    <p class="text-slate-300 mb-4">Google Analytics, ads, and social media</p>
+                    <div class="text-2xl font-bold text-primary mb-2">$499</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 section-bg-3 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-left"></div>
+        <div class="decorative-corner decorative-corner-bottom-right"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-square" style="top: 12%; right: 6%; width: 65px; height: 65px;"></div>
+        <div class="floating-element floating-triangle" style="bottom: 8%; left: 9%;"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-slate-300">Common questions about our pricing and services</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="faq-item card-gradient rounded-lg p-6">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-white">What's included in the project timeline?</h3>
+                        <svg class="faq-icon h-5 w-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden mt-4">
+                        <p class="text-slate-300">Each project includes initial consultation, design mockups, development, testing, and deployment. Timeline varies by project size, typically 2-6 weeks for most projects.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card-gradient rounded-lg p-6">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-white">Do you provide ongoing maintenance?</h3>
+                        <svg class="faq-icon h-5 w-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden mt-4">
+                        <p class="text-slate-300">Yes, I offer maintenance packages starting at $99/month which include updates, security monitoring, and technical support.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card-gradient rounded-lg p-6">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-white">Can I upgrade my plan later?</h3>
+                        <svg class="faq-icon h-5 w-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden mt-4">
+                        <p class="text-slate-300">Absolutely! You can upgrade your plan at any time during the project. I'll adjust the pricing accordingly and extend the project scope.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Let's discuss your project and find the perfect solution for your needs.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="px-8 py-3 bg-white text-primary rounded-lg hover:bg-gray-100 transition-colors duration-200 font-medium">
+                    Start Your Project
+                </a>
+                <a href="contact.html" class="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-primary rounded-lg transition-colors duration-200 font-medium">
+                    Schedule Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Nexus</h3>
+                    <p class="mb-4">Premium digital solutions crafted with precision and passion for exceptional user experiences.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-primary transition-colors duration-200">Home</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition-colors duration-200">About</a></li>
+                        <li><a href="portfolio.html" class="hover:text-primary transition-colors duration-200">Portfolio</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="blog.html" class="hover:text-primary transition-colors duration-200">Blog</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors duration-200">Pricing</a></li>
+                        <li><a href="faq.html" class="hover:text-primary transition-colors duration-200">FAQ</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-primary transition-colors duration-200">Coming Soon</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm">
+                © 2025 Nexus Digital. All rights reserved. 
+                | <a href="#" class="hover:text-primary">Privacy Policy</a> 
+                | <a href="#" class="hover:text-primary">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Billing toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const billingToggle = document.getElementById('billingToggle');
+            const toggle = billingToggle.querySelector('div');
+            const basicPrice = document.getElementById('basicPrice');
+            const proPrice = document.getElementById('proPrice');
+            const enterprisePrice = document.getElementById('enterprisePrice');
+            
+            let isYearly = false;
+            
+            billingToggle.addEventListener('click', function() {
+                isYearly = !isYearly;
+                
+                if (isYearly) {
+                    toggle.classList.add('translate-x-7');
+                    billingToggle.classList.add('bg-primary');
+                    billingToggle.classList.remove('bg-slate-700');
+                    
+                    // Update prices (20% discount for yearly)
+                    basicPrice.textContent = '399';
+                    proPrice.textContent = '1199';
+                    enterprisePrice.textContent = '3199';
+                } else {
+                    toggle.classList.remove('translate-x-7');
+                    billingToggle.classList.remove('bg-primary');
+                    billingToggle.classList.add('bg-slate-700');
+                    
+                    // Reset to monthly prices
+                    basicPrice.textContent = '499';
+                    proPrice.textContent = '1499';
+                    enterprisePrice.textContent = '3999';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

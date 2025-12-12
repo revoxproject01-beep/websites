@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Premium Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1', // indigo
+                        secondary: '#8b5cf6', // violet
+                        accent: '#ec4899', // pink
+                        background: '#0f172a', // slate-900
+                        text: '#f1f5f9' // slate-50
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-text transition-colors duration-300">
+    <!-- Geometric Background -->
+    <div class="geometric-bg" id="geometricBg"></div>
+    
+    <!-- Particle Background -->
+    <div class="particle-bg" id="particleBg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-sm border-b border-slate-700 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">Nexus Freelancer</a>
+                   
+                </div>
+                <div class="hidden lg:block">
+                    <div class="flex items-center space-x-6">
+                        <div class="relative group">
+                            <a href="#" class="text-slate-300 hover:text-primary transition-colors duration-200 flex items-center">
+                                Home <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </a>
+                            <div class="absolute top-full left-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-primary">Home Version 1</a>
+                                <a href="index2.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-primary">Home Version 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="text-primary transition-colors duration-200">About</a>
+                        <a href="portfolio.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Portfolio</a>
+                        <a href="blog.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Blog</a>
+                        <a href="pricing.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Pricing</a>
+                        <a href="faq.html" class="text-slate-300 hover:text-primary transition-colors duration-200">FAQ</a>
+                        <a href="contact.html" class="text-slate-300 hover:text-primary transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- RTL Toggle -->
+                    <button id="rtlToggle" class="p-2 rounded-md text-slate-400 hover:text-primary transition-colors duration-200" title="Toggle RTL">
+                        🌐
+                    </button>
+
+                    <button id="mobileMenuButton" class="lg:hidden p-2 rounded-md text-slate-400 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Home 1</a>
+                <a href="index2.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Home 2</a>
+                <a href="about.html" class="block px-3 py-2 text-primary">About</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Portfolio</a>
+                <a href="blog.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Blog</a>
+                <a href="pricing.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Pricing</a>
+                <a href="faq.html" class="block px-3 py-2 text-slate-300 hover:text-primary">FAQ</a>
+                <a href="contact.html" class="block px-3 py-2 text-slate-300 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-in-up">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-flip-in">About Me</h1>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto animate-flip-in animation-delay-200">
+                    Learn more about my journey, skills, and passion for creating exceptional digital experiences.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="w-full h-96 rounded-lg overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-30"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Profile" class="w-full h-full object-contain bg-black">
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Hello, I'm Alex Morgan</h2>
+                    <p class="text-lg text-slate-300 mb-6">
+                        I'm a passionate digital designer and full-stack developer with over 6 years of experience creating innovative solutions that make a difference. My journey began in design school where I discovered my love for both aesthetics and functionality.
+                    </p>
+                    <p class="text-lg text-slate-300 mb-6">
+                        I specialize in modern web technologies and have a keen eye for creating user-centered designs. I believe that great digital products should not only function flawlessly but also provide an exceptional user experience that delights users.
+                    </p>
+                    <p class="text-lg text-slate-300 mb-8">
+                        When I'm not designing or coding, you can find me exploring new creative techniques, contributing to open-source projects, or enjoying a good book while staying updated on the latest industry trends.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-full">Web Development</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-secondary to-accent text-white rounded-full">UI/UX Design</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-accent to-primary text-white rounded-full">Mobile Apps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-slate-900/50 section-bg-1 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-left"></div>
+        <div class="decorative-corner decorative-corner-bottom-right"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-circle" style="top: 10%; right: 5%; width: 80px; height: 80px;"></div>
+        <div class="floating-element floating-square" style="bottom: 15%; left: 8%; width: 60px; height: 60px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">My Skills</h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Here are the technologies and tools I use to bring ideas to life.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg card-gradient">
+                    <h3 class="text-xl font-semibold text-white mb-4">Frontend Development</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">React</span>
+                                <span class="text-primary font-medium">95%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-primary to-secondary" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">Vue.js</span>
+                                <span class="text-primary font-medium">90%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-primary to-secondary" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">TypeScript</span>
+                                <span class="text-primary font-medium">88%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-primary to-secondary" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg card-gradient">
+                    <h3 class="text-xl font-semibold text-white mb-4">Backend Development</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">Node.js</span>
+                                <span class="text-primary font-medium">92%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-secondary to-accent" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">Python</span>
+                                <span class="text-primary font-medium">85%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-secondary to-accent" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">PostgreSQL</span>
+                                <span class="text-primary font-medium">80%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-secondary to-accent" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg card-gradient">
+                    <h3 class="text-xl font-semibold text-white mb-4">Design & Tools</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">Figma</span>
+                                <span class="text-primary font-medium">97%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-accent to-primary" style="width: 97%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">Adobe XD</span>
+                                <span class="text-primary font-medium">90%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-accent to-primary" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-slate-300">Photoshop</span>
+                                <span class="text-primary font-medium">85%</span>
+                            </div>
+                            <div class="progress-bar bg-slate-700">
+                                <div class="progress-fill bg-gradient-to-r from-accent to-primary" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 section-bg-2 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-right"></div>
+        <div class="decorative-corner decorative-corner-bottom-left"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-triangle" style="top: 8%; left: 7%;"></div>
+        <div class="floating-element floating-circle" style="bottom: 12%; right: 10%; width: 70px; height: 70px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Experience</h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    My professional journey and key milestones in the digital industry.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Senior Full Stack Developer -->
+                <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group card-gradient">
+                    <div class="h-32 w-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center text-primary font-semibold text-2xl p-4 text-center">
+                        2022 - Present
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-1">Senior Full Stack Developer</h3>
+                        <p class="text-slate-400 text-sm mb-2">Digital Innovations Inc.</p>
+                        <p class="text-slate-300 mb-4">
+                            Leading a team of developers in creating scalable web applications and improving user experience. Responsible for architecture decisions and mentoring junior developers.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Developer -->
+                <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group card-gradient">
+                    <div class="h-32 w-full bg-gradient-to-r from-secondary/20 to-accent/20 flex items-center justify-center text-primary font-semibold text-2xl p-4 text-center">
+                        2020 - 2022
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-1">Frontend Developer</h3>
+                        <p class="text-slate-400 text-sm mb-2">Creative Solutions Ltd.</p>
+                        <p class="text-slate-300 mb-4">
+                            Developed responsive web applications and collaborated with UX designers to create intuitive user interfaces. Improved application performance by 45%.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">SASS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Junior Developer -->
+                <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group card-gradient">
+                    <div class="h-32 w-full bg-gradient-to-r from-accent/20 to-primary/20 flex items-center justify-center text-primary font-semibold text-2xl p-4 text-center">
+                        2019 - 2020
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-1">Junior Developer</h3>
+                        <p class="text-slate-400 text-sm mb-2">Tech Startup Hub</p>
+                        <p class="text-slate-300 mb-4">
+                            Started my career working on various web development projects. Learned best practices and gained experience in agile development methodologies.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team/Collaboration Section -->
+    <section class="py-20 bg-slate-900/50 section-bg-3 section-divider relative">
+        <!-- Decorative corners -->
+        <div class="decorative-corner decorative-corner-top-left"></div>
+        <div class="decorative-corner decorative-corner-bottom-right"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element floating-square" style="top: 12%; right: 6%; width: 65px; height: 65px;"></div>
+        <div class="floating-element floating-triangle" style="bottom: 8%; left: 9%;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Collaboration & Team</h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    I believe in the power of collaboration and working with talented individuals to create amazing products.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="text-center">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-primary/30">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Sarah Johnson" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Sarah Johnson</h3>
+                    <p class="text-slate-400">UI/UX Designer</p>
+                    <p class="text-sm text-slate-500 mt-2">Frequent collaborator on design projects</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="text-center">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-secondary/30">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Mike Chen" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Mike Chen</h3>
+                    <p class="text-slate-400">Backend Developer</p>
+                    <p class="text-sm text-slate-500 mt-2">Partner in full-stack development</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="text-center">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-accent/30">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Alex Rodriguez" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Alex Rodriguez</h3>
+                    <p class="text-slate-400">DevOps Engineer</p>
+                    <p class="text-sm text-slate-500 mt-2">Infrastructure and deployment expert</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Work Together</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Ready to bring your ideas to life? I'd love to hear about your project and discuss how we can collaborate.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="px-8 py-3 bg-white text-primary rounded-lg hover:bg-gray-100 transition-colors duration-200 font-medium">
+                    Get In Touch
+                </a>
+                <a href="portfolio.html" class="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-primary rounded-lg transition-colors duration-200 font-medium">
+                    View My Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Nexus</h3>
+                    <p class="mb-4">Premium digital solutions crafted with precision and passion for exceptional user experiences.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-primary transition-colors duration-200">Home</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition-colors duration-200">About</a></li>
+                        <li><a href="portfolio.html" class="hover:text-primary transition-colors duration-200">Portfolio</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="blog.html" class="hover:text-primary transition-colors duration-200">Blog</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors duration-200">Pricing</a></li>
+                        <li><a href="faq.html" class="hover:text-primary transition-colors duration-200">FAQ</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-primary transition-colors duration-200">Coming Soon</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm">
+                © 2025 Nexus Digital. All rights reserved. 
+                | <a href="#" class="hover:text-primary">Privacy Policy</a> 
+                | <a href="#" class="hover:text-primary">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
